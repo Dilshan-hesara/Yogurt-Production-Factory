@@ -11,6 +11,7 @@ public class AppInitializer extends Application {
 
         FXMLLoader fxmlLoader = new FXMLLoader(AppInitializer.class.getResource("/view/WelcomePage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+
         stage.setTitle("Yogurt Production");
 
 
