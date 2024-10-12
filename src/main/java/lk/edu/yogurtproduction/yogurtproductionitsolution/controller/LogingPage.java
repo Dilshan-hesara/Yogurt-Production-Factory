@@ -51,4 +51,12 @@ public class LogingPage {
     }
 
 
+    @FXML
+    void backButton(ActionEvent event) throws IOException {
+
+        logpage.getChildren().clear();
+        AnchorPane load = FXMLLoader.load(getClass().getResource("/view/WelcomePage.fxml"));
+        logpage.getChildren().add(load);
+    }
+
 }

@@ -1,14 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.edu.yogurtproduction.yogurtproductionitsolution.controller.DashBoad"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.edu.yogurtproduction.yogurtproductionitsolution.controller.DashBoad">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="1280.0">
+         <image>
+            <Image url="@../images/8-bacground.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="160.0" prefHeight="600.0" prefWidth="870.0" style="-fx-background-color: #0000;">
+         <children>
+            <AnchorPane layoutX="-168.0" opacity="0.34" prefHeight="720.0" prefWidth="166.0" style="-fx-background-color: #feca57;" />
+            <AnchorPane fx:id="nextPage" prefHeight="720.0" prefWidth="1115.0" />
+         </children></AnchorPane>
+      <AnchorPane prefHeight="720.0" prefWidth="150.0">
+         <children>
+            <Label layoutX="41.0" layoutY="22.0" prefHeight="28.0" prefWidth="94.0" text="Prodrion">
+               <font>
+                  <Font name="Bauhaus 93" size="23.0" />
+               </font>
+            </Label>
+            <Label prefHeight="18.0" prefWidth="83.0" text="  Yogurt">
+               <font>
+                  <Font name="Bauhaus 93" size="23.0" />
+               </font>
+            </Label>
+            <AnchorPane prefHeight="592.0" prefWidth="150.0">
+               <children>
+                  <Button layoutX="26.0" layoutY="95.0" mnemonicParsing="false" onAction="#emploButt" prefHeight="32.0" prefWidth="106.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" text="Employee">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="26.0" layoutY="143.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="106.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" text="Cash Book">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="26.0" layoutY="188.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="106.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" text="Supplier">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="26.0" layoutY="280.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="106.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" text="Material ">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="26.0" layoutY="411.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="106.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" text="Packing">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="26.0" layoutY="232.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="106.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" text="Inventry">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="26.0" layoutY="368.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="106.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" text="Prodtion">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="26.0" layoutY="454.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="106.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" text="Stock">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="26.0" layoutY="322.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="106.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice:;" text="MaterialUsage">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="26.0" layoutY="539.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #222f3e;" text="Log Out" textFill="#c8d6e5">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="20.0" fitWidth="26.0" layoutX="13.0" layoutY="28.0">
+                     <image>
+                        <Image url="@../images/7-app_icon.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>
