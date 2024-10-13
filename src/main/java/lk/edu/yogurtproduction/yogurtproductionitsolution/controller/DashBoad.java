@@ -20,6 +20,63 @@ public class DashBoad {
 
     }
 
+    @FXML
+    void PackingButt(ActionEvent event) {
+        navigateTo("/view/PackingForm.fxml");
+
+    }
+
+
+
+    @FXML
+    void invetroyButt(ActionEvent event) {
+        navigateTo("/view/InventryForm.fxml");
+
+    }
+
+    @FXML
+    void matUsageButt(ActionEvent event) {
+        navigateTo("/view/MatirialUsage.fxml");
+
+    }
+
+    @FXML
+    void matirialButt(ActionEvent event) {
+        navigateTo("/view/MatirialForm.fxml");
+
+    }
+
+    @FXML
+    void prodtionButt(ActionEvent event) {
+        navigateTo("/view/ProdtionForm.fxml");
+
+    }
+
+    @FXML
+    void stockButt(ActionEvent event) {
+        navigateTo("/view/StockForm.fxml");
+
+    }
+
+    @FXML
+    void supplierButt(ActionEvent event) {
+        navigateTo("/view/SupplierForm.fxml");
+
+    }
+
+
+    @FXML
+    void dashBoadButt(ActionEvent event) {
+        navigateTo("/view/DahBoadMain.fxml");
+
+
+    }
+
+    @FXML
+    void cashBookButt(ActionEvent event) {
+        navigateTo("/view/CashBForm.fxml");
+
+    }
 
 
 
