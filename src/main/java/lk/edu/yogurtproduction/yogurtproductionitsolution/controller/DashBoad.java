@@ -79,7 +79,10 @@ public class DashBoad {
 
     }
 
+    @FXML
+    void prodMixButt(ActionEvent event) {
 
+    }
 
 
     public void navigateTo(String fxmlPath) {

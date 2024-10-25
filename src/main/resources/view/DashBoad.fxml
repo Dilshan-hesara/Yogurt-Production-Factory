@@ -53,7 +53,7 @@
                         <Font name="Malgun Gothic Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button layoutX="22.0" layoutY="448.0" mnemonicParsing="false" onAction="#PackingButt" prefHeight="32.0" prefWidth="106.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" text="Packing">
+                  <Button layoutX="22.0" layoutY="492.0" mnemonicParsing="false" onAction="#PackingButt" prefHeight="32.0" prefWidth="106.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" text="Packing">
                      <font>
                         <Font name="Malgun Gothic Bold" size="12.0" />
                      </font>
@@ -63,12 +63,12 @@
                         <Font name="Malgun Gothic Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button layoutX="22.0" layoutY="405.0" mnemonicParsing="false" onAction="#prodtionButt" prefHeight="32.0" prefWidth="106.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" text="Prodtion">
+                  <Button layoutX="22.0" layoutY="449.0" mnemonicParsing="false" onAction="#prodtionButt" prefHeight="32.0" prefWidth="106.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" text="Prodtion">
                      <font>
                         <Font name="Malgun Gothic Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button layoutX="22.0" layoutY="493.0" mnemonicParsing="false" onAction="#stockButt" prefHeight="32.0" prefWidth="106.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" text="Stock">
+                  <Button layoutX="22.0" layoutY="537.0" mnemonicParsing="false" onAction="#stockButt" prefHeight="32.0" prefWidth="106.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" text="Stock">
                      <font>
                         <Font name="Malgun Gothic Bold" size="12.0" />
                      </font>
@@ -78,7 +78,7 @@
                         <Font name="Malgun Gothic Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button layoutX="26.0" layoutY="540.0" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #222f3e;" text="Log Out" textFill="#c8d6e5">
+                  <Button layoutX="22.0" layoutY="591.0" mnemonicParsing="false" onAction="#logOut" prefHeight="26.0" prefWidth="71.0" style="-fx-background-color: #222f3e;" text="Log Out" textFill="#c8d6e5">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
@@ -89,6 +89,11 @@
                      </image>
                   </ImageView>
                   <Button layoutX="22.0" layoutY="89.0" mnemonicParsing="false" onAction="#dashBoadButt" prefHeight="32.0" prefWidth="106.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" text="DashBoad">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="22.0" layoutY="403.0" mnemonicParsing="false" onAction="#prodMixButt" prefHeight="32.0" prefWidth="106.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" text="Prodt Mix">
                      <font>
                         <Font name="Malgun Gothic Bold" size="12.0" />
                      </font>
