@@ -81,7 +81,7 @@ public class DashBoad {
 
     @FXML
     void prodMixButt(ActionEvent event) {
-
+        navigateTo("/view/ProdMixFrom.fxml");
     }
 
 

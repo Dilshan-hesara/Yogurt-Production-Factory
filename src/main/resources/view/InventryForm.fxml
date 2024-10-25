@@ -21,7 +21,6 @@
             <TableColumn prefWidth="75.0" text="Item Type" />
             <TableColumn prefWidth="75.0" text="Item DESE" />
             <TableColumn prefWidth="75.0" text="Qty" />
-            <TableColumn prefWidth="75.0" text="Unit" />
          </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
