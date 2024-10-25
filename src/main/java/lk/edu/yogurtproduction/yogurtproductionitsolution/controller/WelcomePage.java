@@ -21,4 +21,8 @@ public class WelcomePage {
 
     }
 
+    @FXML
+    void exitButt(ActionEvent event) {
+        System.exit(0);
+    }
 }

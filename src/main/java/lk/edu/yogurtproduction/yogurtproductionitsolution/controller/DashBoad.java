@@ -11,7 +11,8 @@ import java.io.IOException;
 
 public class DashBoad {
 
-
+    @FXML
+    private AnchorPane mainAn;
     @FXML
     private AnchorPane nextPage;
 
@@ -86,16 +87,10 @@ public class DashBoad {
             nextPage.getChildren().clear();
             AnchorPane load = FXMLLoader.load(getClass().getResource(fxmlPath));
 
-//  -------- Loaded anchor edges are bound to the content anchor --------
-//      (1) Bind the loaded FXML to all edges of the content anchorPane
+
             load.prefWidthProperty().bind(nextPage.widthProperty());
             load.prefHeightProperty().bind(nextPage.heightProperty());
 
-//      (2) Bind the loaded FXML to all edges of the AnchorPane
-//            AnchorPane.setTopAnchor(load, 0.0);
-//            AnchorPane.setRightAnchor(load, 0.0);
-//            AnchorPane.setBottomAnchor(load, 0.0);
-//            AnchorPane.setLeftAnchor(load, 0.0);
 
             nextPage.getChildren().add(load);
         } catch (IOException e) {
@@ -104,6 +99,13 @@ public class DashBoad {
         }
     }
 
+    @FXML
+    void logOut(ActionEvent event) throws IOException {
+
+        mainAn.getChildren().clear();
+        AnchorPane load = FXMLLoader.load(getClass().getResource("/view/WelcomePage.fxml"));
+        mainAn.getChildren().add(load);
+    }
 }
 
 
