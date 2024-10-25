@@ -10,7 +10,7 @@ public class AppInitializer extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        FXMLLoader fxmlLoader = new FXMLLoader(AppInitializer.class.getResource("/view/WelcomePage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(AppInitializer.class.getResource("/view/Dashboad.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Yogurt Production");
 
