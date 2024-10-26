@@ -4,7 +4,9 @@ module lk.edu.yogurtproduction.yogurtproductionitsolution {
     requires java.desktop;
     requires static lombok;
     requires java.sql;
-
+    requires com.jfoenix;
+    requires net.sf.jasperreports.core;
+    requires java.mail;
 
     opens lk.edu.yogurtproduction.yogurtproductionitsolution.controller to javafx.fxml;
     opens lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM to javafx.base;
