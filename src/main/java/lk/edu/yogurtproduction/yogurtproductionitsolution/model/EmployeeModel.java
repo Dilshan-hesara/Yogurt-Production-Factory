@@ -66,8 +66,25 @@ public class EmployeeModel {
         return employeeDtos;
     }
 
-    public boolean updateCustomer(EmployeeDto employeeDto) {
 
-        return false;
+
+    public boolean updateCustomer(EmployeeDto employeeDto) throws SQLException, ClassNotFoundException{
+        String sql = "UPDATE employee SET Emp_Name = ?, Emp_Nic = ?, Emp_Email = ?, Emp_Phone = ? WHERE Emp_ID = ?";
+
+        Connection connection = DBConnection.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql); {
+
+            statement.setString(1, employeeDto.getEmpName());
+            statement.setString(2, employeeDto.getEmpNic());
+            statement.setString(3, employeeDto.getEmpEmail());
+            statement.setString(4, employeeDto.getEmpPhone());
+            statement.setString(5, employeeDto.getEmpId());
+
+            int rowsAffected = statement.executeUpdate();
+            return rowsAffected > 0;
+
+
     }
+
+}
 }

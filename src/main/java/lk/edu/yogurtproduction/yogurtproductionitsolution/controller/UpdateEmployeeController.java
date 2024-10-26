@@ -12,6 +12,7 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.EmployeeTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.EmployeeModel;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class UpdateEmployeeController implements Initializable {
@@ -54,7 +55,7 @@ public class UpdateEmployeeController implements Initializable {
     }
 
     @FXML
-    void btnUpdateOnAction(ActionEvent event) {
+    void btnUpdateOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
 
 
         String emId = lblEmployeeId.getText();
