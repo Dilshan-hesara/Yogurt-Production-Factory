@@ -66,4 +66,8 @@ public class EmployeeModel {
         return employeeDtos;
     }
 
+    public boolean updateCustomer(EmployeeDto employeeDto) {
+
+        return false;
+    }
 }

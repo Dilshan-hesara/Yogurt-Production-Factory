@@ -145,30 +145,36 @@ public class EmployeeController implements Initializable {
 
     @FXML
     void buttUpadeEmp(ActionEvent event) {
-        try {
 
+        EmployeeTM selectedEmployee = emTable.getSelectionModel().getSelectedItem();
+        if (selectedEmployee != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UpadeEmployee.fxml"));
+                if (loader.getLocation() == null) {
+                    throw new IllegalStateException("FXML file not found.");
+                }
+                Parent load = loader.load();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UpadeEmployee.fxml"));
-            Parent load = loader.load();
+                UpdateEmployeeController updateEmployeeController = loader.getController();
+                updateEmployeeController.setEmployeeData(selectedEmployee);// pass kara
 
-
-
-            Stage stage = new Stage();
-            stage.setScene(new Scene(load));
-            stage.setTitle("Update Employee");
-
-            stage.initModality(Modality.APPLICATION_MODAL);
-
-            stage.initOwner(btnUpdate.getScene().getWindow());
-            stage.showAndWait();
-
-
-
+                Stage stage = new Stage();
+                stage.setScene(new Scene(load));
+                stage.setTitle("Update Employee");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.initOwner(btnUpdate.getScene().getWindow());
+                stage.showAndWait();
             } catch (IOException e) {
-            new Alert(Alert.AlertType.ERROR, "Fail to load ui..!");
-            e.printStackTrace();
+                new Alert(Alert.AlertType.ERROR, "Fail to load UI: " + e.getMessage()).show();
+                e.printStackTrace();
+            } catch (IllegalStateException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
+        } else {
+            new Alert(Alert.AlertType.WARNING, "Please select an employee to update.").show();
         }
     }
+
 
     @FXML
     void generateAllCustomerReportOnAction(ActionEvent event) {
@@ -179,13 +185,15 @@ public class EmployeeController implements Initializable {
 
     public void btntableClick(javafx.scene.input.MouseEvent mouseEvent) {
 
-        addEmpButt.setDisable(true);
-        btnDelete.setDisable(false);
-        btnOpenMailSendModel.setDisable(false);
-        btnUpdate.setDisable(false);
-        btnAlEmpReport.setDisable(true);
+
+            addEmpButt.setDisable(true);
+            btnDelete.setDisable(false);
+            btnOpenMailSendModel.setDisable(false);
+            btnUpdate.setDisable(false);
+            btnAlEmpReport.setDisable(true);
 
     }
+
 
     @FXML
     void resetButt(ActionEvent event) {
