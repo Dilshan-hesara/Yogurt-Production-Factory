@@ -103,10 +103,7 @@ public class EmployeeController implements Initializable {
         emTable.setItems(employeeTMS);
     }
 
-    @FXML
-    void btnOpenMailSendModelOnAction(ActionEvent event) {
 
-    }
 
     @FXML
     void buttAddEmp(ActionEvent event) throws IOException {
@@ -195,7 +192,38 @@ public class EmployeeController implements Initializable {
         }
     }
 
+    @FXML
+    void btnOpenMailSendModelOnAction(ActionEvent event) {
 
+        EmployeeTM selectedEmployee = emTable.getSelectionModel().getSelectedItem();
+
+        if (selectedEmployee != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/SendMailEmployee.fxml"));
+                if (loader.getLocation() == null) {
+                    throw new IllegalStateException("FXML file not found.");
+                }
+                Parent load = loader.load();
+
+                SendMailEmloyeeController sendMailEmloyeeController = loader.getController();
+                sendMailEmloyeeController.sendMailData(selectedEmployee);// pass kara
+
+                Stage stage = new Stage();
+                stage.setScene(new Scene(load));
+                stage.setTitle("Send Mail Employee");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.initOwner(btnUpdate.getScene().getWindow());
+                stage.showAndWait();
+            } catch (IOException e) {
+                new Alert(Alert.AlertType.ERROR, "Fail to load UI: " + e.getMessage()).show();
+                e.printStackTrace();
+            } catch (IllegalStateException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
+        } else {
+            new Alert(Alert.AlertType.WARNING, "Please select an employee .").show();
+        }
+    }
     @FXML
     void generateAllCustomerReportOnAction(ActionEvent event) {
 
