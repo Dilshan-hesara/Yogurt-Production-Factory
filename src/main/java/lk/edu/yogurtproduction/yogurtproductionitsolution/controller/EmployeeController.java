@@ -12,17 +12,20 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.EmployeeTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.EmployeeModel;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.time.LocalDate;
+import java.util.*;
 
 public class EmployeeController implements Initializable {
 
@@ -226,7 +229,30 @@ public class EmployeeController implements Initializable {
     }
     @FXML
     void generateAllCustomerReportOnAction(ActionEvent event) {
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
 
+            Map<String, Object> parameters = new HashMap<>();
+
+            parameters.put("P_Date", LocalDate.now().toString());
+
+            JasperReport jasperReport = JasperCompileManager.compileReport(getClass().getResourceAsStream("/report/allEmployee.jrxml"));
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(
+                    jasperReport,
+                    parameters,
+                    connection
+            );
+
+
+            JasperViewer.viewReport(jasperPrint, false);
+        } catch (JRException e) {
+            new Alert(Alert.AlertType.ERROR, "Fail to load report..!");
+            e.printStackTrace();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "Data empty..!");
+            e.printStackTrace();
+        }
     }
 
 
