@@ -3,6 +3,7 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.EmployeeTM;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -93,8 +94,12 @@ public class EmployeeModel {
 
     }
 
-    public boolean deleteEmploye(String empId) {
 
-        return false;
+
+
+
+    public boolean deleteCustomer(String empId) throws SQLException {
+        return CrudUtil.execute("delete from employee where Emp_ID=?", empId);
+
     }
 }
