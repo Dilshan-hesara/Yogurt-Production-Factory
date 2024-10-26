@@ -64,7 +64,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btnUpdate" layoutX="36.0" layoutY="163.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#buttUpadeEmp" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: #A2D2DF;" text="Update" textFill="WHITE">
+      <Button fx:id="btnUpdate" layoutX="36.0" layoutY="163.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#buttUpadeEmp" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: #e74c3c;" text="Update" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
