@@ -55,10 +55,10 @@ public class AddEmployeeController implements Initializable {
     }
 
 
-     void loadNextEmployeeId() throws SQLException {
+    void loadNextEmployeeId() throws SQLException {
 
-             String nextEmployeeId = employeeModel.getNextCustomerId();
-         lblEmployeeId.setText(nextEmployeeId);
+        String nextEmployeeId = employeeModel.getNextCustomerId();
+        lblEmployeeId.setText(nextEmployeeId);
 
 
     }
@@ -89,7 +89,9 @@ public class AddEmployeeController implements Initializable {
             txtPhone.setText("");
             new Alert(Alert.AlertType.INFORMATION,"Employee saved...!").show();
 
+            if (employeeFormController != null) {
                 employeeFormController.loadCustomerTable();
+            }
 
 
         }else{

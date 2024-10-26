@@ -189,11 +189,11 @@ public class EmployeeController implements Initializable {
     public void btntableClick(javafx.scene.input.MouseEvent mouseEvent) {
 
 
-            addEmpButt.setDisable(true);
-            btnDelete.setDisable(false);
-            btnOpenMailSendModel.setDisable(false);
-            btnUpdate.setDisable(false);
-            btnAlEmpReport.setDisable(true);
+        addEmpButt.setDisable(true);
+        btnDelete.setDisable(false);
+        btnOpenMailSendModel.setDisable(false);
+        btnUpdate.setDisable(false);
+        btnAlEmpReport.setDisable(true);
 
     }
 

@@ -1,3 +1,4 @@
+
 package lk.edu.yogurtproduction.yogurtproductionitsolution.controller;
 
 import javafx.event.ActionEvent;
@@ -85,11 +86,9 @@ public class UpdateEmployeeController implements Initializable {
             new Alert(Alert.AlertType.ERROR, "Fail to update Employee...!").show();
         }
 
-        }
+    }
 
     public void setEmployeeReloadTable(EmployeeController employeeController) {
         this.employeeFormController = employeeController;
     }
 }
-
-

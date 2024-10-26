@@ -15,18 +15,23 @@ public class EmployeeModel {
     public String getNextCustomerId() throws SQLException {
 
         Connection connection = DBConnection.getInstance().getConnection();
-        String sql = "select Emp_ID from employee order by Emp_ID desc limit 1";
+        String sql = "SELECT Emp_ID FROM employee ORDER BY Emp_ID DESC LIMIT 1";
         PreparedStatement pst = connection.prepareStatement(sql);
         ResultSet rst = pst.executeQuery();
-        if (rst.next()){
-            String lastId = rst.getString(1);
-            String substring = lastId.substring(1);
-            int i = Integer.parseInt(substring);
-            int newIdIndex = i+1;
 
-            return String.format("E%03d",newIdIndex);
+        if (rst.next()) {
+            String lastId = rst.getString(1);
+            String substring = lastId.substring(2); // Updated to substring(2) to remove "EM"
+            int i = Integer.parseInt(substring);
+            int newIdIndex = i + 1;
+
+            return String.format("EM%03d", newIdIndex);
         }
-        return  "EM001";
+
+// Return EM001 if no IDs are found
+        return "EM001";
+
+
     }
 
     public boolean saveEmpoyee(EmployeeDto employeeDto) throws SQLException {
@@ -72,7 +77,7 @@ public class EmployeeModel {
         String sql = "UPDATE employee SET Emp_Name = ?, Emp_Nic = ?, Emp_Email = ?, Emp_Phone = ? WHERE Emp_ID = ?";
 
         Connection connection = DBConnection.getInstance().getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql); {
+        PreparedStatement statement = connection.prepareStatement(sql); {
 
             statement.setString(1, employeeDto.getEmpName());
             statement.setString(2, employeeDto.getEmpNic());
@@ -84,7 +89,12 @@ public class EmployeeModel {
             return rowsAffected > 0;
 
 
+        }
+
     }
 
-}
+    public boolean deleteEmploye(String empId) {
+
+        return false;
+    }
 }
