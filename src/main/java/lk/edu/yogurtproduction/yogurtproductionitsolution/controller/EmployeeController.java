@@ -147,20 +147,24 @@ public class EmployeeController implements Initializable {
     void buttUpadeEmp(ActionEvent event) {
         try {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AddEmployee.fxml"));
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UpadeEmployee.fxml"));
             Parent load = loader.load();
 
 
 
             Stage stage = new Stage();
             stage.setScene(new Scene(load));
-            stage.setTitle("Add Employee");
+            stage.setTitle("Update Employee");
 
             stage.initModality(Modality.APPLICATION_MODAL);
 
             stage.initOwner(btnUpdate.getScene().getWindow());
             stage.showAndWait();
-        } catch (IOException e) {
+
+
+
+            } catch (IOException e) {
             new Alert(Alert.AlertType.ERROR, "Fail to load ui..!");
             e.printStackTrace();
         }
