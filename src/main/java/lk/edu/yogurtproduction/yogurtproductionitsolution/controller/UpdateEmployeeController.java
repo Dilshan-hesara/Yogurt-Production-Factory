@@ -57,7 +57,28 @@ public class UpdateEmployeeController implements Initializable {
     void btnUpdateOnAction(ActionEvent event) {
 
 
+        String emId = lblEmployeeId.getText();
+        String name = txtName.getText();
+        String nic = txtNic.getText();
+        String email = txtEmail.getText();
+        String phone = txtPhone.getText();
 
+        EmployeeDto employeeDto = new EmployeeDto(
+                emId,
+                name,
+                nic,
+                email,
+                phone
+        );
+
+
+        boolean isUpdate = employeeModel.updateCustomer(employeeDto);
+        if (isUpdate) {
+
+            new Alert(Alert.AlertType.INFORMATION, "Employee update...!").show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Fail to update Employee...!").show();
+        }
 
         }
 
