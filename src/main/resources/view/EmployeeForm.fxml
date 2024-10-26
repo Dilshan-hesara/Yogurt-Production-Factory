@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1113.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.edu.yogurtproduction.yogurtproductionitsolution.controller.EmployeeController">
    <children>
-      <ImageView fitHeight="720.0" fitWidth="1113.0" focusTraversable="true">
+      <ImageView fx:id="col_emId" fitHeight="720.0" fitWidth="1113.0" focusTraversable="true">
          <image>
             <Image url="@../images/11-bluer.png" />
          </image>
@@ -32,11 +32,11 @@
       </Button>
       <TableView fx:id="EmpTable" layoutX="28.0" layoutY="247.0" prefHeight="450.0" prefWidth="1060.0" style="-fx-background-color: #0000; -fx-border-color: #000000;">
         <columns>
-          <TableColumn fx:id="tbEmId" prefWidth="95.99996566772461" text="EM-ID" />
-          <TableColumn fx:id="tbName" prefWidth="241.59996032714844" text="Name" />
-            <TableColumn fx:id="tbNic" prefWidth="212.800048828125" text="Nic" />
-            <TableColumn fx:id="tbMail" prefWidth="276.0" text="Maill" />
-            <TableColumn fx:id="tbPhone" prefWidth="220.00006103515625" text="Phone" />
+          <TableColumn fx:id="emIdta" prefWidth="95.99996566772461" text="EM-ID" />
+          <TableColumn fx:id="col_name" prefWidth="241.59996032714844" text="Name" />
+            <TableColumn fx:id="col_nic" prefWidth="212.800048828125" text="Nic" />
+            <TableColumn fx:id="colMail" prefWidth="276.0" text="Maill" />
+            <TableColumn fx:id="col_phone" prefWidth="220.00006103515625" text="Phone" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

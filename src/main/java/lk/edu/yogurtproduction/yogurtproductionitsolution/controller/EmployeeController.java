@@ -3,22 +3,32 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.EmployeeTM;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.model.EmployeeModel;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class EmployeeController {
+public class EmployeeController implements Initializable {
 
     @FXML
-    private TableView<?> EmpTable;
+    private TableView<EmployeeTM> EmpTable;
+
+    @FXML
+    private Button addEmpButt;
 
     @FXML
     private Button btnDelete;
@@ -30,21 +40,36 @@ public class EmployeeController {
     private Button btnUpdate;
 
     @FXML
-    private TableColumn<?, ?> tbEmId;
+    private TableColumn<EmployeeTM, String> colMail;
 
     @FXML
-    private TableColumn<?, ?> tbMail;
+    private TableColumn<EmployeeTM, String> col_name;
 
     @FXML
-    private TableColumn<?, ?> tbName;
+    private TableColumn<EmployeeTM, String> col_nic;
 
     @FXML
-    private TableColumn<?, ?> tbNic;
+    private TableColumn<EmployeeTM, Integer> col_phone;
 
     @FXML
-    private TableColumn<?, ?> tbPhone;
+    private TableColumn<EmployeeTM, String> tbEmId;
+
     @FXML
-    private Button addEmpButt;
+    private TableColumn<EmployeeTM, String> emIdta;
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+     emIdta.setCellValueFactory(new PropertyValueFactory<>("emIdta"));
+     col_name.setCellValueFactory(new PropertyValueFactory<>("name"));
+     col_nic.setCellValueFactory(new PropertyValueFactory<>("nic"));
+     colMail.setCellValueFactory(new PropertyValueFactory<>("mail"));
+     col_phone.setCellValueFactory(new PropertyValueFactory<>("phone"));
+
+
+
+    }
+
 
     @FXML
     void btnOpenMailSendModelOnAction(ActionEvent event) {
@@ -55,18 +80,16 @@ public class EmployeeController {
     void buttAddEmp(ActionEvent event) throws IOException {
 
         try {
-            // Load the mail dialog from FXML file
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AddEmployee.fxml"));
             Parent load = loader.load();
 
-         //   SendMailController sendMailController = loader.getController();
-         //   sendMailController.setCustomerEmail(selectedItem.getEmail());
+
 
             Stage stage = new Stage();
             stage.setScene(new Scene(load));
             stage.setTitle("Add Employee");
 
-            // Set window as modal
             stage.initModality(Modality.APPLICATION_MODAL);
 
             stage.initOwner(btnUpdate.getScene().getWindow());
@@ -82,21 +105,20 @@ public class EmployeeController {
 
     }
 
+
     @FXML
     void buttUpadeEmp(ActionEvent event) {
         try {
-            // Load the mail dialog from FXML file
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AddEmployee.fxml"));
             Parent load = loader.load();
 
-            //   SendMailController sendMailController = loader.getController();
-            //   sendMailController.setCustomerEmail(selectedItem.getEmail());
+
 
             Stage stage = new Stage();
             stage.setScene(new Scene(load));
             stage.setTitle("Add Employee");
 
-            // Set window as modal
             stage.initModality(Modality.APPLICATION_MODAL);
 
             stage.initOwner(btnUpdate.getScene().getWindow());
