@@ -12,6 +12,6 @@ public class EmployeeTM {
     private String empName;
     private String empNic;
     private String empEmail;
-    private int empPhone;
+    private String empPhone;
 
 }

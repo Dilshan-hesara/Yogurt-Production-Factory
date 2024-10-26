@@ -38,14 +38,17 @@ public class AddEmployeeController implements Initializable {
     @FXML
     private TextField txtPhone;
 
-
+    private EmployeeController employeeFormController;
     EmployeeModel employeeModel = new EmployeeModel();
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         try {
             loadNextEmployeeId();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -60,9 +63,8 @@ public class AddEmployeeController implements Initializable {
 
     }
 
-
     @FXML
-    void btnSaveEmployeeOnAction(ActionEvent event) throws SQLException {
+    void btnSaveEmployeeOnAction(ActionEvent event) throws SQLException, ClassNotFoundException {
 
         String EmployeId = lblEmployeeId.getText();
         String empName = txtName.getText();
@@ -79,12 +81,17 @@ public class AddEmployeeController implements Initializable {
         );
         boolean isSaved =  employeeModel.saveEmpoyee(customerDTO);
         if(isSaved){
+
             loadNextEmployeeId();
             txtName.setText("");
             txtNic.setText("");
             txtEmail.setText("");
             txtPhone.setText("");
             new Alert(Alert.AlertType.INFORMATION,"Employee saved...!").show();
+
+                employeeFormController.loadCustomerTable();
+
+
         }else{
             new Alert(Alert.AlertType.ERROR,"Fail to save Employee...!").show();
         }
@@ -97,4 +104,10 @@ public class AddEmployeeController implements Initializable {
 
     }
 
+
+
+    public void setEmployeeFormController(EmployeeController employeeController) {
+
+        this.employeeFormController = employeeController;
+    }
 }

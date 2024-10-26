@@ -7,5 +7,6 @@ module lk.edu.yogurtproduction.yogurtproductionitsolution {
 
 
     opens lk.edu.yogurtproduction.yogurtproductionitsolution.controller to javafx.fxml;
+    opens lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM to javafx.base;
     exports lk.edu.yogurtproduction.yogurtproductionitsolution;
 }

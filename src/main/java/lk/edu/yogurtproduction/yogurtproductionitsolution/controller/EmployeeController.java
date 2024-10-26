@@ -1,5 +1,7 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,21 +13,20 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.Window;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.EmployeeTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.EmployeeModel;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class EmployeeController implements Initializable {
 
-    @FXML
-    private TableView<EmployeeTM> EmpTable;
 
     @FXML
     private Button addEmpButt;
@@ -49,27 +50,50 @@ public class EmployeeController implements Initializable {
     private TableColumn<EmployeeTM, String> col_nic;
 
     @FXML
-    private TableColumn<EmployeeTM, Integer> col_phone;
-
-    @FXML
-    private TableColumn<EmployeeTM, String> tbEmId;
+    private TableColumn<EmployeeTM, String> col_phone; // Change Integer to String
 
     @FXML
     private TableColumn<EmployeeTM, String> emIdta;
 
+    @FXML
+    private TableView<EmployeeTM> emTable;
+
+    EmployeeModel employeeModel = new EmployeeModel();
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-     emIdta.setCellValueFactory(new PropertyValueFactory<>("emIdta"));
-     col_name.setCellValueFactory(new PropertyValueFactory<>("name"));
-     col_nic.setCellValueFactory(new PropertyValueFactory<>("nic"));
-     colMail.setCellValueFactory(new PropertyValueFactory<>("mail"));
-     col_phone.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        emIdta.setCellValueFactory(new PropertyValueFactory<>("empId"));
+        col_name.setCellValueFactory(new PropertyValueFactory<>("empName"));
+        col_nic.setCellValueFactory(new PropertyValueFactory<>("empNic"));
+        colMail.setCellValueFactory(new PropertyValueFactory<>("empEmail"));
+        col_phone.setCellValueFactory(new PropertyValueFactory<>("empPhone"));
 
-
+        try {
+            loadCustomerTable();
+        } catch (Exception e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Fail to load employee data").show();
+        }
 
     }
+    void loadCustomerTable() throws SQLException, ClassNotFoundException {
+        ArrayList<EmployeeDto> employeeDTOS = employeeModel.getAllEmployees();
+        ObservableList<EmployeeTM> employeeTMS = FXCollections.observableArrayList();
 
+        for (EmployeeDto employeeDto : employeeDTOS) {
+            EmployeeTM employeeTM = new EmployeeTM(
+                    employeeDto.getEmpId(),
+                    employeeDto.getEmpName(),
+                    employeeDto.getEmpNic(),
+                    employeeDto.getEmpEmail(),
+                    employeeDto.getEmpPhone()
+            );
+            employeeTMS.add(employeeTM);
+        }
+
+        emTable.setItems(employeeTMS);
+    }
 
     @FXML
     void btnOpenMailSendModelOnAction(ActionEvent event) {
@@ -83,6 +107,9 @@ public class EmployeeController implements Initializable {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AddEmployee.fxml"));
             Parent load = loader.load();
+
+            AddEmployeeController addEmployeeController = loader.getController();
+            addEmployeeController.setEmployeeFormController(this);
 
 
 

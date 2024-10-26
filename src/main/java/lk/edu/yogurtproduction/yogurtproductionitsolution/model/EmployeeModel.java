@@ -2,11 +2,13 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.EmployeeTM;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class EmployeeModel {
 
@@ -41,4 +43,27 @@ public class EmployeeModel {
         boolean isSaved = result>0;
         return isSaved;
     }
+
+
+    public ArrayList<EmployeeDto> getAllEmployees() throws SQLException, ClassNotFoundException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        String sql = "select * from employee";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet rst = statement.executeQuery();
+        ArrayList<EmployeeDto> employeeDtos = new ArrayList<>();
+
+        while (rst.next()) {
+            EmployeeDto employeeDto = new EmployeeDto(
+                    rst.getString("Emp_ID"),
+                    rst.getString("Emp_Name"),
+                    rst.getString("Emp_Nic"),
+                    rst.getString("Emp_Email"),
+                    rst.getString("Emp_Phone")
+            );
+            employeeDtos.add(employeeDto);
+        }
+
+        return employeeDtos;
+    }
+
 }
