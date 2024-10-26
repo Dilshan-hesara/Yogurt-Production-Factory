@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1113.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.edu.yogurtproduction.yogurtproductionitsolution.controller.ProdMixController">
+<AnchorPane prefHeight="724.0" prefWidth="1090.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.edu.yogurtproduction.yogurtproductionitsolution.controller.ProdMixController">
     <children>
-        <ImageView fitHeight="720.0" fitWidth="1113.0" layoutX="-14.0" layoutY="4.0">
+        <ImageView fitHeight="720.0" fitWidth="1090.0" layoutX="9.0" layoutY="4.0">
             <image>
                 <Image url="@../images/11-bluer.png" />
             </image>
