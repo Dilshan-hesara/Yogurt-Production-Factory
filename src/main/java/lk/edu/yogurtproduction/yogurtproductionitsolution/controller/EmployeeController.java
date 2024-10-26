@@ -19,6 +19,7 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.EmployeeTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.EmployeeModel;
 
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -38,7 +39,13 @@ public class EmployeeController implements Initializable {
     private Button btnOpenMailSendModel;
 
     @FXML
+    private Button btnAlEmpReport;
+
+    @FXML
     private Button btnUpdate;
+
+    @FXML
+    private Button resetButt;
 
     @FXML
     private TableColumn<EmployeeTM, String> colMail;
@@ -71,6 +78,9 @@ public class EmployeeController implements Initializable {
 
         try {
             loadCustomerTable();
+            btnDelete.setDisable(true);
+            btnOpenMailSendModel.setDisable(true);
+            btnUpdate.setDisable(true);
         } catch (Exception e) {
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, "Fail to load employee data").show();
@@ -161,4 +171,31 @@ public class EmployeeController implements Initializable {
 
     }
 
+
+
+    public void btntableClick(javafx.scene.input.MouseEvent mouseEvent) {
+
+        addEmpButt.setDisable(true);
+        btnDelete.setDisable(false);
+        btnOpenMailSendModel.setDisable(false);
+        btnUpdate.setDisable(false);
+        btnAlEmpReport.setDisable(true);
+
+    }
+
+    @FXML
+    void resetButt(ActionEvent event) {
+
+        reset();
+    }
+
+    void reset(){
+        addEmpButt.setDisable(false);
+        btnDelete.setDisable(true);
+        btnOpenMailSendModel.setDisable(true);
+        btnUpdate.setDisable(true);
+        btnAlEmpReport.setDisable(false);
+
+
+    }
 }

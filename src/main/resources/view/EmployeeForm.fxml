@@ -30,7 +30,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <TableView fx:id="emTable" layoutX="28.0" layoutY="247.0" prefHeight="450.0" prefWidth="1060.0" style="-fx-background-color: #0000; -fx-border-color: #000000;">
+      <TableView fx:id="emTable" layoutX="28.0" layoutY="247.0" onMouseClicked="#btntableClick" prefHeight="450.0" prefWidth="1060.0" style="-fx-background-color: #0000; -fx-border-color: #000000;">
         <columns>
           <TableColumn fx:id="emIdta" prefWidth="95.99996566772461" text="EM-ID" />
           <TableColumn fx:id="col_name" prefWidth="241.59996032714844" text="Name" />
@@ -50,7 +50,7 @@
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="36.0" layoutY="203.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#generateAllCustomerReportOnAction" prefHeight="26.0" prefWidth="131.0" style="-fx-background-color: #7f8c8d;" text="All Customer Report" textFill="WHITE">
+      <Button fx:id="btnAlEmpReport" layoutX="36.0" layoutY="203.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#generateAllCustomerReportOnAction" prefHeight="26.0" prefWidth="139.0" style="-fx-background-color: #7f8c8d;" text="All Employee Report" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -66,6 +66,11 @@
          </cursor>
          <font>
             <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="resetButt" layoutX="350.0" layoutY="204.0" mnemonicParsing="false" onAction="#resetButt" style="-fx-background-color: #e67e22;" text="RESET">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="12.0" />
          </font>
       </Button>
    </children>
