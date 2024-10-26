@@ -148,7 +148,7 @@ public class EmployeeController implements Initializable {
             System.out.println(empId);
             boolean isDeleted = employeeModel.deleteCustomer (empId);
             if (isDeleted) {
-
+                loadCustomerTable();
                 new Alert(Alert.AlertType.INFORMATION, "Employee deleted...!").show();
             } else {
                 new Alert(Alert.AlertType.ERROR, "Fail to delete Emloyee...!").show();
