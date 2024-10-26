@@ -45,12 +45,6 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Label layoutX="40.0" layoutY="222.0" prefHeight="30.0" prefWidth="138.0" text="Water        :">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Label>
-      <TextField fx:id="desetxt1" layoutX="194.0" layoutY="224.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="150.0" promptText="Qty" style="-fx-background-color: #ffffff; -fx-border-width: 0 0 1px 0; -fx-border-color: #000;" />
       <Label layoutX="40.0" layoutY="252.0" prefHeight="30.0" prefWidth="138.0" text="Suger         :">
          <font>
             <Font name="System Bold" size="20.0" />
@@ -63,11 +57,11 @@
          </font>
       </Label>
       <TextField fx:id="desetxt21" layoutX="194.0" layoutY="284.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="150.0" promptText="Qty" style="-fx-background-color: #ffffff; -fx-border-width: 0 0 1px 0; -fx-border-color: #000;" />
-      <Label layoutX="40.0" layoutY="190.0" prefHeight="30.0" prefWidth="138.0" text="Milk          :">
+      <Label layoutX="42.0" layoutY="214.0" prefHeight="30.0" prefWidth="138.0" text="Milk          :">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="desetxt11" layoutX="194.0" layoutY="192.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="150.0" promptText="Qty" style="-fx-background-color: #ffffff; -fx-border-width: 0 0 1px 0; -fx-border-color: #000;" />
+      <TextField fx:id="desetxt11" layoutX="196.0" layoutY="216.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="150.0" promptText="Qty" style="-fx-background-color: #ffffff; -fx-border-width: 0 0 1px 0; -fx-border-color: #000;" />
     </children>
 </AnchorPane>
