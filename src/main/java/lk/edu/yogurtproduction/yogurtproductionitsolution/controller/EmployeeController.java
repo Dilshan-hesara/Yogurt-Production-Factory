@@ -158,6 +158,9 @@ public class EmployeeController implements Initializable {
                 UpdateEmployeeController updateEmployeeController = loader.getController();
                 updateEmployeeController.setEmployeeData(selectedEmployee);// pass kara
 
+                UpdateEmployeeController updateEmployeeReloadTable = loader.getController();
+                updateEmployeeReloadTable.setEmployeeReloadTable(this);//table eka load pass kr
+
                 Stage stage = new Stage();
                 stage.setScene(new Scene(load));
                 stage.setTitle("Update Employee");

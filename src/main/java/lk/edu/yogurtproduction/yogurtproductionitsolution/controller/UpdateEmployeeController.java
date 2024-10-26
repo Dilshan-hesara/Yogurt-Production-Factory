@@ -38,6 +38,8 @@ public class UpdateEmployeeController implements Initializable {
 
     private EmployeeTM selectedEmployee;
 
+    private EmployeeController employeeFormController;
+
     EmployeeModel employeeModel = new EmployeeModel();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -77,12 +79,17 @@ public class UpdateEmployeeController implements Initializable {
         if (isUpdate) {
 
             new Alert(Alert.AlertType.INFORMATION, "Employee update...!").show();
+            employeeFormController.loadCustomerTable();
+
         } else {
             new Alert(Alert.AlertType.ERROR, "Fail to update Employee...!").show();
         }
 
         }
 
+    public void setEmployeeReloadTable(EmployeeController employeeController) {
+        this.employeeFormController = employeeController;
     }
+}
 
 
