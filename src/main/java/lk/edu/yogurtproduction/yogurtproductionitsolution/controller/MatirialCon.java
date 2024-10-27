@@ -3,11 +3,8 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatiralMoadel;
 
 import java.net.URL;
@@ -83,9 +80,31 @@ public class MatirialCon implements Initializable {
     }
 
     @FXML
-    void btnSave(ActionEvent event) {
+    void btnSave(ActionEvent event) throws SQLException {
+        String matrId = lblItId.getText();
+        String name = txtName.getText();
+        int qty = Integer.parseInt(txtQuantity.getText());
+        int price = Integer.parseInt(txtPrice.getText());
 
-    }
+
+            MatirialDto matirialDto = new MatirialDto(
+                    matrId,
+                    name,
+                    qty,
+                    price
+
+            );
+
+            boolean isSaved = matiralMoadel.saveMatirial(matirialDto);
+            if (isSaved) {
+                loadNextMatId();
+
+                new Alert(Alert.AlertType.INFORMATION, "Matirial saved...!").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Fail to save matireal...!").show();
+            }
+        }
+
 
     @FXML
     void btnUpdate(ActionEvent event) {

@@ -7,9 +7,10 @@ import lombok.*;
 @ToString
 
 public class MatirialTM {
-    private int matId;
+
+    private String matId;
     private String matName;
-    private String matQty;
-    private String matPrice;
+    private int matQty;
+    private int matPrice;
 
 }

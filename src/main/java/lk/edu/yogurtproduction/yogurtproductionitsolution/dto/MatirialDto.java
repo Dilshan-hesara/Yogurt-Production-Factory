@@ -8,8 +8,8 @@ import lombok.*;
 
 public class MatirialDto {
 
-    private int matId;
+    private String matId;
     private String matName;
-    private String matQty;
-    private String matPrice;
+    private int matQty;
+    private int matPrice;
 }
