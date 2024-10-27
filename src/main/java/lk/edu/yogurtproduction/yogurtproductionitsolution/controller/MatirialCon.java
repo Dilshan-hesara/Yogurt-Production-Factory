@@ -4,21 +4,41 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 public class MatirialCon {
 
     @FXML
-    private Button btnDeleteItem;
+    private Button btnDelete;
 
     @FXML
-    private Button btnSaveItem;
+    private Button btnReset;
+
+    @FXML
+    private Button btnSave;
 
     @FXML
     private Button btnUpdateItem;
 
     @FXML
-    private Label lblItemId;
+    private Label lblItId;
+
+    @FXML
+    private TableColumn<?, ?> matID;
+
+    @FXML
+    private TableColumn<?, ?> matName;
+
+    @FXML
+    private TableColumn<?, ?> matPrice;
+
+    @FXML
+    private TableColumn<?, ?> matQty;
+
+    @FXML
+    private TableView<?> matTable;
 
     @FXML
     private TextField txtName;
@@ -30,17 +50,22 @@ public class MatirialCon {
     private TextField txtQuantity;
 
     @FXML
-    void btnDeleteItemOnAction(ActionEvent event) {
+    void btnDelete(ActionEvent event) {
 
     }
 
     @FXML
-    void btnSaveItemOnAction(ActionEvent event) {
+    void btnReset(ActionEvent event) {
 
     }
 
     @FXML
-    void btnUpdateItemOnAction(ActionEvent event) {
+    void btnSave(ActionEvent event) {
+
+    }
+
+    @FXML
+    void btnUpdate(ActionEvent event) {
 
     }
 
