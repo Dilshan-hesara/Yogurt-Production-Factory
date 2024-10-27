@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.SuplierTM;
 
 public class UpdateSuplier {
 
@@ -15,8 +16,7 @@ public class UpdateSuplier {
     private Button btnUpdate;
 
     @FXML
-    private Label lblCustomerId;
-
+    private Label lblSupId;
     @FXML
     private TextField txtEmail;
 
@@ -29,6 +29,8 @@ public class UpdateSuplier {
     @FXML
     private TextField txtPhone;
 
+    private SuplierTM suplierTM;
+
     @FXML
     void btnSaveEmployeeOnAction(ActionEvent event) {
 
@@ -39,4 +41,14 @@ public class UpdateSuplier {
 
     }
 
+    public void setSuplierData(SuplierTM suplierTM) {
+        this.suplierTM = suplierTM;
+
+        txtName.setText(suplierTM.getSupName());
+        txtNic.setText(suplierTM.getSupNic());
+        txtEmail.setText(suplierTM.getSupEmail());
+        txtPhone.setText(String.valueOf(suplierTM.getSupPhone()));
+        lblSupId.setText(suplierTM.getSupId());
+
+    }
 }

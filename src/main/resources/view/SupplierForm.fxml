@@ -12,7 +12,7 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1113.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.edu.yogurtproduction.yogurtproductionitsolution.controller.SupplierCon">
    <children>
-      <ImageView fitHeight="720.0" fitWidth="1113.0" focusTraversable="true">
+      <ImageView fitHeight="720.0" fitWidth="1113.0" focusTraversable="true" layoutY="-14.0">
          <image>
             <Image url="@../images/11-bluer.png" />
          </image>
@@ -30,7 +30,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <TableView fx:id="supTable" layoutX="28.0" layoutY="247.0" prefHeight="450.0" prefWidth="1060.0" style="-fx-background-color: #0000; -fx-border-color: #000000;">
+      <TableView fx:id="supTable" layoutX="28.0" layoutY="247.0" onMouseClicked="#tblClik" prefHeight="450.0" prefWidth="1060.0" style="-fx-background-color: #0000; -fx-border-color: #000000;">
          <columns>
             <TableColumn fx:id="tbSupId" prefWidth="95.99996566772461" text="SUP-ID" />
             <TableColumn fx:id="tbName" prefWidth="241.59996032714844" text="Name" />
@@ -50,7 +50,7 @@
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="36.0" layoutY="203.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#butSupReport" prefHeight="26.0" prefWidth="131.0" style="-fx-background-color: #7f8c8d;" text="All Suplier Report" textFill="WHITE">
+      <Button fx:id="allReport" layoutX="36.0" layoutY="203.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#butSupReport" prefHeight="26.0" prefWidth="131.0" style="-fx-background-color: #7f8c8d;" text="All Suplier Report" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -60,12 +60,17 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btnUpdate" layoutX="36.0" layoutY="163.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#buttUpadeSup" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: #A2D2DF;" text="Update" textFill="WHITE">
+      <Button fx:id="btnUpdate" layoutX="36.0" layoutY="163.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#buttUpadeSup" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: #e74c3c;" text="Update" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
          <font>
             <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="resetButt" layoutX="357.0" layoutY="204.0" mnemonicParsing="false" onAction="#resetButt" style="-fx-background-color: #e67e22;" text="RESET">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="12.0" />
          </font>
       </Button>
    </children>

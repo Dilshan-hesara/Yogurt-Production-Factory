@@ -20,6 +20,7 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.EmployeeTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.SuplierTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.SuplierModel;
 
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -33,6 +34,12 @@ public class SupplierCon implements Initializable {
 
     @FXML
     private Button addSupButt;
+
+    @FXML
+    private Button resetButt;
+
+    @FXML
+    private Button allReport;
 
     @FXML
     private Button btnDelete;
@@ -70,6 +77,9 @@ public class SupplierCon implements Initializable {
 
         try {
             loadSuplierTable();
+            btnDelete.setDisable(true);
+            btnOpenMailSendModel.setDisable(true);
+            btnUpdate.setDisable(true);
         }catch (Exception e) {
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, "Fail to load suplir data").show();
@@ -135,11 +145,16 @@ public class SupplierCon implements Initializable {
 
     @FXML
     void buttUpadeSup(ActionEvent event) {
+
+        SuplierTM selectSup = supTable.getSelectionModel().getSelectedItem();
         try {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UpdateSuplier.fxml"));
             Parent load = loader.load();
 
+
+            UpdateSuplier updateSupCon = loader.getController();
+            updateSupCon.setSuplierData(selectSup);
 
 
             Stage stage = new Stage();
@@ -156,4 +171,34 @@ public class SupplierCon implements Initializable {
         }
     }
 
+    @FXML
+    void tableClick(MouseEvent event) {
+
+    }
+
+    public void tblClik(javafx.scene.input.MouseEvent mouseEvent) {
+
+        addSupButt.setDisable(true);
+        btnDelete.setDisable(false);
+        btnOpenMailSendModel.setDisable(false);
+        btnUpdate.setDisable(false);
+        allReport.setDisable(true);
+
+    }
+
+    @FXML
+    void resetButt(ActionEvent event) {
+
+        reset();
+
+    }
+    void reset(){
+        addSupButt.setDisable(false);
+        btnDelete.setDisable(true);
+        btnOpenMailSendModel.setDisable(true);
+        btnUpdate.setDisable(true);
+        allReport.setDisable(false);
+
+
+    }
 }
