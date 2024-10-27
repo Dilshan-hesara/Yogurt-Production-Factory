@@ -25,12 +25,12 @@
             <Font name="Impact" size="39.0" />
          </font>
       </Label>
-      <Button fx:id="addSupButt" layoutX="36.0" layoutY="120.0" mnemonicParsing="false" onAction="#buttAddEmp" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: #08C2FF;" text="Add supllier" textFill="WHITE">
+      <Button fx:id="addSupButt" layoutX="36.0" layoutY="120.0" mnemonicParsing="false" onAction="#buttAddSup" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: #08C2FF;" text="Add supllier" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <TableView fx:id="EmpTable" layoutX="28.0" layoutY="247.0" prefHeight="450.0" prefWidth="1060.0" style="-fx-background-color: #0000; -fx-border-color: #000000;">
+      <TableView fx:id="supTable" layoutX="28.0" layoutY="247.0" prefHeight="450.0" prefWidth="1060.0" style="-fx-background-color: #0000; -fx-border-color: #000000;">
          <columns>
             <TableColumn fx:id="tbSupId" prefWidth="95.99996566772461" text="SUP-ID" />
             <TableColumn fx:id="tbName" prefWidth="241.59996032714844" text="Name" />
@@ -60,7 +60,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btnUpdate" layoutX="36.0" layoutY="163.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#buttUpadeEmp" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: #A2D2DF;" text="Update" textFill="WHITE">
+      <Button fx:id="btnUpdate" layoutX="36.0" layoutY="163.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#buttUpadeSup" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: #A2D2DF;" text="Update" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>

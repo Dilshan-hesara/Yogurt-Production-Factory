@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class SuplierModel {
     public String getNextSuplierId() throws SQLException {
@@ -43,4 +44,26 @@ public class SuplierModel {
         boolean isSaved = result>0;
         return isSaved;
     }
+
+    public ArrayList<SuplierDto> getAllSuplier() throws SQLException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        String sql = "select * from supplier";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet rst = statement.executeQuery();
+        ArrayList<SuplierDto> suplierDtos = new ArrayList<>();
+        while (rst.next()) {
+            SuplierDto suplierDto = new SuplierDto(
+                    rst.getString("Sup_ID"),
+                    rst.getString("Sup_Name"),
+                    rst.getString("Sup_Nic"),
+                    rst.getString("Sup_Email"),
+                    rst.getInt("Sup_Phone")
+            );
+            suplierDtos.add(suplierDto);
+        }
+
+        return suplierDtos;
+    }
+
+
 }
