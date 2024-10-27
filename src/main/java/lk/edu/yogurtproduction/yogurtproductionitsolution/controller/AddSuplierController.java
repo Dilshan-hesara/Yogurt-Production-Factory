@@ -38,6 +38,8 @@ public class AddSuplierController implements Initializable {
     @FXML
     private TextField txtPhone;
 
+    private SupplierCon supplierCon;
+
     SuplierModel suplierModel = new SuplierModel();
 
     @Override
@@ -57,7 +59,7 @@ public class AddSuplierController implements Initializable {
     }
 
     @FXML
-    void btnSaveSupOnAction(ActionEvent event) throws SQLException {
+    void btnSaveSupOnAction(ActionEvent event) throws Exception {
         String SupId = lblSupId.getText();
         String empName = txtName.getText();
         String empNic = txtNic.getText();
@@ -78,13 +80,18 @@ public class AddSuplierController implements Initializable {
             txtNic.setText("");
             txtEmail.setText("");
             txtPhone.setText("");
+            supplierCon.loadSuplierTable();
             new Alert(Alert.AlertType.INFORMATION,"Suplier saved...!").show();
+
         }else{
             new Alert(Alert.AlertType.ERROR,"Fail to save Suplier...!").show();
         }
     }
 
 
+    public void setSupFormCon(SupplierCon supplierCon) {
+        this.supplierCon = supplierCon;
+    }
 }
 
 

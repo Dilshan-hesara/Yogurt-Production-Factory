@@ -58,7 +58,7 @@ public class EmployeeController implements Initializable {
     private TableColumn<EmployeeTM, String> col_nic;
 
     @FXML
-    private TableColumn<EmployeeTM, String> col_phone; // Change Integer to String
+    private TableColumn<EmployeeTM, String> col_phone;
 
     @FXML
     private TableColumn<EmployeeTM, String> emIdta;

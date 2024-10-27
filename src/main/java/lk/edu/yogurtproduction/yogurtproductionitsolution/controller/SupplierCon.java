@@ -111,6 +111,8 @@ public class SupplierCon implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AddSuplier.fxml"));
             Parent load = loader.load();
 
+            AddSuplierController addSupCon = loader.getController();
+            addSupCon.setSupFormCon(this);
 
             Stage stage = new Stage();
             stage.setScene(new Scene(load));
