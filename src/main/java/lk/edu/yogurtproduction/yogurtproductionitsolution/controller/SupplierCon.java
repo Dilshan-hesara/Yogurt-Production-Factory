@@ -12,17 +12,21 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.EmployeeTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.SuplierTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.SuplierModel;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.*;
 
 public class SupplierCon implements Initializable {
 
@@ -109,7 +113,30 @@ public class SupplierCon implements Initializable {
 
     @FXML
     void butSupReport(ActionEvent event) {
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
 
+            Map<String, Object> parameters = new HashMap<>();
+
+             parameters.put("P_Date", LocalDate.now().toString());
+
+            JasperReport jasperReport = JasperCompileManager.compileReport(getClass().getResourceAsStream("/report/getAllSuplier.jrxml"));
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(
+                    jasperReport,
+                    parameters,
+                    connection
+            );
+
+
+            JasperViewer.viewReport(jasperPrint, false);
+        } catch (JRException e) {
+            new Alert(Alert.AlertType.ERROR, "Fail to load report..!");
+            e.printStackTrace();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "Data empty..!");
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -191,10 +218,7 @@ public class SupplierCon implements Initializable {
         }
     }
 
-    @FXML
-    void tableClick(MouseEvent event) {
 
-    }
 
     public void tblClik(javafx.scene.input.MouseEvent mouseEvent) {
 
