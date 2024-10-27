@@ -18,7 +18,7 @@
             <Image url="@../images/11-bluer.png" />
          </image>
       </ImageView>
-      <TableView fx:id="matTable" layoutX="35.0" layoutY="341.0" prefHeight="353.0" prefWidth="1030.0">
+      <TableView fx:id="matTable" layoutX="35.0" layoutY="341.0" onMouseClicked="#tbleClick" prefHeight="353.0" prefWidth="1030.0">
          <columns>
             <TableColumn fx:id="matID" prefWidth="75.0" text="Matrial  ID" />
             <TableColumn fx:id="matName" prefWidth="75.0" text="MAT  NAME" />
@@ -42,7 +42,7 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnUpdateItem" layoutX="68.0" layoutY="286.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUpdate" prefWidth="80.0" style="-fx-background-color: #3498db;" text="Update" textFill="WHITE">
+      <Button fx:id="btnUpdate" layoutX="68.0" layoutY="286.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUpdate" prefWidth="80.0" style="-fx-background-color: #3498db;" text="Update" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
@@ -50,7 +50,7 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btnSave" layoutX="979.0" layoutY="286.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSave" prefWidth="80.0" style="-fx-background-color: #2ecc71;" text="Save" textFill="WHITE">
+      <Button fx:id="btnSavem" layoutX="979.0" layoutY="286.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSave" prefWidth="80.0" style="-fx-background-color: #2ecc71;" text="Save" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>

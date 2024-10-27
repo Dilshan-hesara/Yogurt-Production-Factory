@@ -56,6 +56,7 @@ public class EmployeeModel {
         String sql = "select * from employee";
         PreparedStatement statement = connection.prepareStatement(sql);
         ResultSet rst = statement.executeQuery();
+
         ArrayList<EmployeeDto> employeeDtos = new ArrayList<>();
 
         while (rst.next()) {

@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class MatiralMoadel {
 
@@ -42,6 +43,29 @@ public class MatiralMoadel {
         int result = pst.executeUpdate();
         boolean isSaved = result>0;
         return isSaved;
+
+    }
+
+    public ArrayList<MatirialDto> getAllMatireal() throws SQLException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        String sql = "select * from material";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet rst = statement.executeQuery();
+
+        ArrayList<MatirialDto>  matirialDtos = new ArrayList<>();
+
+        while (rst.next()) {
+            MatirialDto matirialDto = new MatirialDto(
+                    rst.getString("Mat_ID"),
+                    rst.getString("Mat_Name"),
+                    rst.getInt("Qty"),
+                    rst.getInt("Price")
+            );
+            matirialDtos.add(matirialDto);
+
+        }
+        return matirialDtos;
+
 
     }
 }
