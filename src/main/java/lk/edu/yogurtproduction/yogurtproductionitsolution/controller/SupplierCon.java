@@ -109,6 +109,36 @@ public class SupplierCon implements Initializable {
     @FXML
     void btnSupMail(ActionEvent event) {
 
+        SuplierTM selectSup = supTable.getSelectionModel().getSelectedItem();
+
+        if (selectSup != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/SendMailSuplier.fxml"));
+                if (loader.getLocation() == null) {
+                    throw new IllegalStateException("FXML file not found.");
+                }
+                Parent load = loader.load();
+
+                SendMailSupierController  sendMailSupierController = loader.getController();
+                sendMailSupierController.sendMailData(selectSup);
+
+
+                Stage stage = new Stage();
+                stage.setScene(new Scene(load));
+                stage.setTitle("Send Mail Suplier");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.initOwner(btnUpdate.getScene().getWindow());
+                stage.showAndWait();
+            } catch (IOException e) {
+                new Alert(Alert.AlertType.ERROR, "Fail to load UI: " + e.getMessage()).show();
+                e.printStackTrace();
+            } catch (IllegalStateException e) {
+                new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            }
+        } else {
+            new Alert(Alert.AlertType.WARNING, "Please select an suplier .").show();
+        }
+
     }
 
     @FXML
