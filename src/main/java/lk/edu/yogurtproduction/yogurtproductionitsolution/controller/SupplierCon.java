@@ -8,10 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -24,6 +21,7 @@ import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class SupplierCon implements Initializable {
@@ -139,7 +137,24 @@ public class SupplierCon implements Initializable {
     }
 
     @FXML
-    void buttDeleteSup(ActionEvent event) {
+    void buttDeleteSup(ActionEvent event) throws Exception {
+        SuplierTM selecteSUP = supTable.getSelectionModel().getSelectedItem();
+
+        String supId = selecteSUP.getSupId();
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES, ButtonType.NO);
+        Optional<ButtonType> optionalButtonType = alert.showAndWait();
+
+        if (optionalButtonType.isPresent() && optionalButtonType.get() == ButtonType.YES) {
+
+            boolean isDeleted = suplierModel.deleteCustomer (supId);
+            if (isDeleted) {
+                loadSuplierTable();
+                new Alert(Alert.AlertType.INFORMATION, "Suplier deleted...!").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Fail to delete Suplier...!").show();
+            }
+        }
 
     }
 

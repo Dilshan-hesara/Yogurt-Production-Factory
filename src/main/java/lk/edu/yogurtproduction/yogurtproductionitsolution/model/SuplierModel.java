@@ -2,6 +2,7 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -83,5 +84,10 @@ public class SuplierModel {
             return rowsAffected > 0;
 
         }
+    }
+
+    public boolean deleteCustomer(String supId) throws SQLException {
+        return CrudUtil.execute("delete from supplier where Sup_ID=?", supId);
+
     }
 }
