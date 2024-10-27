@@ -11,11 +11,13 @@ import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.MatirialTM;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.SuplierTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatiralMoadel;
 
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MatirialCon implements Initializable {
@@ -104,8 +106,24 @@ matTable.setItems(matirialTMS);
 
     }
     @FXML
-    void btnDelete(ActionEvent event) {
+    void btnDelete(ActionEvent event) throws SQLException {
+        MatirialTM matirialTM = matTable.getSelectionModel().getSelectedItem();
 
+        String matId = matirialTM.getMatId();
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES, ButtonType.NO);
+        Optional<ButtonType> optionalButtonType = alert.showAndWait();
+
+        if (optionalButtonType.isPresent() && optionalButtonType.get() == ButtonType.YES) {
+
+            boolean isDeleted = matiralMoadel.deleteMatirial (matId);
+            if (isDeleted) {
+                loadTable();
+                new Alert(Alert.AlertType.INFORMATION, "Matirial deleted...!").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Fail to delete Matirial...!").show();
+            }
+        }
     }
 
 

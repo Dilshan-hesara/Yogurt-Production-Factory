@@ -2,6 +2,7 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -66,6 +67,12 @@ public class MatiralMoadel {
         }
         return matirialDtos;
 
+
+    }
+
+    public boolean deleteMatirial(String matId) throws SQLException {
+
+        return CrudUtil.execute("delete from material where Mat_ID=?", matId);
 
     }
 }
