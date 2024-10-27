@@ -59,18 +59,15 @@ public class SupplierCon {
     @FXML
     void buttAddEmp(ActionEvent event) {
         try {
-            // Load the mail dialog from FXML file
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AddSuplier.fxml"));
             Parent load = loader.load();
 
-            //   SendMailController sendMailController = loader.getController();
-            //   sendMailController.setCustomerEmail(selectedItem.getEmail());
 
             Stage stage = new Stage();
             stage.setScene(new Scene(load));
-            stage.setTitle("Add Employee");
+            stage.setTitle("Add Suplier");
 
-            // Set window as modal
             stage.initModality(Modality.APPLICATION_MODAL);
 
             stage.initOwner(btnUpdate.getScene().getWindow());
@@ -89,18 +86,16 @@ public class SupplierCon {
     @FXML
     void buttUpadeEmp(ActionEvent event) {
         try {
-            // Load the mail dialog from FXML file
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AddSuplier.fxml"));
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UpdateSuplier.fxml"));
             Parent load = loader.load();
 
-            //   SendMailController sendMailController = loader.getController();
-            //   sendMailController.setCustomerEmail(selectedItem.getEmail());
+
 
             Stage stage = new Stage();
             stage.setScene(new Scene(load));
-            stage.setTitle("Add Employee");
+            stage.setTitle("Update Suplier");
 
-            // Set window as modal
             stage.initModality(Modality.APPLICATION_MODAL);
 
             stage.initOwner(btnUpdate.getScene().getWindow());
