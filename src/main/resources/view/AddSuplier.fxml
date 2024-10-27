@@ -46,12 +46,7 @@
         </Label>
         <TextField fx:id="txtName" layoutX="15.0" layoutY="126.0" prefHeight="26.0" prefWidth="368.0" promptText="supliier" style="-fx-background-color: #fff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
         <TextField fx:id="txtNic" layoutX="18.0" layoutY="207.0" prefHeight="26.0" prefWidth="368.0" promptText="000000000000" style="-fx-background-color: #fff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
-        <Button fx:id="btnUpdate" layoutX="199.0" layoutY="444.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefWidth="80.0" style="-fx-background-color: #e67e22;" text="Update" textFill="WHITE">
-            <cursor>
-                <Cursor fx:constant="CLOSED_HAND" />
-            </cursor>
-        </Button>
-        <Button fx:id="btnSave" layoutX="295.0" layoutY="444.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSaveEmployeeOnAction" prefWidth="80.0" style="-fx-background-color: #2ecc71;" text="Save" textFill="WHITE">
+        <Button fx:id="btnSave" layoutX="295.0" layoutY="444.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSaveSupOnAction" prefWidth="80.0" style="-fx-background-color: #2ecc71;" text="Save" textFill="WHITE">
             <cursor>
                 <Cursor fx:constant="CLOSED_HAND" />
             </cursor>

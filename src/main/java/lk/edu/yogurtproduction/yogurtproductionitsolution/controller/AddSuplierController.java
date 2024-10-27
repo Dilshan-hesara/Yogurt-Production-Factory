@@ -3,9 +3,11 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.SuplierModel;
 
 import java.net.URL;
@@ -55,13 +57,36 @@ public class AddSuplierController implements Initializable {
     }
 
     @FXML
-    void btnSaveEmployeeOnAction(ActionEvent event) {
+    void btnSaveSupOnAction(ActionEvent event) throws SQLException {
+        String SupId = lblSupId.getText();
+        String empName = txtName.getText();
+        String empNic = txtNic.getText();
+        String empEmail = txtEmail.getText();
+        int empPhone = Integer.parseInt(txtPhone.getText());
+        SuplierDto suplierDTO = new SuplierDto(
+                SupId,
+                empName,
+                empNic,
+                empEmail,
+                empPhone
 
+        );
+        boolean isSaved =  suplierModel.saveSuplier(suplierDTO);
+        if(isSaved){
+            loadNextSuplierId();
+            txtName.setText("");
+            txtNic.setText("");
+            txtEmail.setText("");
+            txtPhone.setText("");
+            new Alert(Alert.AlertType.INFORMATION,"Suplier saved...!").show();
+        }else{
+            new Alert(Alert.AlertType.ERROR,"Fail to save Suplier...!").show();
+        }
     }
 
-    @FXML
-    void btnUpdateOnAction(ActionEvent event) {
-
-    }
 
 }
+
+
+
+

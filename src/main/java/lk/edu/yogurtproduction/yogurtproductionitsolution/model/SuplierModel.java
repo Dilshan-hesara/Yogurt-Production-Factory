@@ -1,6 +1,7 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -25,5 +26,21 @@ public class SuplierModel {
         }
 
         return "SU001";
+    }
+
+    public boolean saveSuplier(SuplierDto suplierDTO) throws SQLException {
+
+        Connection connection = DBConnection.getInstance().getConnection();
+        String sql = "insert into  supplier values (?,?,?,?,?)";
+        PreparedStatement pst = connection.prepareStatement(sql);
+
+        pst.setObject(1,suplierDTO.getSupId());
+        pst.setObject(2,suplierDTO.getSupName());
+        pst.setObject(3,suplierDTO.getSupNic());
+        pst.setObject(4,suplierDTO.getSupEmail());
+        pst.setObject(5,suplierDTO.getSupPhone());
+        int result = pst.executeUpdate();
+        boolean isSaved = result>0;
+        return isSaved;
     }
 }
