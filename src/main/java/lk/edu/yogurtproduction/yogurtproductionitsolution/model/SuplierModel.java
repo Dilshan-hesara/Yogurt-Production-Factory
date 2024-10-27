@@ -35,13 +35,13 @@ public class SuplierModel {
         String sql = "insert into  supplier values (?,?,?,?,?)";
         PreparedStatement pst = connection.prepareStatement(sql);
 
-        pst.setObject(1,suplierDTO.getSupId());
-        pst.setObject(2,suplierDTO.getSupName());
-        pst.setObject(3,suplierDTO.getSupNic());
-        pst.setObject(4,suplierDTO.getSupEmail());
-        pst.setObject(5,suplierDTO.getSupPhone());
+        pst.setObject(1, suplierDTO.getSupId());
+        pst.setObject(2, suplierDTO.getSupName());
+        pst.setObject(3, suplierDTO.getSupNic());
+        pst.setObject(4, suplierDTO.getSupEmail());
+        pst.setObject(5, suplierDTO.getSupPhone());
         int result = pst.executeUpdate();
-        boolean isSaved = result>0;
+        boolean isSaved = result > 0;
         return isSaved;
     }
 
@@ -66,4 +66,22 @@ public class SuplierModel {
     }
 
 
+    public boolean updateSuplier(SuplierDto suplierDto) throws SQLException {
+
+        String sql = "update supplier set Sup_Name = ?, Sup_Nic = ?, Sup_Email = ?, Sup_Phone = ? where Sup_ID = ?";
+
+        Connection connection = DBConnection.getInstance().getConnection();
+        PreparedStatement statement = connection.prepareStatement(sql);{
+
+            statement.setString(1, suplierDto.getSupName());
+            statement.setString(2, suplierDto.getSupNic());
+            statement.setString(3, suplierDto.getSupEmail());
+            statement.setString(4, String.valueOf(suplierDto.getSupPhone()));
+            statement.setString(5, suplierDto.getSupId());
+
+            int rowsAffected = statement.executeUpdate();
+            return rowsAffected > 0;
+
+        }
+    }
 }
