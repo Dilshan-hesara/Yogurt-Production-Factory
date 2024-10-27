@@ -2,13 +2,20 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatiralMoadel;
 
-public class MatirialCon {
+import java.net.URL;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+
+public class MatirialCon implements Initializable {
+
 
     @FXML
     private Button btnDelete;
@@ -48,6 +55,22 @@ public class MatirialCon {
 
     @FXML
     private TextField txtQuantity;
+
+    private MatiralMoadel matiralMoadel =  new MatiralMoadel();
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            loadNextMatId();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    void loadNextMatId() throws SQLException {
+        String nextMatId = matiralMoadel.getNextMatId();
+        lblItId.setText(nextMatId);
+    }
+
 
     @FXML
     void btnDelete(ActionEvent event) {
