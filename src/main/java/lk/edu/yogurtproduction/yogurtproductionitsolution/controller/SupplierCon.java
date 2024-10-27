@@ -156,6 +156,11 @@ public class SupplierCon implements Initializable {
             UpdateSuplier updateSupCon = loader.getController();
             updateSupCon.setSuplierData(selectSup);
 
+            UpdateSuplier updateSuplierReloadTable = loader.getController();
+            updateSuplierReloadTable.setSupierReloadTable(this);
+
+
+
 
             Stage stage = new Stage();
             stage.setScene(new Scene(load));

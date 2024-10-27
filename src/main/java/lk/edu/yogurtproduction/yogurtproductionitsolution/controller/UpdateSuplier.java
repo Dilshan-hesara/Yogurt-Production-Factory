@@ -37,10 +37,12 @@ public class UpdateSuplier {
 
     private SuplierTM suplierTM;
 
+    private SupplierCon supplierCon;
+
     SuplierModel suplierModel = new SuplierModel();
 
     @FXML
-    void btnUpdateOnAction(ActionEvent event) throws SQLException {
+    void btnUpdateOnAction(ActionEvent event) throws Exception {
         String supId = lblSupId.getText();
         String name = txtName.getText();
         String nic = txtNic.getText();
@@ -58,6 +60,7 @@ public class UpdateSuplier {
 
         boolean isUpdate = suplierModel.updateSuplier(suplierDto);
         if (isUpdate) {
+            supplierCon.loadSuplierTable();
 
             new Alert(Alert.AlertType.INFORMATION, "Suplier update...!").show();
 
@@ -74,6 +77,11 @@ public class UpdateSuplier {
         txtEmail.setText(suplierTM.getSupEmail());
         txtPhone.setText(String.valueOf(suplierTM.getSupPhone()));
         lblSupId.setText(suplierTM.getSupId());
+
+    }
+
+    public void setSupierReloadTable(SupplierCon supplierCon) {
+        this.supplierCon = supplierCon;
 
     }
 }
