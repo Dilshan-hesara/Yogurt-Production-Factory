@@ -75,4 +75,16 @@ public class MatiralMoadel {
         return CrudUtil.execute("delete from material where Mat_ID=?", matId);
 
     }
+
+    public boolean updateMatirial(MatirialDto matirialDto) throws SQLException {
+
+        return CrudUtil.execute(
+                "update material set Mat_Name=?, Qty=?, Price=? where Mat_ID=?",
+                matirialDto.getMatId(),
+                matirialDto.getMatName(),
+                matirialDto.getMatQty(),
+                matirialDto.getMatPrice()
+
+        );
+    }
 }

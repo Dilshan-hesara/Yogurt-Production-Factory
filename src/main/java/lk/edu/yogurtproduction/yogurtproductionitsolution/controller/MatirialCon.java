@@ -10,6 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.EmployeeTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.MatirialTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.SuplierTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatiralMoadel;
@@ -107,6 +108,8 @@ matTable.setItems(matirialTMS);
     }
     @FXML
     void btnDelete(ActionEvent event) throws SQLException {
+
+
         MatirialTM matirialTM = matTable.getSelectionModel().getSelectedItem();
 
         String matId = matirialTM.getMatId();
@@ -157,8 +160,31 @@ matTable.setItems(matirialTMS);
 
 
     @FXML
-    void btnUpdate(ActionEvent event) {
+    void btnUpdate(ActionEvent event) throws SQLException {
 
+        MatirialTM matirialTM = matTable.getSelectionModel().getSelectedItem();
+        String matId = matirialTM.getMatId();
+
+        String matrId = lblItId.getText();
+        String name = txtName.getText();
+        int qty = Integer.parseInt(txtQuantity.getText());
+        int price = Integer.parseInt(txtPrice.getText());
+
+
+        MatirialDto matirialDto = new MatirialDto(
+                matrId,
+                name,
+                qty,
+                price
+        );
+
+        boolean isUpdate = matiralMoadel.updateMatirial(matirialDto);
+        if (isUpdate) {
+
+            new Alert(Alert.AlertType.INFORMATION, "Matitrial update...!").show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Fail to update matitrial...!").show();
+        }
     }
 
     @FXML
