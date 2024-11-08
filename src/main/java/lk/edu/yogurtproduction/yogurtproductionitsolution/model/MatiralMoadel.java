@@ -72,7 +72,9 @@ public class MatiralMoadel {
 
     public boolean deleteMatirial(String matId) throws SQLException {
 
-        return CrudUtil.execute("delete from material where Mat_ID=?", matId);
+        return  CrudUtil.execute("delete from material where Mat_ID=?", matId);
+
+
 
     }
 
@@ -86,5 +88,37 @@ public class MatiralMoadel {
                 matirialDto.getMatPrice()
 
         );
+    }
+
+    public MatirialDto findById(String selectID) throws SQLException {
+
+        ResultSet rst = CrudUtil.execute("select * from material where Mat_ID=?", selectID);
+
+        if (rst.next()) {
+            return new MatirialDto(
+                    rst.getString(1),  // Item ID
+                    rst.getString(2),  // Item Name
+                    rst.getInt(3),     // Item Quantity
+                    rst.getInt(4)   // Item Price
+            );
+        }
+        return null;
+    }
+
+    public ArrayList<String> getAllItemIds() throws SQLException {
+
+
+        ResultSet rst = CrudUtil.execute("SELECT Mat_ID FROM material");
+
+        // Create an ArrayList to store the item IDs
+        ArrayList<String> itemIds = new ArrayList<>();
+
+        // Iterate through the result set and add each item ID to the list
+        while (rst.next()) {
+            itemIds.add(rst.getString(1));
+        }
+
+        // Return the list of item IDs
+        return itemIds;
     }
 }
