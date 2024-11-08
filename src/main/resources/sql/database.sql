@@ -75,12 +75,14 @@ create table Material_Usage(
 create table Packing(
     Pac_ID varchar(50) primary key,
     Prod_ID varchar(50),
+    Emp_ID varchar(50),
     Packing_Type  varchar(150),
     Packing_Description varchar(200),
     Pack_date date,
     Expire_date date,
     Qty decimal(10,2),
-    foreign key  (Prod_ID) references Production(Prod_ID)
+    foreign key  (Prod_ID) references Production(Prod_ID),
+    foreign key  (Emp_ID) references  Employee(Emp_ID)
 
 );
 
