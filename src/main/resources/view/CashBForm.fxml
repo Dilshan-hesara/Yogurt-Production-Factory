@@ -120,7 +120,7 @@
             <Font name="Calibri Bold" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="lblItemName1" layoutX="553.0" layoutY="164.0" prefHeight="18.0" prefWidth="71.0" text="LKR2000">
+      <Label fx:id="lblItemPrice" layoutX="553.0" layoutY="164.0" prefHeight="18.0" prefWidth="71.0" text="LKR2000">
          <font>
             <Font name="Calibri" size="14.0" />
          </font>
@@ -130,7 +130,7 @@
             <Font name="Calibri Bold" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="lblItemName2" layoutX="733.0" layoutY="164.0" prefWidth="150.0" text="2000">
+      <Label fx:id="lblItemQty" layoutX="733.0" layoutY="164.0" prefWidth="150.0" text="2000">
          <font>
             <Font name="Calibri" size="14.0" />
          </font>

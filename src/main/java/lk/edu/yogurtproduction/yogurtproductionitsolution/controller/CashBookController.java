@@ -12,6 +12,7 @@ import javafx.util.Duration;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
 
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatiralMoadel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.SuplierModel;
 
@@ -44,6 +45,10 @@ public class CashBookController {
     @FXML
     private Label lblSupplerName;
 
+    @FXML
+    private Label lblItemQty;
+    @FXML
+    private  Label lblItemPrice;
     @FXML
     private TextField txtQty;
 
@@ -85,11 +90,20 @@ public class CashBookController {
         ObservableList<String> paymentMethods = FXCollections.observableArrayList("Cash", "Bank");
         cmbPay.setItems(paymentMethods);
     }
-
+MatirialDto matirialDto = new MatirialDto();
 
     @FXML
     void cmbItemOnAction(ActionEvent event) throws SQLException {
         String selectID = (String) cmbItemd.getSelectionModel().getSelectedItem();
+
+        MatirialDto matirialDto = matiralModel.findById(selectID);
+        if ( matirialDto != null) {
+
+            // FIll item related labels
+            lblItemName.setText(matirialDto.getMatName());
+            lblItemPrice.setText(String.valueOf(matirialDto.getMatPrice()));
+            lblItemQty.setText(String.valueOf(matirialDto.getMatQty()));
+        }
 
 
 

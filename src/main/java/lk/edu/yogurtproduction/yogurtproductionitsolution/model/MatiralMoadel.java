@@ -96,10 +96,10 @@ public class MatiralMoadel {
 
         if (rst.next()) {
             return new MatirialDto(
-                    rst.getString(1),  // Item ID
-                    rst.getString(2),  // Item Name
-                    rst.getInt(3),     // Item Quantity
-                    rst.getInt(4)   // Item Price
+                    rst.getString(1),
+                    rst.getString(2),
+                    rst.getInt(3),
+                    rst.getInt(4)
             );
         }
         return null;
