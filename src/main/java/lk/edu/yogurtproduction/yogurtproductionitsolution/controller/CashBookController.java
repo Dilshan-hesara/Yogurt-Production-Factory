@@ -28,7 +28,7 @@ public class CashBookController {
     private ComboBox<String> cmbItemd;
 
     @FXML
-    private ComboBox<?> cmbPay;
+    private ComboBox<String> cmbPay;
 
     @FXML
     private ComboBox<String> cmbSupId;
@@ -60,6 +60,7 @@ public class CashBookController {
         startClock();
         loadSupplierId();
         loadItemId();
+        loadPayMethod();
 
     }
     @FXML
@@ -80,6 +81,10 @@ public class CashBookController {
         cmbItemd.setItems(observableList);
     }
 
+    private void loadPayMethod() {
+        ObservableList<String> paymentMethods = FXCollections.observableArrayList("Cash", "Bank");
+        cmbPay.setItems(paymentMethods);
+    }
 
 
     @FXML
@@ -87,28 +92,23 @@ public class CashBookController {
         String selectID = (String) cmbItemd.getSelectionModel().getSelectedItem();
 
 
+
     }
 
 
+
+    @FXML
+    void cmbSupOnAction(ActionEvent event) {
+        String selectID = (String) cmbSupId.getSelectionModel().getSelectedItem();
+
+
+    }
 
 
     @FXML
     void cmbPayOnAction(ActionEvent event) {
 
     }
-
-    @FXML
-    void cmbSupOnAction(ActionEvent event) {
-        String selectID = (String) cmbSupId.getSelectionModel().getSelectedItem();
-
-        if (selectID == null) {
-            System.out.println("No supplier selected.");
-        } else {
-            System.out.println("Selected supplier ID: " + selectID);
-        }
-    }
-
-
 
 
     // date manage
