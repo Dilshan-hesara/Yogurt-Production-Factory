@@ -3,17 +3,17 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.TextField;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.CashBookTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatiralMoadel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.SuplierModel;
 
@@ -53,8 +53,38 @@ public class CashBookController {
     @FXML
     private TextField txtQty;
 
+    @FXML
+    private TableColumn<String, CashBookTM> colAmount;
+
+    @FXML
+    private TableColumn<String, CashBookTM> colCBNO;
+
+    @FXML
+    private TableColumn<String, CashBookTM> colDate;
+
+    @FXML
+    private TableColumn<String, CashBookTM> colDese;
+
+    @FXML
+    private TableColumn<String, CashBookTM> colPrice;
+
+    @FXML
+    private TableColumn<String, CashBookTM> colPyMethod;
+
+    @FXML
+    private TableColumn<String, CashBookTM> colQty;
+
+    @FXML
+    private TableColumn<String, CashBookTM> colSupId;
+    @FXML
+    private TableView<CashBookTM> tblCart;
+
+    @FXML
+    private ObservableList<CashBookTM> cashBookTMS = FXCollections.observableArrayList();
+
     private SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss a");
     private SimpleDateFormat daterun = new SimpleDateFormat("yyyy-MM-dd");
+    private final ObservableList<CashBookTM> CashBookTMS = FXCollections.observableArrayList();
 
     private SimpleDateFormat datE = new SimpleDateFormat("yyyy-MM-dd");
     SuplierModel suplierModel = new SuplierModel();
@@ -62,17 +92,71 @@ public class CashBookController {
 
     @FXML
     public void initialize() throws SQLException {
+        setCellValues();
         updateDateLabel();
         startClock();
         loadSupplierId();
         loadItemId();
         loadPayMethod();
 
+
+
     }
+
+    private void setCellValues() {
+
+        colAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
+        colCBNO.setCellValueFactory(new PropertyValueFactory<>("CBNo"));
+        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        colDese.setCellValueFactory(new PropertyValueFactory<>("desc"));
+        colPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
+        colPyMethod.setCellValueFactory(new PropertyValueFactory<>("payMethod"));
+        colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        colSupId.setCellValueFactory(new PropertyValueFactory<>("SupId"));
+
+    }
+
+    @FXML
+    private TextField txtCashBookID;
+
+
     @FXML
     void btnPlaceIt(ActionEvent event) {
 
+        String cashBookID = txtCashBookID.getText();
+        String PayMeth = cmbPay.getSelectionModel().getSelectedItem();
+        String supId = cmbSupId.getSelectionModel().getSelectedItem();
+        int qty = Integer.parseInt(txtQty.getText());
+
+        String currentDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+
+        String desc = lblItemName.getText();
+
+        double price = Double.parseDouble(lblItemPrice.getText());
+
+        double amount = price * qty;
+
+        CashBookTM cashBookTM = new CashBookTM(
+                cashBookID,
+                supId,
+                currentDate,
+                desc,
+                qty,
+                amount,
+                PayMeth,
+                price
+        );
+
+        cashBookTMS.add(cashBookTM);
+
+        tblCart.setItems(cashBookTMS);
+        tblCart.refresh();
     }
+
+
+
+
+
     MatiralMoadel matiralMoadel = new MatiralMoadel();
 
     private void loadSupplierId() throws SQLException {
