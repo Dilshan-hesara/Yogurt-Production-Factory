@@ -93,7 +93,7 @@
             <Font name="Calibri" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="340.0" layoutY="124.0" prefWidth="150.0" text="Customer name">
+      <Label layoutX="340.0" layoutY="124.0" prefWidth="150.0" text="Supplier name">
          <font>
             <Font name="Calibri Bold" size="15.0" />
          </font>
@@ -118,5 +118,25 @@
       </Label>
       <ChoiceBox layoutX="194.0" layoutY="201.0" prefHeight="26.0" prefWidth="122.0" />
       <TextField fx:id="txtQty" layoutX="193.0" layoutY="254.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="130.0" promptText="0" style="-fx-background-color: #ffffff; -fx-border-width: 0 0 1px 0; -fx-border-color: #000;" />
+      <Label layoutX="507.0" layoutY="164.0" prefHeight="22.0" prefWidth="40.0" text="Price">
+         <font>
+            <Font name="Calibri Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblItemName1" layoutX="553.0" layoutY="164.0" prefHeight="18.0" prefWidth="71.0" text="LKR2000">
+         <font>
+            <Font name="Calibri" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="644.0" layoutY="161.0" prefHeight="22.0" prefWidth="71.0" text="AV Qty">
+         <font>
+            <Font name="Calibri Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblItemName2" layoutX="733.0" layoutY="164.0" prefWidth="150.0" text="2000">
+         <font>
+            <Font name="Calibri" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

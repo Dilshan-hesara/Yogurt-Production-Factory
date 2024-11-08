@@ -118,7 +118,7 @@ public class EmployeeController implements Initializable {
 
             AddEmployeeController addEmployeeController = loader.getController();
             addEmployeeController.setEmployeeFormController(this);
-
+ 
 
 
             Stage stage = new Stage();
