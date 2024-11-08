@@ -1,6 +1,9 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -9,14 +12,26 @@ import javafx.util.Duration;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
 
-import javafx.event.ActionEvent;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatiralMoadel;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.model.SuplierModel;
 
 
-import java.awt.*;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class CashBookController {
+
+
+    @FXML
+    private ComboBox<String> cmbItemd;
+
+    @FXML
+    private ComboBox<?> cmbPay;
+
+    @FXML
+    private ComboBox<String> cmbSupId;
 
     @FXML
     private Label date;
@@ -36,19 +51,67 @@ public class CashBookController {
     private SimpleDateFormat daterun = new SimpleDateFormat("yyyy-MM-dd");
 
     private SimpleDateFormat datE = new SimpleDateFormat("yyyy-MM-dd");
+    SuplierModel suplierModel = new SuplierModel();
+    MatiralMoadel matiralModel = new MatiralMoadel();
 
     @FXML
-    public void initialize() {
+    public void initialize() throws SQLException {
         updateDateLabel();
         startClock();
+        loadSupplierId();
+        loadItemId();
+
     }
     @FXML
     void btnPlaceIt(ActionEvent event) {
 
     }
+    MatiralMoadel matiralMoadel = new MatiralMoadel();
+
+    private void loadSupplierId() throws SQLException {
+        ArrayList<String> supplierIds = suplierModel.getAllSupIds();
+        ObservableList<String> observableList = FXCollections.observableArrayList(supplierIds);
+        cmbSupId.setItems(observableList);
+    }
+
+    private void loadItemId() throws SQLException {
+        ArrayList<String>  ItemIds = matiralModel.getAllItemIds();
+        ObservableList<String> observableList = FXCollections.observableArrayList(ItemIds);
+        cmbItemd.setItems(observableList);
+    }
 
 
 
+    @FXML
+    void cmbItemOnAction(ActionEvent event) throws SQLException {
+        String selectID = (String) cmbItemd.getSelectionModel().getSelectedItem();
+
+
+    }
+
+
+
+
+    @FXML
+    void cmbPayOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void cmbSupOnAction(ActionEvent event) {
+        String selectID = (String) cmbSupId.getSelectionModel().getSelectedItem();
+
+        if (selectID == null) {
+            System.out.println("No supplier selected.");
+        } else {
+            System.out.println("Selected supplier ID: " + selectID);
+        }
+    }
+
+
+
+
+    // date manage
     private void updateDateLabel() {
         String currentTime = dateFormat.format(new Date());
         date.setText(currentTime);
@@ -68,3 +131,5 @@ public class CashBookController {
     }
 
 }
+
+

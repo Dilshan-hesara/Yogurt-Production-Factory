@@ -90,4 +90,22 @@ public class SuplierModel {
         return CrudUtil.execute("delete from supplier where Sup_ID=?", supId);
 
     }
+
+    public ArrayList<String> getAllSupIds() throws SQLException {
+        ResultSet rst = CrudUtil.execute("SELECT Sup_ID FROM supplier");
+
+        // Create an ArrayList to store the item IDs
+        ArrayList<String> itemIds = new ArrayList<>();
+
+        // Iterate through the result set and add each item ID to the list
+        while (rst.next()) {
+            itemIds.add(rst.getString(1));
+        }
+
+        // Return the list of item IDs
+        return itemIds;
+
+    }
+
+
 }
