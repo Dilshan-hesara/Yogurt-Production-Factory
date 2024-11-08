@@ -14,4 +14,5 @@ public class SuplierDto {
     private String supEmail;
     private int supPhone;
 
+
 }

@@ -108,4 +108,21 @@ public class SuplierModel {
     }
 
 
+    public SuplierDto findById(String selectID) throws SQLException {
+
+        ResultSet rst = CrudUtil.execute("select * from supplier where Sup_ID=?",selectID);
+
+        while (rst.next()) {
+            return new SuplierDto(
+                    rst.getString(1),
+                    rst.getString(2),
+                    rst.getString(3),
+                    rst.getString(4),
+                    rst.getInt(5)
+
+            );
+        }
+
+        return null;
+    }
 }

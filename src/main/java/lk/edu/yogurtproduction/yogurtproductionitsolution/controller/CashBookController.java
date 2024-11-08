@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatiralMoadel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.SuplierModel;
 
@@ -97,24 +98,23 @@ MatirialDto matirialDto = new MatirialDto();
         String selectID = (String) cmbItemd.getSelectionModel().getSelectedItem();
 
         MatirialDto matirialDto = matiralModel.findById(selectID);
-        if ( matirialDto != null) {
+        if (matirialDto != null) {
 
             // FIll item related labels
             lblItemName.setText(matirialDto.getMatName());
             lblItemPrice.setText(String.valueOf(matirialDto.getMatPrice()));
             lblItemQty.setText(String.valueOf(matirialDto.getMatQty()));
         }
-
-
-
     }
 
-
-
     @FXML
-    void cmbSupOnAction(ActionEvent event) {
+    void cmbSupOnAction(ActionEvent event) throws SQLException {
         String selectID = (String) cmbSupId.getSelectionModel().getSelectedItem();
 
+        SuplierDto suplierDto = suplierModel.findById(selectID);
+        if (suplierDto != null) {
+            lblSupplerName.setText(suplierDto.getSupName());
+        }
 
     }
 
