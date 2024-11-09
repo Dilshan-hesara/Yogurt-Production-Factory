@@ -46,8 +46,6 @@ create table Cash_Book(
     Sup_ID varchar(50),
     Description varchar(50),
     Qty int,
-    Payment_Method varchar(50),
-    Net_Balance decimal(10,2),
     Amount decimal(10,0),
     Transaction_Date date,
     foreign key (Sup_ID) references Supplier(Sup_ID)

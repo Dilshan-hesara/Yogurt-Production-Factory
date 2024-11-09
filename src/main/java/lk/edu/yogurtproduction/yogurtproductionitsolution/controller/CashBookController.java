@@ -97,7 +97,6 @@ public class CashBookController {
         startClock();
         loadSupplierId();
         loadItemId();
-        loadPayMethod();
 
 
 
@@ -110,7 +109,6 @@ public class CashBookController {
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         colDese.setCellValueFactory(new PropertyValueFactory<>("desc"));
         colPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
-        colPyMethod.setCellValueFactory(new PropertyValueFactory<>("payMethod"));
         colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
         colSupId.setCellValueFactory(new PropertyValueFactory<>("SupId"));
 
@@ -121,10 +119,9 @@ public class CashBookController {
 
 
     @FXML
-    void btnPlaceIt(ActionEvent event) {
+    void btnAdd(ActionEvent event) {
 
         String cashBookID = txtCashBookID.getText();
-        String PayMeth = cmbPay.getSelectionModel().getSelectedItem();
         String supId = cmbSupId.getSelectionModel().getSelectedItem();
         int qty = Integer.parseInt(txtQty.getText());
 
@@ -143,7 +140,6 @@ public class CashBookController {
                 desc,
                 qty,
                 amount,
-                PayMeth,
                 price
         );
 
@@ -153,11 +149,14 @@ public class CashBookController {
         tblCart.refresh();
     }
 
+    @FXML
+    void btnPlaceIt(ActionEvent event) {
+
+    }
 
 
 
 
-    MatiralMoadel matiralMoadel = new MatiralMoadel();
 
     private void loadSupplierId() throws SQLException {
         ArrayList<String> supplierIds = suplierModel.getAllSupIds();
@@ -175,7 +174,6 @@ public class CashBookController {
         ObservableList<String> paymentMethods = FXCollections.observableArrayList("Cash", "Bank");
         cmbPay.setItems(paymentMethods);
     }
-MatirialDto matirialDto = new MatirialDto();
 
     @FXML
     void cmbItemOnAction(ActionEvent event) throws SQLException {
@@ -203,10 +201,9 @@ MatirialDto matirialDto = new MatirialDto();
     }
 
 
-    @FXML
-    void cmbPayOnAction(ActionEvent event) {
 
-    }
+
+
 
 
     // date manage
