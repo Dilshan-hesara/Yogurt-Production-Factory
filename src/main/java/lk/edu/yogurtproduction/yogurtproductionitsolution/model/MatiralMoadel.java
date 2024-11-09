@@ -1,6 +1,7 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CashBookDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
 
@@ -120,5 +121,15 @@ public class MatiralMoadel {
 
         // Return the list of item IDs
         return itemIds;
+    }
+
+    public boolean reduceQty(CashBookDto cashBookDto) throws SQLException {
+
+
+        return CrudUtil.execute(
+                "UPDATE material SET Qty = Qty - ? WHERE Mat_ID = ?",
+                cashBookDto.getQty(),
+                cashBookDto.getMatID()
+        );
     }
 }
