@@ -11,9 +11,11 @@ import javafx.util.Duration;
 
 import javafx.event.ActionEvent;
 
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CashBookDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.CashBookTM;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.model.CashBookModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatiralMoadel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.SuplierModel;
 
@@ -149,8 +151,49 @@ public class CashBookController {
         tblCart.refresh();
     }
 
+    CashBookModel cashBookModel = new CashBookModel();
+
     @FXML
     void btnPlaceIt(ActionEvent event) {
+        double price = Double.parseDouble(lblItemPrice.getText());
+
+        String CBNo = txtCashBookID.getText();
+      String SupId = cmbSupId.getSelectionModel().getSelectedItem();
+      String desc = lblItemName.getText();
+      int qty = Integer.parseInt(txtQty.getText());
+      double amount = price * qty;
+      String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+      String matID = cmbItemd.getSelectionModel().getSelectedItem();
+      String inID = "IN23";
+
+        CashBookDto cashBookDto = new CashBookDto(
+         CBNo,
+         SupId,
+         date,
+         desc,
+         qty,
+         amount,
+         matID,
+         inID
+
+
+        );
+
+        Boolean isSaved = cashBookModel.saveResept(cashBookDto);
+        if (isSaved) {
+            new Alert(Alert.AlertType.INFORMATION, "  saved..!").show();
+
+        }else {
+            new Alert(Alert.AlertType.INFORMATION, " saved..! fail ").show();
+
+        }
+
+
+
+
+
+
+
 
     }
 
