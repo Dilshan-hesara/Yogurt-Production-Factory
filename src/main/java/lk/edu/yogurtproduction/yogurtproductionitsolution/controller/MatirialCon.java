@@ -90,7 +90,7 @@ public class MatirialCon implements Initializable {
     }
 
     private void loadcmbMat() {
-        cmbMatName.setItems(FXCollections.observableArrayList("Sugar", "Milk","Gelatin ","Water"));
+        cmbMatName.setItems(FXCollections.observableArrayList("Sugar", "Milk","Gelat"));
     }
 
     void loadNextMatId() throws SQLException {
