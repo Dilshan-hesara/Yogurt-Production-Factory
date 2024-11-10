@@ -40,9 +40,10 @@ public class InventroyModel {
 
     public boolean redusqtyOnInventroy(ProdtionDto prodtionDto) throws SQLException {
 
-        boolean milkUpdated = CrudUtil.execute("UPDATE inventory SET Qty = Qty - ? WHERE Item_Description = ?", prodtionDto.getP_milk(), "Milk");
-        boolean gelatinUpdated = CrudUtil.execute("UPDATE inventory SET Qty = Qty - ? WHERE Item_Description = ?", prodtionDto.getP_jeley(), "Gelatin");
-        boolean sugarUpdated = CrudUtil.execute("UPDATE inventory SET Qty = Qty - ? WHERE Item_Description = ?", prodtionDto.getP_suguer(), "Sugar");
+
+        boolean milkUpdated = CrudUtil.execute("UPDATE inventory i JOIN (SELECT In_ID FROM inventory WHERE Item_Description = 'Milk' AND Qty > 0 LIMIT 1) subquery ON i.In_ID = subquery.In_ID SET i.Qty = i.Qty - ?", prodtionDto.getP_milk());
+        boolean gelatinUpdated = CrudUtil.execute("UPDATE inventory i JOIN (SELECT In_ID FROM inventory WHERE Item_Description = 'Gelat' AND Qty > 0 LIMIT 1) subquery ON i.In_ID = subquery.In_ID SET i.Qty = i.Qty - ?", prodtionDto.getP_jeley());
+        boolean sugarUpdated = CrudUtil.execute("UPDATE inventory i JOIN (SELECT In_ID FROM inventory WHERE Item_Description = 'Sugar' AND Qty > 0 LIMIT 1) subquery ON i.In_ID = subquery.In_ID SET i.Qty = i.Qty - ?", prodtionDto.getP_suguer());
 
         if (milkUpdated && gelatinUpdated && sugarUpdated) {
             return true;
@@ -50,7 +51,6 @@ public class InventroyModel {
             return false;
         }
     }
-
 
 
 
