@@ -1,5 +1,6 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdMixDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
 
@@ -32,5 +33,22 @@ public class ProdMixModel {
         }
 
         return prodtName;
+    }
+
+
+    public ProdMixDto findbyname(String selectProd) throws SQLException {
+
+        ResultSet rst = CrudUtil.execute("select * from production_mix_recip where Prod_Name=?", selectProd);
+
+        if (rst.next()) {
+            return new ProdMixDto(
+                    rst.getString(1),
+                    rst.getInt(2),
+                    rst.getInt(3),
+                    rst.getInt(4)
+            );
+        }
+        return null;
+
     }
 }

@@ -5,12 +5,16 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdMixDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.ProdMixModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.ProdtionModel;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -120,6 +124,36 @@ ProdMixModel prodMix = new ProdMixModel();
 
         }
     }
+
+    @FXML
+    void stockCheck(ActionEvent event) throws SQLException {
+        checkGelatinStock();
+    }
+
+    public void checkGelatinStock() throws SQLException {
+        Connection connection = DBConnection.getInstance().getConnection();
+
+        // Execute the query to sum Gelatin stock across all In_IDs
+        String query = "SELECT SUM(CASE WHEN Qty IS NULL THEN 0 ELSE Qty END) AS total_qty FROM inventory WHERE Item_Description = 'Gelatin';";
+
+        // Use your preferred method to execute the query and retrieve the result
+        try (PreparedStatement statement = connection.prepareStatement(query);
+             ResultSet resultSet = statement.executeQuery()) {
+
+            if (resultSet.next()) {
+                int totalQty = resultSet.getInt("total_qty");
+
+                // Check if any stock of Gelatin exists
+                if (totalQty > 0) {
+                    System.out.println("Gelatin stock is available. Total quantity: " + totalQty);
+                } else {
+                    System.out.println("Gelatin stock is out.");
+                }
+            }
+        }
+    }
+
+
 
 
 

@@ -41,7 +41,7 @@ public class ProdtionModel {
                 System.out.println("dev");
                 boolean isUpdateInverorySaved = inventoryModel.redusqtyOnInventroy(prodtionDto);
                if (isUpdateInverorySaved) {
-                    connection.commit();
+                   connection.commit();
                     return true;
                 }
             }

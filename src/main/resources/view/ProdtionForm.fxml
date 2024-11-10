@@ -76,5 +76,6 @@
       <Label fx:id="lblMilk" layoutX="746.0" layoutY="151.0" prefHeight="18.0" prefWidth="30.0" />
       <Label fx:id="jeliy" layoutX="746.0" layoutY="223.0" prefHeight="18.0" prefWidth="30.0" />
       <Label fx:id="lblsuguer" layoutX="741.0" layoutY="185.0" prefHeight="18.0" prefWidth="30.0" />
+      <Button layoutX="349.0" layoutY="64.0" mnemonicParsing="false" onAction="#stockCheck" text="Button" />
    </children>
 </AnchorPane>
