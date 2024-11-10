@@ -16,6 +16,7 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.CashBookTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.CashBookModel;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.model.InventroyModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatiralMoadel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.SuplierModel;
 
@@ -154,49 +155,53 @@ public class CashBookController {
     CashBookModel cashBookModel = new CashBookModel();
 
     @FXML
-    void btnPlaceIt(ActionEvent event) {
+    void btnPlaceIt(ActionEvent event) throws SQLException {
+        loadNextInventryId();
+
         double price = Double.parseDouble(lblItemPrice.getText());
 
         String CBNo = txtCashBookID.getText();
-      String SupId = cmbSupId.getSelectionModel().getSelectedItem();
-      String desc = lblItemName.getText();
-      int qty = Integer.parseInt(txtQty.getText());
-      double amount = price * qty;
-      String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-      String matID = cmbItemd.getSelectionModel().getSelectedItem();
-      String inID = "IN23";
-
-        CashBookDto cashBookDto = new CashBookDto(
-         CBNo,
-         SupId,
-         date,
-         desc,
-         qty,
-         amount,
-         matID,
-         inID
+        String SupId = cmbSupId.getSelectionModel().getSelectedItem();
+        String desc = lblItemName.getText();
+        int qty = Integer.parseInt(txtQty.getText());
+        double amount = price * qty;
+        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        String matID = cmbItemd.getSelectionModel().getSelectedItem();
+        String inID = invID;
+        String itemType = "SF";
 
 
+
+        CashBookDto cashBookDtos = new CashBookDto(
+                CBNo,
+                SupId,
+                date,
+                desc,
+                qty,
+                amount,
+                matID,
+                inID,
+                itemType
         );
 
-        Boolean isSaved = cashBookModel.saveResept(cashBookDto);
+        boolean isSaved = cashBookModel.saveResept(cashBookDtos);
         if (isSaved) {
-            new Alert(Alert.AlertType.INFORMATION, "  saved..!").show();
-
-        }else {
-            new Alert(Alert.AlertType.INFORMATION, " saved..! fail ").show();
-
+            new Alert(Alert.AlertType.INFORMATION, "Saved successfully!").show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Save failed! Please try again.").show();
         }
-
-
-
-
-
-
-
-
     }
 
+
+
+    InventroyModel inventroyModel = new InventroyModel();
+    String invID;
+
+    public void loadNextInventryId() throws SQLException {
+        String nextInventryId = inventroyModel.getInventroyId();
+        invID = nextInventryId;
+        System.out.println(nextInventryId);
+    }
 
 
 
