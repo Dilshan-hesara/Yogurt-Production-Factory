@@ -12,5 +12,5 @@ public class ProdMixDto {
     private String prodName;
     private int milk;
     private int suguer;
-    private int jeely;
+    private int jeliy;
 }
