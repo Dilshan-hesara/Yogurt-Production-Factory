@@ -7,12 +7,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseEvent;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.EmployeeTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.MatirialTM;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.SuplierTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatiralMoadel;
 
 import java.net.URL;
@@ -63,6 +60,15 @@ public class MatirialCon implements Initializable {
     @FXML
     private TextField txtQuantity;
 
+
+    @FXML
+    private ComboBox<String> cmbMatName;
+
+    @FXML
+    void cmbMatNameOnAction(ActionEvent event) {
+
+    }
+
     private MatiralMoadel matiralMoadel =  new MatiralMoadel();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -74,6 +80,7 @@ public class MatirialCon implements Initializable {
         try {
             loadNextMatId();
             loadTable();
+            loadcmbMat();
             btnDelete.setDisable(true);
             btnUpdate.setDisable(true);
 
@@ -81,6 +88,11 @@ public class MatirialCon implements Initializable {
             throw new RuntimeException(e);
         }
     }
+
+    private void loadcmbMat() {
+        cmbMatName.setItems(FXCollections.observableArrayList("Sugar", "Milk","Gelatin "));
+    }
+
     void loadNextMatId() throws SQLException {
         String nextMatId = matiralMoadel.getNextMatId();
         lblItId.setText(nextMatId);
@@ -134,7 +146,7 @@ matTable.setItems(matirialTMS);
     @FXML
     void btnSave(ActionEvent event) throws SQLException {
         String matrId = lblItId.getText();
-        String name = txtName.getText();
+        String name = cmbMatName.getSelectionModel().getSelectedItem();
         int qty = Integer.parseInt(txtQuantity.getText());
         int price = Integer.parseInt(txtPrice.getText());
 
