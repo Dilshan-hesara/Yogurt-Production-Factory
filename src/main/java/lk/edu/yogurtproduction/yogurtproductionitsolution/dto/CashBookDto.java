@@ -1,5 +1,17 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.dto;
 
+
+import lombok.*;
+
+import java.sql.Array;
+import java.util.ArrayList;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
+
 public class CashBookDto {
 
 
@@ -8,8 +20,12 @@ public class CashBookDto {
     private String date;
     private String desc;
     private int qty;
-    private double amount;  // Change to double to support decimal amounts
+    private double amount;
     private String matID;
     private String inID;
+    private String itemType;
+
+
+
 
 }
