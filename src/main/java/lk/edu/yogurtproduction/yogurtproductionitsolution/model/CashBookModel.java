@@ -12,6 +12,7 @@ import java.sql.SQLException;
 public class CashBookModel {
 
     InventroyModel inventoryModel = new InventroyModel();
+    MatiralMoadel materialModel = new MatiralMoadel();
 
     public Boolean saveResept(CashBookDto cashBookDto) throws SQLException {
         Connection connection = DBConnection.getInstance().getConnection();
@@ -32,8 +33,13 @@ public class CashBookModel {
             if (isRecpSaved) {
                  boolean isInventroyUpdated = inventoryModel.saveInvetory(cashBookDto);
                   if (isInventroyUpdated) {
-                      connection.commit();
-                      return true;
+
+                      boolean isMatirealUpdated = materialModel.updatedMatirialReduceQty(cashBookDto);
+                      if (isMatirealUpdated) {
+                          connection.commit();
+                          return true;
+                      }
+
                   }
             }
 

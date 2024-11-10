@@ -111,20 +111,17 @@ public class MatiralMoadel {
 
         ResultSet rst = CrudUtil.execute("SELECT Mat_ID FROM material");
 
-        // Create an ArrayList to store the item IDs
         ArrayList<String> itemIds = new ArrayList<>();
 
-        // Iterate through the result set and add each item ID to the list
         while (rst.next()) {
             itemIds.add(rst.getString(1));
         }
 
-        // Return the list of item IDs
         return itemIds;
     }
 
-    public boolean reduceQty(CashBookDto cashBookDto) throws SQLException {
 
+    public boolean updatedMatirialReduceQty(CashBookDto cashBookDto) throws SQLException {
 
         return CrudUtil.execute(
                 "UPDATE material SET Qty = Qty - ? WHERE Mat_ID = ?",
