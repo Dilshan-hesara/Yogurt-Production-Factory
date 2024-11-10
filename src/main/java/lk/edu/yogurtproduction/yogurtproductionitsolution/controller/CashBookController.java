@@ -104,9 +104,19 @@ public class CashBookController {
         startClock();
         loadSupplierId();
         loadItemId();
+       getAllAmount();
+       loadNextCBNOId();
 
 
 
+    }
+    @FXML
+    private Label lblCBN;
+
+    private void loadNextCBNOId() throws SQLException {
+        String nextCBNOId = cashBookModel.getNextCBNId();
+        lblCBN.setText(nextCBNOId);
+        System.out.println(nextCBNOId);
     }
 
     private void setCellValues() {
@@ -125,45 +135,16 @@ public class CashBookController {
     private TextField txtCashBookID;
 
 
-    @FXML
-    void btnAdd(ActionEvent event) {
-
-        String cashBookID = txtCashBookID.getText();
-        String supId = cmbSupId.getSelectionModel().getSelectedItem();
-        int qty = Integer.parseInt(txtQty.getText());
-
-        String currentDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-
-        String desc = lblItemName.getText();
-
-        double price = Double.parseDouble(lblItemPrice.getText());
-
-        double amount = price * qty;
-
-        CashBookTM cashBookTM = new CashBookTM(
-                cashBookID,
-                supId,
-                currentDate,
-                desc,
-                qty,
-                amount,
-                price
-        );
-
-        cashBookTMS.add(cashBookTM);
-
-        tblCart.setItems(cashBookTMS);
-        tblCart.refresh();
-    }
-
     CashBookModel cashBookModel = new CashBookModel();
 
     @FXML
     void btnPlaceIt(ActionEvent event) throws SQLException {
         loadNextInventryId();
+        loadNextCBNOId();
+
         double price = Double.parseDouble(lblItemPrice.getText());
 
-        String CBNo = txtCashBookID.getText();
+        String CBNo = lblCBN.getText();
         String SupId = cmbSupId.getSelectionModel().getSelectedItem();
         String desc = lblItemName.getText();
         int qty = Integer.parseInt(txtQty.getText());
@@ -196,7 +177,7 @@ public class CashBookController {
     }
     @FXML
     void amount(ActionEvent event) throws SQLException {
-        getAllAmount();
+        loadNextCBNOId();
     }
     public void getAllAmount() throws SQLException {
         int am = cashBookModel.getAllPayAmount();
@@ -228,10 +209,7 @@ public class CashBookController {
         cmbItemd.setItems(observableList);
     }
 
-    private void loadPayMethod() {
-        ObservableList<String> paymentMethods = FXCollections.observableArrayList("Cash", "Bank");
-        cmbPay.setItems(paymentMethods);
-    }
+
 
     @FXML
     void cmbItemOnAction(ActionEvent event) throws SQLException {
@@ -240,7 +218,6 @@ public class CashBookController {
         MatirialDto matirialDto = matiralModel.findById(selectID);
         if (matirialDto != null) {
 
-            // FIll item related labels
             lblItemName.setText(matirialDto.getMatName());
             lblItemPrice.setText(String.valueOf(matirialDto.getMatPrice()));
             lblItemQty.setText(String.valueOf(matirialDto.getMatQty()));

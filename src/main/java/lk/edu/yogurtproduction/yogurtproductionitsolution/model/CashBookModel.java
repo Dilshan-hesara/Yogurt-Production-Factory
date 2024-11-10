@@ -63,12 +63,24 @@ public class CashBookModel {
         ResultSet resultSet = CrudUtil.execute("SELECT SUM(Amount) AS Total_Amount FROM cash_book");
 
         if (resultSet.next()) {
-            return resultSet.getInt("Amouttot");
+            return resultSet.getInt("Total_Amount");
         }
         return 0;
     }
 
 
+    public String getNextCBNId() throws SQLException {
+        ResultSet rst = CrudUtil.execute("select CB_No from Cash_Book order by CB_No desc limit 1");
+        if (rst.next()) {
+            String lastId = rst.getString(1);
+            String substring = lastId.substring(3);
+            int i = Integer.parseInt(substring);
+            int newIdIndex = i + 1;
+            return String.format("CBN%03d", newIdIndex);
+        }
+        return "CBN001";
+
+    }
 }
 
 

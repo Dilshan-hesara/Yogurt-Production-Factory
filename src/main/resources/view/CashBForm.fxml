@@ -51,7 +51,7 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="186.0" layoutY="77.0" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="137.0" text="1">
+      <Label fx:id="lblCBN" layoutX="186.0" layoutY="77.0" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="137.0" text="1">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -101,14 +101,6 @@
             <Font name="Calibri" size="14.0" />
          </font>
       </Label>
-      <Button layoutX="925.0" layoutY="254.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnAdd" prefHeight="27.0" prefWidth="160.0" style="-fx-background-color: #2ecc71;" text="ADD" textFill="WHITE">
-         <font>
-            <Font name="Calibri Bold" size="14.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="CLOSED_HAND" />
-         </cursor>
-      </Button>
       <TextField fx:id="txtQty" layoutX="193.0" layoutY="254.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="130.0" promptText="0" style="-fx-background-color: #ffffff; -fx-border-width: 0 0 1px 0; -fx-border-color: #000;" />
       <Label layoutX="507.0" layoutY="164.0" prefHeight="22.0" prefWidth="40.0" text="Price">
          <font>
@@ -132,8 +124,7 @@
       </Label>
       <ComboBox fx:id="cmbSupId" layoutX="179.0" layoutY="119.0" onAction="#cmbSupOnAction" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
       <ComboBox fx:id="cmbItemd" layoutX="179.0" layoutY="162.0" onAction="#cmbItemOnAction" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
-      <TextField fx:id="txtCashBookID" layoutX="148.0" layoutY="36.0" />
-      <Button layoutX="752.0" layoutY="254.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnPlaceIt" prefHeight="27.0" prefWidth="160.0" style="-fx-background-color: #2ecc71;" text="Place " textFill="WHITE">
+      <Button layoutX="920.0" layoutY="253.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnPlaceIt" prefHeight="27.0" prefWidth="160.0" style="-fx-background-color: #2ecc71;" text="Place " textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
@@ -141,7 +132,7 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Button layoutX="349.0" layoutY="43.0" mnemonicParsing="false" onAction="#amount" text="Button" />
+      <Button layoutX="960.0" layoutY="30.0" mnemonicParsing="false" onAction="#amount" text="Button" />
       <Label layoutX="946.0" layoutY="678.0" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="150.0" text="RS.">
          <font>
             <Font name="System Bold" size="20.0" />
