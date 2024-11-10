@@ -43,6 +43,10 @@ public class CashBookController {
     @FXML
     private Label date1;
 
+
+    @FXML
+    private Label lblPayAmount;
+
     @FXML
     private Label lblItemName;
 
@@ -157,7 +161,6 @@ public class CashBookController {
     @FXML
     void btnPlaceIt(ActionEvent event) throws SQLException {
         loadNextInventryId();
-
         double price = Double.parseDouble(lblItemPrice.getText());
 
         String CBNo = txtCashBookID.getText();
@@ -191,8 +194,15 @@ public class CashBookController {
             new Alert(Alert.AlertType.ERROR, "Save failed! Please try again.").show();
         }
     }
-
-
+    @FXML
+    void amount(ActionEvent event) throws SQLException {
+        getAllAmount();
+    }
+    public void getAllAmount() throws SQLException {
+        int am = cashBookModel.getAllPayAmount();
+        System.out.println(am);
+        lblPayAmount.setText(String.valueOf(am));
+    }
 
     InventroyModel inventroyModel = new InventroyModel();
     String invID;

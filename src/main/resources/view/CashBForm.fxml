@@ -76,7 +76,7 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="959.0" layoutY="678.0" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="137.0" text="RS.25000">
+      <Label fx:id="lblPayAmount" layoutX="976.0" layoutY="678.0" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="137.0" text="25000">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -141,5 +141,11 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
+      <Button layoutX="349.0" layoutY="43.0" mnemonicParsing="false" onAction="#amount" text="Button" />
+      <Label layoutX="946.0" layoutY="678.0" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="150.0" text="RS.">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

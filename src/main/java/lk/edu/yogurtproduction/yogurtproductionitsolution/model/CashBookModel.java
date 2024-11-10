@@ -6,6 +6,7 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
@@ -36,8 +37,11 @@ public class CashBookModel {
 
                       boolean isMatirealUpdated = materialModel.updatedMatirialReduceQty(cashBookDto);
                       if (isMatirealUpdated) {
-                          connection.commit();
-                          return true;
+
+                              connection.commit();
+                              return true;
+
+
                       }
 
                   }
@@ -53,6 +57,16 @@ public class CashBookModel {
                 connection.setAutoCommit(true);
             }
         }
+
+
+    public int getAllPayAmount() throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("SELECT SUM(Amount) AS Total_Amount FROM cash_book");
+
+        if (resultSet.next()) {
+            return resultSet.getInt("Amouttot");
+        }
+        return 0;
+    }
 
 
 }
