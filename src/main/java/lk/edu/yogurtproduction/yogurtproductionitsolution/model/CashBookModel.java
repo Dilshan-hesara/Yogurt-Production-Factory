@@ -11,6 +11,8 @@ import java.sql.SQLException;
 
 public class CashBookModel {
 
+    InventroyModel inventoryModel = new InventroyModel();
+
     public Boolean saveResept(CashBookDto cashBookDto) throws SQLException {
         Connection connection = DBConnection.getInstance().getConnection();
         try {
@@ -28,11 +30,11 @@ public class CashBookModel {
             );
 
             if (isRecpSaved) {
-                System.out.println("save ");
-
-                    connection.commit();
-                    return true;
-
+                 boolean isInventroyUpdated = inventoryModel.saveInvetory(cashBookDto);
+                  if (isInventroyUpdated) {
+                      connection.commit();
+                      return true;
+                  }
             }
 
                 connection.rollback();
