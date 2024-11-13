@@ -3,6 +3,7 @@ import  java.sql.Connection;
 import java.sql.SQLException;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CashBookDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.PckingDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
 
@@ -53,8 +54,18 @@ public class InventroyModel {
     }
 
 
+    public boolean saveInvetoryPack(PckingDto pckingDtos) throws SQLException {
 
+        return   CrudUtil.execute(
+                "INSERT INTO Inventory VALUES (?, ?, ?, ?)",
+                pckingDtos.getInID(),
+                pckingDtos.getItemType(),
+                pckingDtos.getPac_Desc(),
+                pckingDtos.getQty()
+
+        );
     }
+}
 
 
 

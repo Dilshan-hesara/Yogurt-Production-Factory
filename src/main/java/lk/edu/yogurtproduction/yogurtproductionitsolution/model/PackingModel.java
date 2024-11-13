@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class PackingModel {
+    InventroyModel inventoryModel = new InventroyModel();
     public boolean savePacking(PckingDto pckingDtos) throws SQLException {
         Connection connection = DBConnection.getInstance().getConnection();
         try {
@@ -26,9 +27,12 @@ public class PackingModel {
             );
 
             if (isRecpSaved) {
-                System.out.println("savesd");
-                connection.commit();
-                return true;
+                boolean isInventroyUpdated = inventoryModel.saveInvetoryPack(pckingDtos);
+                if (isInventroyUpdated) {
+                    connection.commit();
+                    return true;
+                }
+
 
 
             }

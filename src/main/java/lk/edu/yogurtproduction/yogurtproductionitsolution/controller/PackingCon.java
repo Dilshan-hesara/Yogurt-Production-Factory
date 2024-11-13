@@ -10,6 +10,7 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.PckingDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.EmployeeModel;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.model.InventroyModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.PackingModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.ProdtionModel;
 
@@ -54,12 +55,13 @@ public class PackingCon {
         loadProdtId();
         loadEmpId();
         loadcmbPacType();
+        loadNextInventryId();
     }
 PackingModel packingModel = new PackingModel();
     @FXML
     void btnAddStock(ActionEvent event) throws SQLException {
 
-         String Pac_ID = "PAC002";
+         String Pac_ID = "PAC003";
          String Prod_ID = cmbProdId.getSelectionModel().getSelectedItem();
          String Pac_Type = cmbPacType.getSelectionModel().getSelectedItem();
          String Pac_Desc = desetxt.getText();
@@ -69,6 +71,7 @@ PackingModel packingModel = new PackingModel();
          String Emp_ID = cmbEmpId.getSelectionModel().getSelectedItem();
          double RedusQty = Qty * PacTypes;
          String itemType = "END Prodt";
+         String InID = invID;
 
         PckingDto pckingDtos = new PckingDto(
 
@@ -81,7 +84,8 @@ PackingModel packingModel = new PackingModel();
                 Qty,
                 Emp_ID,
                 RedusQty,
-                itemType
+                itemType,
+                InID
         );
         boolean isSaved = packingModel.savePacking(pckingDtos);
         if (isSaved) {
@@ -93,6 +97,14 @@ PackingModel packingModel = new PackingModel();
 
 
 
+    }
+    String invID;
+    InventroyModel inventroyModel = new InventroyModel();
+
+    public void loadNextInventryId() throws SQLException {
+        String nextInventryId = inventroyModel.getInventroyId();
+        invID = nextInventryId;
+        System.out.println(nextInventryId);
     }
 
     @FXML
