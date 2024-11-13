@@ -73,9 +73,9 @@ ProdMixModel prodMix = new ProdMixModel();
         String Prod_Name = cmbProdt.getSelectionModel().getSelectedItem();
         String Pro_Name =  txtProdtName.getText();
         double Prod_Qty = Integer.parseInt(txtQty.getText());
-         int P_milk = milk;
-         int p_suguer = suguer;
-         int p_jeley = jeley;
+         int P_milk = (int) (milk * Prod_Qty);
+         int p_suguer = (int) (suguer * Prod_Qty);
+         int p_jeley = (int) (jeley * Prod_Qty);
 
         ProdtionDto prodtionDto = new ProdtionDto(
                 Prod_ID,
