@@ -10,11 +10,11 @@ public class PckingDto {
 
     private String Pac_ID;
     private String Prod_ID;
-    private String Packing_Type;
-    private String Packing_Description;
-    private String Packing_Date;
+    private String Pac_Type;
+    private String Pac_Desc;
+    private String Pac_Date;
     private String Expire_Date;
-    private double qty;
+    private double Qty;
     private  String Emp_ID;
 
 
