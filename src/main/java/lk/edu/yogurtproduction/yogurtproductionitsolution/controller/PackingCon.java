@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.EmployeeModel;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.model.ProdtionModel;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class PackingCon {
     private ComboBox<String> cmbEmpId;
 
     @FXML
-    private ComboBox<?> cmbProdId;
+    private ComboBox<String> cmbProdId;
 
     @FXML
     private TextField desetxt;
@@ -28,6 +29,7 @@ public class PackingCon {
 
     public  void initialize() throws SQLException {
         loadEmpId();
+        loadProdtId();
     }
 
     @FXML
@@ -51,11 +53,18 @@ public class PackingCon {
     }
 
     EmployeeModel employeeModel = new EmployeeModel();
+    ProdtionModel prodtionModel = new ProdtionModel();
 
-private void loadEmpId() throws SQLException {
-        ArrayList<String> empIds = employeeModel.getAllEmpIds();
-        ObservableList<String> observableList = FXCollections.observableArrayList(empIds);
-        cmbEmpId.setItems(observableList);
+    private void loadEmpId() throws SQLException {
+            ArrayList<String> empIds = employeeModel.getAllEmpIds();
+            ObservableList<String> observableList = FXCollections.observableArrayList(empIds);
+            cmbEmpId.setItems(observableList);
+        }
+
+    private void loadProdtId() throws SQLException {
+        ArrayList<String> prodIds = prodtionModel.getAllProdtIds();
+        ObservableList<String> observableList = FXCollections.observableArrayList(prodIds);
+        cmbProdId.setItems(observableList);
     }
 
 }
