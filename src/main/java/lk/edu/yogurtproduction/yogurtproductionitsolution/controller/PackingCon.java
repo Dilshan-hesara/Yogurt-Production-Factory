@@ -6,7 +6,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.EmployeeModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.ProdtionModel;
 
@@ -27,9 +30,20 @@ public class PackingCon {
     @FXML
     private TextField qrytxt;
 
+    @FXML
+    private Label lblEmpName;
+
+    @FXML
+    private Label lblProdQty;
+
+    @FXML
+    private Label lblProdtName;
+
+
     public  void initialize() throws SQLException {
-        loadEmpId();
         loadProdtId();
+        loadEmpId();
+
     }
 
     @FXML
@@ -42,13 +56,27 @@ public class PackingCon {
 
     }
 
+
     @FXML
-    void cmbEmpOnAction(ActionEvent event) {
+    void cmbEmpOnAction(ActionEvent event) throws SQLException {
+        String cmbEmpSelected = cmbEmpId.getSelectionModel().getSelectedItem();
+        EmployeeDto employeeDto = employeeModel.findByID(cmbEmpSelected);
+        if (employeeDto != null) {
+            lblEmpName.setText(employeeDto.getEmpName());
+        }
 
     }
 
     @FXML
-    void cmbProdOnAction(ActionEvent event) {
+    void cmbProdOnAction(ActionEvent event) throws SQLException {
+        String cmbProdSelected = cmbProdId.getSelectionModel().getSelectedItem();
+        System.out.println(cmbProdSelected);
+        ProdtionDto prodtionDto = prodtionModel.findById(cmbProdSelected);
+        if (prodtionDto != null) {
+            lblProdtName.setText(prodtionDto.getPro_Name());
+            lblProdQty.setText(String.valueOf(prodtionDto.getProd_Qty()));
+
+        }
 
     }
 

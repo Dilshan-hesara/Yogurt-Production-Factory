@@ -1,6 +1,7 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
 
@@ -68,4 +69,24 @@ public class ProdtionModel {
 
         return ProdtIds;
     }
+
+    public ProdtionDto findById(String cmbProdSelected) throws SQLException {
+
+
+        ResultSet rst = CrudUtil.execute("select * from production where Prod_ID=?", cmbProdSelected);
+
+        if (rst.next()) {
+            return new ProdtionDto(
+                    rst.getString(1),
+                    rst.getString(2),
+                    rst.getDouble(3),
+                    rst.getString(4)
+
+            );
+
+
+        }
+        return null;
+    }
 }
+

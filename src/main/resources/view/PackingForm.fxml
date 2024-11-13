@@ -60,7 +60,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="483.0" layoutY="173.0" prefHeight="18.0" prefWidth="98.0" text="YOUGUTRT" />
+      <Label fx:id="lblProdtName" layoutX="483.0" layoutY="173.0" prefHeight="18.0" prefWidth="98.0" text="YOUGUTRT" />
       <Label layoutX="58.0" layoutY="207.0" prefHeight="30.0" prefWidth="138.0" text="PAC TYPE    :">
          <font>
             <Font name="System Bold" size="20.0" />
@@ -90,7 +90,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="490.0" layoutY="132.0" prefHeight="18.0" prefWidth="98.0" text="Employee" />
+      <Label fx:id="lblEmpName" layoutX="490.0" layoutY="132.0" prefHeight="18.0" prefWidth="98.0" text="Employee" />
       <Button layoutX="697.0" layoutY="295.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnPack" prefHeight="27.0" prefWidth="183.0" style="-fx-background-color: #2ecc71;" text="PACK" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
@@ -110,7 +110,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="700.0" layoutY="174.0" prefHeight="18.0" prefWidth="98.0" text="250" />
+      <Label fx:id="lblProdQty" layoutX="700.0" layoutY="174.0" prefHeight="18.0" prefWidth="98.0" text="250" />
       <Button layoutX="919.0" layoutY="295.0" mnemonicParsing="false" onAction="#btnAddStock" prefWidth="150.0" style="-fx-background-color: #7367F0;" text="ADD Stock " textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />

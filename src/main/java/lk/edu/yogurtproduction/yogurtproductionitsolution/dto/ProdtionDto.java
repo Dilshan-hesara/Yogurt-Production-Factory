@@ -16,4 +16,12 @@ public class ProdtionDto {
     private int P_milk;
     private int p_suguer;
     private int p_jeley;
+
+    public ProdtionDto(String prodID, String proName, double qty, String prodName) {
+        this.Prod_ID = prodID;
+        this.Pro_Name = proName;
+        this.Prod_Qty = qty;
+        this.Prod_Name = prodName;
+    }
+
 }

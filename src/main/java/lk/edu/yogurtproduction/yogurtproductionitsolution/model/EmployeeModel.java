@@ -2,6 +2,7 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.EmployeeTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
 
@@ -115,5 +116,22 @@ public class EmployeeModel {
         }
 
         return EmpIds;
+    }
+
+    public EmployeeDto findByID(String cmbEmpSelected) throws SQLException {
+
+
+        ResultSet rst = CrudUtil.execute("select * from Employee where Emp_ID=?", cmbEmpSelected);
+
+        if (rst.next()) {
+            return new EmployeeDto(
+                    rst.getString(1),
+                    rst.getString(2),
+                    rst.getString(3),
+                    rst.getString(4),
+                    rst.getString(5)
+            );
+        }
+        return null;
     }
 }
