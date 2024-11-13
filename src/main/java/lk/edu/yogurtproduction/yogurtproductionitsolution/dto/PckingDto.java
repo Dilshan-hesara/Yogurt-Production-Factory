@@ -16,6 +16,7 @@ public class PckingDto {
     private String Expire_Date;
     private double Qty;
     private  String Emp_ID;
+    private double RedusQty;
 
 
 }
