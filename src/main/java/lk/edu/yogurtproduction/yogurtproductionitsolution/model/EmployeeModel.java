@@ -103,4 +103,17 @@ public class EmployeeModel {
         return CrudUtil.execute("delete from employee where Emp_ID=?", empId);
 
     }
+
+    public ArrayList<String> getAllEmpIds() throws SQLException {
+
+        ResultSet rst = CrudUtil.execute("SELECT Emp_ID FROM Employee");
+
+        ArrayList<String> EmpIds = new ArrayList<>();
+
+        while (rst.next()) {
+            EmpIds.add(rst.getString(1));
+        }
+
+        return EmpIds;
+    }
 }
