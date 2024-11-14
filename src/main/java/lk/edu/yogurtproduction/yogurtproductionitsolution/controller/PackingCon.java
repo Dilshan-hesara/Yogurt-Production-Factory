@@ -111,6 +111,12 @@ PackingModel packingModel = new PackingModel();
         System.out.println(nextInventryId);
     }
 
+    public void loadInvetroyAvQtyFromSelectProd_ID() throws SQLException {
+        String getSelectedProdId = cmbProdId.getSelectionModel().getSelectedItem();
+        String AvalbleQty = String.valueOf(inventroyModel.AvQtyFromSelectProd_ID(getSelectedProdId));
+        lblProdQty.setText(AvalbleQty);
+    }
+
     StockModel stockModel = new StockModel();
 
     String stID;
@@ -157,7 +163,8 @@ PackingModel packingModel = new PackingModel();
         ProdtionDto prodtionDto = prodtionModel.findById(cmbProdSelected);
         if (prodtionDto != null) {
             lblProdtName.setText(prodtionDto.getPro_Name());
-            lblProdQty.setText(String.valueOf(prodtionDto.getProd_Qty()));
+            //lblProdQty.setText(String.valueOf(prodtionDto.getProd_Qty()));
+            loadInvetroyAvQtyFromSelectProd_ID();
 
         }
 

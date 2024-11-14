@@ -1,16 +1,12 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
-import  java.sql.Connection;
 import java.sql.SQLException;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
+
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CashBookDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.PckingDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class InventroyModel {
 
@@ -90,6 +86,22 @@ public class InventroyModel {
         );
 
     }
+
+    public int AvQtyFromSelectProd_ID(String getSelectedProdId) throws SQLException {
+
+        ResultSet rst = CrudUtil.execute(
+                "SELECT Qty FROM inventory WHERE Prod_ID = ?",
+                getSelectedProdId
+        );
+
+        if (rst.next()) {
+
+            return rst.getInt("Qty");
+        } else {
+            return 0;
+        }
+    }
+
 }
 
 
