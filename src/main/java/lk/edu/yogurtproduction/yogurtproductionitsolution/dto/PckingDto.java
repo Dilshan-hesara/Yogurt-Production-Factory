@@ -18,6 +18,7 @@ public class PckingDto {
     private  String Emp_ID;
     private double RedusQty;
     private String itemType;
-
+    private String InID;
+    private String StID;
 
 }
