@@ -35,9 +35,14 @@ public class PackingModel {
 //                    return true;
                     boolean isStockUpdated = stockModel.saveStock(pckingDtos);
                     if (isStockUpdated) {
+                        boolean redusePackedQty = inventoryModel.saveredusPackedQty(pckingDtos);
+                        if (redusePackedQty) {
 
-                        connection.commit();
-                        return true;
+                            connection.commit();
+                            return true;
+
+                        }
+
                     }
 
                 }

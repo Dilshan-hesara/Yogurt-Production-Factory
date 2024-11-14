@@ -79,6 +79,17 @@ public class InventroyModel {
                 prodtionDto.getProd_ID()
 
         );    }
+
+    public boolean saveredusPackedQty(PckingDto pckingDtos) throws SQLException {
+
+        return   CrudUtil.execute(
+                "UPDATE inventory set Qty = Qty - ? where Prod_ID = ?",
+                pckingDtos.getRedusQty(),
+                pckingDtos.getProd_ID()
+
+        );
+
+    }
 }
 
 
