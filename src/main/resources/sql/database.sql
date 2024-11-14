@@ -38,7 +38,8 @@ create table Inventory(
     In_ID varchar(100) primary key,
     Item_Type varchar(50),
     Item_Description varchar(250),
-    Qty int
+    Qty int,
+    Prod_ID VARCHAR(50)
 );
 
 create table Cash_Book(
@@ -94,6 +95,7 @@ create table Stock(
     Qty decimal (10,2),
     Manfac_date date,
     Expire_date date,
+    Pack_Type VARCHAR(50),
 
     foreign key (Pac_ID) references Packing (Pac_ID)
 );
