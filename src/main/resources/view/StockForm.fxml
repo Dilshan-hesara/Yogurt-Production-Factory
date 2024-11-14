@@ -27,6 +27,7 @@
             <TableColumn prefWidth="75.0" text="PAC ID" />
             <TableColumn prefWidth="75.0" text="PROD NAME" />
             <TableColumn prefWidth="75.0" text="Qty" />
+            <TableColumn prefWidth="75.0" text="Pack Type" />
             <TableColumn prefWidth="75.0" text="ManFa  Date " />
             <TableColumn prefWidth="75.0" text="Expire Date " />
          </columns>
