@@ -29,19 +29,20 @@ public class PackingModel {
             );
 
             if (isRecpSaved) {
-                boolean isInventroyUpdated = inventoryModel.saveInvetoryPack(pckingDtos);
-                if (isInventroyUpdated) {
+
 //                    connection.commit();
 //                    return true;
                     boolean isStockUpdated = stockModel.saveStock(pckingDtos);
                     if (isStockUpdated) {
                         boolean redusePackedQty = inventoryModel.saveredusPackedQty(pckingDtos);
                         if (redusePackedQty) {
+                            boolean isInventroyUpdated = inventoryModel.saveInvetoryPack(pckingDtos);
+                            if (isInventroyUpdated) {
+                                connection.commit();
+                                return true;
+                            }
 
-                            connection.commit();
-                            return true;
 
-                        }
 
                     }
 
