@@ -39,6 +39,9 @@ public class PackingCon {
     private Label lblProdQty;
 
     @FXML
+    private  Label lblPacID;
+
+    @FXML
     private Label lblProdtName;
 
     @FXML
@@ -54,12 +57,13 @@ public class PackingCon {
         loadcmbPacType();
         loadNextInventryId();
         loadNextStockId();
+        loadNextPackingId();
     }
 PackingModel packingModel = new PackingModel();
     @FXML
     void btnAddStock(ActionEvent event) throws SQLException {
 
-         String Pac_ID = "PAC004";
+         String Pac_ID = lblPacID.getText();
          String Prod_ID = cmbProdId.getSelectionModel().getSelectedItem();
          String Pac_Type = cmbPacType.getSelectionModel().getSelectedItem();
          String Pac_Desc = desetxt.getText();
@@ -114,6 +118,13 @@ PackingModel packingModel = new PackingModel();
         String nextStockId = stockModel.getStockId();
          stID = nextStockId;
         System.out.println(nextStockId);
+    }
+
+    public void loadNextPackingId() throws SQLException {
+        String nextPackId = packingModel.getPackId();
+        //stID = nextPackId;
+        lblPacID.setText(nextPackId);
+        System.out.println(nextPackId);
     }
 
 
