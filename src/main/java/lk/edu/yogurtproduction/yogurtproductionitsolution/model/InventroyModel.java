@@ -74,7 +74,7 @@ public class InventroyModel {
                 "INSERT INTO Inventory VALUES (?, ?, ?, ?, ?)",
                 prodtionDto.getInID(),
                 prodtionDto.getItemType(),
-                prodtionDto.getProd_Name(),
+                prodtionDto.getPro_Name(),
                 prodtionDto.getProd_Qty(),
                 prodtionDto.getProd_ID()
 
