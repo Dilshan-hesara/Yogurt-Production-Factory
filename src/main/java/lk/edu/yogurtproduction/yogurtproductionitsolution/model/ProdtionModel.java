@@ -43,15 +43,15 @@ public class ProdtionModel {
                 System.out.println("dev");
                 boolean isInvetriyUpdated = inventoryModel.saveUpdated(prodtionDto);
                 if (isInvetriyUpdated) {
-                    System.out.println("inv");
-                    connection.commit();
-                    return true;
+
+
+                boolean isUpdateInverorySaved = inventoryModel.redusqtyOnInventroy(prodtionDto);
+               if (isUpdateInverorySaved) {
+                   connection.commit();
+                   return true;
+               }
+
                 }
-//                boolean isUpdateInverorySaved = inventoryModel.redusqtyOnInventroy(prodtionDto);
-//               if (isUpdateInverorySaved) {
-//                   connection.commit();
-//                    return true;
-//                }
             }
             connection.rollback();
             return false;

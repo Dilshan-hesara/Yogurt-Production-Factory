@@ -31,6 +31,8 @@ public class PackingModel {
             if (isRecpSaved) {
                 boolean isInventroyUpdated = inventoryModel.saveInvetoryPack(pckingDtos);
                 if (isInventroyUpdated) {
+//                    connection.commit();
+//                    return true;
                     boolean isStockUpdated = stockModel.saveStock(pckingDtos);
                     if (isStockUpdated) {
 

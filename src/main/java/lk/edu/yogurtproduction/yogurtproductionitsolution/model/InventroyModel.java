@@ -57,11 +57,12 @@ public class InventroyModel {
     public boolean saveInvetoryPack(PckingDto pckingDtos) throws SQLException {
 
         return   CrudUtil.execute(
-                "INSERT INTO Inventory VALUES (?, ?, ?, ?)",
+                "INSERT INTO Inventory VALUES (?, ?, ?, ?, ?)",
                 pckingDtos.getInID(),
                 pckingDtos.getItemType(),
                 pckingDtos.getPac_Desc(),
-                pckingDtos.getQty()
+                pckingDtos.getQty(),
+                pckingDtos.getProd_ID()
 
         );
     }
