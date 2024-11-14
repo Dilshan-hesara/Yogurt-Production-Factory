@@ -9,6 +9,7 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdMixDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.model.InventroyModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.ProdMixModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.ProdtionModel;
 
@@ -48,6 +49,7 @@ ProdMixModel prodMix = new ProdMixModel();
 
         loadnextProdID();
         loadProdName();
+        loadNextInventryId();
     }
 
     private void loadnextProdID() throws SQLException {
@@ -76,6 +78,8 @@ ProdMixModel prodMix = new ProdMixModel();
          int P_milk = (int) (milk * Prod_Qty);
          int p_suguer = (int) (suguer * Prod_Qty);
          int p_jeley = (int) (jeley * Prod_Qty);
+         String InID = invID;
+         String ItemType = "UN Packed";
 
         ProdtionDto prodtionDto = new ProdtionDto(
                 Prod_ID,
@@ -84,7 +88,9 @@ ProdMixModel prodMix = new ProdMixModel();
                 Prod_Name,
                 P_milk,
                 p_suguer,
-                p_jeley
+                p_jeley,
+                InID,
+                ItemType
 
         );
         boolean isSaved = model.saveProdt(prodtionDto);
@@ -99,6 +105,16 @@ ProdMixModel prodMix = new ProdMixModel();
 
 
     }
+
+    String invID;
+    InventroyModel inventroyModel = new InventroyModel();
+
+    public void loadNextInventryId() throws SQLException {
+        String nextInventryId = inventroyModel.getInventroyId();
+        invID = nextInventryId;
+        System.out.println(nextInventryId);
+    }
+
     ProdMixModel prodMixModel = new ProdMixModel();
     private int milk ;
     private int suguer;

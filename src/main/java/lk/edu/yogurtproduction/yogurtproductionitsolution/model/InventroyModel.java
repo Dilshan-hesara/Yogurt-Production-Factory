@@ -65,6 +65,19 @@ public class InventroyModel {
 
         );
     }
+
+    public boolean saveUpdated(ProdtionDto prodtionDto) throws SQLException {
+
+
+        return   CrudUtil.execute(
+                "INSERT INTO Inventory VALUES (?, ?, ?, ?, ?)",
+                prodtionDto.getInID(),
+                prodtionDto.getItemType(),
+                prodtionDto.getProd_Name(),
+                prodtionDto.getProd_Qty(),
+                prodtionDto.getProd_ID()
+
+        );    }
 }
 
 
