@@ -9,10 +9,7 @@ import javafx.scene.control.*;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.PckingDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.EmployeeModel;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.InventroyModel;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.PackingModel;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.ProdtionModel;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.model.*;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -56,12 +53,13 @@ public class PackingCon {
         loadEmpId();
         loadcmbPacType();
         loadNextInventryId();
+        loadNextStockId();
     }
 PackingModel packingModel = new PackingModel();
     @FXML
     void btnAddStock(ActionEvent event) throws SQLException {
 
-         String Pac_ID = "PAC003";
+         String Pac_ID = "PAC004";
          String Prod_ID = cmbProdId.getSelectionModel().getSelectedItem();
          String Pac_Type = cmbPacType.getSelectionModel().getSelectedItem();
          String Pac_Desc = desetxt.getText();
@@ -72,6 +70,7 @@ PackingModel packingModel = new PackingModel();
          double RedusQty = Qty * PacTypes;
          String itemType = "END Prodt";
          String InID = invID;
+         String StID = stID;
 
         PckingDto pckingDtos = new PckingDto(
 
@@ -85,7 +84,8 @@ PackingModel packingModel = new PackingModel();
                 Emp_ID,
                 RedusQty,
                 itemType,
-                InID
+                InID,
+                StID
         );
         boolean isSaved = packingModel.savePacking(pckingDtos);
         if (isSaved) {
@@ -106,6 +106,16 @@ PackingModel packingModel = new PackingModel();
         invID = nextInventryId;
         System.out.println(nextInventryId);
     }
+
+    StockModel stockModel = new StockModel();
+
+    String stID;
+    public void loadNextStockId() throws SQLException {
+        String nextStockId = stockModel.getStockId();
+         stID = nextStockId;
+        System.out.println(nextStockId);
+    }
+
 
     @FXML
     void btnPack(ActionEvent event) {
