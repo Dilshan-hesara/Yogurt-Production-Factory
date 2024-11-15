@@ -32,16 +32,10 @@ public class CashBookController {
     @FXML
     private ComboBox<String> cmbItemd;
 
-    @FXML
-    private ComboBox<String> cmbPay;
+
 
     @FXML
     private ComboBox<String> cmbSupId;
-
-    @FXML
-    private Label date;
-    @FXML
-    private Label date1;
 
 
     @FXML
@@ -73,10 +67,6 @@ public class CashBookController {
     private TableColumn<String, CashBookTM> colDese;
 
     @FXML
-    private TableColumn<String, CashBookTM> colPrice;
-
-
-    @FXML
     private TableColumn<String, CashBookTM> colQty;
 
     @FXML
@@ -85,29 +75,15 @@ public class CashBookController {
     @FXML
     private TableView<CashBookTM> tblCshBook;
 
-
-
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss a");
-    private SimpleDateFormat daterun = new SimpleDateFormat("yyyy-MM-dd");
-    private final ObservableList<CashBookTM> CashBookTMS = FXCollections.observableArrayList();
-
-    private SimpleDateFormat datE = new SimpleDateFormat("yyyy-MM-dd");
     SuplierModel suplierModel = new SuplierModel();
     MatiralMoadel matiralModel = new MatiralMoadel();
+    CashBookModel cashBookModel = new CashBookModel();
+    InventroyModel inventroyModel = new InventroyModel();
 
     @FXML
     public void initialize() throws SQLException {
         setCellValues();
-        updateDateLabel();
-        startClock();
-        loadSupplierId();
-        loadItemId();
-        getAllAmount();
-        loadNextCBNOId();
-        LoadTabel();
-
-
-
+        refesh();
     }
     @FXML
     private Label lblCBN;
@@ -148,11 +124,7 @@ public class CashBookController {
         tblCshBook.setItems(cashBookTMS);
 
     }
-    @FXML
-    private TextField txtCashBookID;
 
-
-    CashBookModel cashBookModel = new CashBookModel();
 
     @FXML
     void btnPlaceIt(ActionEvent event) throws SQLException {
@@ -222,7 +194,6 @@ public class CashBookController {
         String Prod_id =  "----";
 
 
-
         CashBookDto cashBookDtos = new CashBookDto(
                 CBNo,
                 SupId,
@@ -239,23 +210,21 @@ public class CashBookController {
         boolean isSaved = cashBookModel.saveResept(cashBookDtos);
         if (isSaved) {
             new Alert(Alert.AlertType.INFORMATION, "Saved successfully!").show();
+            refesh();
         } else {
             new Alert(Alert.AlertType.ERROR, "Save failed! Please try again.").show();
         }
     }
-    @FXML
-    void amount(ActionEvent event) throws SQLException {
-        loadNextCBNOId();
-    }
+
+
     public void getAllAmount() throws SQLException {
         int am = cashBookModel.getAllPayAmount();
         System.out.println(am);
         lblPayAmount.setText(String.valueOf(am));
     }
 
-    InventroyModel inventroyModel = new InventroyModel();
-    String invID;
 
+    String invID;
     public void loadNextInventryId() throws SQLException {
         String nextInventryId = inventroyModel.getInventroyId();
         invID = nextInventryId;
@@ -305,30 +274,13 @@ public class CashBookController {
 
     }
 
+    private void refesh() throws SQLException {
 
-
-
-
-
-
-
-    // date manage
-    private void updateDateLabel() {
-        String currentTime = dateFormat.format(new Date());
-        date.setText(currentTime);
-        String currentdate = daterun.format(new Date());
-        date1.setText(currentdate);
-    }
-
-    private void startClock() {
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> updateDateLabel()));
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
-    }
-
-    @FXML
-    void dat(ActionEvent event) {
-        System.out.println(datE.format(new Date()));
+        loadSupplierId();
+        loadItemId();
+        getAllAmount();
+        loadNextCBNOId();
+        LoadTabel();
     }
 
 }

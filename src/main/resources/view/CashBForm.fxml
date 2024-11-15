@@ -24,9 +24,6 @@
             <Font name="System Bold Italic" size="48.0" />
          </font>
       </Label>
-      <Label fx:id="date" layoutX="905.0" layoutY="20.0" prefHeight="18.0" prefWidth="109.0" text="Label" />
-      <Button layoutX="822.0" layoutY="17.0" mnemonicParsing="false" onAction="#dat" text="Button" />
-      <Label fx:id="date1" layoutX="912.0" layoutY="38.0" prefHeight="18.0" prefWidth="94.0" text="date2" />
       <TableView fx:id="tblCshBook" layoutX="31.0" layoutY="316.0" prefHeight="362.0" prefWidth="1062.0">
         <columns>
             <TableColumn fx:id="colCBno" prefWidth="75.0" text="CB_No" />
@@ -131,7 +128,6 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Button layoutX="960.0" layoutY="30.0" mnemonicParsing="false" onAction="#amount" text="Button" />
       <Label layoutX="946.0" layoutY="678.0" maxWidth="1.7976931348623157E308" prefHeight="30.0" prefWidth="150.0" text="RS.">
          <font>
             <Font name="System Bold" size="20.0" />
