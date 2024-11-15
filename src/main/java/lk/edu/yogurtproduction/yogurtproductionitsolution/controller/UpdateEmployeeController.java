@@ -67,25 +67,61 @@ public class UpdateEmployeeController implements Initializable {
         String email = txtEmail.getText();
         String phone = txtPhone.getText();
 
-        EmployeeDto employeeDto = new EmployeeDto(
-                emId,
-                name,
-                nic,
-                email,
-                phone
-        );
+        txtName.setStyle(txtName.getStyle() + ";-fx-border-color: #7367F0;");
+        txtNic.setStyle(txtNic.getStyle() + ";-fx-border-color: #7367F0;");
+        txtEmail.setStyle(txtEmail.getStyle() + ";-fx-border-color: #7367F0;");
+        txtPhone.setStyle(txtPhone.getStyle() + ";-fx-border-color: #7367F0;");
 
 
-        boolean isUpdate = employeeModel.updateCustomer(employeeDto);
-        if (isUpdate) {
+        String namePattern = "^[A-Za-z ]+$";
+        String nicPattern = "^[0-9]{9}[vVxX]||[0-9]{12}$";
+        String emailPattern = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+        String phonePattern = "^(\\d+)||((\\d+\\.)(\\d){2})$";
 
-            new Alert(Alert.AlertType.INFORMATION, "Employee update...!").show();
-            employeeFormController.loadCustomerTable();
+        boolean isValidName = name.matches(namePattern);
+        boolean isValidNic = nic.matches(nicPattern);
+        boolean isValidEmail = email.matches(emailPattern);
+        boolean isValidPhone = phone.matches(phonePattern);
 
-        } else {
-            new Alert(Alert.AlertType.ERROR, "Fail to update Employee...!").show();
+        if (!isValidName) {
+            System.out.println(txtName.getStyle());
+            txtName.setStyle(txtName.getStyle() + ";-fx-border-color: red;");
         }
 
+        if (!isValidNic) {
+            txtNic.setStyle(txtNic.getStyle() + ";-fx-border-color: red;");
+        }
+
+        if (!isValidEmail) {
+            txtEmail.setStyle(txtEmail.getStyle() + ";-fx-border-color: red;");
+        }
+
+        if (!isValidPhone) {
+            txtPhone.setStyle(txtPhone.getStyle() + ";-fx-border-color: red;");
+        }
+
+        if (isValidName && isValidNic && isValidEmail && isValidPhone) {
+
+            EmployeeDto employeeDto = new EmployeeDto(
+                    emId,
+                    name,
+                    nic,
+                    email,
+                    phone
+            );
+
+
+            boolean isUpdate = employeeModel.updateCustomer(employeeDto);
+            if (isUpdate) {
+
+                new Alert(Alert.AlertType.INFORMATION, "Employee update...!").show();
+                employeeFormController.loadCustomerTable();
+
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Fail to update Employee...!").show();
+            }
+
+        }
     }
 
     public void setEmployeeReloadTable(EmployeeController employeeController) {
