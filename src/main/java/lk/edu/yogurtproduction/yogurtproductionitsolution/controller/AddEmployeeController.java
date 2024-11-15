@@ -71,31 +71,68 @@ public class AddEmployeeController implements Initializable {
         String empNic = txtNic.getText();
         String empEmail = txtEmail.getText();
         String empPhone = txtPhone.getText();
-        EmployeeDto customerDTO = new EmployeeDto(
-                EmployeId,
-                empName,
-                empNic,
-                empEmail,
-                empPhone
 
-        );
-        boolean isSaved =  employeeModel.saveEmpoyee(customerDTO);
-        if(isSaved){
+        txtName.setStyle(txtName.getStyle() + ";-fx-border-color: #7367F0;");
+        txtNic.setStyle(txtNic.getStyle() + ";-fx-border-color: #7367F0;");
+        txtEmail.setStyle(txtEmail.getStyle() + ";-fx-border-color: #7367F0;");
+        txtPhone.setStyle(txtPhone.getStyle() + ";-fx-border-color: #7367F0;");
 
-            loadNextEmployeeId();
-            txtName.setText("");
-            txtNic.setText("");
-            txtEmail.setText("");
-            txtPhone.setText("");
-            new Alert(Alert.AlertType.INFORMATION,"Employee saved...!").show();
 
-            if (employeeFormController != null) {
-                employeeFormController.loadCustomerTable();
+        String namePattern = "^[A-Za-z ]+$";
+        String nicPattern = "^[0-9]{9}[vVxX]||[0-9]{12}$";
+        String emailPattern = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+        String phonePattern = "^(\\d+)||((\\d+\\.)(\\d){2})$";
+
+        boolean isValidName = empName.matches(namePattern);
+        boolean isValidNic = empNic.matches(nicPattern);
+        boolean isValidEmail = empEmail.matches(emailPattern);
+        boolean isValidPhone = empPhone.matches(phonePattern);
+
+        if (!isValidName) {
+            System.out.println(txtName.getStyle());
+            txtName.setStyle(txtName.getStyle() + ";-fx-border-color: red;");
+        }
+
+        if (!isValidNic) {
+            txtNic.setStyle(txtNic.getStyle() + ";-fx-border-color: red;");
+        }
+
+        if (!isValidEmail) {
+            txtEmail.setStyle(txtEmail.getStyle() + ";-fx-border-color: red;");
+        }
+
+        if (!isValidPhone) {
+            txtPhone.setStyle(txtPhone.getStyle() + ";-fx-border-color: red;");
+        }
+
+        if (isValidName && isValidNic && isValidEmail && isValidPhone) {
+            EmployeeDto customerDTO = new EmployeeDto(
+                    EmployeId,
+                    empName,
+                    empNic,
+                    empEmail,
+                    empPhone
+
+            );
+            boolean isSaved = employeeModel.saveEmpoyee(customerDTO);
+            if (isSaved) {
+
+                loadNextEmployeeId();
+                txtName.setText("");
+                txtNic.setText("");
+                txtEmail.setText("");
+                txtPhone.setText("");
+                new Alert(Alert.AlertType.INFORMATION, "Employee saved...!").show();
+
+                if (employeeFormController != null) {
+                    employeeFormController.loadCustomerTable();
+                }
+
+
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Fail to save Employee...!").show();
             }
 
-
-        }else{
-            new Alert(Alert.AlertType.ERROR,"Fail to save Employee...!").show();
         }
     }
 
