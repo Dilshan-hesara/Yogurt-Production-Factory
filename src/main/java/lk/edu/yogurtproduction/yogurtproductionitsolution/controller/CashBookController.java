@@ -3,10 +3,17 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.util.Duration;
 
 import javafx.event.ActionEvent;
@@ -21,6 +28,7 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatiralMoadel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.SuplierModel;
 
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -282,7 +290,34 @@ public class CashBookController {
         loadNextCBNOId();
         LoadTabel();
     }
+    @FXML
+    private Button btnMat;
+    @FXML
+    void AddMatireal(ActionEvent event) {
 
-}
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/MatirialForm.fxml"));
+                Parent load = loader.load();
+
+                Stage stage = new Stage();
+                stage.setScene(new Scene(load));
+                stage.setTitle("Add Material");
+
+                stage.initOwner(btnMat.getScene().getWindow());
+
+
+                stage.initModality(Modality.APPLICATION_MODAL);
+
+                stage.showAndWait();
+
+            } catch (IOException e) {
+                new Alert(Alert.AlertType.ERROR, "Failed to load UI..!").show();
+                e.printStackTrace();
+            }
+        }
+
+
+
+    }
 
 

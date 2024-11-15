@@ -133,5 +133,10 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
+      <Button fx:id="btnMat" layoutX="521.0" layoutY="120.0" mnemonicParsing="false" onAction="#AddMatireal" style="-fx-background-color: #0000; -fx-border-color: #29ac98;" text="Add Material" textFill="#29ac98">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
