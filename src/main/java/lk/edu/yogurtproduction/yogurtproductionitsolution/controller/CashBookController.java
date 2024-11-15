@@ -102,8 +102,8 @@ public class CashBookController {
         startClock();
         loadSupplierId();
         loadItemId();
-       getAllAmount();
-       loadNextCBNOId();
+        getAllAmount();
+        loadNextCBNOId();
         LoadTabel();
 
 
@@ -159,12 +159,61 @@ public class CashBookController {
         loadNextInventryId();
         loadNextCBNOId();
 
+        String selectedItemId = cmbItemd.getValue();
+
+
+        if (selectedItemId == null) {
+            new Alert(Alert.AlertType.ERROR, "Please select item..!").show();
+            return;
+        }
+
+        String seltctedSupId = cmbSupId.getValue();
+        if (seltctedSupId == null) {
+            new Alert(Alert.AlertType.ERROR, "Please select supId..!").show();
+            return;
+        }
+
+
+        String qtyV = txtQty.getText().trim();
+        String avQText = lblItemQty.getText().trim();
+        String qtyPattern = "^[0-9]+$";
+
+        if (qtyV.isEmpty() || avQText.isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "Requested or available quantity cannot be empty..!").show();
+            return;
+        }
+
+        if (!qtyV.matches(qtyPattern)) {
+            new Alert(Alert.AlertType.ERROR, "Please enter a valid numeric quantity..!").show();
+            return;
+        }
+
+        try {
+            int qtyr = Integer.parseInt(qtyV);
+            int avQ = Integer.parseInt(avQText);
+
+            if (qtyr == 0) {
+                new Alert(Alert.AlertType.ERROR, "Requested quantity cannot be zero..!").show();
+                return;
+            }
+
+            if (avQ < qtyr) {
+                new Alert(Alert.AlertType.ERROR, "Not enough items..!").show();
+                return;
+            }
+
+
+        } catch (NumberFormatException e) {
+            new Alert(Alert.AlertType.ERROR, "An error occurred while processing the quantity. Please check the input..!").show();
+        }
+
+
         double price = Double.parseDouble(lblItemPrice.getText());
 
         String CBNo = lblCBN.getText();
         String SupId = cmbSupId.getSelectionModel().getSelectedItem();
         String desc = lblItemName.getText();
-        int qty = Integer.parseInt(txtQty.getText());
+        int qty = Integer.parseInt(qtyV);
         double amount = price * qty;
         String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
         String matID = cmbItemd.getSelectionModel().getSelectedItem();
@@ -240,6 +289,8 @@ public class CashBookController {
             lblItemName.setText(matirialDto.getMatName());
             lblItemPrice.setText(String.valueOf(matirialDto.getMatPrice()));
             lblItemQty.setText(String.valueOf(matirialDto.getMatQty()));
+
+
         }
     }
 
