@@ -27,14 +27,13 @@
       <Label fx:id="date" layoutX="905.0" layoutY="20.0" prefHeight="18.0" prefWidth="109.0" text="Label" />
       <Button layoutX="822.0" layoutY="17.0" mnemonicParsing="false" onAction="#dat" text="Button" />
       <Label fx:id="date1" layoutX="912.0" layoutY="38.0" prefHeight="18.0" prefWidth="94.0" text="date2" />
-      <TableView fx:id="tblCart" layoutX="31.0" layoutY="316.0" prefHeight="362.0" prefWidth="1062.0">
+      <TableView fx:id="tblCshBook" layoutX="31.0" layoutY="316.0" prefHeight="362.0" prefWidth="1062.0">
         <columns>
-            <TableColumn fx:id="colCBNO" prefWidth="75.0" text="CB_No" />
+            <TableColumn fx:id="colCBno" prefWidth="75.0" text="CB_No" />
           <TableColumn fx:id="colSupId" prefWidth="75.0" text="Supplier ID" />
           <TableColumn fx:id="colDate" prefWidth="75.0" text="Date" />
             <TableColumn fx:id="colDese" prefWidth="75.0" text="DESE" />
             <TableColumn fx:id="colQty" prefWidth="75.0" text="Qty" />
-            <TableColumn fx:id="colPrice" prefWidth="75.0" text="Price" />
             <TableColumn fx:id="colAmount" prefWidth="75.0" text="Amount" />
         </columns>
          <columnResizePolicy>

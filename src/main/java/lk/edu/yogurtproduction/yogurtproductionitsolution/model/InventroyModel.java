@@ -25,11 +25,12 @@ public class InventroyModel {
     public boolean saveInvetory(CashBookDto cashBookDto) throws SQLException {
 
         return   CrudUtil.execute(
-                "INSERT INTO Inventory VALUES (?, ?, ?, ?)",
+                "INSERT INTO Inventory VALUES (?, ?, ?, ?, ?)",
                 cashBookDto.getInID(),
                 cashBookDto.getItemType(),
                 cashBookDto.getDesc(),
-                cashBookDto.getQty()
+                cashBookDto.getQty(),
+                cashBookDto.getProd_id()
 
         );
 

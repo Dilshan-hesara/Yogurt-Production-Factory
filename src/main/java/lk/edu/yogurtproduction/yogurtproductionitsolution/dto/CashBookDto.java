@@ -24,8 +24,19 @@ public class CashBookDto {
     private String matID;
     private String inID;
     private String itemType;
+    private String Prod_id;
 
 
+    public CashBookDto(String string, String string1, String string2, String string3, int anInt, double aDouble) {
+        this.CBNo = string;
+        this.SupId = string1;
+        this.date = string2;
+        this.desc = string3;
+        this.qty = anInt;
+        this.amount = aDouble;
+        this.matID = string3;
+        this.inID = string;
+        this.itemType = string;
 
-
+    }
 }

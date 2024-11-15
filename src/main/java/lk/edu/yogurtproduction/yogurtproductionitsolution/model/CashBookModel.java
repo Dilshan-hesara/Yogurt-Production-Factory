@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 
 public class CashBookModel {
@@ -79,6 +80,26 @@ public class CashBookModel {
             return String.format("CBN%03d", newIdIndex);
         }
         return "CBN001";
+
+    }
+
+    public ArrayList<CashBookDto> getAllCustomers() throws SQLException {
+        ResultSet rst = CrudUtil.execute("select * from Cash_book");
+
+        ArrayList<CashBookDto> customerDTOS = new ArrayList<>();
+
+        while (rst.next()) {
+            CashBookDto customerDTO = new CashBookDto(
+                    rst.getString(1),  // Customer ID
+                    rst.getString(2),  // Name
+                    rst.getString(3),  // NIC
+                    rst.getString(4),  // Email
+                    rst.getInt(5),// Phone
+                    rst.getDouble(6)
+            );
+            customerDTOS.add(customerDTO);
+        }
+        return customerDTOS;
 
     }
 }

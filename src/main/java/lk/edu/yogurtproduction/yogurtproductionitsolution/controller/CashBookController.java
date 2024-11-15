@@ -64,7 +64,7 @@ public class CashBookController {
     private TableColumn<String, CashBookTM> colAmount;
 
     @FXML
-    private TableColumn<String, CashBookTM> colCBNO;
+    private TableColumn<String, CashBookTM> colCBno;
 
     @FXML
     private TableColumn<String, CashBookTM> colDate;
@@ -75,19 +75,17 @@ public class CashBookController {
     @FXML
     private TableColumn<String, CashBookTM> colPrice;
 
-    @FXML
-    private TableColumn<String, CashBookTM> colPyMethod;
 
     @FXML
     private TableColumn<String, CashBookTM> colQty;
 
     @FXML
     private TableColumn<String, CashBookTM> colSupId;
-    @FXML
-    private TableView<CashBookTM> tblCart;
 
     @FXML
-    private ObservableList<CashBookTM> cashBookTMS = FXCollections.observableArrayList();
+    private TableView<CashBookTM> tblCshBook;
+
+
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss a");
     private SimpleDateFormat daterun = new SimpleDateFormat("yyyy-MM-dd");
@@ -106,6 +104,7 @@ public class CashBookController {
         loadItemId();
        getAllAmount();
        loadNextCBNOId();
+        LoadTabel();
 
 
 
@@ -122,15 +121,33 @@ public class CashBookController {
     private void setCellValues() {
 
         colAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
-        colCBNO.setCellValueFactory(new PropertyValueFactory<>("CBNo"));
+        colCBno.setCellValueFactory(new PropertyValueFactory<>("CBNo"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         colDese.setCellValueFactory(new PropertyValueFactory<>("desc"));
-        colPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
         colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
         colSupId.setCellValueFactory(new PropertyValueFactory<>("SupId"));
 
     }
+    public void LoadTabel() throws SQLException {
+        ArrayList<CashBookDto> cashBookDtos = cashBookModel.getAllCustomers();
 
+        ObservableList<CashBookTM> cashBookTMS = FXCollections.observableArrayList();
+
+        for (CashBookDto cashBookDto : cashBookDtos) {
+            CashBookTM cashBookTM = new CashBookTM(
+                    cashBookDto.getCBNo(),
+                    cashBookDto.getSupId(),
+                    cashBookDto.getDate(),
+                    cashBookDto.getDesc(),
+                    cashBookDto.getQty(),
+                    cashBookDto.getAmount()
+
+            );
+            cashBookTMS.add(cashBookTM);
+        }
+        tblCshBook.setItems(cashBookTMS);
+
+    }
     @FXML
     private TextField txtCashBookID;
 
@@ -152,7 +169,8 @@ public class CashBookController {
         String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
         String matID = cmbItemd.getSelectionModel().getSelectedItem();
         String inID = invID;
-        String itemType = "SF";
+        String itemType = "Raw";
+        String Prod_id =  "----";
 
 
 
@@ -165,7 +183,8 @@ public class CashBookController {
                 amount,
                 matID,
                 inID,
-                itemType
+                itemType,
+                Prod_id
         );
 
         boolean isSaved = cashBookModel.saveResept(cashBookDtos);
@@ -234,6 +253,7 @@ public class CashBookController {
         }
 
     }
+
 
 
 
