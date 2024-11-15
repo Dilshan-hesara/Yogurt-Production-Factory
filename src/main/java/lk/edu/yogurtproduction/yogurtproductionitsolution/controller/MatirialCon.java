@@ -15,7 +15,6 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatiralMoadel;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class MatirialCon implements Initializable {
@@ -143,10 +142,73 @@ matTable.setItems(matirialTMS);
 
     @FXML
     void btnSave(ActionEvent event) throws SQLException {
+
+        String selectedMat = cmbMatName.getValue();
+
+        if (selectedMat == null) {
+            new Alert(Alert.AlertType.ERROR, "Please select Matireal..!").show();
+            return;
+        }
+
+        String qtyValida = txtQuantity.getText().trim();
+        String qtyPattern = "^[0-9]+$";
+
+        if (qtyValida.isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "quantity cannot be empty..!").show();
+            return;
+        }
+
+        if (!qtyValida.matches(qtyPattern)) {
+            new Alert(Alert.AlertType.ERROR, "Please enter a valid numeric quantity..!").show();
+            return;
+        }
+
+        try {
+            int qtyr = Integer.parseInt(qtyValida);
+
+            if (qtyr == 0) {
+                new Alert(Alert.AlertType.ERROR, "quantity cannot be zero..!").show();
+                return;
+            }
+
+
+
+        } catch (NumberFormatException e) {
+            new Alert(Alert.AlertType.ERROR, "An error occurred while processing the quantity. Please check the input..!").show();
+        }
+
+        String priceVali = String.valueOf(txtPrice.getText());
+        String pricePattern = "^[0-9]+$";
+
+        if (priceVali.isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "price cannot be empty..!").show();
+            return;
+        }
+
+        if (!priceVali.matches(pricePattern)) {
+            new Alert(Alert.AlertType.ERROR, "Please enter a valid numeric ..!").show();
+            return;
+        }
+
+        try {
+            int price = Integer.parseInt(priceVali);
+
+
+            if (price == 0) {
+                new Alert(Alert.AlertType.ERROR, "price cannot be zero..!").show();
+                return;
+            }
+
+
+
+        } catch (NumberFormatException e) {
+            new Alert(Alert.AlertType.ERROR, "Please check the input..!").show();
+        }
+
         String matrId = lblItId.getText();
         String name = cmbMatName.getSelectionModel().getSelectedItem();
-        int qty = Integer.parseInt(txtQuantity.getText());
-        int price = Integer.parseInt(txtPrice.getText());
+        int qty = Integer.parseInt(qtyValida);
+        int price = Integer.parseInt(priceVali);
 
 
             MatirialDto matirialDto = new MatirialDto(
