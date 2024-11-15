@@ -21,17 +21,17 @@ import java.util.ResourceBundle;
 public class MatirialCon implements Initializable {
 
 
-    @FXML
-    private Button btnDelete;
-
-    @FXML
-    private Button btnReset;
-
-    @FXML
-    private Button btnSavem;
-
-    @FXML
-    private Button btnUpdate;
+//    @FXML
+//    private Button btnDelete;
+//
+//    @FXML
+//    private Button btnReset;
+//
+//    @FXML
+//    private Button btnSavem;
+//
+//    @FXML
+//    private Button btnUpdate;
 
     @FXML
     private Label lblItId;
@@ -81,8 +81,6 @@ public class MatirialCon implements Initializable {
             loadNextMatId();
             loadTable();
             loadcmbMat();
-            btnDelete.setDisable(true);
-            btnUpdate.setDisable(true);
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -118,28 +116,28 @@ public class MatirialCon implements Initializable {
 matTable.setItems(matirialTMS);
 
     }
-    @FXML
-    void btnDelete(ActionEvent event) throws SQLException {
-
-
-        MatirialTM matirialTM = matTable.getSelectionModel().getSelectedItem();
-
-        String matId = matirialTM.getMatId();
-
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES, ButtonType.NO);
-        Optional<ButtonType> optionalButtonType = alert.showAndWait();
-
-        if (optionalButtonType.isPresent() && optionalButtonType.get() == ButtonType.YES) {
-
-            boolean isDeleted = matiralMoadel.deleteMatirial (matId);
-            if (isDeleted) {
-                loadTable();
-                new Alert(Alert.AlertType.INFORMATION, "Matirial deleted...!").show();
-            } else {
-                new Alert(Alert.AlertType.ERROR, "Fail to delete Matirial...!").show();
-            }
-        }
-    }
+//    @FXML
+//    void btnDelete(ActionEvent event) throws SQLException {
+//
+//
+//        MatirialTM matirialTM = matTable.getSelectionModel().getSelectedItem();
+//
+//        String matId = matirialTM.getMatId();
+//
+//        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES, ButtonType.NO);
+//        Optional<ButtonType> optionalButtonType = alert.showAndWait();
+//
+//        if (optionalButtonType.isPresent() && optionalButtonType.get() == ButtonType.YES) {
+//
+//            boolean isDeleted = matiralMoadel.deleteMatirial (matId);
+//            if (isDeleted) {
+//                loadTable();
+//                new Alert(Alert.AlertType.INFORMATION, "Matirial deleted...!").show();
+//            } else {
+//                new Alert(Alert.AlertType.ERROR, "Fail to delete Matirial...!").show();
+//            }
+//        }
+//    }
 
 
 
@@ -171,51 +169,58 @@ matTable.setItems(matirialTMS);
         }
 
 
+//    @FXML
+//    void btnUpdate(ActionEvent event) throws SQLException {
+//
+//        MatirialTM matirialTM = matTable.getSelectionModel().getSelectedItem();
+//        String matId = matirialTM.getMatId();
+//
+//        String matrId = lblItId.getText();
+//        String name = txtName.getText();
+//        int qty = Integer.parseInt(txtQuantity.getText());
+//        int price = Integer.parseInt(txtPrice.getText());
+//
+//
+//        MatirialDto matirialDto = new MatirialDto(
+//                matrId,
+//                name,
+//                qty,
+//                price
+//        );
+//
+//        boolean isUpdate = matiralMoadel.updateMatirial(matirialDto);
+//        if (isUpdate) {
+//
+//            new Alert(Alert.AlertType.INFORMATION, "Matitrial update...!").show();
+//        } else {
+//            new Alert(Alert.AlertType.ERROR, "Fail to update matitrial...!").show();
+//        }
+//    }
+//
+//    @FXML
+//    void btnReset(ActionEvent event) {
+//        reset();
+//    }
+//
+//    void reset(){
+//        btnSavem.setDisable(false);
+//        btnDelete.setDisable(true);
+//        btnUpdate.setDisable(true);
+//
+//
+//    }
+//
+//    public void tbleClick(MouseEvent mouseEvent) {
+//
+//    btnSavem.setDisable(true);
+//        btnDelete.setDisable(false);
+//        btnUpdate.setDisable(false);
+//    }
+
+
+
     @FXML
-    void btnUpdate(ActionEvent event) throws SQLException {
+    void tbleClick(MouseEvent event) {
 
-        MatirialTM matirialTM = matTable.getSelectionModel().getSelectedItem();
-        String matId = matirialTM.getMatId();
-
-        String matrId = lblItId.getText();
-        String name = txtName.getText();
-        int qty = Integer.parseInt(txtQuantity.getText());
-        int price = Integer.parseInt(txtPrice.getText());
-
-
-        MatirialDto matirialDto = new MatirialDto(
-                matrId,
-                name,
-                qty,
-                price
-        );
-
-        boolean isUpdate = matiralMoadel.updateMatirial(matirialDto);
-        if (isUpdate) {
-
-            new Alert(Alert.AlertType.INFORMATION, "Matitrial update...!").show();
-        } else {
-            new Alert(Alert.AlertType.ERROR, "Fail to update matitrial...!").show();
-        }
-    }
-
-    @FXML
-    void btnReset(ActionEvent event) {
-        reset();
-    }
-
-    void reset(){
-        btnSavem.setDisable(false);
-        btnDelete.setDisable(true);
-        btnUpdate.setDisable(true);
-
-
-    }
-
-    public void tbleClick(MouseEvent mouseEvent) {
-
-    btnSavem.setDisable(true);
-        btnDelete.setDisable(false);
-        btnUpdate.setDisable(false);
     }
 }
