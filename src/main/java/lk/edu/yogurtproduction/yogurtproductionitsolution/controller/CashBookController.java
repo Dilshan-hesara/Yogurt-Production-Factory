@@ -179,7 +179,7 @@ public class CashBookController {
         String qtyPattern = "^[0-9]+$";
 
         if (qtyV.isEmpty() || avQText.isEmpty()) {
-            new Alert(Alert.AlertType.ERROR, "Requested or available quantity cannot be empty..!").show();
+            new Alert(Alert.AlertType.ERROR, "quantity cannot be empty..!").show();
             return;
         }
 
@@ -193,7 +193,7 @@ public class CashBookController {
             int avQ = Integer.parseInt(avQText);
 
             if (qtyr == 0) {
-                new Alert(Alert.AlertType.ERROR, "Requested quantity cannot be zero..!").show();
+                new Alert(Alert.AlertType.ERROR, "quantity cannot be zero..!").show();
                 return;
             }
 
