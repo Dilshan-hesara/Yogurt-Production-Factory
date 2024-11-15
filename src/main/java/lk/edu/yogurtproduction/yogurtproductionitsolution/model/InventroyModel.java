@@ -4,9 +4,11 @@ import java.sql.SQLException;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CashBookDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.PckingDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.InventryTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class InventroyModel {
 
@@ -102,6 +104,27 @@ public class InventroyModel {
             return 0;
         }
     }
+
+    public ArrayList<InventryTM> getAlldata() throws SQLException {
+
+        ResultSet rst = CrudUtil.execute("SELECT In_ID, Item_Type, Item_Description, Qty, Prod_ID FROM inventory");
+
+        ArrayList<InventryTM> inventoryList = new ArrayList<>();
+
+        while (rst.next()) {
+            String id = rst.getString("In_ID");
+            String itemType = rst.getString("Item_Type");
+            String itemDescription = rst.getString("Item_Description");
+            String qty = rst.getString("Qty");
+            String prodId = rst.getString("Prod_ID");
+
+            InventryTM inventryTM = new InventryTM(id, itemType, itemDescription, qty, prodId);
+            inventoryList.add(inventryTM);
+        }
+
+        return inventoryList;
+    }
+
 
 }
 

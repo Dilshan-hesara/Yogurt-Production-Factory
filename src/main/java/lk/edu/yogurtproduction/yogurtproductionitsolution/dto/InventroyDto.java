@@ -10,9 +10,11 @@ import lombok.*;
 
 public class InventroyDto {
 
-    private String In_ID;
-    private String Item_Type;
-    private String Item_Description;
-    private int Qty;
+    private String id;
+    private String itemType;
+    private String itemDescription;
+    private String qty;
+    private String prodId;
+
 
 }
