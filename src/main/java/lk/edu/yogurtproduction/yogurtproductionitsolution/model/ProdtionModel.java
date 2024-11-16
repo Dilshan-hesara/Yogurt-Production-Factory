@@ -41,11 +41,12 @@ public class ProdtionModel {
             );
             if (isProdtSaved) {
                 System.out.println("dev");
+
                 boolean isInvetriyUpdated = inventoryModel.saveUpdated(prodtionDto);
                 if (isInvetriyUpdated) {
 
 
-                boolean isUpdateInverorySaved = inventoryModel.redusqtyOnInventroy(prodtionDto);
+                    boolean isUpdateInverorySaved = inventoryModel.redusqtyOnInventroy(prodtionDto);
                if (isUpdateInverorySaved) {
                    connection.commit();
                    return true;
@@ -53,6 +54,16 @@ public class ProdtionModel {
                }
 
                 }
+//
+//
+//                boolean isUpdateInverorySaved = inventoryModel.redusqtyOnInventroy(prodtionDto);
+//               if (isUpdateInverorySaved) {
+//                   connection.commit();
+//                   return true;
+//
+//               }
+//
+//                }
             }
             connection.rollback();
             return false;
