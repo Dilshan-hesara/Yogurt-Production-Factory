@@ -1,6 +1,5 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdMixDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
 
@@ -49,6 +48,26 @@ public class ProdMixModel {
             );
         }
         return null;
+
+    }
+
+    public ArrayList<ProdMixDto> getAllInventoryData() throws SQLException {
+
+        ResultSet rst = CrudUtil.execute("select * from production_mix_recip");
+
+        ArrayList<ProdMixDto> prodMixDTOS = new ArrayList<>();
+
+        while (rst.next()) {
+            ProdMixDto prodMixDTO = new ProdMixDto(
+                    rst.getString(1),
+                    rst.getInt(2),
+                    rst.getInt(3),
+                    rst.getInt(4)
+            );
+            prodMixDTOS.add(prodMixDTO);
+        }
+        return prodMixDTOS;
+
 
     }
 }
