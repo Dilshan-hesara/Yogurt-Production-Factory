@@ -123,6 +123,26 @@ public class InventroyModel {
         );
     }
 
+    public ArrayList<InventroyDto> getAllInventoryData() throws SQLException {
+        ResultSet rst = CrudUtil.execute("select * from inventory");
+
+        ArrayList<InventroyDto> inventroyDTOS = new ArrayList<>();
+
+        while (rst.next()) {
+            InventroyDto inventroyDTO = new InventroyDto(
+                    rst.getString(1),
+                    rst.getString(2),
+                    rst.getString(3),
+                    rst.getString(4),
+                    rst.getString(5)
+            );
+            inventroyDTOS.add(inventroyDTO);
+        }
+        return inventroyDTOS;
+
+
+    }
+
     /*  // Iterate through each order detail in the list
         for (OrderDetailsDto orderDetailsDTO : orderDetailsDTOS) {
             // @isOrderDetailsSaved: Saves the individual order detail
