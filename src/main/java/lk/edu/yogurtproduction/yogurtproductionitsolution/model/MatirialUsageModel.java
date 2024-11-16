@@ -56,6 +56,25 @@ public class MatirialUsageModel {
         }
         return "MATU001";
         }
+
+    public ArrayList<MatirialUsageDto> getAllMatUsageData() throws SQLException {
+        ResultSet rst = CrudUtil.execute("select * from material_usage");
+
+        ArrayList<MatirialUsageDto> matirialUsageDTOS = new ArrayList<>();
+
+        while (rst.next()) {
+            MatirialUsageDto matirialUsageDTO = new MatirialUsageDto(
+                    rst.getString(1),
+                    rst.getString(2),
+                    rst.getString(3),
+                    rst.getString(4),
+                    rst.getString(5)
+            );
+            matirialUsageDTOS.add(matirialUsageDTO);
+        }
+        return matirialUsageDTOS;
+
+    }
 //
 
 
