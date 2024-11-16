@@ -49,6 +49,7 @@ public class PackingCon {
     private ComboBox<String> cmbPacType;
 
 
+
     public  void initialize() throws SQLException {
         loadProdtId();
         loadEmpId();
