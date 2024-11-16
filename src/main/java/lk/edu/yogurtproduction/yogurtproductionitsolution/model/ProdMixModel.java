@@ -23,7 +23,7 @@ public class ProdMixModel {
 
     public ArrayList<String> getAllProdName() throws SQLException {
 
-        ResultSet rst = CrudUtil.execute("SELECT Prod_Name FROM production_mix_recip");
+        ResultSet rst = CrudUtil.execute("select Prod_Name from production_mix_recip");
 
         ArrayList<String> prodtName = new ArrayList<>();
 
@@ -84,7 +84,5 @@ public class ProdMixModel {
     public boolean deleteRecipe(String prodName) throws SQLException {
         return CrudUtil.execute("delete from production_mix_recip where Prod_Name = ?", prodName);
     }
-
-
 
 }

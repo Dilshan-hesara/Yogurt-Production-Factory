@@ -297,7 +297,6 @@ public class ProdMixController implements Initializable {
         recipBtn.setDisable(false);
         updateBtn.setDisable(true);
         deleteButt.setDisable(true);
-
         cleField();
     }
 
