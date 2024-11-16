@@ -69,8 +69,9 @@ create table Production(
 create table Material_Usage(
     MatUs_ID varchar(20)primary key,
     Prod_ID varchar(50),
-    Mat_Name varchar(100),
-    Usage_Quantity DECIMAL(10,2),
+    Mat_Milk varchar(100),
+    Mat_Suguer varchar(100),
+    Mat_Gelatin varchar(100),
     foreign key (Prod_ID) references Production(Prod_ID)
 
 );
