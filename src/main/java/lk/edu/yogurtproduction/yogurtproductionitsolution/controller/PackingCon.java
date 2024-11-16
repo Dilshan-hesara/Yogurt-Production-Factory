@@ -6,10 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.InventroyDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.PckingDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.*;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.*;
 
 import java.sql.SQLException;
@@ -65,6 +62,7 @@ PackingModel packingModel = new PackingModel();
     void btnAddStock(ActionEvent event) throws SQLException {
 
         ArrayList<InventroyDto> inventroyDTOS = new ArrayList<>();
+        ArrayList<StockDto> stockDTOS = new ArrayList<>();
 
 
         String Pac_ID = lblPacID.getText();
@@ -78,9 +76,24 @@ PackingModel packingModel = new PackingModel();
          double RedusQty = Qty * PacTypes;
       //   String itemType = "END Prodt";
      //    String InID = invID;
-         String StID = stID;
 
 
+        String Stock_ID = stID;
+        String stockDescription =desetxt.getText() +"-"+" "+ Qty +"x"+Pac_Type ;;
+
+        StockDto stockDTO  = new StockDto(
+
+                Stock_ID,
+                Pac_ID,
+                stockDescription,
+                Qty,
+                Pac_Date,
+                Expire_Date,
+                Pac_Type
+
+
+        );
+        stockDTOS.add(stockDTO);
 
 
         String InID = invID;
@@ -111,8 +124,8 @@ PackingModel packingModel = new PackingModel();
                 Qty,
                 Emp_ID,
                 RedusQty,
-                StID,
-                inventroyDTOS
+                inventroyDTOS,
+                stockDTOS
         );
         boolean isSaved = packingModel.savePacking(pckingDtos);
         if (isSaved) {

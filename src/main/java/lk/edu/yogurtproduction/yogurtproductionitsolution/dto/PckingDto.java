@@ -21,8 +21,10 @@ public class PckingDto {
     private  String Emp_ID;
     private double RedusQty;
 
-    private String StID;
+
+
 
     private ArrayList<InventroyDto> inventroyDTOS;
+    private ArrayList<StockDto> stockDTOS;
 
 }
