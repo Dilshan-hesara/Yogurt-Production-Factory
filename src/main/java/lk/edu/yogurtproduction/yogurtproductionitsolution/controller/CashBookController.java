@@ -310,7 +310,7 @@ public class CashBookController {
 
         loadSupplierId();
         loadItemId();
-      //  getAllAmount();
+        getAllAmount();
         loadNextCBNOId();
         //LoadTabel();
         loadNextInventryId();
