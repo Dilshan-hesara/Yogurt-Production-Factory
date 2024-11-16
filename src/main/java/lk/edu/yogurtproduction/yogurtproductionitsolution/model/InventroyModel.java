@@ -1,10 +1,9 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 import java.sql.SQLException;
 
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CashBookDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.InventroyDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.PckingDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.InventryTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
 
 import java.sql.ResultSet;
@@ -25,19 +24,6 @@ public class InventroyModel {
         return "INV001";
     }
 
-    public boolean saveInvetory(CashBookDto cashBookDto) throws SQLException {
-
-        return   CrudUtil.execute(
-                "INSERT INTO Inventory VALUES (?, ?, ?, ?, ?)",
-                cashBookDto.getInID(),
-                cashBookDto.getItemType(),
-                cashBookDto.getDesc(),
-                cashBookDto.getQty(),
-                cashBookDto.getProd_id()
-
-        );
-
-    }
 
     public boolean redusqtyOnInventroy(ProdtionDto prodtionDto) throws SQLException {
 
@@ -107,8 +93,66 @@ public class InventroyModel {
     }
 
 
+    public boolean saveInvetory(ArrayList<InventroyDto> inventroyDTOS) throws SQLException {
+        for (InventroyDto inventroyDTO : inventroyDTOS) {
+            boolean isSaved = savedInventory(inventroyDTO);
 
+            if (!isSaved) {
+                return false;
+            }
+        }
+//
+//        boolean isMatirealUpdated = materialModel.updatedMatirialReduceQty(cashBookDto);
+//        if (isMatirealUpdated) {
+//
+//      return false;
+//
+//
+//        }
+        return true;
+    }
 
+    private boolean savedInventory(InventroyDto inventroyDTO) throws SQLException {
+
+        return CrudUtil.execute(
+                "insert into inventory values (?,?,?,?,?)",
+                inventroyDTO.getId(),
+                inventroyDTO.getItemType(),
+                inventroyDTO.getItemDescription(),
+                inventroyDTO.getQty(),
+                inventroyDTO.getProdId()
+        );
+    }
+
+    /*  // Iterate through each order detail in the list
+        for (OrderDetailsDto orderDetailsDTO : orderDetailsDTOS) {
+            // @isOrderDetailsSaved: Saves the individual order detail
+            boolean isOrderDetailsSaved = saveOrderDetail(orderDetailsDTO);
+            if (!isOrderDetailsSaved) {
+                // Return false if saving any order detail fails
+                return false;
+            }
+
+            // @isItemUpdated: Updates the item quantity in the stock for the corresponding order detail
+            boolean isItemUpdated = itemModel.reduceQuantity(orderDetailsDTO);
+            if (!isItemUpdated) {
+                // Return false if updating the item quantity fails
+                return false;
+            }
+        }
+        // Return true if all order details are saved and item quantities updated successfully
+        return true;
+    }
+    private boolean saveOrderDetail(OrderDetailsDto orderDetailsDTO) throws SQLException {
+        // Executes an insert query to save the order detail into the database
+        return CrudUtil.execute(
+                "insert into orderdetails values (?,?,?,?)",
+                orderDetailsDTO.getOrderId(),
+                orderDetailsDTO.getItemId(),
+                orderDetailsDTO.getQuantity(),
+                orderDetailsDTO.getPrice()
+        );
+    }*/
 }
 
 

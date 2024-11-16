@@ -35,16 +35,14 @@ public class CashBookModel {
 
             if (isRecpSaved) {
                 System.out.println("sdf");
-                connection.commit();
-                return true;
-//                      return true;
-//                 boolean isInventroyUpdated = inventoryModel.saveInvetory(cashBookDto.getInventroyDTOS());
-//                  if (isInventroyUpdated) {
-//                      connection.commit();
-//                      return true;
-//
-//
-//                      }
+
+                 boolean isInventroyUpdated = inventoryModel.saveInvetory(cashBookDto.getInventroyDTOS());
+                  if (isInventroyUpdated) {
+                      connection.commit();
+                      return true;
+
+
+                      }
 
                   }
 
