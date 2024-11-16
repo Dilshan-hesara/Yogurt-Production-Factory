@@ -15,12 +15,11 @@ public class ProdtionDto {
     private String Pro_Name;
     private double Prod_Qty;
     private String Prod_Name;
-    private int P_milk;
-    private int p_suguer;
-    private int p_jeley;
 
 
     private ArrayList<InventroyDto> inventroyDTOS;
+    private ArrayList<ProdMixDto> prodMixDTOS;
+
 
 
     public ProdtionDto(String prodID, String proName, double qty, String prodName) {

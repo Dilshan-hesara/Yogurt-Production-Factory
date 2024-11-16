@@ -46,7 +46,7 @@ public class ProdtionModel {
                 if (isInvetriyUpdated) {
 
 
-                    boolean isUpdateInverorySaved = inventoryModel.redusqtyOnInventroy(prodtionDto);
+                    boolean isUpdateInverorySaved = inventoryModel.redusqtyOnInventroyOnItems(prodtionDto.getProdMixDTOS());
                if (isUpdateInverorySaved) {
                    connection.commit();
                    return true;

@@ -69,6 +69,8 @@ ProdMixModel prodMix = new ProdMixModel();
     @FXML
     void btnAddPro(ActionEvent event) throws SQLException {
         ArrayList<InventroyDto> inventroyDTOS = new ArrayList<>();
+        ArrayList<ProdMixDto> prodMixDTOS = new ArrayList<>();
+
 
         String Prod_ID =     lblProdID.getText();
         String Prod_Name = cmbProdt.getSelectionModel().getSelectedItem();
@@ -77,6 +79,18 @@ ProdMixModel prodMix = new ProdMixModel();
          int P_milk = (int) (milk * Prod_Qty);
          int p_suguer = (int) (suguer * Prod_Qty);
          int p_jeley = (int) (jeley * Prod_Qty);
+         String prodName = "prodtionResipi";
+
+         ProdMixDto prodMixDTO  = new ProdMixDto(
+                  prodName,
+                 P_milk,
+                 p_suguer,
+                 p_jeley
+
+
+        );
+        prodMixDTOS.add(prodMixDTO);
+
 
          String InID = invID;
         String itemType = "UN Packed";
@@ -93,7 +107,6 @@ ProdMixModel prodMix = new ProdMixModel();
 
 
         );
-
         inventroyDTOS.add(inventroyDTO);
 
         ProdtionDto prodtionDto = new ProdtionDto(
@@ -101,10 +114,8 @@ ProdMixModel prodMix = new ProdMixModel();
                 Pro_Name,
                 Prod_Qty,
                 Prod_Name,
-                P_milk,
-                p_suguer,
-                p_jeley,
-                inventroyDTOS
+                inventroyDTOS,
+                prodMixDTOS
 
         );
         boolean isSaved = model.saveProdt(prodtionDto);

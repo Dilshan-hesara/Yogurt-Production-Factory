@@ -3,6 +3,7 @@ import java.sql.SQLException;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.InventroyDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.PckingDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdMixDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
 
@@ -23,20 +24,20 @@ public class InventroyModel {
         return "INV001";
     }
 
-
-    public boolean redusqtyOnInventroy(ProdtionDto prodtionDto) throws SQLException {
-
-
-        boolean milkUpdated = CrudUtil.execute("UPDATE inventory i JOIN (SELECT In_ID FROM inventory WHERE Item_Description = 'Milk' AND Qty > 0 LIMIT 1) subquery ON i.In_ID = subquery.In_ID SET i.Qty = i.Qty - ?", prodtionDto.getP_milk());
-        boolean gelatinUpdated = CrudUtil.execute("UPDATE inventory i JOIN (SELECT In_ID FROM inventory WHERE Item_Description = 'Gelat' AND Qty > 0 LIMIT 1) subquery ON i.In_ID = subquery.In_ID SET i.Qty = i.Qty - ?", prodtionDto.getP_jeley());
-        boolean sugarUpdated = CrudUtil.execute("UPDATE inventory i JOIN (SELECT In_ID FROM inventory WHERE Item_Description = 'Sugar' AND Qty > 0 LIMIT 1) subquery ON i.In_ID = subquery.In_ID SET i.Qty = i.Qty - ?", prodtionDto.getP_suguer());
-
-        if (milkUpdated && gelatinUpdated && sugarUpdated) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+//
+//    public boolean redusqtyOnInventroy(ProdtionDto prodtionDto) throws SQLException {
+//
+//
+//        boolean milkUpdated = CrudUtil.execute("UPDATE inventory i JOIN (SELECT In_ID FROM inventory WHERE Item_Description = 'Milk' AND Qty > 0 LIMIT 1) subquery ON i.In_ID = subquery.In_ID SET i.Qty = i.Qty - ?", prodtionDto.getP_milk());
+//        boolean gelatinUpdated = CrudUtil.execute("UPDATE inventory i JOIN (SELECT In_ID FROM inventory WHERE Item_Description = 'Gelat' AND Qty > 0 LIMIT 1) subquery ON i.In_ID = subquery.In_ID SET i.Qty = i.Qty - ?", prodtionDto.getP_jeley());
+//        boolean sugarUpdated = CrudUtil.execute("UPDATE inventory i JOIN (SELECT In_ID FROM inventory WHERE Item_Description = 'Sugar' AND Qty > 0 LIMIT 1) subquery ON i.In_ID = subquery.In_ID SET i.Qty = i.Qty - ?", prodtionDto.getP_suguer());
+//
+//        if (milkUpdated && gelatinUpdated && sugarUpdated) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 
 
     public boolean saveInvetoryPack(PckingDto pckingDtos) throws SQLException {
@@ -140,6 +141,41 @@ public class InventroyModel {
         }
         return inventroyDTOS;
 
+
+    }
+
+    public boolean redusqtyOnInventroyOnItems(ArrayList<ProdMixDto> prodMixDTOS) throws SQLException {
+
+        for (ProdMixDto prodMixDTO : prodMixDTOS) {
+            boolean isSaved = savedInventoryOnItemRedu(prodMixDTO);
+
+            if (!isSaved) {
+                return false;
+            }
+        }
+//
+//        boolean isMatirealUpdated = materialModel.updatedMatirialReduceQty(cashBookDto);
+//        if (isMatirealUpdated) {
+//
+//      return false;
+//
+//
+//        }
+        return true;
+
+    }
+
+    private boolean savedInventoryOnItemRedu(ProdMixDto prodMixDTO) throws SQLException {
+
+        boolean milkUpdated = CrudUtil.execute("UPDATE inventory i JOIN (SELECT In_ID FROM inventory WHERE Item_Description = 'Milk' AND Qty > 0 LIMIT 1) subquery ON i.In_ID = subquery.In_ID SET i.Qty = i.Qty - ?", prodMixDTO.getMilk());
+        boolean gelatinUpdated = CrudUtil.execute("UPDATE inventory i JOIN (SELECT In_ID FROM inventory WHERE Item_Description = 'Gelat' AND Qty > 0 LIMIT 1) subquery ON i.In_ID = subquery.In_ID SET i.Qty = i.Qty - ?", prodMixDTO.getJeliy());
+        boolean sugarUpdated = CrudUtil.execute("UPDATE inventory i JOIN (SELECT In_ID FROM inventory WHERE Item_Description = 'Sugar' AND Qty > 0 LIMIT 1) subquery ON i.In_ID = subquery.In_ID SET i.Qty = i.Qty - ?", prodMixDTO.getSuguer());
+
+        if (milkUpdated && gelatinUpdated && sugarUpdated) {
+            return true;
+        } else {
+            return false;
+        }
 
     }
 
