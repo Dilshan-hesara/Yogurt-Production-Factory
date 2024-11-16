@@ -19,6 +19,8 @@ public class ProdtionDto {
 
     private ArrayList<InventroyDto> inventroyDTOS;
     private ArrayList<ProdMixDto> prodMixDTOS;
+    private ArrayList<MatirialUsageDto> matirialUsageDTOS;
+
 
 
 

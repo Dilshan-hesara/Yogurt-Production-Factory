@@ -25,7 +25,8 @@ public class ProdtionModel {
         }
         return  "P001";
     }
-    MatirialUsageModel matModel = new MatirialUsageModel();
+    MatirialUsageModel matirialUsageModel = new MatirialUsageModel();
+
     public boolean saveProdt(ProdtionDto prodtionDto) throws SQLException {
 
         Connection connection = DBConnection.getInstance().getConnection();
@@ -48,8 +49,13 @@ public class ProdtionModel {
 
                     boolean isUpdateInverorySaved = inventoryModel.redusqtyOnInventroyOnItems(prodtionDto.getProdMixDTOS());
                if (isUpdateInverorySaved) {
-                   connection.commit();
-                   return true;
+                   boolean isMatUsageSaved = matirialUsageModel.saveMatUage(prodtionDto.getMatirialUsageDTOS());
+                   if (isMatUsageSaved) {
+                       connection.commit();
+                       return true;
+                   }
+
+
 
                }
 

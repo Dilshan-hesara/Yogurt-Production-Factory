@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.InventroyDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialUsageDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdMixDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.InventroyModel;
@@ -98,6 +99,8 @@ ProdMixModel prodMix = new ProdMixModel();
     void btnAddPro(ActionEvent event) throws SQLException {
         ArrayList<InventroyDto> inventroyDTOS = new ArrayList<>();
         ArrayList<ProdMixDto> prodMixDTOS = new ArrayList<>();
+        ArrayList<MatirialUsageDto> matirialUsageDTOS = new ArrayList<>();
+
 
 
         String Prod_ID =     lblProdID.getText();
@@ -108,6 +111,25 @@ ProdMixModel prodMix = new ProdMixModel();
          int p_suguer = (int) (suguer * Prod_Qty);
          int p_jeley = (int) (jeley * Prod_Qty);
          String prodName = "prodtionResipi";
+
+         String MatUs_ID = "MATU001";
+         String Mat_Milk = String.valueOf(P_milk);
+         String Mat_Suguer = String.valueOf(p_suguer);
+         String Mat_Gelatin = String.valueOf(p_jeley);
+
+
+
+        MatirialUsageDto matirialUsageDTO  = new MatirialUsageDto(
+
+                     MatUs_ID,
+                     Prod_ID,
+                     Mat_Milk,
+                     Mat_Suguer,
+                     Mat_Gelatin
+
+
+        );
+        matirialUsageDTOS.add(matirialUsageDTO);
 
          ProdMixDto prodMixDTO  = new ProdMixDto(
                   prodName,
@@ -143,7 +165,8 @@ ProdMixModel prodMix = new ProdMixModel();
                 Prod_Qty,
                 Prod_Name,
                 inventroyDTOS,
-                prodMixDTOS
+                prodMixDTOS,
+                matirialUsageDTOS
 
         );
         boolean isSaved = model.saveProdt(prodtionDto);
