@@ -38,9 +38,16 @@ public class CashBookModel {
 
                  boolean isInventroyUpdated = inventoryModel.saveInvetory(cashBookDto.getInventroyDTOS());
                   if (isInventroyUpdated) {
-                      connection.commit();
-                      return true;
 
+        boolean isMatirealUpdated = materialModel.updatedMatirialReduceQty(cashBookDto);
+        if (isMatirealUpdated) {
+            connection.commit();
+
+
+      return true;
+
+
+        }
 
                       }
 
