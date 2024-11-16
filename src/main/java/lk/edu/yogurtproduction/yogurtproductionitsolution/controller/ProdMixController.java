@@ -65,29 +65,72 @@ public class ProdMixController implements Initializable {
 
     ProdMixModel prodMixModel = new ProdMixModel();
 
+
     @FXML
-    void btnAddProd(ActionEvent event) throws SQLException {
-        String prodName = txtProdName.getText() + "-"+"Recipe";
-        int suguer = Integer.parseInt(txtSugur.getText());
-        int jeliy = Integer.parseInt(txtJeliy.getText());
-        int milk = Integer.parseInt(txtMilk.getText());
+    void btnAddProd(ActionEvent event) {
 
-        ProdMixDto prodMixDto  = new ProdMixDto(
-                prodName,
-                suguer,
-                jeliy,
-                milk
-        );
+        String prodName = txtProdName.getText().trim() + "-Recipe";
+        String suguerText = txtSugur.getText().trim();
+        String jeliyText = txtJeliy.getText().trim();
+        String milkText = txtMilk.getText().trim();
 
-        boolean isSaved = prodMixModel.saveProdtMaix(prodMixDto);
-        if (isSaved) {
-            loadTble();
 
-            new Alert(Alert.AlertType.INFORMATION, " saved...!").show();
-        } else {
-            new Alert(Alert.AlertType.ERROR, "Fail to save ...!").show();
+        if (!validateInputs(prodName, suguerText, jeliyText, milkText)) {
+            return;
+        }
+
+        try {
+
+            int suguer = Integer.parseInt(suguerText);
+            int jeliy = Integer.parseInt(jeliyText);
+            int milk = Integer.parseInt(milkText);
+
+
+            ProdMixDto prodMixDto = new ProdMixDto(prodName, suguer, jeliy, milk);
+
+
+            boolean isSaved = prodMixModel.saveProdtMaix(prodMixDto);
+
+
+            if (isSaved) {
+                loadTble();
+                cleField();
+                new Alert(Alert.AlertType.INFORMATION, "Product mix saved successfully!").show();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Failed to save the product mix.").show();
+            }
+        } catch (NumberFormatException e) {
+            new Alert(Alert.AlertType.ERROR, "Quantities must be valid integers.").show();
+        } catch (SQLException e) {
+            new Alert(Alert.AlertType.ERROR, "A database error occurred: " + e.getMessage()).show();
         }
     }
+
+    private boolean validateInputs(String prodName, String suguerText, String jeliyText, String milkText) {
+        if (prodName.isEmpty() || suguerText.isEmpty() || jeliyText.isEmpty() || milkText.isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "All fields must be filled!").show();
+            return false;
+        }
+
+
+        try {
+            int suguer = Integer.parseInt(suguerText);
+            int jeliy = Integer.parseInt(jeliyText);
+            int milk = Integer.parseInt(milkText);
+
+            if (suguer <= 0 || jeliy <= 0 || milk <= 0) {
+                new Alert(Alert.AlertType.ERROR, "Quantities must be positive integers!").show();
+                return false;
+            }
+        } catch (NumberFormatException e) {
+
+            new Alert(Alert.AlertType.ERROR, "Quantities must be valid integers!").show();
+            return false;
+        }
+
+        return true;
+    }
+
 
 
     @Override
@@ -222,14 +265,6 @@ public class ProdMixController implements Initializable {
         if (result.isPresent() && result.get() == ButtonType.YES) {
             try {
 
-                boolean isUsed = prodMixModel.isRecipeUsedInProductions(selectedRecipe.getProdName());
-
-                if (isUsed) {
-                    new Alert(Alert.AlertType.ERROR,
-                            "This recipe is used in productions and cannot be deleted.").show();
-                    return;
-                }
-
                 boolean isDeleted = prodMixModel.deleteRecipe(selectedRecipe.getProdName());
 
                 if (isDeleted) {
@@ -241,9 +276,15 @@ public class ProdMixController implements Initializable {
 
             } catch (Exception e) {
                 e.printStackTrace();
-                new Alert(Alert.AlertType.ERROR, "An error occurred while deleting the recipe!").show();
+                new Alert(Alert.AlertType.ERROR, "recepe is use Prodtion Can not delete").show();
             }
         }
+    }
+    private void cleField() {
+        txtProdName.clear();
+        txtSugur.clear();
+        txtJeliy.clear();
+        txtMilk.clear();
     }
 
 
@@ -256,6 +297,8 @@ public class ProdMixController implements Initializable {
         recipBtn.setDisable(false);
         updateBtn.setDisable(true);
         deleteButt.setDisable(true);
+
+        cleField();
     }
 
 }

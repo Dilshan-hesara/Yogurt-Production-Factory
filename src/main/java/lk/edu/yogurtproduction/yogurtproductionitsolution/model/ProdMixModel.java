@@ -85,13 +85,6 @@ public class ProdMixModel {
         return CrudUtil.execute("delete from production_mix_recip where Prod_Name = ?", prodName);
     }
 
-    public boolean isRecipeUsedInProductions(String prodName) throws SQLException {
-        ResultSet rst = CrudUtil.execute(
-                "select count(*) from production_mix_recip where Prod_Name = ?", prodName);
-        if (rst.next()) {
-            return rst.getInt(1) > 0;
-        }
-        return false;
-    }
+
 
 }
