@@ -109,8 +109,8 @@ public class CashBookController {
         colSupId.setCellValueFactory(new PropertyValueFactory<>("SupId"));
 
     }
-//    public void LoadTabel() throws SQLException {
-//     //   ArrayList<CashBookDto> cashBookDtos = cashBookModel.getAllCustomers();
+    public void LoadTabel() throws SQLException {
+//        ArrayList<CashBookDto> cashBookDtos = cashBookModel.getAllCustomers();
 //
 //        ObservableList<CashBookTM> cashBookTMS = FXCollections.observableArrayList();
 //
@@ -128,6 +128,8 @@ public class CashBookController {
 //        }
 //        tblCshBook.setItems(cashBookTMS);
 
+        System.out.println("load");
+    }
 
     @FXML
     void test(ActionEvent event) throws SQLException {
@@ -312,7 +314,7 @@ public class CashBookController {
         loadItemId();
         getAllAmount();
         loadNextCBNOId();
-        //LoadTabel();
+        LoadTabel();
         loadNextInventryId();
     }
     @FXML

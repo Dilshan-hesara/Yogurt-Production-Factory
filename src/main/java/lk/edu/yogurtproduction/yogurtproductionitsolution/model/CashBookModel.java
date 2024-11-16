@@ -36,34 +36,34 @@ public class CashBookModel {
             if (isRecpSaved) {
                 System.out.println("sdf");
 
-                 boolean isInventroyUpdated = inventoryModel.saveInvetory(cashBookDto.getInventroyDTOS());
-                  if (isInventroyUpdated) {
+                boolean isInventroyUpdated = inventoryModel.saveInvetory(cashBookDto.getInventroyDTOS());
+                if (isInventroyUpdated) {
 
-        boolean isMatirealUpdated = materialModel.updatedMatirialReduceQty(cashBookDto);
-        if (isMatirealUpdated) {
-            connection.commit();
-
-
-      return true;
+                    boolean isMatirealUpdated = materialModel.updatedMatirialReduceQty(cashBookDto);
+                    if (isMatirealUpdated) {
+                        connection.commit();
 
 
-        }
-
-                      }
-
-                  }
+                        return true;
 
 
-                connection.rollback();
-                return false;
-            } catch(SQLException e){
-                connection.rollback();
-                e.printStackTrace();
-                return false;
-            } finally{
-                connection.setAutoCommit(true);
+                    }
+
+                }
+
             }
+
+
+            connection.rollback();
+            return false;
+        } catch (SQLException e) {
+            connection.rollback();
+            e.printStackTrace();
+            return false;
+        } finally {
+            connection.setAutoCommit(true);
         }
+    }
 
 
     public int getAllPayAmount() throws SQLException {
@@ -88,26 +88,6 @@ public class CashBookModel {
         return "CBN001";
 
     }
-
-//    public ArrayList<CashBookDto> getAllCustomers() throws SQLException {
-//        ResultSet rst = CrudUtil.execute("select * from Cash_book");
-//
-//        ArrayList<CashBookDto> customerDTOS = new ArrayList<>();
-//
-//        while (rst.next()) {
-//            CashBookDto customerDTO = new CashBookDto(
-//                    rst.getString(1),  // Customer ID
-//                    rst.getString(2),  // Name
-//                    rst.getString(3),  // NIC
-//                    rst.getString(4),  // Email
-//                    rst.getInt(5),// Phone
-//                    rst.getDouble(6)
-//            );
-//            customerDTOS.add(customerDTO);
-//        }
-//        return customerDTOS;
-
-    }
-
+}
 
 
