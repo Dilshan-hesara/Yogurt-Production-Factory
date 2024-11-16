@@ -63,6 +63,9 @@ ProdMixModel prodMix = new ProdMixModel();
        loadNextmatirialUsageId();
         loadAvelbItem();
     }
+    private int DBAVMilk;
+    private int DBAVSuguer;
+    private int DBAVGelitin;
 
     private void loadAvelbItem() {
         try {
@@ -72,10 +75,16 @@ ProdMixModel prodMix = new ProdMixModel();
             lblMilkAV.setText(avbleItem.get(1));
             lblsuguerAV.setText(avbleItem.get(2));
 
+            DBAVMilk = Integer.parseInt(lblMilkAV.getText());
+            DBAVSuguer = Integer.parseInt(lblsuguerAV.getText());
+            DBAVGelitin = Integer.parseInt(lblgeliyAV.getText());
+
+
         } catch (SQLException e) {
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, "Failed to load available items.").show();
         }
+
     }
 
 
@@ -95,6 +104,7 @@ ProdMixModel prodMix = new ProdMixModel();
 
     @FXML
     private TextField txtProdtName;
+
     @FXML
     void btnAddPro(ActionEvent event) throws SQLException {
 
@@ -117,7 +127,20 @@ ProdMixModel prodMix = new ProdMixModel();
          String Mat_Milk = String.valueOf(P_milk);
          String Mat_Suguer = String.valueOf(p_suguer);
          String Mat_Gelatin = String.valueOf(p_jeley);
+        if (DBAVMilk < P_milk) {
+            new Alert(Alert.AlertType.ERROR, "Not enough Milk available!").show();
+            return;
+        }
 
+        if (DBAVSuguer < p_suguer) {
+            new Alert(Alert.AlertType.ERROR, "Not enough Sugar available!").show();
+            return;
+        }
+
+        if (DBAVGelitin < p_jeley) {
+            new Alert(Alert.AlertType.ERROR, "Not enough Gelatin available!").show();
+            return;
+        }
 
 
         MatirialUsageDto matirialUsageDTO  = new MatirialUsageDto(
