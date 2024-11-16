@@ -313,6 +313,7 @@ public class CashBookController {
       //  getAllAmount();
         loadNextCBNOId();
         //LoadTabel();
+        loadNextInventryId();
     }
     @FXML
 

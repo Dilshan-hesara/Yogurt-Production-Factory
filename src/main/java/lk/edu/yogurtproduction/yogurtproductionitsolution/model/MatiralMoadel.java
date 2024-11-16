@@ -121,12 +121,12 @@ public class MatiralMoadel {
     }
 
 
-    public boolean updatedMatirialReduceQty(CashBookDto cashBookDto) throws SQLException {
-
-        return CrudUtil.execute(
-                "UPDATE material SET Qty = Qty - ? WHERE Mat_ID = ?",
-                cashBookDto.getQty(),
-                cashBookDto.getMatID()
-        );
-    }
+//    public boolean updatedMatirialReduceQty(CashBookDto cashBookDto) throws SQLException {
+//
+//        return CrudUtil.execute(
+//                "UPDATE material SET Qty = Qty - ? WHERE Mat_ID = ?",
+//                cashBookDto.getQty(),
+//                cashBookDto.getMatID()
+//        );
+    //}
 }

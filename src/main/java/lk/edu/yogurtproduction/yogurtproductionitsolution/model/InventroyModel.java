@@ -13,14 +13,13 @@ public class InventroyModel {
 
     public String getInventroyId() throws SQLException {
         ResultSet rst = CrudUtil.execute("select In_ID from inventory order by In_ID desc limit 1");
-        if (rst.next()){
+        if (rst.next()) {
             String lastId = rst.getString(1);
-            String substring = lastId.substring(1);
+            String substring = lastId.substring(3);
             int i = Integer.parseInt(substring);
-            int newIdIndex = i+1;
-            return String.format("INV%03d",newIdIndex);
+            int newIdIndex = i + 1;
+            return String.format("INV%03d", newIdIndex);
         }
-
         return "INV001";
     }
 
@@ -115,7 +114,7 @@ public class InventroyModel {
     private boolean savedInventory(InventroyDto inventroyDTO) throws SQLException {
 
         return CrudUtil.execute(
-                "insert into inventory values (?,?,?,?,?)",
+                "insert into inventory  values (?,?,?,?,?)",
                 inventroyDTO.getId(),
                 inventroyDTO.getItemType(),
                 inventroyDTO.getItemDescription(),
