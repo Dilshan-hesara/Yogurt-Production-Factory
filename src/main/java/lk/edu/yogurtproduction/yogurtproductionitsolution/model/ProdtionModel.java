@@ -1,7 +1,6 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
 
@@ -111,6 +110,24 @@ public class ProdtionModel {
 
         }
         return null;
+    }
+
+    public ArrayList<ProdtionDto> getAllProdtionData() throws SQLException {
+
+        ResultSet rst = CrudUtil.execute("select * from production");
+
+        ArrayList<ProdtionDto> prodtionDTOS = new ArrayList<>();
+
+        while (rst.next()) {
+            ProdtionDto prodtionDTO = new ProdtionDto(
+                    rst.getString(1),
+                    rst.getString(2),
+                    rst.getInt(3),
+                    rst.getString(4)
+            );
+            prodtionDTOS.add(prodtionDTO);
+        }
+        return prodtionDTOS;
     }
 }
 

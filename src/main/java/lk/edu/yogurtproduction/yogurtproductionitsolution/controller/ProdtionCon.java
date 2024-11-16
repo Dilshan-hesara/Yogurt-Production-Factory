@@ -5,10 +5,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.InventroyDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialUsageDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdMixDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.ProdtionTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.InventroyModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatirialUsageModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.ProdMixModel;
@@ -51,6 +53,21 @@ public class ProdtionCon {
     @FXML
     private Label lblsuguerAV;
 
+    @FXML
+    private TableColumn<String, ProdtionTM> colProName;
+
+    @FXML
+    private TableColumn<String, ProdtionTM> colProdID;
+
+    @FXML
+    private TableColumn<String, ProdtionTM> colQty;
+
+    @FXML
+    private TableColumn<String, ProdtionTM> colRecipe;
+
+    @FXML
+    private TableView<ProdtionTM> tblProdtion;
+
 
 ProdtionModel model = new ProdtionModel();
 ProdMixModel prodMix = new ProdMixModel();
@@ -60,7 +77,44 @@ ProdMixModel prodMix = new ProdMixModel();
         loadProdName();
         loadNextInventryId();
        loadNextmatirialUsageId();
+        setCellVlause();
     }
+
+    private void setCellVlause() {
+
+        colProdID.setCellValueFactory(new PropertyValueFactory<>("Prod_ID"));
+        colProName.setCellValueFactory(new PropertyValueFactory<>("Pro_Name"));
+        colQty.setCellValueFactory(new PropertyValueFactory<>("Prod_Qty"));
+        colRecipe.setCellValueFactory(new PropertyValueFactory<>("Prod_Name"));
+
+        try {
+            loadTble();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+ProdtionModel prodtionModel = new ProdtionModel();
+    private void loadTble() throws SQLException {
+
+        ArrayList<ProdtionDto> prodtionDTOS = prodtionModel.getAllProdtionData();
+
+        ObservableList<ProdtionTM> prodtionTMS = FXCollections.observableArrayList();
+
+
+        for (ProdtionDto prodtionDto : prodtionDTOS) {
+            ProdtionTM prodtionTM = new ProdtionTM(
+                    prodtionDto.getProd_ID(),
+                    prodtionDto.getPro_Name(),
+                    prodtionDto.getProd_Qty(),
+                    prodtionDto.getProd_Name()
+            );
+            prodtionTMS.add(prodtionTM);
+        }
+
+        tblProdtion.setItems(prodtionTMS);
+
+    }
+
     private int DBAVMilk;
     private int DBAVSuguer;
     private int DBAVGelitin;
@@ -287,7 +341,7 @@ ProdMixModel prodMix = new ProdMixModel();
         }
     }
 
-    private void cleFi() {
+    private void cleFi() throws SQLException {
 
         txtProdtName.clear();
         txtQty.clear();
@@ -296,6 +350,11 @@ ProdMixModel prodMix = new ProdMixModel();
         lblsuguer.setText("");
         jeliy.setText("");
         loadAvelbItem();
+        loadTble();
+        loadNextInventryId();
+        loadNextmatirialUsageId();
+        loadnextProdID();
+
 
     }
 
