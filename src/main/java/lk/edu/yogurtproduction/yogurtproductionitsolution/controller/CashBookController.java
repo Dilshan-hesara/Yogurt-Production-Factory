@@ -7,18 +7,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.Window;
-import javafx.util.Duration;
 
 import javafx.event.ActionEvent;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CashBookDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.InventroyDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.SuplierDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.CashBookTM;
@@ -90,8 +86,9 @@ public class CashBookController {
 
     @FXML
     public void initialize() throws SQLException {
-        setCellValues();
+       // setCellValues();
         refesh();
+
     }
     @FXML
     private Label lblCBN;
@@ -112,26 +109,26 @@ public class CashBookController {
         colSupId.setCellValueFactory(new PropertyValueFactory<>("SupId"));
 
     }
-    public void LoadTabel() throws SQLException {
-        ArrayList<CashBookDto> cashBookDtos = cashBookModel.getAllCustomers();
+//    public void LoadTabel() throws SQLException {
+//     //   ArrayList<CashBookDto> cashBookDtos = cashBookModel.getAllCustomers();
+//
+//        ObservableList<CashBookTM> cashBookTMS = FXCollections.observableArrayList();
+//
+//        for (CashBookDto cashBookDto : cashBookDtos) {
+//            CashBookTM cashBookTM = new CashBookTM(
+//                    cashBookDto.getCBNo(),
+//                    cashBookDto.getSupId(),
+//                    cashBookDto.getDate(),
+//                    cashBookDto.getDesc(),
+//                    cashBookDto.getQty(),
+//                    cashBookDto.getAmount()
+//
+//            );
+//            cashBookTMS.add(cashBookTM);
+//        }
+//        tblCshBook.setItems(cashBookTMS);
 
-        ObservableList<CashBookTM> cashBookTMS = FXCollections.observableArrayList();
 
-        for (CashBookDto cashBookDto : cashBookDtos) {
-            CashBookTM cashBookTM = new CashBookTM(
-                    cashBookDto.getCBNo(),
-                    cashBookDto.getSupId(),
-                    cashBookDto.getDate(),
-                    cashBookDto.getDesc(),
-                    cashBookDto.getQty(),
-                    cashBookDto.getAmount()
-
-            );
-            cashBookTMS.add(cashBookTM);
-        }
-        tblCshBook.setItems(cashBookTMS);
-
-    }
     @FXML
     void test(ActionEvent event) throws SQLException {
         loadNextInventryId();
@@ -190,53 +187,67 @@ public class CashBookController {
             new Alert(Alert.AlertType.ERROR, "An error occurred while processing the quantity. Please check the input..!").show();
         }
 
+        ArrayList<InventroyDto> inventroyDTOS = new ArrayList<>();
 
         double price = Double.parseDouble(lblItemPrice.getText());
 
-        String CBNo = lblCBN.getText();
+        String CBNo =  lblCBN.getText();
         String SupId = cmbSupId.getSelectionModel().getSelectedItem();
+        String matID =  cmbItemd.getSelectionModel().getSelectedItem();
+        String inID =  invID;
         String desc = lblItemName.getText();
         int qty = Integer.parseInt(qtyV);
-        double amount = price * qty;
+        double amount =  price * qty;
         String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-        String matID = cmbItemd.getSelectionModel().getSelectedItem();
-        String inID = invID;
         String itemType = "Raw";
-        String Prod_id =  "----";
-
-        System.out.println(CBNo);
-        System.out.println(SupId);
-        System.out.println(desc);
-        System.out.println(qty);
-        System.out.println(date);
-        System.out.println(matID);
-        System.out.println(inID);
-        System.out.println(itemType);
-        System.out.println(Prod_id);
-        System.out.println(amount);
-
-//        CashBookDto cashBookDtos = new CashBookDto(
-//                CBNo,
-//                SupId,
-//                date,
-//                desc,
-//                qty,
-//                amount,
-//                matID,
-//                inID,
-//                itemType,
-//                Prod_id
-//        );
+        String itemDescription =desc;
+        String prodId = "----";
+        String Qty = String.valueOf(qty);
 //
-//        boolean isSaved = cashBookModel.saveResept(cashBookDtos);
-//        if (isSaved) {
-//            new Alert(Alert.AlertType.INFORMATION, "Saved successfully!").show();
-//            refesh();
-//        } else {
-//            new Alert(Alert.AlertType.ERROR, "Save failed! Please try again.").show();
-//        }
-    }
+//        System.out.println(CBNo);
+//        System.out.println(SupId);
+//        System.out.println(matID);
+//        System.out.println(inID);
+//        System.out.println(desc);
+//        System.out.println(qty);
+//        System.out.println(amount);
+//        System.out.println(date);
 
+        InventroyDto inventroyDTO  = new InventroyDto(
+                inID,
+                itemType,
+                itemDescription,
+                Qty,
+                prodId
+
+
+        );
+
+        inventroyDTOS.add(inventroyDTO);
+
+        CashBookDto cashBookDtos = new CashBookDto(
+                CBNo,
+                SupId,
+                matID,
+                inID,
+                desc,
+                qty,
+                amount,
+                date,
+                   inventroyDTOS
+
+
+        );
+
+        boolean isSaved = cashBookModel.saveResept(cashBookDtos);
+        if (isSaved) {
+            new Alert(Alert.AlertType.INFORMATION, "Saved successfully!").show();
+            refesh();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Save failed! Please try again.").show();
+        }
+
+    }
 
     public void getAllAmount() throws SQLException {
         int am = cashBookModel.getAllPayAmount();
@@ -299,7 +310,7 @@ public class CashBookController {
 
         loadSupplierId();
         loadItemId();
-        getAllAmount();
+      //  getAllAmount();
         loadNextCBNOId();
         //LoadTabel();
     }

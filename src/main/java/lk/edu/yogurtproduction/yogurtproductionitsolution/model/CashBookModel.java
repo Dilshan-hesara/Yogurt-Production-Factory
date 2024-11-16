@@ -22,10 +22,11 @@ public class CashBookModel {
             connection.setAutoCommit(false);
 
             boolean isRecpSaved = CrudUtil.execute(
-                    "INSERT INTO Cash_Book VALUES (?, ?, ?, ?, ?, ?, ?)",
+                    "INSERT INTO Cash_Book VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
                     cashBookDto.getCBNo(),
                     cashBookDto.getSupId(),
                     cashBookDto.getMatID(),
+                    cashBookDto.getInID(),
                     cashBookDto.getDesc(),
                     cashBookDto.getQty(),
                     cashBookDto.getAmount(),
@@ -33,20 +34,20 @@ public class CashBookModel {
             );
 
             if (isRecpSaved) {
-                 boolean isInventroyUpdated = inventoryModel.saveInvetory(cashBookDto);
-                  if (isInventroyUpdated) {
-
-                      boolean isMatirealUpdated = materialModel.updatedMatirialReduceQty(cashBookDto);
-                      if (isMatirealUpdated) {
-
-                              connection.commit();
-                              return true;
-
-
-                      }
+                System.out.println("sdf");
+                connection.commit();
+                return true;
+//                      return true;
+//                 boolean isInventroyUpdated = inventoryModel.saveInvetory(cashBookDto.getInventroyDTOS());
+//                  if (isInventroyUpdated) {
+//                      connection.commit();
+//                      return true;
+//
+//
+//                      }
 
                   }
-            }
+
 
                 connection.rollback();
                 return false;
@@ -83,25 +84,25 @@ public class CashBookModel {
 
     }
 
-    public ArrayList<CashBookDto> getAllCustomers() throws SQLException {
-        ResultSet rst = CrudUtil.execute("select * from Cash_book");
-
-        ArrayList<CashBookDto> customerDTOS = new ArrayList<>();
-
-        while (rst.next()) {
-            CashBookDto customerDTO = new CashBookDto(
-                    rst.getString(1),  // Customer ID
-                    rst.getString(2),  // Name
-                    rst.getString(3),  // NIC
-                    rst.getString(4),  // Email
-                    rst.getInt(5),// Phone
-                    rst.getDouble(6)
-            );
-            customerDTOS.add(customerDTO);
-        }
-        return customerDTOS;
+//    public ArrayList<CashBookDto> getAllCustomers() throws SQLException {
+//        ResultSet rst = CrudUtil.execute("select * from Cash_book");
+//
+//        ArrayList<CashBookDto> customerDTOS = new ArrayList<>();
+//
+//        while (rst.next()) {
+//            CashBookDto customerDTO = new CashBookDto(
+//                    rst.getString(1),  // Customer ID
+//                    rst.getString(2),  // Name
+//                    rst.getString(3),  // NIC
+//                    rst.getString(4),  // Email
+//                    rst.getInt(5),// Phone
+//                    rst.getDouble(6)
+//            );
+//            customerDTOS.add(customerDTO);
+//        }
+//        return customerDTOS;
 
     }
-}
+
 
 

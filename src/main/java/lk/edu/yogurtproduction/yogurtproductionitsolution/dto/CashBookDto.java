@@ -25,4 +25,7 @@ public class CashBookDto {
     private String date;
 
 
+    private ArrayList<InventroyDto> inventroyDTOS;
+
+
 }
