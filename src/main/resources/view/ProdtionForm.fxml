@@ -76,5 +76,9 @@
       <Label fx:id="lblMilk" layoutX="746.0" layoutY="151.0" prefHeight="18.0" prefWidth="30.0" />
       <Label fx:id="jeliy" layoutX="746.0" layoutY="223.0" prefHeight="18.0" prefWidth="30.0" />
       <Label fx:id="lblsuguer" layoutX="741.0" layoutY="185.0" prefHeight="18.0" prefWidth="30.0" />
+      <Label fx:id="lblMilkAV" layoutX="806.0" layoutY="149.0" prefHeight="18.0" prefWidth="30.0" />
+      <Label fx:id="lblgeliyAV" layoutX="806.0" layoutY="221.0" prefHeight="18.0" prefWidth="30.0" />
+      <Label fx:id="lblsuguerAV" layoutX="801.0" layoutY="183.0" prefHeight="18.0" prefWidth="30.0" />
+      <Label layoutX="791.0" layoutY="120.0" prefHeight="18.0" prefWidth="60.0" text="AV L I" />
    </children>
 </AnchorPane>

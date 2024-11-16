@@ -179,6 +179,31 @@ public class InventroyModel {
 
     }
 
+    public ArrayList<String> getAllAVItems() throws SQLException {
+        ArrayList<String> availableItems = new ArrayList<>();
+
+        // Get the total for 'Gelat'
+        ResultSet rst1 = CrudUtil.execute("SELECT SUM(Qty) AS Total FROM inventory WHERE Item_Description = 'Gelat' AND Qty > 0;");
+        if (rst1.next()) {
+            availableItems.add(rst1.getString("Total") != null ? rst1.getString("Total") : "0");
+        }
+
+        // Get the total for 'Milk'
+        ResultSet rst2 = CrudUtil.execute("SELECT SUM(Qty) AS Total FROM inventory WHERE Item_Description = 'Milk' AND Qty > 0;");
+        if (rst2.next()) {
+            availableItems.add(rst2.getString("Total") != null ? rst2.getString("Total") : "0");
+        }
+
+        // Get the total for 'Suguer'
+        ResultSet rst3 = CrudUtil.execute("SELECT SUM(Qty) AS Total FROM inventory WHERE Item_Description = 'Sugar' AND Qty > 0;");
+        if (rst3.next()) {
+            availableItems.add(rst3.getString("Total") != null ? rst3.getString("Total") : "0");
+        }
+
+        return availableItems;
+    }
+
+
     /*  // Iterate through each order detail in the list
         for (OrderDetailsDto orderDetailsDTO : orderDetailsDTOS) {
             // @isOrderDetailsSaved: Saves the individual order detail

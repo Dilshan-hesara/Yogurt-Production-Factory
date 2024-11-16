@@ -40,6 +40,18 @@ public class ProdtionCon {
     @FXML
     private Label lblsuguer;
 
+    @FXML
+    private Label lblMilkAV;
+
+
+    @FXML
+    private Label lblgeliyAV;
+
+
+    @FXML
+    private Label lblsuguerAV;
+
+
 ProdtionModel model = new ProdtionModel();
 ProdMixModel prodMix = new ProdMixModel();
     public void initialize() throws SQLException {
@@ -48,7 +60,23 @@ ProdMixModel prodMix = new ProdMixModel();
         loadProdName();
         loadNextInventryId();
         //loadNextmatirialUsageId();
+        loadAvelbItem();
     }
+
+    private void loadAvelbItem() {
+        try {
+            ArrayList<String> avbleItem = inventroyModel.getAllAVItems();
+
+            lblgeliyAV.setText(avbleItem.get(0));
+            lblMilkAV.setText(avbleItem.get(1));
+            lblsuguerAV.setText(avbleItem.get(2));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Failed to load available items.").show();
+        }
+    }
+
 
     private void loadnextProdID() throws SQLException {
         String nextProdtID = model.getNextProdtID();
