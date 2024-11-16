@@ -80,5 +80,6 @@
       <Label fx:id="lblgeliyAV" layoutX="806.0" layoutY="221.0" prefHeight="18.0" prefWidth="30.0" />
       <Label fx:id="lblsuguerAV" layoutX="801.0" layoutY="183.0" prefHeight="18.0" prefWidth="30.0" />
       <Label layoutX="791.0" layoutY="120.0" prefHeight="18.0" prefWidth="60.0" text="AV L I" />
+      <Button layoutX="314.0" layoutY="75.0" mnemonicParsing="false" onAction="#testBtn" text="Button" />
    </children>
 </AnchorPane>

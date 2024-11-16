@@ -60,7 +60,7 @@ ProdMixModel prodMix = new ProdMixModel();
         loadnextProdID();
         loadProdName();
         loadNextInventryId();
-        //loadNextmatirialUsageId();
+       loadNextmatirialUsageId();
         loadAvelbItem();
     }
 
@@ -97,6 +97,7 @@ ProdMixModel prodMix = new ProdMixModel();
     private TextField txtProdtName;
     @FXML
     void btnAddPro(ActionEvent event) throws SQLException {
+
         ArrayList<InventroyDto> inventroyDTOS = new ArrayList<>();
         ArrayList<ProdMixDto> prodMixDTOS = new ArrayList<>();
         ArrayList<MatirialUsageDto> matirialUsageDTOS = new ArrayList<>();
@@ -112,7 +113,7 @@ ProdMixModel prodMix = new ProdMixModel();
          int p_jeley = (int) (jeley * Prod_Qty);
          String prodName = "prodtionResipi";
 
-         String MatUs_ID = "MATU001";
+         String MatUs_ID = mtID;
          String Mat_Milk = String.valueOf(P_milk);
          String Mat_Suguer = String.valueOf(p_suguer);
          String Mat_Gelatin = String.valueOf(p_jeley);
@@ -191,13 +192,18 @@ ProdMixModel prodMix = new ProdMixModel();
         System.out.println(nextInventryId);
     }
 
-//    MatirialUsageModel matirialUsageModel = new MatirialUsageModel();
-//
-//    public void loadNextmatirialUsageId() throws SQLException {
-//        String matirialUsageId = matirialUsageModel.getmatirialUsageId();
-//        invID = matirialUsageId;
-//        System.out.println(matirialUsageId);
-//    }
+    @FXML
+    void testBtn(ActionEvent event) throws SQLException {
+
+        loadNextmatirialUsageId();
+    }
+    MatirialUsageModel matirialUsageModel = new MatirialUsageModel();
+    String mtID;
+    public void loadNextmatirialUsageId() throws SQLException {
+        String matirialUsageId = matirialUsageModel.getmatirialUsageId();
+        mtID = matirialUsageId;
+        System.out.println(matirialUsageId);
+    }
 
 
     ProdMixModel prodMixModel = new ProdMixModel();
