@@ -19,8 +19,7 @@ import java.util.ArrayList;
 
 public class ProdtionCon {
 
-    @FXML
-    private Button btnAddProdt;
+
 
     @FXML
     private ComboBox<String> cmbProdt;
@@ -61,7 +60,6 @@ ProdMixModel prodMix = new ProdMixModel();
         loadProdName();
         loadNextInventryId();
        loadNextmatirialUsageId();
-        loadAvelbItem();
     }
     private int DBAVMilk;
     private int DBAVSuguer;
@@ -234,6 +232,7 @@ ProdMixModel prodMix = new ProdMixModel();
 
         if (isSaved) {
             new Alert(Alert.AlertType.INFORMATION, " saved..!").show();
+            cleFi();
 
 
         } else {
@@ -252,11 +251,7 @@ ProdMixModel prodMix = new ProdMixModel();
         System.out.println(nextInventryId);
     }
 
-    @FXML
-    void testBtn(ActionEvent event) throws SQLException {
 
-        loadNextmatirialUsageId();
-    }
     MatirialUsageModel matirialUsageModel = new MatirialUsageModel();
     String mtID;
     public void loadNextmatirialUsageId() throws SQLException {
@@ -287,13 +282,22 @@ ProdMixModel prodMix = new ProdMixModel();
             jeley = prodMixDto.getJeliy();
             suguer = prodMixDto.getSuguer();
 
-            System.out.println(milk + " " + suguer + " " + jeley);
+            loadAvelbItem();
 
         }
     }
 
+    private void cleFi() {
 
+        txtProdtName.clear();
+        txtQty.clear();
+        cmbProdt.getSelectionModel().clearSelection();
+        lblMilk.setText("");
+        lblsuguer.setText("");
+        jeliy.setText("");
+        loadAvelbItem();
 
+    }
 
 
 
