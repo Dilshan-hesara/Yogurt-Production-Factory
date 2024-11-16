@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.EmployeeDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.InventroyDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.PckingDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.*;
@@ -63,7 +64,10 @@ PackingModel packingModel = new PackingModel();
     @FXML
     void btnAddStock(ActionEvent event) throws SQLException {
 
-         String Pac_ID = lblPacID.getText();
+        ArrayList<InventroyDto> inventroyDTOS = new ArrayList<>();
+
+
+        String Pac_ID = lblPacID.getText();
          String Prod_ID = cmbProdId.getSelectionModel().getSelectedItem();
          String Pac_Type = cmbPacType.getSelectionModel().getSelectedItem();
          String Pac_Desc = desetxt.getText();
@@ -72,9 +76,29 @@ PackingModel packingModel = new PackingModel();
          double Qty = Double.parseDouble(qrytxt.getText());
          String Emp_ID = cmbEmpId.getSelectionModel().getSelectedItem();
          double RedusQty = Qty * PacTypes;
-         String itemType = "END Prodt";
-         String InID = invID;
+      //   String itemType = "END Prodt";
+     //    String InID = invID;
          String StID = stID;
+
+
+
+
+        String InID = invID;
+        String itemType = "END Prodt";
+        String itemDescription =desetxt.getText() +"-"+" "+ Qty +"x"+Pac_Type ;;
+        String prodId = Prod_ID;
+        String qty = String.valueOf(Double.parseDouble(qrytxt.getText()));
+
+        InventroyDto inventroyDTO  = new InventroyDto(
+                InID,
+                itemType,
+                itemDescription,
+                qty,
+                prodId
+
+
+        );
+        inventroyDTOS.add(inventroyDTO);
 
         PckingDto pckingDtos = new PckingDto(
 
@@ -87,9 +111,8 @@ PackingModel packingModel = new PackingModel();
                 Qty,
                 Emp_ID,
                 RedusQty,
-                itemType,
-                InID,
-                StID
+                StID,
+                inventroyDTOS
         );
         boolean isSaved = packingModel.savePacking(pckingDtos);
         if (isSaved) {

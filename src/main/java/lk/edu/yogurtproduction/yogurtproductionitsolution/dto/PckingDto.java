@@ -1,5 +1,8 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.dto;
 import lombok.*;
+
+import java.util.ArrayList;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -17,8 +20,9 @@ public class PckingDto {
     private double Qty;
     private  String Emp_ID;
     private double RedusQty;
-    private String itemType;
-    private String InID;
+
     private String StID;
+
+    private ArrayList<InventroyDto> inventroyDTOS;
 
 }

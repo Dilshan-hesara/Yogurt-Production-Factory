@@ -40,18 +40,18 @@ public class InventroyModel {
 //    }
 
 
-    public boolean saveInvetoryPack(PckingDto pckingDtos) throws SQLException {
-
-        return   CrudUtil.execute(
-                "INSERT INTO Inventory VALUES (?, ?, ?, ?, ?)",
-                pckingDtos.getInID(),
-                pckingDtos.getItemType(),
-                pckingDtos.getPac_Desc(),
-                pckingDtos.getQty(),
-                pckingDtos.getProd_ID()
-
-        );
-    }
+//    public boolean saveInvetoryPack(PckingDto pckingDtos) throws SQLException {
+//
+//        return   CrudUtil.execute(
+//                "INSERT INTO Inventory VALUES (?, ?, ?, ?, ?)",
+//                pckingDtos.getInID(),
+//                pckingDtos.getItemType(),
+//                pckingDtos.getPac_Desc(),
+//                pckingDtos.getQty(),
+//                pckingDtos.getProd_ID()
+//
+//        );
+//    }
 
 //    public boolean saveUpdated(ProdtionDto prodtionDto) throws SQLException {
 //

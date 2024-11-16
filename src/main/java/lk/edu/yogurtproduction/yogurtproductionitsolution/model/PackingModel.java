@@ -36,7 +36,7 @@ public class PackingModel {
                     if (isStockUpdated) {
                         boolean redusePackedQty = inventoryModel.saveredusPackedQty(pckingDtos);
                         if (redusePackedQty) {
-                            boolean isInventroyUpdated = inventoryModel.saveInvetoryPack(pckingDtos);
+                            boolean isInventroyUpdated = inventoryModel.saveInvetory(pckingDtos.getInventroyDTOS());
                             if (isInventroyUpdated) {
                                 connection.commit();
                                 return true;
