@@ -108,9 +108,45 @@ ProdMixModel prodMix = new ProdMixModel();
     @FXML
     void btnAddPro(ActionEvent event) throws SQLException {
 
+        String selectedProdt = cmbProdt.getSelectionModel().getSelectedItem();
+
+
         ArrayList<InventroyDto> inventroyDTOS = new ArrayList<>();
         ArrayList<ProdMixDto> prodMixDTOS = new ArrayList<>();
         ArrayList<MatirialUsageDto> matirialUsageDTOS = new ArrayList<>();
+
+        if (selectedProdt == null) {
+            new Alert(Alert.AlertType.ERROR, "Please select Prodtion Rescipe..!").show();
+            return;
+        }
+
+        txtProdtName.setStyle(txtProdtName.getStyle() + ";-fx-border-color: #7367F0;");
+        txtQty.setStyle(txtQty.getStyle() + ";-fx-border-color: #7367F0;");
+
+        String namePattern = "^[A-Za-z ]+$";
+        String Dese = txtProdtName.getText().trim();
+
+        String qtyPattern = "^[1-9]\\d*$";
+        String txtqty = txtQty.getText().trim();
+
+        boolean isValidDesc = Dese.matches(namePattern);
+        boolean isValidQty = txtqty.matches(qtyPattern);
+
+        if (!isValidDesc) {
+            txtProdtName.setStyle(txtProdtName.getStyle() + ";-fx-border-color: red;");
+            new Alert(Alert.AlertType.ERROR, "Production Name can only contain letters and spaces!").show();
+            return;
+        }
+
+        if (!isValidQty) {
+            txtQty.setStyle(txtQty.getStyle() + ";-fx-border-color: red;");
+            new Alert(Alert.AlertType.ERROR, "Qty Cant 0 or Only Intiger").show();
+            return;
+        }
+
+        txtProdtName.setStyle(txtProdtName.getStyle() + ";-fx-border-color: #7367F0;");
+        txtQty.setStyle(txtQty.getStyle() + ";-fx-border-color: #7367F0;");
+
 
 
 
@@ -118,6 +154,7 @@ ProdMixModel prodMix = new ProdMixModel();
         String Prod_Name = cmbProdt.getSelectionModel().getSelectedItem();
         String Pro_Name =  txtProdtName.getText();
         double Prod_Qty = Integer.parseInt(txtQty.getText());
+
          int P_milk = (int) (milk * Prod_Qty);
          int p_suguer = (int) (suguer * Prod_Qty);
          int p_jeley = (int) (jeley * Prod_Qty);
