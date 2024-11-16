@@ -42,7 +42,7 @@ public class ProdtionModel {
             if (isProdtSaved) {
                 System.out.println("dev");
 
-                boolean isInvetriyUpdated = inventoryModel.saveUpdated(prodtionDto);
+                boolean isInvetriyUpdated = inventoryModel.saveInvetory(prodtionDto.getInventroyDTOS());
                 if (isInvetriyUpdated) {
 
 

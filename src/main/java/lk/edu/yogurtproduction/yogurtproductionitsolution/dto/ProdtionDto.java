@@ -2,6 +2,8 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.dto;
 
 import lombok.*;
 
+import java.util.ArrayList;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -16,8 +18,10 @@ public class ProdtionDto {
     private int P_milk;
     private int p_suguer;
     private int p_jeley;
-    private String InID;
-    private String ItemType;
+
+
+    private ArrayList<InventroyDto> inventroyDTOS;
+
 
     public ProdtionDto(String prodID, String proName, double qty, String prodName) {
         this.Prod_ID = prodID;
