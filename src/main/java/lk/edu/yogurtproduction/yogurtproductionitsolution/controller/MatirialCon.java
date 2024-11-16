@@ -10,6 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.MatirialTM;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.model.CashBookModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatiralMoadel;
 
 import java.net.URL;
@@ -19,18 +20,6 @@ import java.util.ResourceBundle;
 
 public class MatirialCon implements Initializable {
 
-
-//    @FXML
-//    private Button btnDelete;
-//
-//    @FXML
-//    private Button btnReset;
-//
-//    @FXML
-//    private Button btnSavem;
-//
-//    @FXML
-//    private Button btnUpdate;
 
     @FXML
     private Label lblItId;
@@ -115,33 +104,10 @@ public class MatirialCon implements Initializable {
 matTable.setItems(matirialTMS);
 
     }
-//    @FXML
-//    void btnDelete(ActionEvent event) throws SQLException {
-//
-//
-//        MatirialTM matirialTM = matTable.getSelectionModel().getSelectedItem();
-//
-//        String matId = matirialTM.getMatId();
-//
-//        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES, ButtonType.NO);
-//        Optional<ButtonType> optionalButtonType = alert.showAndWait();
-//
-//        if (optionalButtonType.isPresent() && optionalButtonType.get() == ButtonType.YES) {
-//
-//            boolean isDeleted = matiralMoadel.deleteMatirial (matId);
-//            if (isDeleted) {
-//                loadTable();
-//                new Alert(Alert.AlertType.INFORMATION, "Matirial deleted...!").show();
-//            } else {
-//                new Alert(Alert.AlertType.ERROR, "Fail to delete Matirial...!").show();
-//            }
-//        }
-//    }
-
-
 
     @FXML
     void btnSave(ActionEvent event) throws SQLException {
+
 
         String selectedMat = cmbMatName.getValue();
 
@@ -223,12 +189,57 @@ matTable.setItems(matirialTMS);
             if (isSaved) {
                 loadNextMatId();
                 loadTable();
+                cleF();
+               cashBookController.referMat();
 
                 new Alert(Alert.AlertType.INFORMATION, "Matirial saved...!").show();
             } else {
                 new Alert(Alert.AlertType.ERROR, "Fail to save matireal...!").show();
             }
         }
+    @FXML
+    void tbleClick(MouseEvent event) {
+
+    }
+
+    private void cleF() {
+        cmbMatName.getSelectionModel().clearSelection();
+
+        txtQuantity.clear();
+        txtPrice.clear();
+    }
+
+    CashBookController cashBookController = new CashBookController();
+
+    public void setUpdatedCmde(CashBookController cashBookController) {
+        this.cashBookController = cashBookController;
+
+    }
+
+
+
+    //    @FXML
+//    void btnDelete(ActionEvent event) throws SQLException {
+//
+//
+//        MatirialTM matirialTM = matTable.getSelectionModel().getSelectedItem();
+//
+//        String matId = matirialTM.getMatId();
+//
+//        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.YES, ButtonType.NO);
+//        Optional<ButtonType> optionalButtonType = alert.showAndWait();
+//
+//        if (optionalButtonType.isPresent() && optionalButtonType.get() == ButtonType.YES) {
+//
+//            boolean isDeleted = matiralMoadel.deleteMatirial (matId);
+//            if (isDeleted) {
+//                loadTable();
+//                new Alert(Alert.AlertType.INFORMATION, "Matirial deleted...!").show();
+//            } else {
+//                new Alert(Alert.AlertType.ERROR, "Fail to delete Matirial...!").show();
+//            }
+//        }
+//    }
 
 
 //    @FXML
@@ -281,8 +292,7 @@ matTable.setItems(matirialTMS);
 
 
 
-    @FXML
-    void tbleClick(MouseEvent event) {
 
-    }
 }
+
+

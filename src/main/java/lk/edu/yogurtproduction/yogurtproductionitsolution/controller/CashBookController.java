@@ -307,6 +307,13 @@ public class CashBookController {
         }
 
     }
+    public void referMat() throws SQLException {
+        loadItemId();
+    }
+
+
+
+
 
     private void refesh() throws SQLException {
 
@@ -327,6 +334,10 @@ public class CashBookController {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/MatirialForm.fxml"));
                 Parent load = loader.load();
+
+
+                MatirialCon updateItemCmb = loader.getController();
+                updateItemCmb.setUpdatedCmde(this);
 
                 Stage stage = new Stage();
                 stage.setScene(new Scene(load));

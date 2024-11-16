@@ -78,6 +78,6 @@
             <Font name="Calibri" size="14.0" />
          </font>
       </TextField>
-      <ComboBox fx:id="cmbMatName" layoutX="139.0" layoutY="116.0" onAction="#cmbMatNameOnAction" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <ComboBox fx:id="cmbMatName" layoutX="139.0" layoutY="116.0" onAction="#cmbMatNameOnAction" prefWidth="150.0" promptText="Select Mat" style="-fx-background-color: #ffffff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
    </children>
 </AnchorPane>
