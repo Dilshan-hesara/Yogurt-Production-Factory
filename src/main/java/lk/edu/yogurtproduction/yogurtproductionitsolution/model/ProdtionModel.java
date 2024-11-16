@@ -25,7 +25,7 @@ public class ProdtionModel {
         }
         return  "P001";
     }
-
+    MatirialUsageModel matModel = new MatirialUsageModel();
     public boolean saveProdt(ProdtionDto prodtionDto) throws SQLException {
 
         Connection connection = DBConnection.getInstance().getConnection();
@@ -49,6 +49,7 @@ public class ProdtionModel {
                if (isUpdateInverorySaved) {
                    connection.commit();
                    return true;
+
                }
 
                 }

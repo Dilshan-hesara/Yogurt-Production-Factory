@@ -46,12 +46,14 @@ create table Cash_Book(
     CB_No varchar(50) primary key ,
     Sup_ID varchar(50),
     Mat_ID varchar(50),
+    In_ID varchar(100),
     Description varchar(50),
     Qty int,
     Amount decimal(10,0),
     Transaction_Date date,
     foreign key (Sup_ID) references Supplier(Sup_ID),
-    foreign key (Mat_ID) references Material(Mat_ID)
+    foreign key (Mat_ID) references Material(Mat_ID),
+    foreign key (In_ID)  references Inventory(In_ID)
 
 
 );

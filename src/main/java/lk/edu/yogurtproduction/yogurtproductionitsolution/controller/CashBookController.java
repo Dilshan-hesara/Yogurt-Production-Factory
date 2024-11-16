@@ -132,7 +132,10 @@ public class CashBookController {
         tblCshBook.setItems(cashBookTMS);
 
     }
-
+    @FXML
+    void test(ActionEvent event) throws SQLException {
+        loadNextInventryId();
+    }
 
     @FXML
     void btnPlaceIt(ActionEvent event) throws SQLException {
@@ -201,27 +204,37 @@ public class CashBookController {
         String itemType = "Raw";
         String Prod_id =  "----";
 
+        System.out.println(CBNo);
+        System.out.println(SupId);
+        System.out.println(desc);
+        System.out.println(qty);
+        System.out.println(date);
+        System.out.println(matID);
+        System.out.println(inID);
+        System.out.println(itemType);
+        System.out.println(Prod_id);
+        System.out.println(amount);
 
-        CashBookDto cashBookDtos = new CashBookDto(
-                CBNo,
-                SupId,
-                date,
-                desc,
-                qty,
-                amount,
-                matID,
-                inID,
-                itemType,
-                Prod_id
-        );
-
-        boolean isSaved = cashBookModel.saveResept(cashBookDtos);
-        if (isSaved) {
-            new Alert(Alert.AlertType.INFORMATION, "Saved successfully!").show();
-            refesh();
-        } else {
-            new Alert(Alert.AlertType.ERROR, "Save failed! Please try again.").show();
-        }
+//        CashBookDto cashBookDtos = new CashBookDto(
+//                CBNo,
+//                SupId,
+//                date,
+//                desc,
+//                qty,
+//                amount,
+//                matID,
+//                inID,
+//                itemType,
+//                Prod_id
+//        );
+//
+//        boolean isSaved = cashBookModel.saveResept(cashBookDtos);
+//        if (isSaved) {
+//            new Alert(Alert.AlertType.INFORMATION, "Saved successfully!").show();
+//            refesh();
+//        } else {
+//            new Alert(Alert.AlertType.ERROR, "Save failed! Please try again.").show();
+//        }
     }
 
 
@@ -288,10 +301,12 @@ public class CashBookController {
         loadItemId();
         getAllAmount();
         loadNextCBNOId();
-        LoadTabel();
+        //LoadTabel();
     }
     @FXML
+
     private Button btnMat;
+
     @FXML
     void AddMatireal(ActionEvent event) {
 

@@ -5,17 +5,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.MatirialDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdMixDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.InventroyModel;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatirialUsageModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.ProdMixModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.ProdtionModel;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -50,6 +46,7 @@ ProdMixModel prodMix = new ProdMixModel();
         loadnextProdID();
         loadProdName();
         loadNextInventryId();
+        //loadNextmatirialUsageId();
     }
 
     private void loadnextProdID() throws SQLException {
@@ -114,6 +111,15 @@ ProdMixModel prodMix = new ProdMixModel();
         invID = nextInventryId;
         System.out.println(nextInventryId);
     }
+
+//    MatirialUsageModel matirialUsageModel = new MatirialUsageModel();
+//
+//    public void loadNextmatirialUsageId() throws SQLException {
+//        String matirialUsageId = matirialUsageModel.getmatirialUsageId();
+//        invID = matirialUsageId;
+//        System.out.println(matirialUsageId);
+//    }
+
 
     ProdMixModel prodMixModel = new ProdMixModel();
     private int milk ;

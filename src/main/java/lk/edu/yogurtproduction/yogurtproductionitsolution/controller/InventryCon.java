@@ -36,35 +36,35 @@ public class InventryCon implements Initializable {
 
 
     public void initialize(URL location, ResourceBundle resources) {
-        colInID.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colType.setCellValueFactory(new PropertyValueFactory<>("itemType"));
-        colDesc.setCellValueFactory(new PropertyValueFactory<>("itemDescription"));
-        colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
-
-        try {
-            loadTble();
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
+//        colInID.setCellValueFactory(new PropertyValueFactory<>("id"));
+//        colType.setCellValueFactory(new PropertyValueFactory<>("itemType"));
+//        colDesc.setCellValueFactory(new PropertyValueFactory<>("itemDescription"));
+//        colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
+//
+//        try {
+//          //  loadTble();
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//        }
     }
 
     InventroyModel invModel = new InventroyModel();
-    private void loadTble() throws SQLException {
-
-        ArrayList<InventryTM> inventryTMS = invModel.getAlldata();
-
-        ObservableList<InventryTM> inventryTms = FXCollections.observableArrayList();
-
-        inventryTms.addAll(inventryTMS);
-
-        tblInventroy.setItems(inventryTms);
-    }
-
+//    private void loadTble() throws SQLException {
+//
+//        ArrayList<InventryTM> inventryTMS = invModel.getAlldata();
+//
+//        ObservableList<InventryTM> inventryTms = FXCollections.observableArrayList();
+//
+//        inventryTms.addAll(inventryTMS);
+//
+//        tblInventroy.setItems(inventryTms);
+//    }
+//
 
 
     @FXML
     void btnALLReportIN(ActionEvent event) throws SQLException {
-
+    //    loadTble();
     }
 
 }

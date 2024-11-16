@@ -14,13 +14,14 @@ public class InventroyModel {
 
     public String getInventroyId() throws SQLException {
         ResultSet rst = CrudUtil.execute("select In_ID from inventory order by In_ID desc limit 1");
-        if (rst.next()) {
+        if (rst.next()){
             String lastId = rst.getString(1);
-            String substring = lastId.substring(3);
+            String substring = lastId.substring(1);
             int i = Integer.parseInt(substring);
-            int newIdIndex = i + 1;
-            return String.format("INV%03d", newIdIndex);
+            int newIdIndex = i+1;
+            return String.format("INV%03d",newIdIndex);
         }
+
         return "INV001";
     }
 
@@ -105,25 +106,7 @@ public class InventroyModel {
         }
     }
 
-    public ArrayList<InventryTM> getAlldata() throws SQLException {
 
-        ResultSet rst = CrudUtil.execute("SELECT In_ID, Item_Type, Item_Description, Qty, Prod_ID FROM inventory");
-
-        ArrayList<InventryTM> inventoryList = new ArrayList<>();
-
-        while (rst.next()) {
-            String id = rst.getString("In_ID");
-            String itemType = rst.getString("Item_Type");
-            String itemDescription = rst.getString("Item_Description");
-            String qty = rst.getString("Qty");
-            String prodId = rst.getString("Prod_ID");
-
-            InventryTM inventryTM = new InventryTM(id, itemType, itemDescription, qty, prodId);
-            inventoryList.add(inventryTM);
-        }
-
-        return inventoryList;
-    }
 
 
 }
