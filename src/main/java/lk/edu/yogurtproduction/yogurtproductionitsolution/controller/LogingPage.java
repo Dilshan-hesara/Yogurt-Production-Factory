@@ -63,6 +63,9 @@ public class LogingPage {
 
     @FXML
     private Button btncreateAcc;
+    @FXML
+    private Label restPssword;
+
 
     @FXML
     void CreatAcc(ActionEvent event) throws IOException {
@@ -89,6 +92,23 @@ public class LogingPage {
 
 
     public void resetPassword(MouseEvent mouseEvent) {
+        try {
 
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/RestPassWord.fxml"));
+            Parent load = loader.load();
+
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(load));
+            stage.setTitle("Rest Password");
+
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            stage.initOwner(restPssword.getScene().getWindow());
+            stage.showAndWait();
+        } catch (IOException e) {
+            new Alert(Alert.AlertType.ERROR, "Fail to load ui..!");
+            e.printStackTrace();
+        }
     }
 }
