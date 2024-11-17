@@ -39,6 +39,6 @@
       </ImageView>
       <Button layoutX="25.0" layoutY="26.0" mnemonicParsing="false" onAction="#backButton" prefHeight="42.0" prefWidth="48.0" style="-fx-background-color: #0000; -fx-border-color: #3498db;" />
       <Button fx:id="btncreateAcc" layoutX="1075.0" layoutY="662.0" mnemonicParsing="false" onAction="#CreatAcc" prefHeight="32.0" prefWidth="150.0" style="-fx-background-color: #0000; -fx-border-color: #ecf0f1;" text="Creat ACC" textFill="WHITE" />
-      <Label layoutX="1122.0" layoutY="595.0" onMouseClicked="#resetPassword" prefHeight="18.0" prefWidth="102.0" text="Reset Pasword" textFill="#d1d1d1" />
+      <Label fx:id="restPssword" layoutX="1122.0" layoutY="595.0" onMouseClicked="#resetPassword" prefHeight="18.0" prefWidth="102.0" text="Reset Pasword" textFill="#d1d1d1" />
    </children>
 </AnchorPane>
