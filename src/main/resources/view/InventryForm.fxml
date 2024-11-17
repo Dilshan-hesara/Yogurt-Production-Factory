@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -16,7 +17,7 @@
             <Image url="@../images/11-bluer.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tblInventroy" layoutX="25.0" layoutY="140.0" prefHeight="544.0" prefWidth="1030.0">
+      <TableView fx:id="tblInventroy" layoutX="14.0" layoutY="134.0" prefHeight="544.0" prefWidth="1030.0" stylesheets="@../styles/TableStyle.css">
          <columns>
             <TableColumn fx:id="colInID" prefWidth="130.39996910095215" text="IN ID" />
             <TableColumn fx:id="colType" prefWidth="336.0000457763672" text="Item Type" />
@@ -32,10 +33,16 @@
             <Font name="Impact" size="39.0" />
          </font>
       </Label>
-      <Button layoutX="905.0" layoutY="94.0" mnemonicParsing="false" onAction="#btnALLReportIN" prefHeight="22.0" prefWidth="136.0" style="-fx-background-color: #95a5a6;" text="INVENTROY REPORT" textFill="#080d0d">
+      <Button layoutX="905.0" layoutY="94.0" mnemonicParsing="false" onAction="#btnALLReportIN" prefHeight="22.0" prefWidth="136.0" style="-fx-background-color: #95a5a6;" stylesheets="@../styles/TableStyle.css" text="INVENTROY REPORT" textFill="#080d0d">
          <font>
             <Font name="Berlin Sans FB" size="12.0" />
          </font>
+         <styleClass>
+            <String fx:value="thumb" />
+            <String fx:value="column-header-background" />
+            <String fx:value="decrement-button" />
+            <String fx:value="decrement-button" />
+         </styleClass>
       </Button>
    </children>
 </AnchorPane>
