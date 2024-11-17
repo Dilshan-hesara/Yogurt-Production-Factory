@@ -2,6 +2,12 @@ create database yougurtprodution;
 
 use yougurtprodution;
 
+        create table user(
+                     username varchar(300) primary key,
+                     password varchar(300),
+                     email varchar(300)
+        );
+
 create table Employee (
     Emp_ID varchar(20)primary key,
     Emp_Name varchar(100),
