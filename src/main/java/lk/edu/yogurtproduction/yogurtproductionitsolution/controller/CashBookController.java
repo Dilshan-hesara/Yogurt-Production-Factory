@@ -58,26 +58,36 @@ public class CashBookController {
     @FXML
     private TextField txtQty;
 
-    @FXML
-    private TableColumn<String, CashBookTM> colAmount;
 
     @FXML
-    private TableColumn<String, CashBookTM> colCBno;
+    private TableColumn<String, CashBookTM> colCbNO;
+
+
+    @FXML
+    private TableColumn<String, CashBookTM> colSupID;
 
     @FXML
     private TableColumn<String, CashBookTM> colDate;
 
-    @FXML
-    private TableColumn<String, CashBookTM> colDese;
 
     @FXML
-    private TableColumn<String, CashBookTM> colQty;
+    private TableColumn<String, CashBookTM> colDESE;
+
 
     @FXML
-    private TableColumn<String, CashBookTM> colSupId;
+    private TableColumn<Integer, CashBookTM> colQTY;
+
+
+    @FXML
+    private TableColumn<Double, CashBookTM> colAmo;
+
 
     @FXML
     private TableView<CashBookTM> tblCshBook;
+
+
+    @FXML
+    private TableView<CashBookTM> tblCashBook;
 
     SuplierModel suplierModel = new SuplierModel();
     MatiralMoadel matiralModel = new MatiralMoadel();
@@ -86,8 +96,10 @@ public class CashBookController {
 
     @FXML
     public void initialize() throws SQLException {
-       // setCellValues();
+       setCellValues();
         refesh();
+        LoadTabel();
+
 
     }
     @FXML
@@ -100,40 +112,40 @@ public class CashBookController {
     }
 
     private void setCellValues() {
-
-        colAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
-        colCBno.setCellValueFactory(new PropertyValueFactory<>("CBNo"));
+        colCbNO.setCellValueFactory(new PropertyValueFactory<>("CBNo"));
+        colSupID.setCellValueFactory(new PropertyValueFactory<>("SupId"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
-        colDese.setCellValueFactory(new PropertyValueFactory<>("desc"));
-        colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
-        colSupId.setCellValueFactory(new PropertyValueFactory<>("SupId"));
+        colDESE.setCellValueFactory(new PropertyValueFactory<>("desc"));
+        colQTY.setCellValueFactory(new PropertyValueFactory<>("qty"));
+        colAmo.setCellValueFactory(new PropertyValueFactory<>("amount"));
 
     }
     public void LoadTabel() throws SQLException {
-//        ArrayList<CashBookDto> cashBookDtos = cashBookModel.getAllCustomers();
-//
-//        ObservableList<CashBookTM> cashBookTMS = FXCollections.observableArrayList();
-//
-//        for (CashBookDto cashBookDto : cashBookDtos) {
-//            CashBookTM cashBookTM = new CashBookTM(
-//                    cashBookDto.getCBNo(),
-//                    cashBookDto.getSupId(),
-//                    cashBookDto.getDate(),
-//                    cashBookDto.getDesc(),
-//                    cashBookDto.getQty(),
-//                    cashBookDto.getAmount()
-//
-//            );
-//            cashBookTMS.add(cashBookTM);
-//        }
-//        tblCshBook.setItems(cashBookTMS);
+        ArrayList<CashBookDto> cashBookDtos = cashBookModel.getAllCustomers();
+
+        ObservableList<CashBookTM> cashBookTMS = FXCollections.observableArrayList();
+
+        for (CashBookDto cashBookDto : cashBookDtos) {
+            CashBookTM cashBookTM = new CashBookTM(
+                    cashBookDto.getCBNo(),
+                    cashBookDto.getSupId(),
+                    cashBookDto.getDate(),
+                    cashBookDto.getDesc(),
+                    cashBookDto.getQty(),
+                    cashBookDto.getAmount()
+
+
+            );
+            cashBookTMS.add(cashBookTM);
+        }
+        tblCashBook.setItems(cashBookTMS);
 
         System.out.println("load");
     }
 
     @FXML
     void test(ActionEvent event) throws SQLException {
-        loadNextInventryId();
+        LoadTabel();
     }
 
     @FXML

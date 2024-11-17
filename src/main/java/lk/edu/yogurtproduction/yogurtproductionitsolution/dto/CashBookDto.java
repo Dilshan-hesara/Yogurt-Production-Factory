@@ -3,7 +3,6 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.dto;
 
 import lombok.*;
 
-import java.sql.Array;
 import java.util.ArrayList;
 
 @Getter
@@ -28,4 +27,16 @@ public class CashBookDto {
     private ArrayList<InventroyDto> inventroyDTOS;
 
 
+    public CashBookDto(String CBNo, String SupId, String matID, String inID, String desc, int qty, double amount, String date) {
+        this.CBNo = CBNo;
+        this.SupId = SupId;
+        this.matID = matID;
+        this.inID = inID;
+        this.desc = desc;
+        this.qty = qty;
+        this.amount = amount;
+        this.date = date;
+
+
+    }
 }

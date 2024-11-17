@@ -5,7 +5,6 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CashBookDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -87,6 +86,32 @@ public class CashBookModel {
         }
         return "CBN001";
 
+    }
+
+    public ArrayList<CashBookDto> getAllCustomers() throws SQLException {
+
+        ResultSet rst = CrudUtil.execute("select * from Cash_Book");
+
+        ArrayList<CashBookDto> cashBookDTOS = new ArrayList<>();
+
+        while (rst.next()) {
+            CashBookDto cashBookDTO = new CashBookDto(
+                    rst.getString(1),
+                    rst.getString(2),
+                    rst.getString(3),
+                    rst.getString(4),
+                    rst.getString(5),
+                    rst.getInt(6),
+                    rst.getDouble(7),
+                    rst.getString(8)
+
+            );
+
+            ;
+
+            cashBookDTOS.add(cashBookDTO);
+        }
+        return cashBookDTOS;
     }
 }
 
