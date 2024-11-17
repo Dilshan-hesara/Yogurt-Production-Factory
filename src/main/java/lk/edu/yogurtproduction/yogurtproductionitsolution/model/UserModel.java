@@ -1,8 +1,11 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
+import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.UserDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -17,24 +20,51 @@ public class UserModel {
                 user.getEmail(),
                 user.getPassword()
 
-
         );
 
     }
 
+    public static boolean execute(String query, Object... params) throws SQLException {
 
+        try (Connection connection = DBConnection.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            int index = 1;
+            for (Object param : params) {
+                statement.setObject(index++, param);
+            }
+
+            int affectedRows = statement.executeUpdate();
+            return affectedRows > 0;
+
+        }
+    }
+
+    public boolean updatePassword(String username, String newPassword) throws SQLException {
+
+        String query = "update user set password = ? where username = ?";
+        boolean isUpdated = CrudUtil.execute(query, newPassword, username);
+
+        if (isUpdated) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     public boolean isValidUser(String username, String password) throws SQLException {
-        boolean isValid = false;
+        String query = "select * from user where username = ?  and password = ?";
 
-        ResultSet resultSet = CrudUtil.execute(
-                "SELECT * FROM user WHERE username = ? AND password = ?",
-                username,
-                password
-        );
+        ResultSet resultSet = CrudUtil.execute(query, username, password);
 
-        isValid = resultSet.next();
+        return resultSet.next();
+    }
 
-        return isValid;
+    public boolean isValidUsername(String username) throws SQLException {
+        String query = "select * from user where username = ?";
+
+        ResultSet resultSet = CrudUtil.execute(query, username);
+
+        return resultSet.next();
     }
 
 }
