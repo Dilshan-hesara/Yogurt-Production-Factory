@@ -71,4 +71,24 @@ public class StockModel {
         );
 
     }
+
+    public ArrayList<StockDto> getAllStockData() throws SQLException {
+        ResultSet rst = CrudUtil.execute("select * from Stock");
+
+        ArrayList<StockDto> stockDTOS = new ArrayList<>();
+
+        while (rst.next()) {
+            StockDto stockDTO = new StockDto(
+                    rst.getString(1),
+                    rst.getString(2),
+                    rst.getString(3),
+                    rst.getDouble(4),
+                    rst.getString(5),
+                    rst.getString(6),
+                    rst.getString(7)
+            );
+            stockDTOS.add(stockDTO);
+        }
+        return stockDTOS;
+    }
 }
