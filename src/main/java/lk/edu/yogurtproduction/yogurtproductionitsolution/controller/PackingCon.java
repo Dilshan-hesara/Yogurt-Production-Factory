@@ -58,13 +58,71 @@ public class PackingCon {
         loadNextStockId();
         loadNextPackingId();
     }
-PackingModel packingModel = new PackingModel();
+    int AVqty;
+    String AVqtyProdtName;
+
+    PackingModel packingModel = new PackingModel();
     @FXML
     void btnAddStock(ActionEvent event) throws SQLException {
 
         ArrayList<InventroyDto> inventroyDTOS = new ArrayList<>();
         ArrayList<StockDto> stockDTOS = new ArrayList<>();
 
+        String selectEmplye = cmbEmpId.getSelectionModel().getSelectedItem();
+        String selectProd = cmbProdId.getSelectionModel().getSelectedItem();
+        String seletPacktype = cmbPacType.getSelectionModel().getSelectedItem();
+
+        if (selectEmplye == null) {
+            new Alert(Alert.AlertType.ERROR, "Please select Employee  ..!").show();
+            return;
+        }
+
+        if (selectProd == null) {
+            new Alert(Alert.AlertType.ERROR, "Please select Prodtion ..!").show();
+            return;
+        }
+        if (seletPacktype == null) {
+            new Alert(Alert.AlertType.ERROR, "Please select PackType ..!").show();
+            return;
+        }
+
+        if (expireDate.getValue() == null) {
+            new Alert(Alert.AlertType.ERROR, "Expire date is not selected or invalid!").show();
+            return;
+        }
+
+        String PaDesc = desetxt.getText();
+        if (PaDesc == null || PaDesc.trim().isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "Package description is required!").show();
+            return;
+        }
+
+        if (PaDesc.matches(".*\\d.*")) {
+            new Alert(Alert.AlertType.ERROR, "Package description cannot use numbers!").show();
+            return;
+        }
+
+        String qtyText = qrytxt.getText();
+        if (qtyText == null || qtyText.trim().isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "Qty is required!").show();
+            return;
+        }
+        if (!qtyText.matches("\\d+")) { // This regex ensures all characters are digits
+            new Alert(Alert.AlertType.ERROR, "Invad Qty Enter a valid integer..").show();
+            return;
+        }
+        double QtyVa = Double.parseDouble(qtyText);
+        if (QtyVa <= 0) {
+            new Alert(Alert.AlertType.ERROR, "Qty cant Zero valuse number use!").show();
+            return;
+        }
+
+        int TxtQty = (int) (QtyVa *PacTypes);
+
+        if (AVqty < TxtQty ) {
+            new Alert(Alert.AlertType.ERROR, "Not enough "+" "+AVqtyProdtName+" "+" Prod available!").show();
+            return;
+        }
 
         String Pac_ID = lblPacID.getText();
          String Prod_ID = cmbProdId.getSelectionModel().getSelectedItem();
@@ -75,8 +133,9 @@ PackingModel packingModel = new PackingModel();
          double Qty = Double.parseDouble(qrytxt.getText());
          String Emp_ID = cmbEmpId.getSelectionModel().getSelectedItem();
          double RedusQty = Qty * PacTypes;
-      //   String itemType = "END Prodt";
-     //    String InID = invID;
+
+
+
 
 
         String Stock_ID = stID;
@@ -147,11 +206,12 @@ PackingModel packingModel = new PackingModel();
         invID = nextInventryId;
         System.out.println(nextInventryId);
     }
-
     public void loadInvetroyAvQtyFromSelectProd_ID() throws SQLException {
         String getSelectedProdId = cmbProdId.getSelectionModel().getSelectedItem();
         String AvalbleQty = String.valueOf(inventroyModel.AvQtyFromSelectProd_ID(getSelectedProdId));
         lblProdQty.setText(AvalbleQty);
+        AVqty = Integer.parseInt(AvalbleQty);
+
     }
 
     StockModel stockModel = new StockModel();
@@ -165,7 +225,6 @@ PackingModel packingModel = new PackingModel();
 
     public void loadNextPackingId() throws SQLException {
         String nextPackId = packingModel.getPackId();
-        //stID = nextPackId;
         lblPacID.setText(nextPackId);
         System.out.println(nextPackId);
     }
@@ -200,8 +259,8 @@ PackingModel packingModel = new PackingModel();
         ProdtionDto prodtionDto = prodtionModel.findById(cmbProdSelected);
         if (prodtionDto != null) {
             lblProdtName.setText(prodtionDto.getPro_Name());
-            //lblProdQty.setText(String.valueOf(prodtionDto.getProd_Qty()));
             loadInvetroyAvQtyFromSelectProd_ID();
+            AVqtyProdtName = prodtionDto.getPro_Name();
 
         }
 

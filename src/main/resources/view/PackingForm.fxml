@@ -44,7 +44,10 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="lblProdtName" layoutX="192.0" layoutY="366.0" opacity="0.63" prefHeight="18.0" prefWidth="98.0" text="YOUGUTRT" />
+      <Label fx:id="lblProdtName" layoutX="192.0" layoutY="366.0" opacity="0.73" prefHeight="18.0" prefWidth="98.0" text="YOUGUTRT">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font></Label>
       <Label layoutX="49.0" layoutY="466.0" prefHeight="30.0" prefWidth="138.0" text="PAC TYPE    :">
          <font>
             <Font name="System Bold" size="20.0" />
@@ -72,7 +75,10 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="lblEmpName" layoutX="182.0" layoutY="254.0" opacity="0.32" prefHeight="18.0" prefWidth="98.0" stylesheets="@../styles/TableStyle.css" text="Employee" />
+      <Label fx:id="lblEmpName" layoutX="182.0" layoutY="254.0" opacity="0.61" prefHeight="18.0" prefWidth="98.0" stylesheets="@../styles/TableStyle.css" text="Employee">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
       <Label layoutX="413.0" layoutY="209.0" prefHeight="30.0" prefWidth="124.0" text="Qty             :">
          <font>
             <Font name="System Bold" size="20.0" />
@@ -93,7 +99,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label fx:id="lblProdQty" layoutX="192.0" layoutY="389.0" opacity="0.71" prefHeight="18.0" prefWidth="98.0" text="250" />
+      <Label fx:id="lblProdQty" layoutX="192.0" layoutY="389.0" opacity="0.58" prefHeight="18.0" prefWidth="98.0" text="250" />
       <Button layoutX="557.0" layoutY="308.0" mnemonicParsing="false" onAction="#btnAddStock" prefWidth="150.0" style="-fx-background-color: #7367F0;" text="ADD Stock " textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
