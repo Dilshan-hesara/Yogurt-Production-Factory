@@ -37,14 +37,24 @@ UserModel userModel = new UserModel();
         String username = txtUser.getText().trim();
         String password = txtPass.getText().trim();
 
-        if (userModel.isValidUser(username, password)) {
-            logpage.getChildren().clear();
-            AnchorPane load = FXMLLoader.load(getClass().getResource("/view/DashBoad.fxml"));
-            logpage.getChildren().add(load);
+
+        if (userModel.isValidUsername(username)) {
+
+            if (userModel.isValidUser(username, password)) {
+
+                logpage.getChildren().clear();
+                AnchorPane load = FXMLLoader.load(getClass().getResource("/view/DashBoad.fxml"));
+                logpage.getChildren().add(load);
+            } else {
+
+                new Alert(Alert.AlertType.ERROR, "Invalid username or password").show();
+            }
         } else {
-            new Alert(Alert.AlertType.ERROR, "Invalid username or password").show();
+
+            new Alert(Alert.AlertType.ERROR, "Username does not exist").show();
         }
     }
+
 
 
 
