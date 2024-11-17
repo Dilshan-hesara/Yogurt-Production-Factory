@@ -64,22 +64,28 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <ComboBox fx:id="cmbProdt" layoutX="492.0" layoutY="131.0" onAction="#cmbProdtOnAction" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <ComboBox fx:id="cmbProdt" layoutX="492.0" layoutY="131.0" onAction="#cmbProdtOnAction" prefWidth="150.0" promptText="Select Recipe" style="-fx-background-color: #ffffff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
       <TextField fx:id="txtProdtName" layoutX="189.0" layoutY="131.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="150.0" promptText="Yougurt" style="-fx-background-color: #ffffff; -fx-border-width: 0 0 1px 0; -fx-border-color: #000;" />
       <Label layoutX="359.0" layoutY="129.0" prefHeight="30.0" prefWidth="138.0" text="PROD RESIP  :">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="700.0" layoutY="151.0" prefHeight="18.0" prefWidth="30.0" text="Milk" />
-      <Label layoutX="693.0" layoutY="185.0" prefHeight="12.0" prefWidth="43.0" text="suguer" />
-      <Label layoutX="707.0" layoutY="223.0" prefHeight="18.0" prefWidth="30.0" text="Jeliy" />
-      <Label fx:id="lblMilk" layoutX="746.0" layoutY="151.0" prefHeight="18.0" prefWidth="30.0" />
-      <Label fx:id="jeliy" layoutX="746.0" layoutY="223.0" prefHeight="18.0" prefWidth="30.0" />
-      <Label fx:id="lblsuguer" layoutX="741.0" layoutY="185.0" prefHeight="18.0" prefWidth="30.0" />
-      <Label fx:id="lblMilkAV" layoutX="806.0" layoutY="149.0" prefHeight="18.0" prefWidth="30.0" />
-      <Label fx:id="lblgeliyAV" layoutX="806.0" layoutY="221.0" prefHeight="18.0" prefWidth="30.0" />
-      <Label fx:id="lblsuguerAV" layoutX="801.0" layoutY="183.0" prefHeight="18.0" prefWidth="30.0" />
-      <Label layoutX="791.0" layoutY="120.0" prefHeight="18.0" prefWidth="60.0" text="AV L I" />
+      <Label layoutX="694.0" layoutY="151.0" prefHeight="18.0" prefWidth="43.0" text="Milk" />
+      <Label layoutX="694.0" layoutY="185.0" prefHeight="12.0" prefWidth="43.0" text="Sugar " />
+      <Label layoutX="694.0" layoutY="223.0" prefHeight="18.0" prefWidth="43.0" text="Gelatin " />
+      <Label fx:id="lblMilk" layoutX="746.0" layoutY="151.0" opacity="0.49" prefHeight="18.0" prefWidth="30.0" text="0000" />
+      <Label fx:id="jeliy" layoutX="746.0" layoutY="221.0" opacity="0.46" prefHeight="18.0" prefWidth="30.0" text="0000" />
+      <Label fx:id="lblsuguer" layoutX="746.0" layoutY="185.0" opacity="0.46" prefHeight="18.0" prefWidth="30.0" text="0000" />
+      <Label fx:id="lblMilkAV" layoutX="806.0" layoutY="149.0" opacity="0.43" prefHeight="18.0" prefWidth="30.0" text="0000" />
+      <Label fx:id="lblgeliyAV" layoutX="806.0" layoutY="221.0" opacity="0.49" prefHeight="18.0" prefWidth="30.0" text="0000" />
+      <Label fx:id="lblsuguerAV" layoutX="806.0" layoutY="184.0" opacity="0.42" prefHeight="18.0" prefWidth="30.0" text="0000" />
+      <Label layoutX="806.0" layoutY="120.0" prefHeight="18.0" prefWidth="58.0" text="available" />
+      <Label layoutX="739.0" layoutY="120.0" prefHeight="18.0" prefWidth="43.0" text="Recepi" />
+      <Label layoutX="694.0" layoutY="120.0" prefHeight="18.0" prefWidth="43.0" text="Qty">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
