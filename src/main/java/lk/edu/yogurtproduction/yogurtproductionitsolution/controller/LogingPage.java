@@ -122,4 +122,26 @@ UserModel userModel = new UserModel();
             e.printStackTrace();
         }
     }
+
+    @FXML
+    void testBtn(ActionEvent event) {
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/MailVerfy.fxml"));
+            Parent load = loader.load();
+
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(load));
+            stage.setTitle("Rest Password");
+
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            stage.initOwner(restPssword.getScene().getWindow());
+            stage.showAndWait();
+        } catch (IOException e) {
+            new Alert(Alert.AlertType.ERROR, "Fail to load ui..!");
+            e.printStackTrace();
+        }
+    }
 }
