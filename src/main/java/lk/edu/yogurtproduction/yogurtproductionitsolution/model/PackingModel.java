@@ -17,7 +17,7 @@ public class PackingModel {
             connection.setAutoCommit(false);
 
             boolean isRecpSaved = CrudUtil.execute(
-                    "INSERT INTO packing VALUES (?, ?, ?, ?, ?, ?, ?,?)",
+                    "insert into packing values (?, ?, ?, ?, ?, ?, ?,?)",
                     pckingDtos.getPac_ID(),
                     pckingDtos.getProd_ID(),
                     pckingDtos.getPac_Type(),
@@ -30,8 +30,7 @@ public class PackingModel {
 
             if (isRecpSaved) {
 
-//                    connection.commit();
-//                    return true;
+
                     boolean isStockUpdated = stockModel.saveStock(pckingDtos.getStockDTOS());
                     if (isStockUpdated) {
                         boolean redusePackedQty = inventoryModel.saveredusPackedQty(pckingDtos);

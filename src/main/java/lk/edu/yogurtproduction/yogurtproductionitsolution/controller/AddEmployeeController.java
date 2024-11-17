@@ -138,12 +138,6 @@ public class AddEmployeeController implements Initializable {
 
 
 
-    @FXML
-    void btnUpdateOnAction(ActionEvent event) {
-
-    }
-
-
 
     public void setEmployeeFormController(EmployeeController employeeController) {
 

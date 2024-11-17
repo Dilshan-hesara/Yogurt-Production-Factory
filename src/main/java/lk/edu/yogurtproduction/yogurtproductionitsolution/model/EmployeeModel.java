@@ -17,20 +17,19 @@ public class EmployeeModel {
     public String getNextCustomerId() throws SQLException {
 
         Connection connection = DBConnection.getInstance().getConnection();
-        String sql = "SELECT Emp_ID FROM employee ORDER BY Emp_ID DESC LIMIT 1";
+        String sql = "select Emp_ID from employee order by Emp_ID desc LIMIT 1";
         PreparedStatement pst = connection.prepareStatement(sql);
         ResultSet rst = pst.executeQuery();
 
         if (rst.next()) {
             String lastId = rst.getString(1);
-            String substring = lastId.substring(2); // Updated to substring(2) to remove "EM"
+            String substring = lastId.substring(2);
             int i = Integer.parseInt(substring);
             int newIdIndex = i + 1;
 
             return String.format("EM%03d", newIdIndex);
         }
 
-// Return EM001 if no IDs are found
         return "EM001";
 
 
@@ -77,7 +76,7 @@ public class EmployeeModel {
 
 
     public boolean updateCustomer(EmployeeDto employeeDto) throws SQLException, ClassNotFoundException{
-        String sql = "UPDATE employee SET Emp_Name = ?, Emp_Nic = ?, Emp_Email = ?, Emp_Phone = ? WHERE Emp_ID = ?";
+        String sql = "update employee set Emp_Name = ?, Emp_Nic = ?, Emp_Email = ?, Emp_Phone = ? where Emp_ID = ?";
 
         Connection connection = DBConnection.getInstance().getConnection();
         PreparedStatement statement = connection.prepareStatement(sql); {
@@ -107,7 +106,7 @@ public class EmployeeModel {
 
     public ArrayList<String> getAllEmpIds() throws SQLException {
 
-        ResultSet rst = CrudUtil.execute("SELECT Emp_ID FROM Employee");
+        ResultSet rst = CrudUtil.execute("select Emp_ID from Employee");
 
         ArrayList<String> EmpIds = new ArrayList<>();
 

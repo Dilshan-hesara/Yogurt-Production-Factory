@@ -24,52 +24,11 @@ public class InventroyModel {
         return "INV001";
     }
 
-//
-//    public boolean redusqtyOnInventroy(ProdtionDto prodtionDto) throws SQLException {
-//
-//
-//        boolean milkUpdated = CrudUtil.execute("UPDATE inventory i JOIN (SELECT In_ID FROM inventory WHERE Item_Description = 'Milk' AND Qty > 0 LIMIT 1) subquery ON i.In_ID = subquery.In_ID SET i.Qty = i.Qty - ?", prodtionDto.getP_milk());
-//        boolean gelatinUpdated = CrudUtil.execute("UPDATE inventory i JOIN (SELECT In_ID FROM inventory WHERE Item_Description = 'Gelat' AND Qty > 0 LIMIT 1) subquery ON i.In_ID = subquery.In_ID SET i.Qty = i.Qty - ?", prodtionDto.getP_jeley());
-//        boolean sugarUpdated = CrudUtil.execute("UPDATE inventory i JOIN (SELECT In_ID FROM inventory WHERE Item_Description = 'Sugar' AND Qty > 0 LIMIT 1) subquery ON i.In_ID = subquery.In_ID SET i.Qty = i.Qty - ?", prodtionDto.getP_suguer());
-//
-//        if (milkUpdated && gelatinUpdated && sugarUpdated) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
-
-
-//    public boolean saveInvetoryPack(PckingDto pckingDtos) throws SQLException {
-//
-//        return   CrudUtil.execute(
-//                "INSERT INTO Inventory VALUES (?, ?, ?, ?, ?)",
-//                pckingDtos.getInID(),
-//                pckingDtos.getItemType(),
-//                pckingDtos.getPac_Desc(),
-//                pckingDtos.getQty(),
-//                pckingDtos.getProd_ID()
-//
-//        );
-//    }
-
-//    public boolean saveUpdated(ProdtionDto prodtionDto) throws SQLException {
-//
-//
-//        return   CrudUtil.execute(
-//                "INSERT INTO Inventory VALUES (?, ?, ?, ?, ?)",
-//                prodtionDto.getInID(),
-//                prodtionDto.getItemType(),
-//                prodtionDto.getPro_Name(),
-//                prodtionDto.getProd_Qty(),
-//                prodtionDto.getProd_ID()
-//
-//        );    }
 
     public boolean saveredusPackedQty(PckingDto pckingDtos) throws SQLException {
 
         return   CrudUtil.execute(
-                "UPDATE inventory set Qty = Qty - ? where Prod_ID = ?",
+                "update inventory set Qty = Qty - ? where Prod_ID = ?",
                 pckingDtos.getRedusQty(),
                 pckingDtos.getProd_ID()
 
@@ -80,7 +39,7 @@ public class InventroyModel {
     public int AvQtyFromSelectProd_ID(String getSelectedProdId) throws SQLException {
 
         ResultSet rst = CrudUtil.execute(
-                "SELECT Qty FROM inventory WHERE Prod_ID = ?",
+                "select Qty from inventory where Prod_ID = ?",
                 getSelectedProdId
         );
 
@@ -101,14 +60,7 @@ public class InventroyModel {
                 return false;
             }
         }
-//
-//        boolean isMatirealUpdated = materialModel.updatedMatirialReduceQty(cashBookDto);
-//        if (isMatirealUpdated) {
-//
-//      return false;
-//
-//
-//        }
+
         return true;
     }
 
@@ -153,14 +105,7 @@ public class InventroyModel {
                 return false;
             }
         }
-//
-//        boolean isMatirealUpdated = materialModel.updatedMatirialReduceQty(cashBookDto);
-//        if (isMatirealUpdated) {
-//
-//      return false;
-//
-//
-//        }
+
         return true;
 
     }
@@ -182,19 +127,16 @@ public class InventroyModel {
     public ArrayList<String> getAllAVItems() throws SQLException {
         ArrayList<String> availableItems = new ArrayList<>();
 
-        // Get the total for 'Gelat'
         ResultSet rst1 = CrudUtil.execute("SELECT SUM(Qty) AS Total FROM inventory WHERE Item_Description = 'Gelat' AND Qty > 0;");
         if (rst1.next()) {
             availableItems.add(rst1.getString("Total") != null ? rst1.getString("Total") : "0");
         }
 
-        // Get the total for 'Milk'
         ResultSet rst2 = CrudUtil.execute("SELECT SUM(Qty) AS Total FROM inventory WHERE Item_Description = 'Milk' AND Qty > 0;");
         if (rst2.next()) {
             availableItems.add(rst2.getString("Total") != null ? rst2.getString("Total") : "0");
         }
 
-        // Get the total for 'Suguer'
         ResultSet rst3 = CrudUtil.execute("SELECT SUM(Qty) AS Total FROM inventory WHERE Item_Description = 'Sugar' AND Qty > 0;");
         if (rst3.next()) {
             availableItems.add(rst3.getString("Total") != null ? rst3.getString("Total") : "0");
@@ -204,35 +146,6 @@ public class InventroyModel {
     }
 
 
-    /*  // Iterate through each order detail in the list
-        for (OrderDetailsDto orderDetailsDTO : orderDetailsDTOS) {
-            // @isOrderDetailsSaved: Saves the individual order detail
-            boolean isOrderDetailsSaved = saveOrderDetail(orderDetailsDTO);
-            if (!isOrderDetailsSaved) {
-                // Return false if saving any order detail fails
-                return false;
-            }
-
-            // @isItemUpdated: Updates the item quantity in the stock for the corresponding order detail
-            boolean isItemUpdated = itemModel.reduceQuantity(orderDetailsDTO);
-            if (!isItemUpdated) {
-                // Return false if updating the item quantity fails
-                return false;
-            }
-        }
-        // Return true if all order details are saved and item quantities updated successfully
-        return true;
-    }
-    private boolean saveOrderDetail(OrderDetailsDto orderDetailsDTO) throws SQLException {
-        // Executes an insert query to save the order detail into the database
-        return CrudUtil.execute(
-                "insert into orderdetails values (?,?,?,?)",
-                orderDetailsDTO.getOrderId(),
-                orderDetailsDTO.getItemId(),
-                orderDetailsDTO.getQuantity(),
-                orderDetailsDTO.getPrice()
-        );
-    }*/
 }
 
 

@@ -17,14 +17,7 @@ public class MatirialUsageModel {
                 return false;
             }
         }
-//
-//        boolean isMatirealUpdated = materialModel.updatedMatirialReduceQty(cashBookDto);
-//        if (isMatirealUpdated) {
-//
-//      return false;
-//
-//
-//        }
+
         return true;
 
 
@@ -34,7 +27,7 @@ public class MatirialUsageModel {
     private boolean saveMatUsage(MatirialUsageDto matirialUsageDTO) throws SQLException {
 
         return   CrudUtil.execute(
-                "INSERT INTO material_usage VALUES (?, ?, ?, ?, ?)",
+                "insert into material_usage values (?, ?, ?, ?, ?)",
                 matirialUsageDTO.getMatUs_ID(),
                 matirialUsageDTO.getProd_ID(),
                 matirialUsageDTO.getMat_Milk(),
@@ -75,20 +68,8 @@ public class MatirialUsageModel {
         return matirialUsageDTOS;
 
     }
-//
 
-
-//    public boolean saveMatUpdated(ProdtionDto prodtionDto) throws SQLException {
-//        return   CrudUtil.execute(
-//                "INSERT INTO material_usage VALUES (?, ?, ?, ?)",
-//           //     prodtionDto.getMatUid(),
-//                prodtionDto.getProd_ID(),
-//                prodtionDto.getPro_Name(),
-//                prodtionDto.getProd_Qty()
-//                prodtionDto.getProd_ID()
-//
-//        );
 
 
     }
-//}
+

@@ -21,7 +21,7 @@ public class CashBookModel {
             connection.setAutoCommit(false);
 
             boolean isRecpSaved = CrudUtil.execute(
-                    "INSERT INTO Cash_Book VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                    "insert into Cash_Book values (?, ?, ?, ?, ?, ?, ?, ?)",
                     cashBookDto.getCBNo(),
                     cashBookDto.getSupId(),
                     cashBookDto.getMatID(),
@@ -33,7 +33,6 @@ public class CashBookModel {
             );
 
             if (isRecpSaved) {
-                System.out.println("sdf");
 
                 boolean isInventroyUpdated = inventoryModel.saveInvetory(cashBookDto.getInventroyDTOS());
                 if (isInventroyUpdated) {
@@ -66,7 +65,7 @@ public class CashBookModel {
 
 
     public int getAllPayAmount() throws SQLException {
-        ResultSet resultSet = CrudUtil.execute("SELECT SUM(Amount) AS Total_Amount FROM cash_book");
+        ResultSet resultSet = CrudUtil.execute("select sum(Amount) as Total_Amount from cash_book");
 
         if (resultSet.next()) {
             return resultSet.getInt("Total_Amount");

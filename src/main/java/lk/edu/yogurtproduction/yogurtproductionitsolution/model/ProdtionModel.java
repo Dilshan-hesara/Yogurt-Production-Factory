@@ -59,16 +59,7 @@ public class ProdtionModel {
                }
 
                 }
-//
-//
-//                boolean isUpdateInverorySaved = inventoryModel.redusqtyOnInventroy(prodtionDto);
-//               if (isUpdateInverorySaved) {
-//                   connection.commit();
-//                   return true;
-//
-//               }
-//
-//                }
+
             }
             connection.rollback();
             return false;
@@ -82,7 +73,7 @@ public class ProdtionModel {
     }
 
     public ArrayList<String> getAllProdtIds() throws SQLException {
-        ResultSet rst = CrudUtil.execute("SELECT Prod_ID FROM production");
+        ResultSet rst = CrudUtil.execute("select Prod_ID from production");
 
         ArrayList<String> ProdtIds = new ArrayList<>();
 

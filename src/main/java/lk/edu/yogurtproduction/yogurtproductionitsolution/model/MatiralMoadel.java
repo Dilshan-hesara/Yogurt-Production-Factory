@@ -71,25 +71,7 @@ public class MatiralMoadel {
 
     }
 
-    public boolean deleteMatirial(String matId) throws SQLException {
 
-        return  CrudUtil.execute("delete from material where Mat_ID=?", matId);
-
-
-
-    }
-
-    public boolean updateMatirial(MatirialDto matirialDto) throws SQLException {
-
-        return CrudUtil.execute(
-                "update material set Mat_Name=?, Qty=?, Price=? where Mat_ID=?",
-                matirialDto.getMatId(),
-                matirialDto.getMatName(),
-                matirialDto.getMatQty(),
-                matirialDto.getMatPrice()
-
-        );
-    }
 
     public MatirialDto findById(String selectID) throws SQLException {
 
@@ -109,7 +91,7 @@ public class MatiralMoadel {
     public ArrayList<String> getAllItemIds() throws SQLException {
 
 
-        ResultSet rst = CrudUtil.execute("SELECT Mat_ID FROM material");
+        ResultSet rst = CrudUtil.execute("select Mat_ID from material");
 
         ArrayList<String> itemIds = new ArrayList<>();
 
@@ -122,19 +104,12 @@ public class MatiralMoadel {
 
     public boolean updatedMatirialReduceQty(CashBookDto cashBookDto) throws SQLException {
         return CrudUtil.execute(
-                "UPDATE material SET Qty = Qty - ? WHERE Mat_ID = ?",
+                "update material set Qty = Qty - ? where Mat_ID = ?",
                 cashBookDto.getQty(),
                 cashBookDto.getMatID()
         );
     }
 
 
-//    public boolean updatedMatirialReduceQty(CashBookDto cashBookDto) throws SQLException {
-//
-//        return CrudUtil.execute(
-//                "UPDATE material SET Qty = Qty - ? WHERE Mat_ID = ?",
-//                cashBookDto.getQty(),
-//                cashBookDto.getMatID()
-//        );
-    //}
+
 }

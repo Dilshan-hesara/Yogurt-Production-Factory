@@ -107,7 +107,7 @@ public class PackingCon {
             new Alert(Alert.AlertType.ERROR, "Qty is required!").show();
             return;
         }
-        if (!qtyText.matches("\\d+")) { // This regex ensures all characters are digits
+        if (!qtyText.matches("\\d+")) {
             new Alert(Alert.AlertType.ERROR, "Invad Qty Enter a valid integer..").show();
             return;
         }

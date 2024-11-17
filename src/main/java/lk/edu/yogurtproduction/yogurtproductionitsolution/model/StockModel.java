@@ -8,20 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class StockModel {
-//    public boolean saveStock(PckingDto pckingDtos) throws SQLException {
-//
-//        return   CrudUtil.execute(
-//                "INSERT INTO Stock VALUES (?, ?, ?, ?,?,?,?)",
-//                pckingDtos.getStID(),
-//                pckingDtos.getPac_ID(),
-//                pckingDtos.getPac_Desc(),
-//                pckingDtos.getQty(),
-//                pckingDtos.getPac_Date(),
-//                pckingDtos.getExpire_Date(),
-//                pckingDtos.getPac_Type()
-//
-//        );
-//    }
 
     public String getStockId() throws SQLException {
 
@@ -45,14 +31,7 @@ public class StockModel {
                 return false;
             }
         }
-//
-//        boolean isMatirealUpdated = materialModel.updatedMatirialReduceQty(cashBookDto);
-//        if (isMatirealUpdated) {
-//
-//      return false;
-//
-//
-//        }
+
         return true;
     }
 
