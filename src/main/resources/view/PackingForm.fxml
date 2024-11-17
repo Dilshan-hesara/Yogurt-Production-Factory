@@ -64,7 +64,16 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <DatePicker fx:id="expireDate" layoutX="181.0" layoutY="528.0" prefHeight="26.0" prefWidth="150.0" promptText="Expe Date" />
+      <DatePicker fx:id="expireDate" layoutX="181.0" layoutY="528.0" prefHeight="26.0" prefWidth="150.0" promptText="Expe Date" stylesheets="@../styles/DatePickers.css">
+         <styleClass>
+            <String fx:value="week-day" />
+            <String fx:value="caret" />
+            <String fx:value="caret" />
+            <String fx:value="years-combo" />
+            <String fx:value="week-day" />
+            <String fx:value="icon" />
+            <String fx:value="caret" />
+         </styleClass></DatePicker>
       <Label layoutX="51.0" layoutY="209.0" prefHeight="30.0" prefWidth="138.0" text="EMP ID        :">
          <font>
             <Font name="System Bold" size="20.0" />
