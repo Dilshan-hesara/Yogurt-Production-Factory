@@ -3,8 +3,13 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -56,4 +61,34 @@ public class LogingPage {
         logpage.getChildren().add(load);
     }
 
+    @FXML
+    private Button btncreateAcc;
+
+    @FXML
+    void CreatAcc(ActionEvent event) throws IOException {
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CreateAcc.fxml"));
+            Parent load = loader.load();
+
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(load));
+            stage.setTitle("Create Account");
+
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            stage.initOwner(btncreateAcc.getScene().getWindow());
+            stage.showAndWait();
+        } catch (IOException e) {
+            new Alert(Alert.AlertType.ERROR, "Fail to load ui..!");
+            e.printStackTrace();
+        }
+
+    }
+
+
+    public void resetPassword(MouseEvent mouseEvent) {
+
+    }
 }
