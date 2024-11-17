@@ -1,32 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.BarChart?>
+<?import java.lang.String?>
+<?import javafx.scene.chart.AreaChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1113.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.edu.yogurtproduction.yogurtproductionitsolution.controller.DashBoadMain">
    <children>
       <ImageView fitHeight="720.0" fitWidth="1113.0">
          <image>
-            <Image url="@../images/10-DashMain.jpg" />
+            <Image url="@../images/9-dash-Blur.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="47.0" layoutY="28.0" prefHeight="145.0" prefWidth="390.0" text="dash boad">
+      <Text fx:id="txtTime" layoutX="780.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="08:30 AM" textAlignment="RIGHT" wrappingWidth="299.13671875">
          <font>
-            <Font name="System Bold Italic" size="52.0" />
-         </font></Label>
-      <BarChart fx:id="chart" layoutX="34.0" layoutY="244.0">
-        <xAxis>
-          <CategoryAxis side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis side="LEFT" />
-        </yAxis>
-      </BarChart>
+            <Font size="38.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="41.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back">
+         <font>
+            <Font name="Roboto Medium" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtUser" layoutX="41.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dilshan Hesara" wrappingWidth="150.13751220703125">
+         <font>
+            <Font name="Roboto Medium" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="txtDate" layoutX="696.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="November 22,2024" textAlignment="RIGHT" wrappingWidth="389.13671875">
+         <font>
+            <Font name="Candara Light" size="37.0" />
+         </font>
+      </Text>
+      <AreaChart fx:id="chartTeaStock" alternativeRowFillVisible="false" createSymbols="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="41.0" layoutY="352.0" legendVisible="false" prefHeight="327.0" prefWidth="580.0" stylesheets="@../styles/ChatSys.css" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
+         <xAxis>
+            <CategoryAxis side="BOTTOM" styleClass="category-axis" stylesheets="@../styles/ChatSys.css" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis side="LEFT" stylesheets="@../styles/ChatSys.css">
+               <styleClass>
+                  <String fx:value="axis-label" />
+                  <String fx:value="category-axis" />
+               </styleClass>
+            </NumberAxis>
+         </yAxis>
+      </AreaChart>
+      <PieChart fx:id="chartProduction" layoutX="506.0" layoutY="325.0" legendVisible="false" prefHeight="381.0" prefWidth="486.0" titleSide="BOTTOM" />
+      <Button layoutX="506.0" layoutY="125.0" mnemonicParsing="false" onAction="#testbtn" text="Button" />
    </children>
 </AnchorPane>

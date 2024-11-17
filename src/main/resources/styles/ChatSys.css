@@ -1,0 +1,16 @@
+
+/* Change the entire chart background color */
+.chart {
+    -fx-background-color: #0000; /* Dark background color */
+}
+
+/* Change the plot area background color */
+.chart-plot-background {
+    -fx-background-color:  #0000; /* Darker color for plot area */
+}
+
+/* Change the color of the chart grid lines */
+.chart-grid-lines {
+    -fx-stroke: #444444; /* Lighter grid lines for better contrast */
+}
+
