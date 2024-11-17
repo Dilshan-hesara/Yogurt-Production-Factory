@@ -10,8 +10,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.model.UserModel;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class LogingPage {
 
@@ -28,24 +31,22 @@ public class LogingPage {
     private TextField txtUser;
 
 
-
+UserModel userModel = new UserModel();
     @FXML
-    void dashBoadButt(ActionEvent event) throws IOException {
+    void dashBoadButt(ActionEvent event) throws IOException, SQLException {
+        String username = txtUser.getText().trim();
+        String password = txtPass.getText().trim();
 
-        String username = txtUser.getText();
-        String password = txtPass.getText();
-
-        if (username.equals("dilshan") && password.equals("1234")) {
-
+        if (userModel.isValidUser(username, password)) {
             logpage.getChildren().clear();
-
             AnchorPane load = FXMLLoader.load(getClass().getResource("/view/DashBoad.fxml"));
             logpage.getChildren().add(load);
         } else {
-            new Alert(Alert.AlertType.ERROR, "Invalid username or password ").show();
-
+            new Alert(Alert.AlertType.ERROR, "Invalid username or password").show();
         }
     }
+
+
 
     @FXML
     void showpass(ActionEvent event) {
