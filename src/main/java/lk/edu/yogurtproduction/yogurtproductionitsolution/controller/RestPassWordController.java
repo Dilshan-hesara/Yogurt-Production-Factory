@@ -63,6 +63,8 @@ public class RestPassWordController {
             return;
         }
 
+
+
         if (userModel.isValidUsername(username)) {
 
             if (userModel.isValidUser(username, oldPassword)) {

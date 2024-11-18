@@ -28,6 +28,9 @@ public class VerfyMailController {
 
 
 
+    @FXML
+    private Label txtMailSuss;
+
     private String generatedOtp;
     private static final String SENDER_EMAIL = "mkdhyogurtfactory@gmail.com";
     private static final String SENDER_PASSWORD = "vcev juis zcnl pifa";
@@ -59,6 +62,9 @@ public class VerfyMailController {
 
 
     private void sendOtpEmail() {
+
+        txtMail.setText("OTP email seding");
+
         if (recipientEmail == null || !isValidEmail(recipientEmail)) {
             showAlert(Alert.AlertType.WARNING, "Invalid email address! Cannot send OTP.");
             return;
@@ -89,7 +95,8 @@ public class VerfyMailController {
                 message.setText(body);
 
                 Transport.send(message);
-                Platform.runLater(() -> showAlert(Alert.AlertType.INFORMATION, "OTP email sent successfully!"));
+                Platform.runLater(() -> txtMail.setText("OTP email sent successfully!"));
+
             } catch (MessagingException e) {
                 e.printStackTrace();
                 Platform.runLater(() -> showAlert(Alert.AlertType.ERROR, "Error sending email: " + e.getMessage()));
@@ -140,5 +147,9 @@ public class VerfyMailController {
         } else {
             showAlert(Alert.AlertType.ERROR, "Invalid OTP. Please try again.");
         }
+    }
+
+    public void VeffiMailExit(ActionEvent actionEvent) {
+  closeWindow();
     }
 }

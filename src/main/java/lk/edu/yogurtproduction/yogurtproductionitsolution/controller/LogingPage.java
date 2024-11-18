@@ -81,12 +81,17 @@ public class LogingPage {
     @FXML
     private Label restPssword;
 
+    @FXML
+    private AnchorPane nextAcc;
+
 
     @FXML
     void CreatAcc(ActionEvent event) throws IOException {
         try {
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CreateAcc.fxml"));
+
+            // FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UserAccPageFrom.fxml"));
             Parent load = loader.load();
 
 

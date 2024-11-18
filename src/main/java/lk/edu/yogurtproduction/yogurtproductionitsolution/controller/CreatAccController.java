@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.UserDto;
@@ -34,6 +35,9 @@ public class CreatAccController {
     private TextField txtUserName;
 
     UserModel userModel = new UserModel();
+
+    @FXML
+    private AnchorPane nextAcc;
 
     @FXML
     void btnSaveAcc(ActionEvent event) {
@@ -73,19 +77,18 @@ public class CreatAccController {
 
             UserDto user = new UserDto(username, password, email);
 
+
+            nextAcc.getChildren().clear();
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/MailVerfy.fxml"));
-            Parent load = loader.load();
+            AnchorPane load = loader.load();
+
 
             VerfyMailController verifyController = loader.getController();
             verifyController.setUserDetails(user);
 
-            Stage stage = new Stage();
-            stage.setScene(new Scene(load));
-            stage.setTitle("Verify Email");
+            nextAcc.getChildren().add(load);
 
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initOwner(btnSave.getScene().getWindow());
-            stage.showAndWait();
 
             if (verifyController.isVerified()) {
 
@@ -97,7 +100,7 @@ public class CreatAccController {
                     showAlert("Error", "Failed to save account. Please try again.");
                 }
             } else {
-                showAlert("Error", "Email verification failed. Please try again.");
+             //   showAlert("Error", "Email verification failed. Please try again.");
             }
         } catch (IOException e) {
             e.printStackTrace();
