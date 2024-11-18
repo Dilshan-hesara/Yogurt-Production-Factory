@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.scene.chart.AreaChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -39,7 +40,7 @@
             <Font name="Candara Light" size="37.0" />
          </font>
       </Text>
-      <AreaChart fx:id="chartTeaStock" alternativeRowFillVisible="false" createSymbols="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="41.0" layoutY="352.0" legendVisible="false" prefHeight="327.0" prefWidth="580.0" stylesheets="@../styles/ChatSys.css" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
+      <AreaChart fx:id="chartStock" alternativeRowFillVisible="false" createSymbols="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="41.0" layoutY="352.0" legendVisible="false" prefHeight="327.0" prefWidth="580.0" stylesheets="@../styles/ChatSys.css" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
          <xAxis>
             <CategoryAxis side="BOTTOM" styleClass="category-axis" stylesheets="@../styles/ChatSys.css" />
          </xAxis>
@@ -52,7 +53,27 @@
             </NumberAxis>
          </yAxis>
       </AreaChart>
-      <PieChart fx:id="chartProduction" layoutX="506.0" layoutY="325.0" legendVisible="false" prefHeight="381.0" prefWidth="486.0" titleSide="BOTTOM" />
+      <PieChart fx:id="chartProduction" layoutX="636.0" layoutY="339.0" legendVisible="false" prefHeight="365.0" prefWidth="477.0" titleSide="BOTTOM">
+         <stylesheets>
+            <URL value="@../styles/Chart.css" />
+            <URL value="@../styles/Chart.css" />
+         </stylesheets></PieChart>
       <Button layoutX="506.0" layoutY="125.0" mnemonicParsing="false" onAction="#testbtn" text="Button" />
+      <Text fill="#636e72" layoutX="819.0" layoutY="698.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventroy Stock" wrappingWidth="142.91558837890625">
+         <font>
+            <Font name="Roboto Medium" size="16.0" />
+         </font>
+      </Text>
+      <Text fill="#636e72" layoutX="77.0" layoutY="698.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Production Stock" wrappingWidth="253.5140380859375">
+         <font>
+            <Font name="Roboto Medium" size="16.0" />
+         </font>
+      </Text>
+      <PieChart fx:id="chartProduction1" layoutX="658.0" layoutY="323.0" legendVisible="false" prefHeight="334.0" prefWidth="465.0" titleSide="BOTTOM">
+         <stylesheets>
+            <URL value="@../styles/Chart.css" />
+            <URL value="@../styles/Chart.css" />
+         </stylesheets>
+      </PieChart>
    </children>
 </AnchorPane>

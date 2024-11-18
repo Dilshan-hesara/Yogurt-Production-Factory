@@ -2,6 +2,8 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.controller;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,10 +15,11 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class DashBoadMain implements Initializable {
@@ -26,7 +29,7 @@ public class DashBoadMain implements Initializable {
         private PieChart chartProduction;
 
         @FXML
-        private AreaChart<String, Number> chartTeaStock;
+        private AreaChart<String, Number> chartStock;
 
         @FXML
         private Text txtDate;
@@ -40,15 +43,49 @@ public class DashBoadMain implements Initializable {
 
     @Override
         public void initialize(URL location, ResourceBundle resources) {
-            startClock();
+
+        loadChartData();
+
+             startClock();
             addYogurtStockData();
      }
 
+    public void testbtn(ActionEvent actionEvent) {
 
+        //addYogurtStockData()
+    }
+
+
+    public void loadChartData() {
+
+        try {
+            String query = "SELECT Item_Type, SUM(Qty) AS TotalQty " +
+                    "FROM inventory " +
+                    "WHERE Item_Type IN ('Raw', 'UN Packed', 'END Prodt') " +
+                    "GROUP BY Item_Type";
+
+            ResultSet rs = CrudUtil.execute(query);
+
+            ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+
+            while (rs.next()) {
+                String itemType = rs.getString("Item_Type");
+                int totalQty = rs.getInt("TotalQty");
+
+                pieChartData.add(new PieChart.Data(itemType + " (" + totalQty + ")", totalQty));
+            }
+
+            chartProduction.setData(pieChartData);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss a");
     private SimpleDateFormat daterun = new SimpleDateFormat("MMMM dd, yyyy");
-    // date manage
+
     private void updateDateLabel() {
 
 
@@ -66,11 +103,6 @@ public class DashBoadMain implements Initializable {
     }
 
 
-
-    public void testbtn(ActionEvent actionEvent) {
-
-       //addYogurtStockData()
-    }
 
 
 
@@ -102,8 +134,8 @@ public class DashBoadMain implements Initializable {
 
            areaChart.getData().add(yogurtStockSeries);
 
-            chartTeaStock.getData().clear();
-           chartTeaStock.getData().addAll(yogurtStockSeries);
+            chartStock.getData().clear();
+           chartStock.getData().addAll(yogurtStockSeries);
 
 
         } catch (Exception e) {
