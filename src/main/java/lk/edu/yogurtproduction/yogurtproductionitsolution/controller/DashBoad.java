@@ -109,6 +109,11 @@ public class DashBoad {
         AnchorPane load = FXMLLoader.load(getClass().getResource("/view/WelcomePage.fxml"));
         mainAn.getChildren().add(load);
     }
+
+    String UserName;
+    public void setUserName(String us) {
+     this.UserName = us;
+    }
 }
 
 
