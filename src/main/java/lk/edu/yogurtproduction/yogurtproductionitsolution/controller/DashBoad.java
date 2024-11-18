@@ -16,6 +16,29 @@ public class DashBoad {
     @FXML
     private AnchorPane nextPage;
 
+
+    String UserName;
+    public void setUserName(String us) {
+        this.UserName = us;
+    }
+
+
+    @FXML
+    void dashBoadButt(ActionEvent event) throws IOException {
+
+        nextPage.getChildren().clear();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DahBoadMain.fxml"));
+        AnchorPane dashboardPane = loader.load();
+
+        DashBoadMain dashMain = loader.getController();
+        dashMain.setUserName(UserName);
+
+        nextPage.getChildren().add(dashboardPane);
+
+    }
+
+
     public void emploButt(ActionEvent actionEvent) {
         navigateTo("/view/EmployeeForm.fxml");
 
@@ -66,12 +89,7 @@ public class DashBoad {
     }
 
 
-    @FXML
-    void dashBoadButt(ActionEvent event) {
-        navigateTo("/view/DahBoadMain.fxml");
 
-
-    }
 
     @FXML
     void cashBookButt(ActionEvent event) {
@@ -110,10 +128,7 @@ public class DashBoad {
         mainAn.getChildren().add(load);
     }
 
-    String UserName;
-    public void setUserName(String us) {
-     this.UserName = us;
-    }
+
 }
 
 

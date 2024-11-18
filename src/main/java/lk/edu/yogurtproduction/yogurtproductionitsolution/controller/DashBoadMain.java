@@ -37,21 +37,22 @@ public class DashBoadMain implements Initializable {
         @FXML
         private Text txtUser;
 
-        @Override
+
+    @Override
         public void initialize(URL location, ResourceBundle resources) {
             startClock();
             addYogurtStockData();
+     }
 
-        }
 
 
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss a"); // Time format (12-hour with AM/PM)
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm:ss a");
     private SimpleDateFormat daterun = new SimpleDateFormat("MMMM dd, yyyy");
     // date manage
     private void updateDateLabel() {
 
 
-        String currentTime = dateFormat.format(new Date()).toUpperCase();  // Ensure AM/PM are uppercase
+        String currentTime = dateFormat.format(new Date()).toUpperCase();
 
         txtTime.setText(currentTime);
         String currentdate = daterun.format(new Date());
@@ -68,7 +69,7 @@ public class DashBoadMain implements Initializable {
 
     public void testbtn(ActionEvent actionEvent) {
 
-       //addYogurtStockData();
+       //addYogurtStockData()
     }
 
 
@@ -111,7 +112,14 @@ public class DashBoadMain implements Initializable {
     }
 
 
+    String userName;
 
+    public void setUserName(String userName) {
+
+        this.userName = userName;
+        txtUser.setText(userName);
+
+    }
 }
 
 
