@@ -71,9 +71,9 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="694.0" layoutY="151.0" prefHeight="18.0" prefWidth="43.0" text="Milk" />
-      <Label layoutX="694.0" layoutY="185.0" prefHeight="12.0" prefWidth="43.0" text="Sugar " />
-      <Label layoutX="694.0" layoutY="223.0" prefHeight="18.0" prefWidth="43.0" text="Gelatin " />
+      <Label layoutX="682.0" layoutY="150.0" prefHeight="18.0" prefWidth="58.0" text="Milk    (L)" />
+      <Label layoutX="682.0" layoutY="185.0" prefHeight="18.0" prefWidth="66.0" text="Sugar  (K) " />
+      <Label layoutX="678.0" layoutY="221.0" prefHeight="18.0" prefWidth="66.0" text="Gelatin (G) " />
       <Label fx:id="lblMilk" layoutX="746.0" layoutY="151.0" opacity="0.49" prefHeight="18.0" prefWidth="30.0" text="0000" />
       <Label fx:id="jeliy" layoutX="746.0" layoutY="221.0" opacity="0.46" prefHeight="18.0" prefWidth="30.0" text="0000" />
       <Label fx:id="lblsuguer" layoutX="746.0" layoutY="185.0" opacity="0.46" prefHeight="18.0" prefWidth="30.0" text="0000" />

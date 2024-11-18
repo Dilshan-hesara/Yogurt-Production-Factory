@@ -23,7 +23,7 @@
          <columns>
             <TableColumn fx:id="matID" prefWidth="75.0" text="Matrial  ID" />
             <TableColumn fx:id="matName" prefWidth="75.0" text="MAT  NAME" />
-            <TableColumn fx:id="matQty" prefWidth="75.0" text="QTY" />
+            <TableColumn fx:id="matQty" prefWidth="75.0" text="QTY (L/K/G)" />
             <TableColumn fx:id="matPrice" prefWidth="75.0" text="Price" />
          </columns>
          <columnResizePolicy>
@@ -43,41 +43,41 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Label layoutX="52.0" layoutY="81.0" prefWidth="150.0" text="mat Id">
+      <Label layoutX="43.0" layoutY="80.0" prefWidth="150.0" text="MAR ID                 :">
          <font>
             <Font name="Calibri" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="lblItId" layoutX="157.0" layoutY="80.0" maxWidth="1.7976931348623157E308" prefHeight="18.0" prefWidth="138.0" text="IT001">
+      <Label fx:id="lblItId" layoutX="170.0" layoutY="79.0" maxWidth="1.7976931348623157E308" prefHeight="18.0" prefWidth="138.0" text="IT001">
          <font>
             <Font name="Calibri" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="52.0" layoutY="120.0" prefHeight="18.0" prefWidth="80.0" text="Name">
+      <Label layoutX="43.0" layoutY="120.0" prefHeight="18.0" prefWidth="114.0" text="Name                     :">
          <font>
             <Font name="Calibri" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="42.0" layoutY="166.0" prefHeight="18.0" prefWidth="71.0" text="Quantity">
+      <Label layoutX="43.0" layoutY="166.0" prefHeight="18.0" prefWidth="114.0" text="Quantity (L/K/G)  :">
          <font>
             <Font name="Calibri" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtQuantity" layoutX="132.0" layoutY="161.0" promptText="5" style="-fx-background-color: #fff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;">
+      <TextField fx:id="txtQuantity" layoutX="157.0" layoutY="161.0" promptText="5" style="-fx-background-color: #fff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;">
          <font>
             <Font name="Calibri" size="14.0" />
          </font>
       </TextField>
-      <Label layoutX="52.0" layoutY="223.0" prefHeight="18.0" prefWidth="54.0" text="Price">
+      <Label layoutX="43.0" layoutY="223.0" prefHeight="18.0" prefWidth="114.0" text="Price                       :">
          <font>
             <Font name="Calibri" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtPrice" layoutX="132.0" layoutY="218.0" promptText="200.00" style="-fx-background-color: #fff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;">
+      <TextField fx:id="txtPrice" layoutX="157.0" layoutY="218.0" promptText="200.00" style="-fx-background-color: #fff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;">
          <font>
             <Font name="Calibri" size="14.0" />
          </font>
       </TextField>
-      <ComboBox fx:id="cmbMatName" layoutX="139.0" layoutY="116.0" onAction="#cmbMatNameOnAction" prefWidth="150.0" promptText="Select Mat" style="-fx-background-color: #ffffff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <ComboBox fx:id="cmbMatName" layoutX="156.0" layoutY="116.0" onAction="#cmbMatNameOnAction" prefHeight="26.0" prefWidth="166.0" promptText="Select Mat" style="-fx-background-color: #ffffff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
    </children>
 </AnchorPane>

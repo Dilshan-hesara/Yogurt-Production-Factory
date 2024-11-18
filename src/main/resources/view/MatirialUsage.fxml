@@ -25,9 +25,9 @@
          <columns>
             <TableColumn fx:id="cloMatID" prefWidth="75.0" text="MAT ID" />
             <TableColumn fx:id="colProdID" prefWidth="75.0" text="PROD ID" />
-            <TableColumn fx:id="cloMilk" prefWidth="75.0" text="Milk Usage" />
-            <TableColumn fx:id="colSu" prefWidth="75.0" text="Suguer Usage" />
-            <TableColumn fx:id="colGela" prefWidth="75.0" text="Gelatin Usage" />
+            <TableColumn fx:id="cloMilk" prefWidth="75.0" text="Milk Usage (L)" />
+            <TableColumn fx:id="colSu" prefWidth="75.0" text="Suguer Usage (K)" />
+            <TableColumn fx:id="colGela" prefWidth="75.0" text="Gelatin Usage (G)" />
          </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

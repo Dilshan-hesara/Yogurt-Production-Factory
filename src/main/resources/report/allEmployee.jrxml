@@ -32,7 +32,7 @@
 	<background splitType="Stretch"/>
 	<title height="86" splitType="Stretch">
 		<element kind="staticText" uuid="dae5caf0-458e-452b-9971-1c08d972ff68" x="0" y="0" width="550" height="86" fontSize="25.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
-			<text><![CDATA[Employee report]]></text>
+			<text><![CDATA[EMPLOYEE REPORT]]></text>
 		</element>
 	</title>
 	<pageHeader height="57" splitType="Stretch">
@@ -42,7 +42,7 @@
 	</pageHeader>
 	<columnHeader height="61" splitType="Stretch">
 		<element kind="staticText" uuid="7d3d0d2a-8ae6-4d61-a63d-e4ddc84d29f6" x="0" y="0" width="111" height="30" fontSize="14.0" hTextAlign="Center" vTextAlign="Middle">
-			<text><![CDATA[Employee_ID]]></text>
+			<text><![CDATA[Employee-ID]]></text>
 			<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="27bf403d-3bd5-4866-83d8-4b38f826afd6"/>
 			<box>
 				<pen lineWidth="1.25"/>

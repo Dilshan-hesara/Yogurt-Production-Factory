@@ -30,7 +30,7 @@
           <TableColumn fx:id="colSupID" prefWidth="75.0" text="Supplier ID" />
           <TableColumn fx:id="colDate" prefWidth="75.0" text="Date" />
             <TableColumn fx:id="colDESE" prefWidth="75.0" text="DESE" />
-            <TableColumn fx:id="colQTY" prefWidth="75.0" text="Qty" />
+            <TableColumn fx:id="colQTY" prefWidth="75.0" text="Qty (L/K/G)" />
             <TableColumn fx:id="colAmo" prefWidth="75.0" text="Amount" />
         </columns>
          <columnResizePolicy>

@@ -32,9 +32,9 @@
       <TableView fx:id="tblprodtMix" layoutX="41.0" layoutY="359.0" onMouseClicked="#tblClik" prefHeight="342.0" prefWidth="1030.0">
          <columns>
             <TableColumn fx:id="cloProdtName" prefWidth="75.0" text="RECIPE Name" />
-            <TableColumn fx:id="colMilk" prefWidth="75.0" text="Milk" />
-            <TableColumn fx:id="colSu" prefWidth="75.0" text="Suguer" />
-            <TableColumn fx:id="ColGeliy" prefWidth="75.0" text="Gelatin" />
+            <TableColumn fx:id="colMilk" prefWidth="75.0" text="Milk (L)" />
+            <TableColumn fx:id="colSu" prefWidth="75.0" text="Suguer (K)" />
+            <TableColumn fx:id="ColGeliy" prefWidth="75.0" text="Gelatin (G)" />
          </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -48,19 +48,19 @@
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
       </Button>
-      <Label layoutX="40.0" layoutY="252.0" prefHeight="30.0" prefWidth="138.0" text="Suger         :">
+      <Label layoutX="40.0" layoutY="252.0" prefHeight="30.0" prefWidth="138.0" text="Suger     (K) :">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
       <TextField fx:id="txtSugur" layoutX="194.0" layoutY="254.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="150.0" promptText="Qty" style="-fx-background-color: #ffffff; -fx-border-width: 0 0 1px 0; -fx-border-color: #000;" />
-      <Label layoutX="40.0" layoutY="282.0" prefHeight="30.0" prefWidth="138.0" text="Gelatin           :">
+      <Label layoutX="40.0" layoutY="282.0" prefHeight="30.0" prefWidth="138.0" text="Gelatin  (G) :">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
       <TextField fx:id="txtJeliy" layoutX="194.0" layoutY="284.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="150.0" promptText="Qty" style="-fx-background-color: #ffffff; -fx-border-width: 0 0 1px 0; -fx-border-color: #000;" />
-      <Label layoutX="42.0" layoutY="214.0" prefHeight="30.0" prefWidth="138.0" text="Milk          :">
+      <Label layoutX="42.0" layoutY="214.0" prefHeight="30.0" prefWidth="138.0" text="Milk      (L) :">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
