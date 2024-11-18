@@ -78,16 +78,17 @@ public class CreatAccController {
             UserDto user = new UserDto(username, password, email);
 
 
-            nextAcc.getChildren().clear();
-
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/MailVerfy.fxml"));
             AnchorPane load = loader.load();
-
 
             VerfyMailController verifyController = loader.getController();
             verifyController.setUserDetails(user);
 
-            nextAcc.getChildren().add(load);
+            Stage stage = new Stage();
+            stage.setTitle("Email Verification");
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.setScene(new Scene(load));
+            stage.showAndWait();
 
 
             if (verifyController.isVerified()) {
@@ -100,7 +101,7 @@ public class CreatAccController {
                     showAlert("Error", "Failed to save account. Please try again.");
                 }
             } else {
-             //   showAlert("Error", "Email verification failed. Please try again.");
+                showAlert("Error", "Email verification failed. Please try again.");
             }
         } catch (IOException e) {
             e.printStackTrace();

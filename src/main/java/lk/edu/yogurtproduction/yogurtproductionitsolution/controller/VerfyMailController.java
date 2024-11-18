@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.UserDto;
 
 import javax.mail.*;
@@ -53,8 +54,6 @@ public class VerfyMailController {
     }
 
 
-
-
     private void generateOtp() {
         int otp = 100000 + new Random().nextInt(900000);
         generatedOtp = String.valueOf(otp);
@@ -71,7 +70,12 @@ public class VerfyMailController {
         }
 
         String subject = "Your OTP for Verification";
-        String body = "Dear "+getUserName+",\n\nYour OTP is: " + generatedOtp + "\n\nPlease use this to verify your email.\n\nRegards,\nMKD Yogurt Factory";
+        String body = "Dear " + getUserName + ",\n\n" +
+                "Your OTP is: " + generatedOtp + "\n\n" +
+                "Please use this to verify your email.\n\n" +
+                "Regards,\n" +
+                "MKD Yogurt Factory\n\n" +
+                "Developed by Dilshan Hesara";
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
@@ -125,8 +129,11 @@ public class VerfyMailController {
 
 
     private void closeWindow() {
-        Platform.runLater(() -> txtOtp.getScene().getWindow().hide());
+        // Get the stage of the current window and close it
+        Stage stage = (Stage) txtOtp.getScene().getWindow();
+        stage.close();
     }
+
 
     public void VeffiMail(ActionEvent actionEvent) {
 
