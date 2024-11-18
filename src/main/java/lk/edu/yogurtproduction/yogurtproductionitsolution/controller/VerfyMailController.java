@@ -30,14 +30,11 @@ public class VerfyMailController {
 
     private String generatedOtp;
     private static final String SENDER_EMAIL = "mkdhyogurtfactory@gmail.com";
-    private static final String SENDER_PASSWORD = "vcev juis zcnl pifa"; // Use an app password here
+    private static final String SENDER_PASSWORD = "vcev juis zcnl pifa";
     private String recipientEmail;
     private boolean isVerified = false;
     private String getUserName;
 
-    /**
-     * Sets the user details and generates the OTP for email verification.
-     */
 
     public void setUserDetails(UserDto user) {
         if (user != null) {
@@ -47,21 +44,20 @@ public class VerfyMailController {
             txtUser.setText(getUserName);
             generateOtp();
             sendOtpEmail();
+
+
         }
     }
 
-    /**
-     * Generates a random OTP and assigns it to the `generatedOtp` variable.
-     */
+
+
+
     private void generateOtp() {
-        int otp = 100000 + new Random().nextInt(900000); // Generate a 6-digit OTP
+        int otp = 100000 + new Random().nextInt(900000);
         generatedOtp = String.valueOf(otp);
-        System.out.println("Generated OTP: " + generatedOtp); // For debugging purposes
     }
 
-    /**
-     * Sends the OTP to the recipient's email.
-     */
+
     private void sendOtpEmail() {
         if (recipientEmail == null || !isValidEmail(recipientEmail)) {
             showAlert(Alert.AlertType.WARNING, "Invalid email address! Cannot send OTP.");
@@ -71,7 +67,6 @@ public class VerfyMailController {
         String subject = "Your OTP for Verification";
         String body = "Dear "+getUserName+",\n\nYour OTP is: " + generatedOtp + "\n\nPlease use this to verify your email.\n\nRegards,\nMKD Yogurt Factory";
 
-        // Configure email properties
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
@@ -85,7 +80,6 @@ public class VerfyMailController {
             }
         });
 
-        // Send email in a background thread
         new Thread(() -> {
             try {
                 Message message = new MimeMessage(session);
@@ -103,61 +97,46 @@ public class VerfyMailController {
         }).start();
     }
 
-    /**
-     * Validates the OTP entered by the user.
-     */
-    @FXML
-    void verifyOtp(ActionEvent event) {
-        String enteredOtp = txtOtp.getText().trim();
-        if (generatedOtp != null && generatedOtp.equals(enteredOtp)) {
-            isVerified = true;
-            showAlert(Alert.AlertType.INFORMATION, "OTP verified successfully!");
-            closeWindow(); // Close the verification window
-        } else {
-            showAlert(Alert.AlertType.ERROR, "Invalid OTP. Please try again.");
-        }
-    }
 
-    /**
-     * Checks if the OTP verification was successful.
-     *
-     * @return true if verified, false otherwise.
-     */
+
     public boolean isVerified() {
         return isVerified;
     }
 
-    /**
-     * Validates the format of an email address.
-     */
+
     private boolean isValidEmail(String email) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
         return email.matches(emailRegex);
     }
 
-    /**
-     * Displays an alert with the specified type and message.
-     */
+
     private void showAlert(Alert.AlertType alertType, String message) {
         Alert alert = new Alert(alertType);
         alert.setContentText(message);
         alert.showAndWait();
     }
 
-    /**
-     * Closes the current window.
-     */
+
     private void closeWindow() {
         Platform.runLater(() -> txtOtp.getScene().getWindow().hide());
     }
 
     public void VeffiMail(ActionEvent actionEvent) {
 
+        String otpVli = txtOtp.getText();
+
+        if (otpVli.matches("[0-9]+")) {
+
+        } else {
+            showAlert(Alert.AlertType.ERROR, "Invalid OTP. Please try again.");
+            return;
+        }
+
         String enteredOtp = txtOtp.getText().trim();
         if (generatedOtp != null && generatedOtp.equals(enteredOtp)) {
             isVerified = true;
             showAlert(Alert.AlertType.INFORMATION, "OTP verified successfully!");
-            closeWindow(); // Close the verification window
+            closeWindow();
         } else {
             showAlert(Alert.AlertType.ERROR, "Invalid OTP. Please try again.");
         }

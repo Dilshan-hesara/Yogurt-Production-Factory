@@ -35,6 +35,33 @@ public class RestPassWordController {
         String newPassword = txtNewPassWord.getText().trim();
         String reenterPassword = txtRenterNewPassWord.getText().trim();
 
+        if (username.isEmpty() || oldPassword.isEmpty() || newPassword.isEmpty() || reenterPassword.isEmpty()) {
+            showAlert("Validation Error", "All fields are required!");
+            return;
+        }
+
+
+        else if (!username.matches("[a-zA-Z ]+")) {
+            showAlert("Validation Error", "User name can Only Use Lettrs & sapes !");
+            return;
+        }
+
+        if (!newPassword.matches("\\d+")) {
+            showAlert("Validation Error", "New password only digits!");
+            return;
+        }
+
+        if (!newPassword.equals(reenterPassword)) {
+            showAlert("Validation Error", "New passwords do not match!");
+            return;
+        }
+
+
+
+        if (oldPassword.equals(newPassword)) {
+            showAlert("Validation Error", "Old and new passwords cannot be the same!");
+            return;
+        }
 
         if (userModel.isValidUsername(username)) {
 
@@ -59,6 +86,11 @@ public class RestPassWordController {
             new Alert(Alert.AlertType.ERROR, "Username does not exist").show();
         }
     }
-
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
 
 }
