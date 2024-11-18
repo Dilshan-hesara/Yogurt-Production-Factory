@@ -159,7 +159,20 @@ public class LogingPage {
     private Label fogetPassword;
 
     @FXML
-    void fogetPassword(MouseEvent event) {
+    void fogetPassword(MouseEvent event) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FogetPassWord.fxml"));
+        Parent load = loader.load();
+
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(load));
+        stage.setTitle("Foget Password");
+
+        stage.initModality(Modality.APPLICATION_MODAL);
+
+        stage.initOwner(restPssword.getScene().getWindow());
+        stage.showAndWait();
 
     }
 
