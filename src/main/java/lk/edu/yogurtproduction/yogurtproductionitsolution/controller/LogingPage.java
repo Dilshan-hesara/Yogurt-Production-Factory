@@ -31,7 +31,7 @@ public class LogingPage {
     private TextField txtUser;
 
 
-UserModel userModel = new UserModel();
+    UserModel userModel = new UserModel();
     @FXML
     void dashBoadButt(ActionEvent event) throws IOException, SQLException {
         String username = txtUser.getText().trim();
@@ -39,21 +39,25 @@ UserModel userModel = new UserModel();
 
 
         if (userModel.isValidUsername(username)) {
-
             if (userModel.isValidUser(username, password)) {
-
                 logpage.getChildren().clear();
-                AnchorPane load = FXMLLoader.load(getClass().getResource("/view/DashBoad.fxml"));
-                logpage.getChildren().add(load);
-            } else {
 
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DashBoad.fxml"));
+                AnchorPane dashboardPane = loader.load();
+
+                DashBoad dashController = loader.getController();
+                dashController.setUserName(username);
+
+                logpage.getChildren().add(dashboardPane);
+
+            } else {
                 new Alert(Alert.AlertType.ERROR, "Invalid username or password").show();
             }
         } else {
-
             new Alert(Alert.AlertType.ERROR, "Username does not exist").show();
         }
     }
+
 
 
 
