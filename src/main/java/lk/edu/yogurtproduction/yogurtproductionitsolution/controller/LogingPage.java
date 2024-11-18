@@ -153,4 +153,14 @@ public class LogingPage {
             e.printStackTrace();
         }
     }
+
+
+    @FXML
+    private Label fogetPassword;
+
+    @FXML
+    void fogetPassword(MouseEvent event) {
+
+    }
+
 }

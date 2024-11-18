@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="496.0" prefWidth="399.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.edu.yogurtproduction.yogurtproductionitsolution.controller.FogetPassWordSave">
+    <children>
+        <Button layoutX="294.0" layoutY="415.0" mnemonicParsing="false" onAction="#VeffiMail" text="Save" />
+        <Label fx:id="txtMail" layoutX="78.0" layoutY="77.0" prefHeight="18.0" prefWidth="242.0" text="Label" />
+        <Label fx:id="txtUser" layoutX="78.0" layoutY="52.0" prefHeight="18.0" prefWidth="242.0" text="Label" />
+        <Button layoutX="300.0" layoutY="456.0" mnemonicParsing="false" onAction="#VeffiMailExit" text="ex" />
+      <TextField fx:id="txtnewpassword" layoutX="85.0" layoutY="127.0" promptText="New password" />
+      <TextField fx:id="txtNewpassord" layoutX="85.0" layoutY="175.0" promptText="re  enter pasaword" />
+    </children>
+</AnchorPane>

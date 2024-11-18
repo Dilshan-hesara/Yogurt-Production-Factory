@@ -41,5 +41,6 @@
       <Button fx:id="btncreateAcc" layoutX="1075.0" layoutY="662.0" mnemonicParsing="false" onAction="#CreatAcc" prefHeight="32.0" prefWidth="150.0" style="-fx-background-color: #0000; -fx-border-color: #ecf0f1;" text="Creat ACC" textFill="WHITE" />
       <Label fx:id="restPssword" layoutX="1122.0" layoutY="595.0" onMouseClicked="#resetPassword" prefHeight="18.0" prefWidth="102.0" text="Reset Pasword" textFill="#d1d1d1" />
       <Button layoutX="724.0" layoutY="288.0" mnemonicParsing="false" onAction="#testBtn" text="Button" />
+      <Label fx:id="fogetPassword" layoutX="961.0" layoutY="612.0" onMouseClicked="#fogetPassword" prefHeight="18.0" prefWidth="102.0" text="Foget  Pasword" textFill="#d1d1d1" />
    </children>
 </AnchorPane>
