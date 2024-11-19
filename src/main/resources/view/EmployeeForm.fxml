@@ -31,7 +31,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <TableView fx:id="emTable" layoutX="27.0" layoutY="247.0" onMouseClicked="#btntableClick" prefHeight="450.0" prefWidth="1060.0" style="-fx-background-color: #0000; -fx-border-color: #000000;">
+      <TableView fx:id="emTable" layoutX="27.0" layoutY="247.0" onMouseClicked="#btntableClick" prefHeight="450.0" prefWidth="1060.0" style="-fx-background-color: #0000; -fx-border-color: #F89425;">
         <columns>
           <TableColumn fx:id="emIdta" prefWidth="95.99996566772461" text="EM-ID" />
           <TableColumn fx:id="col_name" prefWidth="241.59996032714844" text="Name" />

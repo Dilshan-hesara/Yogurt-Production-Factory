@@ -1,0 +1,46 @@
+/* Transparent TableView Background */
+.table-view {
+    -fx-background-color: transparent; /* Transparent table background */
+    -fx-border-color: #cccccc; /* Light border around the table */
+    -fx-border-width: 1px;
+    -fx-padding: 5px;
+}
+
+/* Transparent Row Backgrounds */
+.table-row-cell {
+    -fx-background-color: transparent; /* Transparent rows */
+    -fx-font-family: 'Berlin Sans FB Demi'; /* Font for row data */
+    -fx-font-size: 15px; /* Font size for row data */
+    -fx-text-fill: #333333; /* Dark gray text for row data */
+}
+
+.table-row-cell:hover {
+    -fx-background-color: rgba(227, 232, 172, 0.5); /* Neutral light green hover with transparency */
+}
+
+.table-row-cell:selected {
+    -fx-background-color: rgba(221, 201, 124, 0.8); /* Softer green for selected row */
+    -fx-text-fill: white; /* White text for readability */
+}
+
+/* Align Data in Cells */
+.table-cell {
+    -fx-alignment: center-left; /* Align text to the left */
+    -fx-padding: 5px; /* Padding for better spacing */
+    -fx-font-family: 'Berlin Sans FB Demi'; /* Font style for cell data */
+    -fx-font-size: 15px; /* Font size for cell data */
+    -fx-text-fill: #6f716f; /* Slightly darker green text for data */
+}
+
+/* Table Header Background */
+.column-header-background {
+    -fx-background-color: rgba(90, 180, 100, 0.8); /* Softer modern green for headers */
+}
+
+/* Table Header Text */
+.column-header .label {
+    -fx-text-fill: black; /* Black text for headers */
+    -fx-font-weight: bold; /* Bold font for emphasis */
+    -fx-font-size: 14px; /* Adjust font size if needed */
+    -fx-alignment: center; /* Center-align header text */
+}

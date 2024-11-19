@@ -40,12 +40,12 @@
             <Font name="Candara Light" size="37.0" />
          </font>
       </Text>
-      <AreaChart fx:id="chartStock" alternativeRowFillVisible="false" createSymbols="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="41.0" layoutY="352.0" legendVisible="false" prefHeight="327.0" prefWidth="580.0" stylesheets="@../styles/ChatSys.css" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
+      <AreaChart fx:id="chartStock" alternativeRowFillVisible="false" createSymbols="false" horizontalGridLinesVisible="false" horizontalZeroLineVisible="false" layoutX="41.0" layoutY="352.0" legendVisible="false" prefHeight="327.0" prefWidth="580.0" stylesheets="@../styles/AreaChat.css" verticalGridLinesVisible="false" verticalZeroLineVisible="false">
          <xAxis>
-            <CategoryAxis side="BOTTOM" styleClass="category-axis" stylesheets="@../styles/ChatSys.css" />
+            <CategoryAxis side="BOTTOM" styleClass="category-axis" stylesheets="@../styles/AreaChat.css" />
          </xAxis>
          <yAxis>
-            <NumberAxis side="LEFT" stylesheets="@../styles/ChatSys.css">
+            <NumberAxis side="LEFT" stylesheets="@../styles/AreaChat.css">
                <styleClass>
                   <String fx:value="axis-label" />
                   <String fx:value="category-axis" />
@@ -55,8 +55,8 @@
       </AreaChart>
       <PieChart fx:id="chartProduction" layoutX="636.0" layoutY="339.0" legendVisible="false" prefHeight="365.0" prefWidth="477.0" titleSide="BOTTOM">
          <stylesheets>
-            <URL value="@../styles/Chart.css" />
-            <URL value="@../styles/Chart.css" />
+            <URL value="@../styles/PieChart.css" />
+            <URL value="@../styles/PieChart.css" />
          </stylesheets></PieChart>
       <Button layoutX="506.0" layoutY="125.0" mnemonicParsing="false" onAction="#testbtn" text="Button" />
       <Text fill="#636e72" layoutX="819.0" layoutY="698.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventroy Stock" wrappingWidth="142.91558837890625">
@@ -71,8 +71,8 @@
       </Text>
       <PieChart fx:id="chartProduction1" layoutX="658.0" layoutY="323.0" legendVisible="false" prefHeight="334.0" prefWidth="465.0" titleSide="BOTTOM">
          <stylesheets>
-            <URL value="@../styles/Chart.css" />
-            <URL value="@../styles/Chart.css" />
+            <URL value="@../styles/PieChart.css" />
+            <URL value="@../styles/PieChart.css" />
          </stylesheets>
       </PieChart>
    </children>

@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.SepiaTone?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -24,7 +25,7 @@
             <Font name="System Bold Italic" size="48.0" />
          </font>
       </Label>
-      <TableView fx:id="tblCashBook" layoutX="31.0" layoutY="316.0" prefHeight="362.0" prefWidth="1062.0">
+      <TableView fx:id="tblCashBook" layoutX="31.0" layoutY="316.0" prefHeight="362.0" prefWidth="1062.0" style="-fx-background-color: #0000; -fx-border-color: #F89425;">
         <columns>
             <TableColumn fx:id="colCbNO" prefWidth="75.0" text="CB_No" />
           <TableColumn fx:id="colSupID" prefWidth="75.0" text="Supplier ID" />
@@ -36,6 +37,9 @@
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
+         <effect>
+            <SepiaTone level="0.27" />
+         </effect>
       </TableView>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="429.0" layoutY="24.0" prefHeight="50.0" prefWidth="188.0" text="CASH  BOOK">
          <font>
