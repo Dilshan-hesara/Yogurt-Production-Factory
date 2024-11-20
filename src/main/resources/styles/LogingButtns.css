@@ -26,20 +26,20 @@
 
 
 .logingButtns:hover {
-    -fx-background-color: #a83232; /* Brighter red on hover */
-    -fx-text-fill: rgba(176, 223, 96, 0.69);        /* White text for better contrast */
-    -fx-effect: dropshadow(three-pass-box, rgba(226, 230, 60, 0.6), 10, 0.5, 0, 0); /* Red shadow effect */
-    -fx-border-color: rgb(255, 0, 0); /* Border matches the shadow color (red) */
-    -fx-transition: all 0.3s ease;    /* Smooth transition for hover effect */
+    -fx-background-color: #a83232;
+    -fx-text-fill: rgba(176, 223, 96, 0.69);
+    -fx-effect: dropshadow(three-pass-box, rgba(226, 230, 60, 0.6), 10, 0.5, 0, 0);
+    -fx-border-color: rgb(255, 0, 0);
+    -fx-transition: all 0.3s ease;
 }
 
 .logingButtns:pressed {
-    -fx-background-color: #8b0000; /* Deep red hover background */
-    -fx-text-fill: #a9e8b2;        /* Light green text for softer contrast */
-    -fx-effect: dropshadow(three-pass-box, rgba(19, 221, 198, 0.7), 12, 0.5, 0, 0); /* Red-orange shadow effect */
-    -fx-border-color: #ff4500;    /* Vibrant red-orange border */
-    -fx-border-width: 2px;        /* Maintain consistent border width */
-    -fx-transition: all 0.3s ease; /* Smooth transition effect */
+    -fx-background-color: #8b0000;
+    -fx-text-fill: #a9e8b2;
+    -fx-effect: dropshadow(three-pass-box, rgba(19, 221, 198, 0.7), 12, 0.5, 0, 0);
+    -fx-border-color: #ff4500;
+    -fx-border-width: 2px;
+    -fx-transition: all 0.3s ease;
 }
 
 
@@ -68,20 +68,20 @@
 
 
 .loginglbl:hover {
-    -fx-background-color: #00000; /* Brighter red on hover */
-    -fx-text-fill: rgba(206, 227, 157, 0.69);        /* White text for better contrast */
-    -fx-effect: dropshadow(three-pass-box, rgba(225, 228, 126, 0.6), 10, 0.5, 0, 0); /* Red shadow effect */
-    -fx-border-color: rgb(255, 0, 0); /* Border matches the shadow color (red) */
-    -fx-transition: all 0.3s ease;    /* Smooth transition for hover effect */
+    -fx-background-color: #00000;
+    -fx-text-fill: rgba(206, 227, 157, 0.69);
+    -fx-effect: dropshadow(three-pass-box, rgba(225, 228, 126, 0.6), 10, 0.5, 0, 0);
+    -fx-border-color: rgb(255, 0, 0);
+    -fx-transition: all 0.3s ease;
 }
 
 .loginglbl:pressed {
-    -fx-background-color: #00000; /* Deep red hover background */
-    -fx-text-fill: #db39e3;        /* Light green text for softer contrast */
-    -fx-effect: dropshadow(three-pass-box, rgba(19, 221, 198, 0.7), 12, 0.5, 0, 0); /* Red-orange shadow effect */
-    -fx-border-color: #0000;    /* Vibrant red-orange border */
-    -fx-border-width: 0px;        /* Maintain consistent border width */
-    -fx-transition: all 0.3s ease; /* Smooth transition effect */
+    -fx-background-color: #00000;
+    -fx-text-fill: #db39e3;
+    -fx-effect: dropshadow(three-pass-box, rgba(19, 221, 198, 0.7), 12, 0.5, 0, 0);
+    -fx-border-color: #0000;
+    -fx-border-width: 0px;
+    -fx-transition: all 0.3s ease;
 }
 
 
@@ -103,18 +103,18 @@
 
 
 .logingCreatAcc:hover {
-    -fx-background-color: #00000; /* Brighter red on hover */
-    -fx-text-fill: rgba(206, 227, 157, 0.69);        /* White text for better contrast */
-    -fx-effect: dropshadow(three-pass-box, rgba(225, 228, 126, 0.6), 10, 0.5, 0, 0); /* Red shadow effect */
-    -fx-border-color: rgb(255, 0, 0); /* Border matches the shadow color (red) */
-    -fx-transition: all 0.3s ease;    /* Smooth transition for hover effect */
+    -fx-background-color: #00000;
+    -fx-text-fill: rgba(206, 227, 157, 0.69);
+    -fx-effect: dropshadow(three-pass-box, rgba(225, 228, 126, 0.6), 10, 0.5, 0, 0);
+    -fx-border-color: rgb(255, 0, 0);
+    -fx-transition: all 0.3s ease;
 }
 
 .logingCreatAcc:pressed {
-    -fx-background-color: #00000; /* Deep red hover background */
-    -fx-text-fill: #e4e141;        /* Light green text for softer contrast */
-    -fx-effect: dropshadow(three-pass-box, rgba(19, 221, 198, 0.7), 12, 0.5, 0, 0); /* Red-orange shadow effect */
-    -fx-border-color: #0000;    /* Vibrant red-orange border */
-    -fx-border-width: 1px;        /* Maintain consistent border width */
-    -fx-transition: all 0.3s ease; /* Smooth transition effect */
+    -fx-background-color: #00000;
+    -fx-text-fill: #e4e141;
+    -fx-effect: dropshadow(three-pass-box, rgba(19, 221, 198, 0.7), 12, 0.5, 0, 0);
+    -fx-border-color: #0000;
+    -fx-border-width: 1px;
+    -fx-transition: all 0.3s ease;
 }

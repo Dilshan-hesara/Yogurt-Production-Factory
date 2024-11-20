@@ -70,6 +70,14 @@ public class MatirialUsageModel {
     }
 
 
+    public int getAllUsageAvg() throws SQLException {
 
+        ResultSet resultSet = CrudUtil.execute("select(sum(Mat_Milk)+sum(Mat_Suguer)+sum(Mat_Gelatin)) / (count(*) * 3) as AllAvg from material_usage;");
+
+        if (resultSet.next()) {
+            return resultSet.getInt("AllAvg");
+        }
+        return 0;
     }
+}
 

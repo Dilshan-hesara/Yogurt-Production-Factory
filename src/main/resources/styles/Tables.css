@@ -1,46 +1,58 @@
-/* Transparent TableView Background */
-.table-view {
-    -fx-background-color: transparent; /* Transparent table background */
-    -fx-border-color: #cccccc; /* Light border around the table */
-    -fx-border-width: 1px;
-    -fx-padding: 5px;
-}
-
-/* Transparent Row Backgrounds */
-.table-row-cell {
-    -fx-background-color: transparent; /* Transparent rows */
-    -fx-font-family: 'Berlin Sans FB Demi'; /* Font for row data */
-    -fx-font-size: 15px; /* Font size for row data */
-    -fx-text-fill: #333333; /* Dark gray text for row data */
-}
 
 .table-row-cell:hover {
-    -fx-background-color: rgba(227, 232, 172, 0.5); /* Neutral light green hover with transparency */
+    -fx-background-color: rgba(227, 232, 172, 0.5);
 }
 
 .table-row-cell:selected {
-    -fx-background-color: rgba(221, 201, 124, 0.8); /* Softer green for selected row */
-    -fx-text-fill: white; /* White text for readability */
+    -fx-text-fill: black;
+    -fx-background-color: rgba(221, 201, 124, 0.8);
 }
 
-/* Align Data in Cells */
 .table-cell {
-    -fx-alignment: center-left; /* Align text to the left */
-    -fx-padding: 5px; /* Padding for better spacing */
-    -fx-font-family: 'Berlin Sans FB Demi'; /* Font style for cell data */
-    -fx-font-size: 15px; /* Font size for cell data */
-    -fx-text-fill: #6f716f; /* Slightly darker green text for data */
+    -fx-text-fill: black;
 }
 
-/* Table Header Background */
-.column-header-background {
-    -fx-background-color: rgba(90, 180, 100, 0.8); /* Softer modern green for headers */
+
+#AddMat {
+    -fx-background-color: #000000;
 }
 
-/* Table Header Text */
-.column-header .label {
-    -fx-text-fill: black; /* Black text for headers */
-    -fx-font-weight: bold; /* Bold font for emphasis */
-    -fx-font-size: 14px; /* Adjust font size if needed */
-    -fx-alignment: center; /* Center-align header text */
+.AddMat {
+    -fx-border-color: lime;
+    -fx-border-width: 1px;
+    -fx-border-radius: 1px;
+    -fx-padding: 4px;
+}
+
+.AddMat {
+    -fx-background-color: #1a3b10;
+    -fx-text-fill: #050505;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+    -fx-border-color: #787878;
+    -fx-font-family: 'Malgun Gothic';
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-padding: 4px 8px;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease;
+}
+
+
+.AddMat:hover {
+    -fx-background-color: #959595;
+    -fx-text-fill: rgba(74, 5, 5, 0.78);
+    -fx-effect: dropshadow(three-pass-box, rgba(120, 120, 115, 0.58), 10, 0.5, 0, 0);
+    -fx-border-color: rgb(255, 0, 0);
+    -fx-transition: all 0.3s ease;
+}
+
+.AddMat:pressed {
+    -fx-background-color: #000000;
+    -fx-text-fill: #0a449f;
+    -fx-effect: dropshadow(three-pass-box, rgba(179, 89, 56, 0.56), 12, 0.5, 0, 0);
+    -fx-border-color: rgba(13, 170, 141, 0.88);
+    -fx-border-width: 1px;
+    -fx-transition: all 0.3s ease;
 }

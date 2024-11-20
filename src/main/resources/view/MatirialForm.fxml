@@ -35,7 +35,7 @@
             <Font name="Impact" size="39.0" />
          </font>
       </Label>
-      <Button fx:id="btnSavem" layoutX="751.0" layoutY="232.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSave" prefWidth="80.0" style="-fx-background-color: #2ecc71;" text="Save" textFill="WHITE">
+      <Button fx:id="btnSavem" layoutX="751.0" layoutY="232.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSave" prefWidth="80.0" style="-fx-background-color: #2ecc71;" styleClass="AddEmpButt" stylesheets="@../styles/SupEmpButtns.css" text="Save" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
