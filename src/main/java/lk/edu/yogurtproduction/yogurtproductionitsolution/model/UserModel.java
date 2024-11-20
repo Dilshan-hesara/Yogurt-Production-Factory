@@ -84,7 +84,7 @@ public class UserModel {
     public String GetUserMail(String username) throws SQLException {
 
         try {
-            ResultSet resultSet = CrudUtil.execute("SELECT email FROM user WHERE username = ?", username);
+            ResultSet resultSet = CrudUtil.execute("select email from user where username = ?", username);
 
             if (resultSet.next()) {
                 return resultSet.getString("email");
@@ -95,5 +95,14 @@ public class UserModel {
         return null;
     }
 
+
+    public boolean UpdateUser(String usename, String newpass) throws SQLException {
+        return CrudUtil.execute(
+                "update user set password = ? where username = ?",
+                newpass,
+                usename
+        );
+
+   }
 }
 

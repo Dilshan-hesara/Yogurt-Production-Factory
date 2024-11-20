@@ -3,40 +3,60 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.model.UserModel;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class FogetPassWordSave {
+
+    @FXML
+    private Button VeffiMail;
+
+    @FXML
+    private AnchorPane nextPage;
 
     @FXML
     private Label txtMail;
 
     @FXML
+    private PasswordField txtNewpassord;
+
+    @FXML
     private Label txtUser;
 
+    @FXML
+    private PasswordField txtnewpassword;
 
     @FXML
-    private TextField txtNewpassord;
-
-
-    @FXML
-    private AnchorPane nextPage;
-
-
-    @FXML
-    private TextField txtnewpassword;
-
-    @FXML
-    void VeffiMail(ActionEvent event) {
+    void VeffiMail(ActionEvent event) throws SQLException {
         System.out.println(GetUseName);
 
+        String usename = GetUseName;
+        String newpass = txtnewpassword.getText();
 
+        boolean isUpdateUse = userModel.UpdateUser(usename,newpass);
+        if (isUpdateUse) {
+            new Alert(Alert.AlertType.ERROR, "PassWord Save Susses..!").show();
+
+            closeCurrentWindow();
+
+        }else{
+            new Alert(Alert.AlertType.ERROR, "Failed Save Password..!").show();
+
+        }
 
     }
+
+    private void closeCurrentWindow() {
+        Stage stage = (Stage) nextPage.getScene().getWindow();
+        stage.close();
+
+    }
+
 
     @FXML
     void VeffiMailExit(ActionEvent event) throws IOException {
@@ -45,10 +65,6 @@ public class FogetPassWordSave {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FogetPassWord.fxml"));
         AnchorPane load = loader.load();
 
-//
-//        VerfyMailController verifyController = loader.getController();
-//        verifyController.setUserDetails(user);
-
         Stage stage = (Stage) nextPage.getScene().getWindow();  // Get the current stage
         stage.setTitle("Foget Password");
 
@@ -56,8 +72,16 @@ public class FogetPassWordSave {
 
     }
 
+    UserModel userModel = new UserModel();
+
     String GetUseName;
-    public void userName(String userNmae) {
+    String GetMail;
+
+    public void userName(String userNmae) throws SQLException {
         this.GetUseName = userNmae;
+        GetMail=  userModel.GetUserMail(userNmae);
+        txtMail.setText(GetMail);
+        txtUser.setText(GetUseName);
+
     }
 }
