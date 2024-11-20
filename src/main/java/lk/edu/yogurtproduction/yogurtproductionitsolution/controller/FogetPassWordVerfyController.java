@@ -49,8 +49,6 @@ public class FogetPassWordVerfyController {
 @FXML
     void VeffiMail(ActionEvent event) throws IOException, SQLException {
 
-    String username = userNmae;
-
 
     String enteredOtp = txtOtp.getText().trim();
     if (generatedOtp != null && generatedOtp.equals(enteredOtp)) {
@@ -62,19 +60,18 @@ public class FogetPassWordVerfyController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FogetPasWordSave.fxml"));
         AnchorPane load = loader.load();
 
-        VerfyMailController verifyController = loader.getController();
-        verifyController.setUserDetails(user);
+        FogetPassWordSave passUser = loader.getController();
+        passUser.userName(userNmae);
 
 
-        Stage stage = (Stage) creatAcc.getScene().getWindow();  // Get the current stage
+        Stage stage = (Stage) creatAcc.getScene().getWindow();
         stage.setTitle("save password");
-//
 
         creatAcc.getChildren().add(load);
 
     } else {
         showAlert(Alert.AlertType.ERROR, "Invalid OTP. Please try again.");
-        return;
+
     }
 
     }
@@ -91,7 +88,7 @@ public class FogetPassWordVerfyController {
         txtMail.setText(GetMail);
         txtUser.setText(userNmae);
 
-      //  generateOtp();
+        //  generateOtp();
        // sendOtpEmail();
     }
 

@@ -32,6 +32,9 @@ public class FogetPassWordSave {
 
     @FXML
     void VeffiMail(ActionEvent event) {
+        System.out.println(GetUseName);
+
+
 
     }
 
@@ -53,4 +56,8 @@ public class FogetPassWordSave {
 
     }
 
+    String GetUseName;
+    public void userName(String userNmae) {
+        this.GetUseName = userNmae;
+    }
 }
