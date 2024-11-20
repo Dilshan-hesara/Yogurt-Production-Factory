@@ -1,45 +1,45 @@
 #dashBoadButns {
-    -fx-background-color: #000000; /* Soft light green for background */
+    -fx-background-color: #000000;
 }
 
 .dashBoadButns {
-    -fx-border-color: lime; /* Bright green border for table */
-    -fx-border-width: 2px;  /* Border thickness */
-    -fx-border-radius: 8px; /* Rounded corners for the table */
-    -fx-padding: 10px;      /* Add spacing around content */
+    -fx-border-color: lime;
+    -fx-border-width: 2px;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px;
 }
 
 .dashBoadButns {
-    -fx-background-color: #1a3b10;  /* Dark green background */
-    -fx-text-fill: #050505;         /* Light green text */
-    -fx-background-radius: 10px;   /* Rounded button edges */
-    -fx-border-radius: 10px;       /* Matching rounded border */
-    -fx-border-width: 2px;         /* Add border thickness */
-    -fx-border-color: #f3fff5;     /* Light green border */
-    -fx-font-family: 'Malgun Gothic'; /* Font family changed to Malgun Gothic */
-    -fx-font-weight: bold;         /* Bold font */
-    -fx-font-size: 12px;           /* Font size updated to 12px */
-    -fx-padding: 8px 16px;         /* Button padding for size */
-    -fx-cursor: hand;              /* Pointer cursor on hover */
-    -fx-transition: all 0.3s ease; /* Smooth transition effect */
+    -fx-background-color: #1a3b10;
+    -fx-text-fill: #050505;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+    -fx-border-color: #f3fff5;
+    -fx-font-family: 'Malgun Gothic';
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-padding: 8px 16px;
+    -fx-cursor: hand;
+    -fx-transition: all 0.3s ease;
 }
 
 
 .dashBoadButns:hover {
-    -fx-background-color: #a83232; /* Brighter red on hover */
-    -fx-text-fill: rgba(74, 5, 5, 0.78);        /* White text for better contrast */
-    -fx-effect: dropshadow(three-pass-box, rgba(213, 200, 57, 0.58), 10, 0.5, 0, 0); /* Red shadow effect */
-    -fx-border-color: rgb(255, 0, 0); /* Border matches the shadow color (red) */
-    -fx-transition: all 0.3s ease;    /* Smooth transition for hover effect */
+    -fx-background-color: #a83232;
+    -fx-text-fill: rgba(74, 5, 5, 0.78);
+    -fx-effect: dropshadow(three-pass-box, rgba(213, 200, 57, 0.58), 10, 0.5, 0, 0);
+    -fx-border-color: rgb(255, 0, 0);
+    -fx-transition: all 0.3s ease;
 }
 
 .dashBoadButns:pressed {
-    -fx-background-color: #000000; /* Deep red hover background */
-    -fx-text-fill: #0a449f;        /* Light green text for softer contrast */
-   -fx-effect: dropshadow(three-pass-box, rgba(179, 89, 56, 0.56), 12, 0.5, 0, 0); /* Red-orange shadow effect */
-    -fx-border-color: rgba(13, 170, 141, 0.88);    /* Vibrant red-orange border */
-    -fx-border-width: 3px;        /* Maintain consistent border width */
-    -fx-transition: all 0.3s ease; /* Smooth transition effect */
+    -fx-background-color: #000000;
+    -fx-text-fill: #0a449f;
+   -fx-effect: dropshadow(three-pass-box, rgba(179, 89, 56, 0.56), 12, 0.5, 0, 0);
+    -fx-border-color: rgba(13, 170, 141, 0.88);
+    -fx-border-width: 3px;
+    -fx-transition: all 0.3s ease;
 }
 
 
@@ -67,18 +67,18 @@
 
 
 .logOUT:hover {
-    -fx-background-color: #00000; /* Brighter red on hover */
-    -fx-text-fill: rgba(206, 227, 157, 0.69);        /* White text for better contrast */
-    -fx-effect: dropshadow(three-pass-box, rgba(207, 213, 40, 0.6), 10, 0.5, 0, 0); /* Red shadow effect */
-    -fx-border-color: rgb(106, 105, 105); /* Border matches the shadow color (red) */
-    -fx-transition: all 0.3s ease;    /* Smooth transition for hover effect */
+    -fx-background-color: #00000;
+    -fx-text-fill: rgba(206, 227, 157, 0.69);
+    -fx-effect: dropshadow(three-pass-box, rgba(207, 213, 40, 0.6), 10, 0.5, 0, 0);
+    -fx-border-color: rgb(106, 105, 105);
+    -fx-transition: all 0.3s ease;
 }
 
 .logOUT:pressed {
-    -fx-background-color: #00000; /* Deep red hover background */
-    -fx-text-fill: #e3db39;        /* Light green text for softer contrast */
-    -fx-effect: dropshadow(three-pass-box, rgba(225, 151, 112, 0.82), 12, 0.5, 0, 0); /* Red-orange shadow effect */
-    -fx-border-color: #0000;    /* Vibrant red-orange border */
-    -fx-border-width: 0px;        /* Maintain consistent border width */
-    -fx-transition: all 0.3s ease; /* Smooth transition effect */
+    -fx-background-color: #00000;
+    -fx-text-fill: #e3db39;
+    -fx-effect: dropshadow(three-pass-box, rgba(225, 151, 112, 0.82), 12, 0.5, 0, 0);
+    -fx-border-color: #0000;
+    -fx-border-width: 0px;
+    -fx-transition: all 0.3s ease;
 }

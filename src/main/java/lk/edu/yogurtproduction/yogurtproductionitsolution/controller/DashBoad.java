@@ -3,13 +3,16 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-public class DashBoad {
+public class DashBoad implements Initializable {
 
     @FXML
     private AnchorPane mainAn;
@@ -17,7 +20,7 @@ public class DashBoad {
     private AnchorPane nextPage;
 
 
-    String UserName;
+    String UserName = "Dilshan Hesara";
     public void setUserName(String us) {
         this.UserName = us;
     }
@@ -129,6 +132,12 @@ public class DashBoad {
     }
 
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        navigateTo("/view/DahBoadMain.fxml");
+
+
+    }
 }
 
 
