@@ -16,7 +16,7 @@
           </Label>
           <TextField fx:id="txtSubject" layoutX="57.0" layoutY="93.0" prefHeight="25.0" prefWidth="485.0" promptText="subject" style="-fx-background-color: #fff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
           <TextArea fx:id="txtBody" layoutX="57.0" layoutY="142.0" prefHeight="200.0" prefWidth="485.0" promptText="body" style="-fx-border-color: #7367F0;" />
-          <Button layoutX="484.0" layoutY="358.0" mnemonicParsing="false" onAction="#btnsend" prefWidth="100.0" style="-fx-background-color: #7367F0;" text="Send" textFill="WHITE">
+          <Button layoutX="484.0" layoutY="358.0" mnemonicParsing="false" onAction="#btnsend" prefWidth="100.0" style="-fx-background-color: #7367F0;" styleClass="ReportEmpButt" stylesheets="@../styles/SupEmpButtns.css" text="Send" textFill="WHITE">
               <font>
                   <Font name="Calibri Bold" size="14.0" />
               </font>

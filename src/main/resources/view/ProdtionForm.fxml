@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -25,7 +26,7 @@
             <Font name="Impact" size="39.0" />
          </font>
       </Label>
-      <TableView fx:id="tblProdtion" layoutX="52.0" layoutY="344.0" prefHeight="353.0" prefWidth="1030.0" style="-fx-background-color: #0000; -fx-border-color: #F89425;">
+      <TableView fx:id="tblProdtion" layoutX="52.0" layoutY="344.0" prefHeight="353.0" prefWidth="1030.0" style="-fx-background-color: #0000; -fx-border-color: #F89425;" stylesheets="@../styles/Tables.css">
          <columns>
             <TableColumn fx:id="colProdID" prefWidth="75.0" text="Pro ID" />
             <TableColumn fx:id="colProName" prefWidth="75.0" text="Pro  NAME" />
@@ -38,6 +39,10 @@
          <effect>
             <SepiaTone level="0.24" />
          </effect>
+         <styleClass>
+            <String fx:value="table-cell" />
+            <String fx:value="table-row-cell" />
+         </styleClass>
       </TableView>
       <Label layoutX="51.0" layoutY="87.0" prefHeight="30.0" prefWidth="138.0" text="PRO ID         :">
          <font>
@@ -60,7 +65,7 @@
          </font>
       </Label>
       <TextField fx:id="txtQty" layoutX="189.0" layoutY="181.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="150.0" promptText="0" style="-fx-background-color: #ffffff; -fx-border-width: 0 0 1px 0; -fx-border-color: #000;" />
-      <Button fx:id="btnAddProdt" layoutX="895.0" layoutY="289.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnAddPro" prefHeight="27.0" prefWidth="148.0" style="-fx-background-color: #3498db;" text="ADD" textFill="WHITE">
+      <Button fx:id="btnAddProdt" layoutX="895.0" layoutY="289.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnAddPro" prefHeight="38.0" prefWidth="148.0" style="-fx-background-color: #3498db;" styleClass="Prodtionbuttn" stylesheets="@../styles/PackProdtionButtns.css" text="ADD" textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
@@ -91,5 +96,15 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
+      <Button fx:id="btnAddResipe" layoutX="493.0" layoutY="180.0" mnemonicParsing="false" onAction="#btnAddResipe" prefHeight="27.0" prefWidth="148.0" style="-fx-background-color: #0000; -fx-border-color: #29ac98;" styleClass="AddMat" stylesheets="@../styles/PackProdtionButtns.css" text="Add Resipe" textFill="#29ac98">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="795.0" layoutY="293.0" mnemonicParsing="false" onAction="#btnALLReportResip" prefHeight="30.0" prefWidth="82.0" style="-fx-background-color: #95a5a6;" styleClass="ReportEmpButt" stylesheets="@../styles/SupEmpButtns.css" text="RECIPES " textFill="#080d0d">
+         <font>
+            <Font name="Berlin Sans FB" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

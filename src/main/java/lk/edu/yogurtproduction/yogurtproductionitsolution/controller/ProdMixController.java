@@ -97,6 +97,8 @@ public class ProdMixController implements Initializable {
             if (isSaved) {
                 loadTble();
                 cleField();
+                prodtionCon.loadNewResip();
+
                 new Alert(Alert.AlertType.INFORMATION, "Product mix saved successfully!").show();
             } else {
                 new Alert(Alert.AlertType.ERROR, "Failed to save the product mix.").show();
@@ -294,6 +296,8 @@ public class ProdMixController implements Initializable {
                 if (isDeleted) {
                     new Alert(Alert.AlertType.INFORMATION, "Recipe deleted successfully!").show();
                     loadTble();
+                    prodtionCon.loadNewResip();
+
                 } else {
                     new Alert(Alert.AlertType.ERROR, "Failed to delete recipe!").show();
                 }
@@ -323,5 +327,8 @@ public class ProdMixController implements Initializable {
         deleteButt.setDisable(true);
         cleField();
     }
-
+    ProdtionCon prodtionCon = new ProdtionCon();
+    public void setUpdatedResipe(ProdtionCon prodtionCon) {
+        this.prodtionCon = prodtionCon;
+    }
 }

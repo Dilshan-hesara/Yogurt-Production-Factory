@@ -70,4 +70,14 @@ public class StockModel {
         }
         return stockDTOS;
     }
+    public Object getAllProdAvg() throws SQLException {
+        ResultSet resultSet = CrudUtil.execute("select sum(Daily_Avg) as Total_Avg from ( select avg(Qty) as Daily_Avg from Stock group by Manfac_date ) as DailyAvgs;");
+
+        if (resultSet.next()) {
+            return resultSet.getInt("Total_Avg");
+        }
+        return 0.0;
+    }
+
+
 }

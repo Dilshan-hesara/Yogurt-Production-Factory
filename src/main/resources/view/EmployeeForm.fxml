@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -26,12 +27,12 @@
             <Font name="Impact" size="39.0" />
          </font>
       </Label>
-      <Button fx:id="addEmpButt" layoutX="36.0" layoutY="120.0" mnemonicParsing="false" onAction="#buttAddEmp" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: #08C2FF;" text="Add employee" textFill="WHITE">
+      <Button fx:id="addEmpButt" layoutX="36.0" layoutY="120.0" mnemonicParsing="false" onAction="#buttAddEmp" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: #08C2FF;" styleClass="AddEmpButt" stylesheets="@../styles/SupEmpButtns.css" text="Add employee" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <TableView fx:id="emTable" layoutX="27.0" layoutY="247.0" onMouseClicked="#btntableClick" prefHeight="450.0" prefWidth="1060.0" style="-fx-background-color: #0000; -fx-border-color: #F89425;">
+      <TableView fx:id="emTable" layoutX="27.0" layoutY="247.0" onMouseClicked="#btntableClick" prefHeight="450.0" prefWidth="1060.0" style="-fx-background-color: #0000; -fx-border-color: #F89425;" stylesheets="@../styles/Tables.css">
         <columns>
           <TableColumn fx:id="emIdta" prefWidth="95.99996566772461" text="EM-ID" />
           <TableColumn fx:id="col_name" prefWidth="241.59996032714844" text="Name" />
@@ -45,8 +46,12 @@
          <effect>
             <SepiaTone level="0.21" />
          </effect>
+         <styleClass>
+            <String fx:value="table-cell" />
+            <String fx:value="table-row-cell" />
+         </styleClass>
       </TableView>
-      <Button fx:id="btnDelete" layoutX="1008.0" layoutY="203.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#buttDeleteEmp" prefWidth="80.0" style="-fx-background-color: #c0392b;" text="Delete" textFill="WHITE">
+      <Button fx:id="btnDelete" layoutX="1008.0" layoutY="203.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#buttDeleteEmp" prefWidth="80.0" style="-fx-background-color: #c0392b;" styleClass="DeleteButt" stylesheets="@../styles/SupEmpButtns.css" text="Delete" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
@@ -54,17 +59,17 @@
             <Font name="System Bold Italic" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btnAlEmpReport" layoutX="36.0" layoutY="203.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#generateAllCustomerReportOnAction" prefHeight="26.0" prefWidth="139.0" style="-fx-background-color: #7f8c8d;" text="All Employee Report" textFill="WHITE">
+      <Button fx:id="btnAlEmpReport" layoutX="36.0" layoutY="203.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#generateAllCustomerReportOnAction" prefHeight="26.0" prefWidth="139.0" style="-fx-background-color: #7f8c8d;" styleClass="ReportEmpButt" stylesheets="@../styles/SupEmpButtns.css" text="All Employee Report" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btnOpenMailSendModel" layoutX="184.0" layoutY="203.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnOpenMailSendModelOnAction" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #3498db;" text="Send mail to Employee" textFill="WHITE">
+      <Button fx:id="btnOpenMailSendModel" layoutX="184.0" layoutY="203.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnOpenMailSendModelOnAction" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: #3498db;" styleClass="SendMailButt" stylesheets="@../styles/SupEmpButtns.css" text="Send mail to Employee" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btnUpdate" layoutX="36.0" layoutY="163.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#buttUpadeEmp" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: #e74c3c;" text="Update" textFill="WHITE">
+      <Button fx:id="btnUpdate" layoutX="36.0" layoutY="163.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#buttUpadeEmp" prefHeight="26.0" prefWidth="123.0" style="-fx-background-color: #e74c3c;" styleClass="UpdatButt" stylesheets="@../styles/SupEmpButtns.css" text="Update" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="CLOSED_HAND" />
          </cursor>
@@ -72,7 +77,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="resetButt" layoutX="350.0" layoutY="204.0" mnemonicParsing="false" onAction="#resetButt" style="-fx-background-color: #e67e22;" text="RESET">
+      <Button fx:id="resetButt" layoutX="350.0" layoutY="204.0" mnemonicParsing="false" onAction="#resetButt" style="-fx-background-color: #e67e22;" styleClass="ResetButt" stylesheets="@../styles/SupEmpButtns.css" text="RESET">
          <font>
             <Font name="Berlin Sans FB Demi Bold" size="12.0" />
          </font>

@@ -8,18 +8,19 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.*;
+import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.model.CashBookModel;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatirialUsageModel;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.model.StockModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
+import lombok.SneakyThrows;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Map;
 import java.util.ResourceBundle;
 
 public class DashBoadMain implements Initializable {
@@ -40,17 +41,66 @@ public class DashBoadMain implements Initializable {
         @FXML
         private Text txtUser;
 
+    @FXML
+    private Label lblMatUsage;
 
+    @FXML
+    private Label lblProd;
+
+    @FXML
+    private Label lblbAmount;
+
+
+
+    @SneakyThrows
     @Override
         public void initialize(URL location, ResourceBundle resources) {
-
+        
         loadChartData();
+        startClock();
+        addYogurtStockData();
+        try {
+            LoadLbl();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
-             startClock();
-            addYogurtStockData();
-     }
+    private void LoadLbl() throws SQLException {
+        laodAount();
+        laodMatUsage();
+        loadprod();
+ 
+    }
 
-    public void testbtn(ActionEvent actionEvent) {
+    @FXML
+    private Label lblProdAv;
+
+    StockModel stockModel = new StockModel();
+
+    private void loadprod() throws SQLException {
+        int pr = (int) stockModel.getAllProdAvg();
+        String prd = pr +" %";
+        lblProdAv.setText(String.valueOf(prd));
+    }
+
+    MatirialUsageModel matirialUsageModel = new MatirialUsageModel();
+    private void laodMatUsage() throws SQLException {
+        Double us = (double) matirialUsageModel.getAllUsageAvg();
+        String usa = us+" %";
+        lblMatUsage.setText(String.valueOf(usa));
+
+    }
+
+    CashBookModel cashBookModel = new CashBookModel();
+    private void laodAount() throws SQLException {
+        int am = cashBookModel.getAllPayAmount();
+        String Am = "LKR."+am;
+        lblbAmount.setText(String.valueOf(Am));
+
+    }
+
+    public void btnEditAcc(ActionEvent actionEvent) {
 
         //addYogurtStockData()
     }
@@ -122,7 +172,7 @@ public class DashBoadMain implements Initializable {
             AreaChart<String, Number> areaChart = new AreaChart<>(xAxis, yAxis);
 
             XYChart.Series<String, Number> yogurtStockSeries = new XYChart.Series<>();
-            yogurtStockSeries.setName("Yogurt Stock by Manufacture Date");
+        //    yogurtStockSeries.setName("Yogurt Stock by Manufacture Date");
 
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             while (rs.next()) {
