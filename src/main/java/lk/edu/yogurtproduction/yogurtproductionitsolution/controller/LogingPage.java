@@ -180,7 +180,7 @@ public class LogingPage{
     void CreatAcc(ActionEvent event) throws IOException {
         try {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CreateAcc.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CreateAcc1.fxml"));
 
             // FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UserAccPageFrom.fxml"));
             Parent load = loader.load();

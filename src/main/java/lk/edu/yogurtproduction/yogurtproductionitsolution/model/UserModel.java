@@ -1,6 +1,7 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CreteAccDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.UserDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
 
@@ -67,5 +68,18 @@ public class UserModel {
         return resultSet.next();
     }
 
+    public boolean creatUser(CreteAccDto creteAccDto) throws SQLException {
+        return CrudUtil.execute(
+
+                "insert into user values (?, ?, ?)",
+
+                creteAccDto.getUsername(),
+                creteAccDto.getPassword(),
+                creteAccDto.getEmail()
+
+        );
+
+
+    }
 }
 
