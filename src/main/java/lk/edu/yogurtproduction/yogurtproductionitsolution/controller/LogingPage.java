@@ -67,6 +67,39 @@ public class LogingPage{
 
     }
 
+    @FXML
+    private Button createAccBtn;
+
+    @FXML
+    void createAccBtn(ActionEvent event) {
+
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CreateAcc1.fxml"));
+            Parent load = loader.load();
+
+//
+//            MatirialCon updateItemCmb = loader.getController();
+//            updateItemCmb.setUpdatedCmde(this);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(load));
+            stage.setTitle("Creat Account");
+
+            stage.initOwner(createAccBtn.getScene().getWindow());
+
+
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            stage.showAndWait();
+
+        } catch (IOException e) {
+            new Alert(Alert.AlertType.ERROR, "Failed to load UI..!").show();
+            e.printStackTrace();
+        }
+
+//
+    }
 
     @FXML
     void dashBoadButt(ActionEvent event) throws IOException, SQLException {
