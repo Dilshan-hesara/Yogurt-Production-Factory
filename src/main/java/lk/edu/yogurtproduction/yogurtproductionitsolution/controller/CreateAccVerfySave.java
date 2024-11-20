@@ -20,7 +20,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 import java.util.Random;
 
-public class CreateAcc2 {
+public class CreateAccVerfySave {
 
     @FXML
     private AnchorPane creatAcc;
@@ -57,34 +57,27 @@ public class CreateAcc2 {
     UserModel userModel = new UserModel();
     @FXML
     void VeffiMail(ActionEvent event) throws SQLException {
-        // Getting values from the DTO or class properties
         String username = GetUserName;
         String password = GetPassword;
         String email = GetEmail;
 
-        // Create the DTO object with the account details
         CreteAccDto creteAccDto = new CreteAccDto(username, password, email);
 
-        // Check if the OTP matches
         String enteredOtp = txtOtp.getText().trim();
         if (generatedOtp != null && generatedOtp.equals(enteredOtp)) {
             isVerified = true;
             showAlert(Alert.AlertType.INFORMATION, "Account saved successfully!");
 
-            // Save the account details using the model
             boolean isSaved = userModel.creatUser(creteAccDto);
 
             if (isSaved) {
-                // Account is saved successfully, now close the window
                 closeCurrentWindow();
                 System.out.println("labbl");
             } else {
-                // If account creation failed, show an error message
                 showAlert(Alert.AlertType.ERROR, "Failed to save account. Please try again.");
             }
 
         } else {
-            // OTP is incorrect, show an error message
             showAlert(Alert.AlertType.ERROR, "Invalid OTP. Please try again.");
         }
     }
@@ -103,10 +96,6 @@ public class CreateAcc2 {
 
         txtMail.setText("OTP email seding");
 
-//        if (recipientEmail == null || !isValidEmail(recipientEmail)) {
-//            showAlert(Alert.AlertType.WARNING, "Invalid email address! Cannot send OTP.");
-//            return;
-//        }
 
         String subject = "Your OTP for Verification";
         String body = "Dear " + getUserName + ",\n\n" +
@@ -155,14 +144,8 @@ public class CreateAcc2 {
 
 
     public void sendAccDetails(CreteAccDto creteAccDto) {
-//
-//        String username = txtUser.getText();
-//        String email = creteAccDto.getEmail();
-//
-//        txtMailn.setText(creteAccDto.getEmail());
-//        txtUser.setText(creteAccDto.getUsername());
-//        txtMail.setText(creteAccDto.getEmail());
-//        password=creteAccDto.getPassword();
+
+
 
         GetUserName =creteAccDto.getUsername();
         GetPassword =creteAccDto.getPassword();
@@ -171,11 +154,9 @@ public class CreateAcc2 {
         txtMailn.setText(GetEmail);
         txtUser.setText(GetUserName);
 
-     //   generateOtp();
+        generateOtp();
         sendOtpEmail();
-        System.out.println(GetUserName);
-        System.out.println(GetPassword);
-        System.out.println(GetEmail);
+
 
     }
 
@@ -192,7 +173,7 @@ public class CreateAcc2 {
 
         creatAcc.getChildren().clear();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CreateAcc1.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CreateAccGetVal.fxml"));
         AnchorPane load = loader.load();
 
 

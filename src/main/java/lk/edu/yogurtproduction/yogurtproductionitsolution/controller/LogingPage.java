@@ -3,7 +3,6 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -14,10 +13,7 @@ import javafx.stage.Stage;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.UserModel;
 
 import java.io.IOException;
-import java.net.URL;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 
 public class LogingPage{
 
@@ -75,7 +71,7 @@ public class LogingPage{
 
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CreateAcc1.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CreateAccGetVal.fxml"));
             Parent load = loader.load();
 
 //
@@ -180,7 +176,7 @@ public class LogingPage{
     void CreatAcc(ActionEvent event) throws IOException {
         try {
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CreateAcc1.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CreateAccGetVal.fxml"));
 
             // FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UserAccPageFrom.fxml"));
             Parent load = loader.load();

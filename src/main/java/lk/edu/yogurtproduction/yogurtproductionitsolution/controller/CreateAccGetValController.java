@@ -15,7 +15,7 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.model.UserModel;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class CreateAcc1 {
+public class CreateAccGetValController {
 
     @FXML
     private Button btnSave;
@@ -91,10 +91,10 @@ public class CreateAcc1 {
         );
         nextAcc.getChildren().clear();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CreateAcc2.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CreateAccVerfySave.fxml"));
         AnchorPane load = loader.load();
 
-        CreateAcc2 senAccDetails = loader.getController();
+        CreateAccVerfySave senAccDetails = loader.getController();
         senAccDetails.sendAccDetails(creteAccDto);
 
         Stage stage = (Stage) nextAcc.getScene().getWindow();

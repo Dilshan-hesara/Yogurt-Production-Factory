@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="creatAcc" prefHeight="496.0" prefWidth="399.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.edu.yogurtproduction.yogurtproductionitsolution.controller.CreateAcc2">
+<AnchorPane fx:id="creatAcc" prefHeight="496.0" prefWidth="399.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.edu.yogurtproduction.yogurtproductionitsolution.controller.CreateAccVerfySave">
     <children>
         <TextField fx:id="txtOtp" layoutX="106.0" layoutY="222.0" prefHeight="66.0" prefWidth="134.0" promptText="             OTP" style="-fx-border-color: #7367F0;" />
         <Label fx:id="txtMail" layoutX="103.0" layoutY="170.0" prefHeight="18.0" prefWidth="242.0" text="Mail send susses" />
