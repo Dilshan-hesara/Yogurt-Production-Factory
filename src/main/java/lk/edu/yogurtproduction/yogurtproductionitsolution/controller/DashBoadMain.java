@@ -6,10 +6,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.CashBookModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatirialUsageModel;
@@ -17,6 +24,7 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.model.StockModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
 import lombok.SneakyThrows;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.text.SimpleDateFormat;
@@ -100,9 +108,34 @@ public class DashBoadMain implements Initializable {
 
     }
 
+    @FXML
+    private Button btnAccDe;
+
     public void btnEditAcc(ActionEvent actionEvent) {
 
-        //addYogurtStockData()
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UserDetailsFrom.fxml"));
+            Parent load = loader.load();
+
+//
+//            MatirialCon updateItemCmb = loader.getController();
+//            updateItemCmb.setUpdatedCmde(this);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(load));
+            stage.setTitle("User Details");
+
+            stage.initOwner(btnAccDe.getScene().getWindow());
+
+
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            stage.showAndWait();
+
+        } catch (IOException e) {
+            new Alert(Alert.AlertType.ERROR, "Failed to load UI..!").show();
+            e.printStackTrace();
+        }
     }
 
 
