@@ -81,5 +81,19 @@ public class UserModel {
 
 
     }
+    public String GetUserMail(String username) throws SQLException {
+
+        try {
+            ResultSet resultSet = CrudUtil.execute("SELECT email FROM user WHERE username = ?", username);
+
+            if (resultSet.next()) {
+                return resultSet.getString("email");
+            }
+        } catch (SQLException e) {
+        }
+
+        return null;
+    }
+
 }
 
