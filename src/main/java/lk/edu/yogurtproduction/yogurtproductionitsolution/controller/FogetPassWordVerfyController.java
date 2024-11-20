@@ -85,7 +85,6 @@ public class FogetPassWordVerfyController {
     public void setUserName(String userName) throws SQLException {
         this.userNmae = userName;
          GetMail=  userModel.GetUserMail(userNmae);
-        txtMail.setText(GetMail);
         txtUser.setText(userNmae);
 
           generateOtp();

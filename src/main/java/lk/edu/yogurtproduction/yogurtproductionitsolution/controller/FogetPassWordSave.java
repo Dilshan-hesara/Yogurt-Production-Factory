@@ -37,6 +37,24 @@ public class FogetPassWordSave {
 
         String usename = GetUseName;
         String newpass = txtnewpassword.getText();
+        String rePassword = txtNewpassord.getText();
+
+
+        if ( newpass.isEmpty() || rePassword.isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "Validation Error All fields are required!").show();
+            return;
+        }
+
+        if (!newpass.matches("\\d+")) {
+            new Alert(Alert.AlertType.ERROR, "Validation Error password only digits!").show();
+            return;
+        }
+
+
+        if (!newpass.equals(rePassword)) {
+            new Alert(Alert.AlertType.ERROR, " Validation Error Passwords do not match! ").show();
+            return;
+        }
 
         boolean isUpdateUse = userModel.UpdateUser(usename,newpass);
         if (isUpdateUse) {
