@@ -7,6 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CreteAccDto;
 
 import java.io.IOException;
 
@@ -29,14 +30,31 @@ public class CreateAcc2 {
 
     @FXML
     void VeffiMail(ActionEvent event) {
+        String username = txtUser.getText();
+        String pasword =password;
+        String email = txtMail.getText();
 
     }
 
     @FXML
     private AnchorPane creatAcc;
 
+    String password ;
+
+
+
+    public void sendAccDetails(CreteAccDto creteAccDto) {
+
+        txtUser.setText(creteAccDto.getUsername());
+        txtMail.setText(creteAccDto.getEmail());
+        password=creteAccDto.getPassword();
+    }
+
     @FXML
     void VeffiMailExit(ActionEvent event) throws IOException {
+
+
+
         creatAcc.getChildren().clear();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CreateAcc1.fxml"));
@@ -49,5 +67,4 @@ public class CreateAcc2 {
         creatAcc.getChildren().add(load);
 
     }
-
 }
