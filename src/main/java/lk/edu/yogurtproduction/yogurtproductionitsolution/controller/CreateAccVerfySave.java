@@ -46,7 +46,7 @@ public class CreateAccVerfySave {
     String GetPassword;
     String GetEmail;
 
-    private String generatedOtp ="11";
+    private String generatedOtp;
     private static final String SENDER_EMAIL = "mkdhyogurtfactory@gmail.com";
     private static final String SENDER_PASSWORD = "vcev juis zcnl pifa";
     private String recipientEmail = GetEmail;

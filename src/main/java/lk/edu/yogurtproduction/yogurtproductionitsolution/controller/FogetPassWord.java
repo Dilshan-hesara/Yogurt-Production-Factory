@@ -34,10 +34,6 @@ public class FogetPassWord {
 
         if (userModel.isValidUsername(UserName)) {
 
-           // showAlert("Validation Error", "Early exist!");
-
-
-
         }else {
             new Alert(Alert.AlertType.ERROR, "Username does not exist").show();
             return;
@@ -50,8 +46,8 @@ public class FogetPassWord {
         AnchorPane load = loader.load();
 
 
-        Stage stage = (Stage) nextPage.getScene().getWindow();  // Get the current stage
-        stage.setTitle("Very Email");  // Set the title of the window
+        Stage stage = (Stage) nextPage.getScene().getWindow();
+        stage.setTitle("Very Email");
 
 
         FogetPassWordVerfyController passUser = loader.getController();

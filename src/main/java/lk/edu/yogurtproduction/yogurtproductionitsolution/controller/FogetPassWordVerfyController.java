@@ -41,7 +41,7 @@ public class FogetPassWordVerfyController {
 
     UserModel userModel = new UserModel();
 
-    private String generatedOtp ="11";
+    private String generatedOtp;
     private static final String SENDER_EMAIL = "mkdhyogurtfactory@gmail.com";
     private static final String SENDER_PASSWORD = "vcev juis zcnl pifa";
     private boolean isVerified = false;
@@ -88,8 +88,8 @@ public class FogetPassWordVerfyController {
         txtMail.setText(GetMail);
         txtUser.setText(userNmae);
 
-        //  generateOtp();
-       // sendOtpEmail();
+          generateOtp();
+        sendOtpEmail();
     }
 
     private void sendOtpEmail() {

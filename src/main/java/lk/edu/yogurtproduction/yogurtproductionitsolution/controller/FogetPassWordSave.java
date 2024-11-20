@@ -40,7 +40,7 @@ public class FogetPassWordSave {
 
         boolean isUpdateUse = userModel.UpdateUser(usename,newpass);
         if (isUpdateUse) {
-            new Alert(Alert.AlertType.ERROR, "PassWord Save Susses..!").show();
+            new Alert(Alert.AlertType.INFORMATION, "PassWord Save Susses..!").show();
 
             closeCurrentWindow();
 
