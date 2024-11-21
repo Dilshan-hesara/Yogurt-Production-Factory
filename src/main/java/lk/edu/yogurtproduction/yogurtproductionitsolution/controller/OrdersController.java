@@ -4,9 +4,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CustomerDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.OrderDetailsDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.OrdersDto;
@@ -16,6 +22,7 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.model.CustomerModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.OrderModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.StockModel;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -35,22 +42,22 @@ public class OrdersController implements Initializable {
     private ComboBox<String> cmbProd;
 
     @FXML
-    private TableColumn<?, ?> colAction;
+    private TableColumn<String, CartTM> colAction;
 
     @FXML
-    private TableColumn<?, ?> colIProdId;
+    private TableColumn<String, CartTM> colIProdId;
 
     @FXML
-    private TableColumn<?, ?> colName;
+    private TableColumn<String, CartTM> colName;
 
     @FXML
-    private TableColumn<?, ?> colPrice;
+    private TableColumn<String, CartTM> colPrice;
 
     @FXML
-    private TableColumn<?, ?> colQuantity;
+    private TableColumn<String, CartTM> colQuantity;
 
     @FXML
-    private TableColumn<?, ?> colTotal;
+    private TableColumn<String, CartTM> colTotal;
 
     @FXML
     private Label lblCustomerName;
@@ -79,29 +86,71 @@ public class OrdersController implements Initializable {
     @FXML
     void btnAddCustomer(ActionEvent event) {
 
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CustomerFrom.fxml"));
+            Parent load = loader.load();
+
+//
+//            MatirialCon updateItemCmb = loader.getController();
+//            updateItemCmb.setUpdatedCmde(this);
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(load));
+            stage.setTitle("Add Customer");
+
+
+            Image image = new Image(getClass().getResourceAsStream("/images/48.png"));
+            stage.getIcons().add(image);
+
+            stage.initOwner(btnAddCustomer.getScene().getWindow());
+
+
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            stage.showAndWait();
+
+        } catch (IOException e) {
+            new Alert(Alert.AlertType.ERROR, "Failed to load UI..!").show();
+            e.printStackTrace();
+        }
+
     }
 
     @FXML
     void btnAddToCart(ActionEvent event) {
-
         String selectedItemId = (String) cmbProd.getSelectionModel().getSelectedItem();
 
         if (selectedItemId == null) {
-            new Alert(Alert.AlertType.ERROR, "Please select prodts..!").show();
+            new Alert(Alert.AlertType.ERROR, "Please select a product..!").show();
             return;
         }
 
         String itemName = lblProdName.getText();
+        String input = txtAddToCartQty.getText().trim();
 
-        int cartQty = Integer.parseInt(txtAddToCartQty.getText());
-        double quantity = Double.parseDouble(AVqty);
-
-
-        if (quantity < cartQty) {
-            new Alert(Alert.AlertType.ERROR, "Not enough prodts..!").show();
+        if (input.isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "qty cannot be empty!").show();
             return;
         }
 
+        if (!input.matches("\\d+")) {
+            new Alert(Alert.AlertType.ERROR, "Please enter a valid integer qty!").show();
+            return;
+        }
+
+        int cartQty = Integer.parseInt(input);
+
+        if (cartQty <= 0) {
+            new Alert(Alert.AlertType.ERROR, "Qty must > 0!").show();
+            return;
+        }
+
+        double quantity = Double.parseDouble(AVqty);
+
+        if (quantity < cartQty) {
+            new Alert(Alert.AlertType.ERROR, "Not enough products available!").show();
+            return;
+        }
         txtAddToCartQty.setText("");
 
         double unitPrice = Double.parseDouble(lblIProdtPrice.getText());
