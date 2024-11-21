@@ -181,7 +181,7 @@ public class DashBoadMain implements Initializable {
                 String itemType = rs.getString("Item_Type");
                 int totalQty = rs.getInt("TotalQty");
 
-                pieChartData.add(new PieChart.Data(itemType + " (" + totalQty + ")", totalQty));
+                pieChartData.add(new PieChart.Data(itemType , totalQty));
             }
 
             chartProduction.setData(pieChartData);

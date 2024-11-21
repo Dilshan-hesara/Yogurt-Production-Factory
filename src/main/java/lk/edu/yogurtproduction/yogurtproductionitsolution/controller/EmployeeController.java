@@ -253,7 +253,7 @@ public class EmployeeController implements Initializable {
 
             parameters.put("P_Date", LocalDate.now().toString());
 
-            JasperReport jasperReport = JasperCompileManager.compileReport(getClass().getResourceAsStream("/report/allEmployee.jrxml"));
+            JasperReport jasperReport = JasperCompileManager.compileReport(getClass().getResourceAsStream("/report/EmployeePakingFromjrxml.jrxml"));
 
             JasperPrint jasperPrint = JasperFillManager.fillReport(
                     jasperReport,

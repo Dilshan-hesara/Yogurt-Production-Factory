@@ -156,7 +156,7 @@ public class SupplierCon implements Initializable {
 
              parameters.put("P_Date", LocalDate.now().toString());
 
-            JasperReport jasperReport = JasperCompileManager.compileReport(getClass().getResourceAsStream("/report/getAllSuplier.jrxml"));
+            JasperReport jasperReport = JasperCompileManager.compileReport(getClass().getResourceAsStream("/report/SupplierOdredsFrom.jrxml"));
 
             JasperPrint jasperPrint = JasperFillManager.fillReport(
                     jasperReport,
