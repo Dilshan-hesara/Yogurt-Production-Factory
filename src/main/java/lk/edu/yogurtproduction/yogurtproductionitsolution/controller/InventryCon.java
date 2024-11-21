@@ -93,7 +93,7 @@ public class InventryCon implements Initializable {
             Stage stage = new Stage();
             stage.setScene(new Scene(load));
             stage.setTitle("Material Usage");
-
+            stage.setResizable(false);
 
             Image image = new Image(getClass().getResourceAsStream("/images/23.png"));
             stage.getIcons().add(image);

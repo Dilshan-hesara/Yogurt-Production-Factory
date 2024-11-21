@@ -148,6 +148,7 @@ public class DashBoadMain implements Initializable {
             Stage stage = new Stage();
             stage.setScene(new Scene(load));
             stage.getIcons().add(image);
+            stage.setResizable(false);
             stage.setTitle("User Details");
 
             stage.initOwner(btnAccDe.getScene().getWindow());

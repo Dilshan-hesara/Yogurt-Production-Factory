@@ -185,6 +185,7 @@ public class CustomerController implements Initializable {
                 new Alert(Alert.AlertType.INFORMATION, "Customer saved...!").show();
 
                 refreshPage();
+                ordersController.loadCustomerIds();
 
             } else {
                 new Alert(Alert.AlertType.ERROR, "Fail to save Customer...!").show();
@@ -211,6 +212,7 @@ public class CustomerController implements Initializable {
             boolean isDeleted = customerModel.deleteCustomer(customerId);
             if (isDeleted) {
                 refreshPage();
+                ordersController.loadCustomerIds();
                 new Alert(Alert.AlertType.INFORMATION, "Customer deleted...!").show();
             } else {
                 new Alert(Alert.AlertType.ERROR, "Fail to delete customer...!").show();
@@ -253,6 +255,7 @@ public class CustomerController implements Initializable {
         boolean isUpdate = customerModel.updateCustomer(customerDTO);
         if (isUpdate) {
             refreshPage();
+            ordersController.loadCustomerIds();
             new Alert(Alert.AlertType.INFORMATION, "Customer update...!").show();
         } else {
             new Alert(Alert.AlertType.ERROR, "Fail to update customer...!").show();
@@ -283,4 +286,8 @@ public class CustomerController implements Initializable {
         }
     }
 
+    OrdersController ordersController = new OrdersController();
+    public void setCustomerFormCon(OrdersController ordersController) {
+        this.ordersController = ordersController;
+    }
 }

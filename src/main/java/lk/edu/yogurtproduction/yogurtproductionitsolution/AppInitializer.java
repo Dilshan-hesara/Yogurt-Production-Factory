@@ -16,6 +16,7 @@ public class AppInitializer extends Application {
    // FXMLLoader fxmlLoader = new FXMLLoader(AppInitializer.class.getResource("/view/DashTest.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Yogurt Production");
+        stage.setResizable(false);
 
         Image image = new Image(getClass().getResourceAsStream("/images/7-app_icon.png"));
         stage.getIcons().add(image);

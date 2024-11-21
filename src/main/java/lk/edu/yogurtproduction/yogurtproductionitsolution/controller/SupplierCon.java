@@ -128,7 +128,9 @@ public class SupplierCon implements Initializable {
                 stage.setTitle("Send Mail Suplier");
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.initOwner(btnUpdate.getScene().getWindow());
+                stage.setResizable(false);
                 stage.showAndWait();
+
             } catch (IOException e) {
                 new Alert(Alert.AlertType.ERROR, "Fail to load UI: " + e.getMessage()).show();
                 e.printStackTrace();
@@ -182,6 +184,7 @@ public class SupplierCon implements Initializable {
             Stage stage = new Stage();
             stage.setScene(new Scene(load));
             stage.setTitle("Add Suplier");
+            stage.setResizable(false);
 
             stage.initModality(Modality.APPLICATION_MODAL);
 
@@ -237,6 +240,7 @@ public class SupplierCon implements Initializable {
             Stage stage = new Stage();
             stage.setScene(new Scene(load));
             stage.setTitle("Update Suplier");
+            stage.setResizable(false);
 
             stage.initModality(Modality.APPLICATION_MODAL);
 

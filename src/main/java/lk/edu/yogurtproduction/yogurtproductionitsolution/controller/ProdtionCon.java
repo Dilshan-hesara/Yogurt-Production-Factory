@@ -394,6 +394,7 @@ ProdtionModel prodtionModel = new ProdtionModel();
             stage.setScene(new Scene(load));
             stage.setTitle("Add Resipes");
             stage.getIcons().add(image);
+            stage.setResizable(false);
 
             stage.initOwner(btnAddResipe.getScene().getWindow());
 

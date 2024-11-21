@@ -395,7 +395,7 @@ public class CashBookController {
                 Stage stage = new Stage();
                 stage.setScene(new Scene(load));
                 stage.setTitle("Add Material");
-
+                stage.setResizable(false);
 
                 Image image = new Image(getClass().getResourceAsStream("/images/22.png"));
                 stage.getIcons().add(image);

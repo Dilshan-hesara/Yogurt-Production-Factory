@@ -124,6 +124,7 @@ public class EmployeeController implements Initializable {
             Stage stage = new Stage();
             stage.setScene(new Scene(load));
             stage.setTitle("Add Employee");
+            stage.setResizable(false);
 
             stage.initModality(Modality.APPLICATION_MODAL);
 
@@ -181,8 +182,11 @@ public class EmployeeController implements Initializable {
                 Stage stage = new Stage();
                 stage.setScene(new Scene(load));
                 stage.setTitle("Update Employee");
+                stage.setResizable(false);
+
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.initOwner(btnUpdate.getScene().getWindow());
+
                 stage.showAndWait();
             } catch (IOException e) {
                 new Alert(Alert.AlertType.ERROR, "Fail to load UI: " + e.getMessage()).show();
@@ -215,6 +219,7 @@ public class EmployeeController implements Initializable {
                 stage.setScene(new Scene(load));
                 stage.setTitle("Send Mail Employee");
                 stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setResizable(false);
                 stage.initOwner(btnUpdate.getScene().getWindow());
                 stage.showAndWait();
             } catch (IOException e) {

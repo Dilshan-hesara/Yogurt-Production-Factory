@@ -90,9 +90,9 @@ public class OrdersController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CustomerFrom.fxml"));
             Parent load = loader.load();
 
-//
-//            MatirialCon updateItemCmb = loader.getController();
-//            updateItemCmb.setUpdatedCmde(this);
+            CustomerController addCustController = loader.getController();
+            addCustController.setCustomerFormCon(this);
+
 
             Stage stage = new Stage();
             stage.setScene(new Scene(load));
@@ -103,7 +103,7 @@ public class OrdersController implements Initializable {
             stage.getIcons().add(image);
 
             stage.initOwner(btnAddCustomer.getScene().getWindow());
-
+            stage.setResizable(false);
 
             stage.initModality(Modality.APPLICATION_MODAL);
 
@@ -309,12 +309,10 @@ public class OrdersController implements Initializable {
     }
 
 
-    /**
-     * Load all customer IDs into the customer ComboBox.
-     */
+
     CustomerModel customerModel = new CustomerModel();
 
-    private void loadCustomerIds() throws SQLException {
+    public void loadCustomerIds() throws SQLException {
         ArrayList<String> customerIds = customerModel.getAllCustomerIds();
         ObservableList<String> observableList = FXCollections.observableArrayList();
         observableList.addAll(customerIds);
