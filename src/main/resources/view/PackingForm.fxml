@@ -109,7 +109,7 @@
          </font>
       </Label>
       <Label fx:id="lblProdQty" layoutX="192.0" layoutY="389.0" opacity="0.58" prefHeight="18.0" prefWidth="98.0" text="250" />
-      <Button layoutX="549.0" layoutY="263.0" mnemonicParsing="false" onAction="#btnAddStock" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #7367F0;" styleClass="Packbuttn" stylesheets="@../styles/PackProdtionButtns.css" text="Add Stock " textFill="WHITE">
+      <Button layoutX="549.0" layoutY="309.0" mnemonicParsing="false" onAction="#btnAddStock" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #7367F0;" styleClass="Packbuttn" stylesheets="@../styles/PackProdtionButtns.css" text="Add Stock " textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>
@@ -117,5 +117,21 @@
       <ComboBox fx:id="cmbEmpId" layoutX="182.0" layoutY="210.0" onAction="#cmbEmpOnAction" prefWidth="150.0" promptText="Select Employe" style="-fx-background-color: #ffffff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
       <ComboBox fx:id="cmbProdId" layoutX="188.0" layoutY="324.0" onAction="#cmbProdOnAction" prefWidth="150.0" promptText="Select Prodt" style="-fx-background-color: #ffffff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
       <ComboBox fx:id="cmbPacType" layoutX="186.0" layoutY="468.0" onAction="#CmbPacTypeOnAction" prefWidth="150.0" promptText="PackType" style="-fx-background-color: #ffffff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <TextField fx:id="pricetxt" layoutX="549.0" layoutY="259.0" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="150.0" promptText="Price" style="-fx-background-color: #ffffff; -fx-border-width: 0 0 1px 0; -fx-border-color: #000;">
+         <stylesheets>
+            <URL value="@../styles/MFXDashboard.css" />
+            <URL value="@../styles/TableStyle.css" />
+         </stylesheets>
+         <styleClass>
+            <String fx:value="mfx-active-button" />
+            <String fx:value="null-style" />
+            <String fx:value="column-header-background" />
+         </styleClass>
+      </TextField>
+      <Label layoutX="413.0" layoutY="257.0" prefHeight="30.0" prefWidth="124.0" text="Uint Price  :">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

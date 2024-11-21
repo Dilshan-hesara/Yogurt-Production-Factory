@@ -38,14 +38,15 @@ public class StockModel {
     private boolean savedStock(StockDto stockDTO) throws SQLException {
         return   CrudUtil.execute(
 
-                "insert into Stock values (?, ?, ?, ?,?,?,?)",
+                "insert into Stock values (?, ?, ?, ?,?,?,?,?)",
                 stockDTO.getStock_ID(),
                 stockDTO.getPac_ID(),
                 stockDTO.getProduct_Name(),
                 stockDTO.getQty(),
                 stockDTO.getManfac_date(),
                 stockDTO.getExpire_date(),
-                stockDTO.getPack_Type()
+                stockDTO.getPack_Type(),
+                stockDTO.getUnit_Price()
 
         );
 
@@ -64,7 +65,8 @@ public class StockModel {
                     rst.getDouble(4),
                     rst.getString(5),
                     rst.getString(6),
-                    rst.getString(7)
+                    rst.getString(7),
+                    rst.getDouble(8)
             );
             stockDTOS.add(stockDTO);
         }

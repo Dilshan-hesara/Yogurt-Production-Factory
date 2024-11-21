@@ -43,6 +43,10 @@ public class PackingCon {
     private Label lblProdtName;
 
     @FXML
+    private TextField pricetxt;
+
+
+    @FXML
     private DatePicker expireDate;
 
     @FXML
@@ -138,6 +142,7 @@ public class PackingCon {
          double Qty = Double.parseDouble(qrytxt.getText());
          String Emp_ID = cmbEmpId.getSelectionModel().getSelectedItem();
          double RedusQty = Qty * PacTypes;
+         double UnitPrice = pricetxt.getText().charAt(0);
 
 
 
@@ -154,7 +159,8 @@ public class PackingCon {
                 Qty,
                 Pac_Date,
                 Expire_Date,
-                Pac_Type
+                Pac_Type,
+                UnitPrice
 
 
         );
@@ -204,6 +210,7 @@ public class PackingCon {
     }
 
 
+
     private void clAll() throws SQLException {
         cmbProdId.getSelectionModel().clearSelection();
         cmbPacType.getSelectionModel().clearSelection();
@@ -212,6 +219,8 @@ public class PackingCon {
         cmbEmpId.getSelectionModel().clearSelection();
         expireDate.setValue(null);
         lblPacID.setText("");
+        pricetxt.setText("");
+
         loadcmbPacType();
         loadEmpId();
         loadNextInventryId();

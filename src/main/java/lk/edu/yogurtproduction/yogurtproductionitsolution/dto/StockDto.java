@@ -21,4 +21,5 @@ public class StockDto {
     private String Manfac_date;
     private String Expire_date;
     private String Pack_Type;
+    private double Unit_Price;
 }
