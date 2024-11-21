@@ -2,11 +2,22 @@ create database yougurtprodution;
 
 use yougurtprodution;
 
-        create table user(
-                     username varchar(300) primary key,
-                     password varchar(300),
-                     email varchar(300)
-        );
+create table user(
+    username varchar(300) primary key,
+    password varchar(300),
+    email varchar(300)
+);
+
+
+
+create table Customer(
+     cust_id varchar(10) primary key ,
+     name varchar(100),
+     nic varchar(100),
+     email varchar(100),
+     phone varchar(20)
+);
+
 
 create table Employee (
     Emp_ID varchar(20)primary key,
@@ -103,13 +114,24 @@ create table Stock(
     Qty decimal (10,2),
     Manfac_date date,
     Expire_date date,
-    Pack_Type VARCHAR(50),
+    Pack_Type varchar(50),
 
     foreign key (Pac_ID) references Packing (Pac_ID)
 );
 
+create table Orders(
+    order_id    varchar(10) primary key ,
+    cust_id varchar(10),
+    order_date  date,
+    foreign key (cust_id) references Customer (cust_id)
+);
 
-
-
-
+create table OrderDetails(
+    order_id varchar(10),
+    stock_id varchar(10),
+    quantity int,
+    price  decimal(10, 2),
+    foreign key (order_id) references Orders (order_id),
+    foreign key (stock_id) references Stock (Stock_ID)
+);
 
