@@ -11,8 +11,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CustomerDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.StockDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.CartTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.CustomerModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.OrderModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.StockModel;
@@ -70,7 +72,7 @@ public class OrdersController implements Initializable {
     private Label orderDate;
 
     @FXML
-    private TableView<?> tblCart;
+    private TableView<CartTM> tblCart;
 
     @FXML
     private TextField txtAddToCartQty;
@@ -114,10 +116,22 @@ public class OrdersController implements Initializable {
         }
 
     }
+    private final ObservableList<CartTM> cartTMS = FXCollections.observableArrayList();
 
     OrderModel orderModel = new OrderModel();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        colIProdId.setCellValueFactory(new PropertyValueFactory<>("itemId"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("itemName"));
+        colQuantity.setCellValueFactory(new PropertyValueFactory<>("cartQuantity"));
+        colPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
+        colAction.setCellValueFactory(new PropertyValueFactory<>("removeBtn"));
+
+        // Bind the cart items observable list to the TableView
+        tblCart.setItems(cartTMS);
+
 
         try {
             lblOderID.setText(orderModel.getNextOrderId());
