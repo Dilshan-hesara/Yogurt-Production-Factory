@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.UserModel;
@@ -16,13 +17,13 @@ public class RestPassWordController {
     private Button btnSave;
 
     @FXML
-    private TextField txtNewPassWord;
+    private PasswordField txtNewPassWord;
 
     @FXML
-    private TextField txtOldPassWord;
+    private PasswordField txtOldPassWord;
 
     @FXML
-    private TextField txtRenterNewPassWord;
+    private PasswordField txtRenterNewPassWord;
 
     @FXML
     private TextField txtUserName;

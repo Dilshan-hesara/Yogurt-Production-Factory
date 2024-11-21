@@ -50,6 +50,7 @@ public class PackingCon {
 
 
 
+
     public  void initialize() throws SQLException {
         loadProdtId();
         loadEmpId();
@@ -58,8 +59,12 @@ public class PackingCon {
         loadNextStockId();
         loadNextPackingId();
     }
+
+
+
     int AVqty;
     String AVqtyProdtName;
+
 
     PackingModel packingModel = new PackingModel();
     @FXML
@@ -190,14 +195,33 @@ public class PackingCon {
         boolean isSaved = packingModel.savePacking(pckingDtos);
         if (isSaved) {
             new Alert(Alert.AlertType.INFORMATION, "Saved successfully!").show();
+            clAll();
         } else {
             new Alert(Alert.AlertType.ERROR, "Save failed! Please try again.").show();
         }
 
 
+    }
+
+
+    private void clAll() throws SQLException {
+        cmbProdId.getSelectionModel().clearSelection();
+        cmbPacType.getSelectionModel().clearSelection();
+        desetxt.clear();
+        qrytxt.clear();
+        cmbEmpId.getSelectionModel().clearSelection();
+        expireDate.setValue(null);
+        lblPacID.setText("");
+        loadcmbPacType();
+        loadEmpId();
+        loadNextInventryId();
+        loadNextStockId();
+        loadNextPackingId();
 
 
     }
+
+
     String invID;
     InventroyModel inventroyModel = new InventroyModel();
 

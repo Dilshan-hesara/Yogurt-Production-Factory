@@ -14,7 +14,7 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1113.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.edu.yogurtproduction.yogurtproductionitsolution.controller.PackingCon">
    <children>
-      <ImageView fitHeight="720.0" fitWidth="1113.0">
+      <ImageView fitHeight="720.0" fitWidth="1113.0" layoutX="4.0" layoutY="6.0">
          <image>
             <Image url="@../images/11-bluer.png" />
          </image>
@@ -109,7 +109,7 @@
          </font>
       </Label>
       <Label fx:id="lblProdQty" layoutX="192.0" layoutY="389.0" opacity="0.58" prefHeight="18.0" prefWidth="98.0" text="250" />
-      <Button layoutX="557.0" layoutY="308.0" mnemonicParsing="false" onAction="#btnAddStock" prefHeight="39.0" prefWidth="150.0" style="-fx-background-color: #7367F0;" styleClass="Packbuttn" stylesheets="@../styles/PackProdtionButtns.css" text="ADD Stock " textFill="WHITE">
+      <Button layoutX="549.0" layoutY="263.0" mnemonicParsing="false" onAction="#btnAddStock" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #7367F0;" styleClass="Packbuttn" stylesheets="@../styles/PackProdtionButtns.css" text="Add Stock " textFill="WHITE">
          <font>
             <Font name="Calibri Bold" size="14.0" />
          </font>

@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -99,8 +100,6 @@ public class LogingPage{
             new Alert(Alert.AlertType.ERROR, "Username does not exist").show();
         }
     }
-    private void laodUserName() {
-    }
 
 
 
@@ -113,6 +112,8 @@ public class LogingPage{
 
     }
 
+    private void laodUserName() {
+    }
 
 
 

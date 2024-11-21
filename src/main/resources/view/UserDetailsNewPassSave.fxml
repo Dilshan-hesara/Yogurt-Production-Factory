@@ -14,7 +14,7 @@
         <Label fx:id="lblUserNama" layoutX="95.0" layoutY="74.0" prefHeight="18.0" prefWidth="122.0" text="Dilshan Hesara" />
         <ImageView fitHeight="36.0" fitWidth="40.0" layoutX="24.0" layoutY="65.0">
             <image>
-                <Image url="@../images/3%20copy.png" />
+                <Image url="@../images/16-user.png" />
             </image>
         </ImageView>
         <Button fx:id="btnChangePass" layoutX="329.0" layoutY="222.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnChangePass" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #2ecc71;" text="SAVE" textFill="WHITE">
