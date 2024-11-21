@@ -145,18 +145,7 @@ public class InventroyModel {
     }
 
 
-    public ArrayList<String> getAllProdIds() throws SQLException {
 
-        ResultSet rst = CrudUtil.execute("select In_ID from inventory");
-
-        ArrayList<String> prodIds = new ArrayList<>();
-
-        while (rst.next()) {
-            prodIds.add(rst.getString(1));
-        }
-
-        return prodIds;
-    }
 }
 
 

@@ -12,8 +12,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CustomerDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.StockDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.CustomerModel;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.model.InventroyModel;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.model.StockModel;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -100,7 +101,16 @@ public class OrdersController implements Initializable {
     }
 
     @FXML
-    void cmbItemOnAction(ActionEvent event) {
+    void cmbItemOnAction(ActionEvent event) throws SQLException {
+        String selectedProdt = (String) cmbProd.getSelectionModel().getSelectedItem();
+        StockDto stockDto = stockModel.findById(selectedProdt);
+
+        if (stockDto != null) {
+
+            lblProdName.setText(stockDto.getProduct_Name());
+            lblProdtQty.setText(String.valueOf(stockDto.getQty()));
+            lblIProdtPrice.setText(String.valueOf(stockDto.getUnit_Price()));
+        }
 
     }
 
@@ -117,10 +127,11 @@ public class OrdersController implements Initializable {
     }
 
 
-    InventroyModel invModel = new InventroyModel();
+
+    StockModel stockModel = new StockModel();
 
     private void loadProdtId() throws SQLException {
-        ArrayList<String> itemIds = invModel.getAllProdIds();
+        ArrayList<String> itemIds = stockModel.getAllProdIds();
         ObservableList<String> observableList = FXCollections.observableArrayList();
         observableList.addAll(itemIds);
         cmbProd.setItems(observableList);
