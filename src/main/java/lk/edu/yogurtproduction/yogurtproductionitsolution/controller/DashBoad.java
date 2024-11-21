@@ -42,6 +42,14 @@ public class DashBoad implements Initializable {
     }
 
 
+    @FXML
+    void ordersButt(ActionEvent event) {
+        navigateTo("/view/OrdersFrom.fxml");
+
+
+    }
+
+
     public void emploButt(ActionEvent actionEvent) {
         navigateTo("/view/EmployeeForm.fxml");
 

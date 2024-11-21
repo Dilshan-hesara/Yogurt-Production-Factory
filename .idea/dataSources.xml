@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="yougurtprodution@localhost" uuid="6f30d471-333a-4332-9c8e-7b237f9a0da0">
+    <data-source source="LOCAL" name="yougurtprodution@localhost" uuid="76396859-4d2b-4305-b75f-dcd3fdbdd4b3">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
+      <remarks>YougurtProdtion</remarks>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/yougurtprodution</jdbc-url>
       <jdbc-additional-properties>

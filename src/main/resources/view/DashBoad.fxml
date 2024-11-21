@@ -75,7 +75,7 @@
                         <Font name="Malgun Gothic Bold" size="12.0" />
                      </font>
                   </Button>
-                  <Button layoutX="13.0" layoutY="487.0" mnemonicParsing="false" onAction="#stockButt" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" styleClass="dashBoadButns" stylesheets="@../styles/DashBoadButtns.css" text=" Stock">
+                  <Button layoutX="13.0" layoutY="486.0" mnemonicParsing="false" onAction="#stockButt" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" styleClass="dashBoadButns" stylesheets="@../styles/DashBoadButtns.css" text=" Stock">
                      <font>
                         <Font name="Malgun Gothic Bold" size="12.0" />
                      </font>
@@ -130,7 +130,7 @@
                         <Image url="@../images/34.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="28.0" fitWidth="32.0" layoutX="23.0" layoutY="493.0">
+                  <ImageView fitHeight="28.0" fitWidth="32.0" layoutX="23.0" layoutY="542.0">
                      <image>
                         <Image url="@../images/35.png" />
                      </image>
@@ -138,6 +138,16 @@
                   <ImageView fitHeight="20.0" fitWidth="19.0" layoutX="89.0" layoutY="659.0">
                      <image>
                         <Image url="@../images/39.png" />
+                     </image>
+                  </ImageView>
+                  <Button layoutX="14.0" layoutY="536.0" mnemonicParsing="false" onAction="#ordersButt" prefHeight="40.0" prefWidth="126.0" style="-fx-background-color: #0000; -fx-border-color: #ff9f43; -fx-border-width: 3; -fx-border-image-slice: ;" styleClass="dashBoadButns" stylesheets="@../styles/DashBoadButtns.css" text="  Orders">
+                     <font>
+                        <Font name="Malgun Gothic Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="20.0" fitWidth="26.0" layoutX="26.0" layoutY="496.0">
+                     <image>
+                        <Image url="@../images/46.png" />
                      </image>
                   </ImageView>
                </children>
