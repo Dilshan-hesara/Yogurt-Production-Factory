@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.UserName;
@@ -44,6 +45,7 @@ public class UserDetailsController implements Initializable {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UserDetailsNewPassW.fxml"));
         AnchorPane load = loader.load();
+        Image image = new Image(getClass().getResourceAsStream("/images/26.png"));
 
 
         UserDetailsNewPassW pasUserName = loader.getController();
@@ -51,6 +53,7 @@ public class UserDetailsController implements Initializable {
 
         Stage stage = (Stage) nextPage.getScene().getWindow();
         stage.setTitle("Reset Password");
+        stage.getIcons().add(image);
 
         nextPage.getChildren().add(load);
     }

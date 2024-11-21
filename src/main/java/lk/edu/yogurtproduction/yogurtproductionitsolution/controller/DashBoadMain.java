@@ -14,6 +14,7 @@ import javafx.scene.chart.*;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -138,12 +139,15 @@ public class DashBoadMain implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UserDetailsFrom.fxml"));
             Parent load = loader.load();
 
+            Image image = new Image(getClass().getResourceAsStream("/images/25.png"));
+
 
             UserDetailsController sendUSERnAME = loader.getController();
             sendUSERnAME.sendUserName(userName);
 
             Stage stage = new Stage();
             stage.setScene(new Scene(load));
+            stage.getIcons().add(image);
             stage.setTitle("User Details");
 
             stage.initOwner(btnAccDe.getScene().getWindow());

@@ -106,5 +106,10 @@
             <Font name="Berlin Sans FB" size="12.0" />
          </font>
       </Button>
+      <ImageView fitHeight="18.0" fitWidth="15.0" layoutX="506.0" layoutY="185.0">
+         <image>
+            <Image url="@../images/24.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

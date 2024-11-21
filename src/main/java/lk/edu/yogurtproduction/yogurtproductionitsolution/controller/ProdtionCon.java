@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
@@ -386,10 +387,13 @@ ProdtionModel prodtionModel = new ProdtionModel();
 
             ProdMixController updateResipe = loader.getController();
             updateResipe.setUpdatedResipe(this);
+            Image image = new Image(getClass().getResourceAsStream("/images/24.png"));
+
 
             Stage stage = new Stage();
             stage.setScene(new Scene(load));
             stage.setTitle("Add Resipes");
+            stage.getIcons().add(image);
 
             stage.initOwner(btnAddResipe.getScene().getWindow());
 

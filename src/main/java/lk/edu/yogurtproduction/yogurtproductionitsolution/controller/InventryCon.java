@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
@@ -92,6 +93,10 @@ public class InventryCon implements Initializable {
             Stage stage = new Stage();
             stage.setScene(new Scene(load));
             stage.setTitle("Material Usage");
+
+
+            Image image = new Image(getClass().getResourceAsStream("/images/23.png"));
+            stage.getIcons().add(image);
 
             stage.initOwner(btnUsage.getScene().getWindow());
 

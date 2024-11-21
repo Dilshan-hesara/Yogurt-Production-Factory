@@ -10,9 +10,8 @@ public class AppInitializer extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-
-        //FXMLLoader fxmlLoader = new FXMLLoader(AppInitializer.class.getResource("/view/DashBoad.fxml"));
-        FXMLLoader fxmlLoader = new FXMLLoader(AppInitializer.class.getResource("/view/LoginPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(AppInitializer.class.getResource("/view/DashBoad.fxml"));
+     //   FXMLLoader fxmlLoader = new FXMLLoader(AppInitializer.class.getResource("/view/LoginPage.fxml"));
 
  //   FXMLLoader fxmlLoader = new FXMLLoader(AppInitializer.class.getResource("/view/DashTest.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
