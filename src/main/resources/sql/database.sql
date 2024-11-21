@@ -9,7 +9,6 @@ create table user(
 );
 
 
-
 create table Customer(
      cust_id varchar(10) primary key ,
      name varchar(100),
@@ -115,6 +114,7 @@ create table Stock(
     Manfac_date date,
     Expire_date date,
     Pack_Type varchar(50),
+    Unit_Price VARCHAR(50),
 
     foreign key (Pac_ID) references Packing (Pac_ID)
 );
