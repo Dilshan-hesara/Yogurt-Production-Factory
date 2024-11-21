@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class OrderDetailsModel {
 
     StockModel stockModel = new StockModel();
+    InventroyModel inventoryModel = new InventroyModel();
 
     public boolean saveOrderDetailsList(ArrayList<OrderDetailsDto> orderDetailsDTOS) throws SQLException {
 
@@ -20,10 +21,11 @@ public class OrderDetailsModel {
             }
 
 
-            boolean isStockUpdated = stockModel.redQty(orderDetailsDTO);
+            boolean isStockUpdated = stockModel.onOderRedQty(orderDetailsDTO);
             if (!isStockUpdated) {
                 return false;
             }
+
         }
         return true;
     }

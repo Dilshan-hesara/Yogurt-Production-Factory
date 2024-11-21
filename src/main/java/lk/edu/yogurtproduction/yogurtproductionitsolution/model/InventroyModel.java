@@ -2,6 +2,7 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 import java.sql.SQLException;
 
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.InventroyDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.OrderDetailsDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.PckingDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdMixDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;

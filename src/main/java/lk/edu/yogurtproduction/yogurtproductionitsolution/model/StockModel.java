@@ -117,12 +117,14 @@ public class StockModel {
 
     }
 
-    public boolean redQty(OrderDetailsDto orderDetailsDTO) throws SQLException {
+
+
+    public boolean onOderRedQty(OrderDetailsDto orderDetailsDTO) throws SQLException {
+
         return CrudUtil.execute(
                 "update stock set Qty = Qty - ? where Stock_ID = ?",
                 orderDetailsDTO.getQuantity(),
                 orderDetailsDTO.getItemId()
         );
-
     }
 }
