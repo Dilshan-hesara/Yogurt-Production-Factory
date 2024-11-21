@@ -65,13 +65,12 @@ public class UserDetailsNewPassSave {
 
         if (generatedOtp != null && generatedOtp.equals(enteredOtp)) {
             isVerified = true;
-            showAlert(Alert.AlertType.INFORMATION, "Password Change successfully!");
 
-            boolean isSaved = userModel.creatUser(creteAccDto);
+            boolean isSaved = userModel.UpdateUser(username,password);
 
             if (isSaved) {
+                showAlert(Alert.AlertType.INFORMATION, "Password Change successfully!");
                 closeCurrentWindow();
-                System.out.println("labbl");
             } else {
                 showAlert(Alert.AlertType.ERROR, "Failed to Password Change. Please try again.");
             }

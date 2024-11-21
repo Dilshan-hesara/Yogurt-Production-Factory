@@ -55,5 +55,15 @@ public class UserDetailsController implements Initializable {
         nextPage.getChildren().add(load);
     }
 
+    @FXML
+    void Back(ActionEvent event) {
+        closeWin();
+    }
+
+    private void closeWin() {
+        Stage stage = (Stage) nextPage.getScene().getWindow();
+        stage.close();
+    }
+
 
 }
