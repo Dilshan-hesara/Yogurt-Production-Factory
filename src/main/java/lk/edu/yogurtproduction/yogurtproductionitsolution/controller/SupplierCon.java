@@ -128,8 +128,8 @@ public class SupplierCon implements Initializable {
                 stage.setTitle("Send Mail Suplier");
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.initOwner(btnUpdate.getScene().getWindow());
-                stage.setResizable(false);
                 stage.showAndWait();
+                stage.setResizable(false);
 
             } catch (IOException e) {
                 new Alert(Alert.AlertType.ERROR, "Fail to load UI: " + e.getMessage()).show();
