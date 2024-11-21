@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
@@ -128,6 +129,9 @@ public class SupplierCon implements Initializable {
                 stage.setTitle("Send Mail Suplier");
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.initOwner(btnUpdate.getScene().getWindow());
+                Image image = new Image(getClass().getResourceAsStream("/images/49.png"));
+                stage.getIcons().add(image);
+
                 stage.showAndWait();
                 stage.setResizable(false);
 
@@ -186,6 +190,9 @@ public class SupplierCon implements Initializable {
             stage.setTitle("Add Suplier");
             stage.setResizable(false);
 
+            Image image = new Image(getClass().getResourceAsStream("/images/51.png"));
+            stage.getIcons().add(image);
+
             stage.initModality(Modality.APPLICATION_MODAL);
 
             stage.initOwner(btnUpdate.getScene().getWindow());
@@ -241,6 +248,8 @@ public class SupplierCon implements Initializable {
             stage.setScene(new Scene(load));
             stage.setTitle("Update Suplier");
             stage.setResizable(false);
+            Image image = new Image(getClass().getResourceAsStream("/images/50.png"));
+            stage.getIcons().add(image);
 
             stage.initModality(Modality.APPLICATION_MODAL);
 

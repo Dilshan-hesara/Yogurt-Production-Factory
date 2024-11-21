@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
@@ -126,6 +127,9 @@ public class EmployeeController implements Initializable {
             stage.setTitle("Add Employee");
             stage.setResizable(false);
 
+            Image image = new Image(getClass().getResourceAsStream("/images/51.png"));
+            stage.getIcons().add(image);
+
             stage.initModality(Modality.APPLICATION_MODAL);
 
             stage.initOwner(btnUpdate.getScene().getWindow());
@@ -184,6 +188,10 @@ public class EmployeeController implements Initializable {
                 stage.setTitle("Update Employee");
                 stage.setResizable(false);
 
+                Image image = new Image(getClass().getResourceAsStream("/images/50.png"));
+                stage.getIcons().add(image);
+
+
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.initOwner(btnUpdate.getScene().getWindow());
 
@@ -220,6 +228,10 @@ public class EmployeeController implements Initializable {
                 stage.setTitle("Send Mail Employee");
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.setResizable(false);
+
+                Image image = new Image(getClass().getResourceAsStream("/images/49.png"));
+                stage.getIcons().add(image);
+
                 stage.initOwner(btnUpdate.getScene().getWindow());
                 stage.showAndWait();
             } catch (IOException e) {
