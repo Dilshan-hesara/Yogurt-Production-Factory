@@ -6,7 +6,11 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
 public class OrderDetailsModel {
+
+    StockModel stockModel = new StockModel();
+
     public boolean saveOrderDetailsList(ArrayList<OrderDetailsDto> orderDetailsDTOS) throws SQLException {
 
         for (OrderDetailsDto orderDetailsDTO : orderDetailsDTOS) {
@@ -16,7 +20,10 @@ public class OrderDetailsModel {
             }
 
 
-
+            boolean isStockUpdated = stockModel.redQty(orderDetailsDTO);
+            if (!isStockUpdated) {
+                return false;
+            }
         }
         return true;
     }

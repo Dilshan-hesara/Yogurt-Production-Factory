@@ -1,5 +1,6 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.OrderDetailsDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.StockDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
 
@@ -98,7 +99,6 @@ public class StockModel {
     public StockDto findById(String selectedProdt) throws SQLException {
         ResultSet rst = CrudUtil.execute("select * from stock where Stock_ID =?", selectedProdt);
 
-        // If the item is found, create an ItemDto object with the retrieved data
         if (rst.next()) {
             return new StockDto(
                     rst.getString(1),
@@ -114,6 +114,15 @@ public class StockModel {
         }
 
         return null;
+
+    }
+
+    public boolean redQty(OrderDetailsDto orderDetailsDTO) throws SQLException {
+        return CrudUtil.execute(
+                "update stock set Qty = Qty - ? where Stock_ID = ?",
+                orderDetailsDTO.getQuantity(),
+                orderDetailsDTO.getItemId()
+        );
 
     }
 }
