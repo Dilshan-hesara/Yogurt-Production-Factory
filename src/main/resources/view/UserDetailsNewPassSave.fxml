@@ -7,11 +7,12 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="nextPage" prefHeight="273.0" prefWidth="473.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.edu.yogurtproduction.yogurtproductionitsolution.controller.UserDetailsNewPassSave">
     <children>
-        <Label fx:id="lblUserNama" layoutX="106.0" layoutY="47.0" prefHeight="36.0" prefWidth="122.0" text="Label" />
-        <ImageView fitHeight="36.0" fitWidth="40.0" layoutX="42.0" layoutY="47.0">
+        <Label fx:id="lblUserNama" layoutX="95.0" layoutY="74.0" prefHeight="18.0" prefWidth="122.0" text="Dilshan Hesara" />
+        <ImageView fitHeight="36.0" fitWidth="40.0" layoutX="24.0" layoutY="65.0">
             <image>
                 <Image url="@../images/3%20copy.png" />
             </image>
@@ -21,8 +22,29 @@
                 <Cursor fx:constant="CLOSED_HAND" />
             </cursor>
         </Button>
-        <TextField fx:id="txtUserName1" layoutX="121.0" layoutY="137.0" prefHeight="56.0" prefWidth="116.0" promptText="Enter OTP" style="-fx-background-color: #fff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
-      <Label layoutX="107.0" layoutY="95.0" prefHeight="18.0" prefWidth="143.0" text="Enter Your OTP " />
-      <Button layoutX="267.0" layoutY="222.0" mnemonicParsing="false" onAction="#Back" prefHeight="26.0" prefWidth="52.0" text="Back" />
+        <TextField fx:id="txtUserName1" layoutX="98.0" layoutY="179.0" prefHeight="56.0" prefWidth="116.0" promptText="Enter OTP" style="-fx-background-color: #fff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
+      <Label fx:id="txtMailmsg" layoutX="103.0" layoutY="144.0" prefHeight="18.0" prefWidth="242.0" text="Mail send susses" />
+      <Label layoutX="103.0" layoutY="111.0" prefHeight="18.0" prefWidth="242.0" text="Check Your Email  " />
+      <Label layoutX="14.0" layoutY="14.0" prefHeight="30.0" prefWidth="114.0" text="Verify Acc">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="13.0" layoutY="38.0" prefHeight="26.0" prefWidth="229.0" text="Enter Youer OTP Code">
+         <font>
+            <Font name="System Italic" size="9.0" />
+         </font>
+      </Label>
+      <Label layoutX="24.0" layoutY="111.0" prefHeight="18.0" prefWidth="59.0" text="User Mail">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="24.0" layoutY="144.0" prefHeight="18.0" prefWidth="59.0" text="Alert">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Button layoutX="273.0" layoutY="222.0" mnemonicParsing="false" onAction="#Back" prefHeight="26.0" prefWidth="42.0" style="-fx-background-color: #95a5a6;" text="Back" textFill="WHITE" />
     </children>
 </AnchorPane>
