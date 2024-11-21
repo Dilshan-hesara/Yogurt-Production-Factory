@@ -5,11 +5,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class UserDetailsNewPassW {
 
@@ -29,18 +31,35 @@ public class UserDetailsNewPassW {
     private TextField txtUserName1;
 
     @FXML
-    void btnChangePass(ActionEvent event) throws IOException {
+    private PasswordField txtPassWord;
+
+    @FXML
+    private PasswordField txtREEnterPassWord;
+
+    String UserName;
+    @FXML
+    void btnChangePass(ActionEvent event) throws IOException, SQLException {
+
+        String Password = txtPassWord.getText();
 
         nextPage.getChildren().clear();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UserDetailsNewPassSave.fxml"));
         AnchorPane load = loader.load();
-
+        UserDetailsNewPassSave pasworUserName = loader.getController();
+        pasworUserName.setUserDetails(UserName,Password);
 
         Stage stage = (Stage) nextPage.getScene().getWindow();
         stage.setTitle("Reset Password");
 
         nextPage.getChildren().add(load);
+    }
+
+
+
+    public void setUserDetails(String userName) {
+        UserName = userName;
+        lblUserNama.setText(userName);
     }
 
     @FXML
@@ -49,6 +68,7 @@ public class UserDetailsNewPassW {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UserDetailsFrom.fxml"));
         AnchorPane load = loader.load();
+
 
 
         Stage stage = (Stage) nextPage.getScene().getWindow();
