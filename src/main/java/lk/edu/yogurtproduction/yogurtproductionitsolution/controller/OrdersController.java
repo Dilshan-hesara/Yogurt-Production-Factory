@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CustomerDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.StockDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.CustomerModel;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.model.OrderModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.StockModel;
 
 import java.net.URL;
@@ -114,8 +115,15 @@ public class OrdersController implements Initializable {
 
     }
 
+    OrderModel orderModel = new OrderModel();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        try {
+            lblOderID.setText(orderModel.getNextOrderId());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         try {
             loadProdtId();
