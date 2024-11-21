@@ -22,7 +22,7 @@
         <HBox alignment="CENTER_LEFT" layoutX="85.0" layoutY="234.0" />
         <TextField fx:id="txtEmail" layoutX="15.0" layoutY="345.0" prefHeight="26.0" prefWidth="368.0" promptText="employee@gmail.com" style="-fx-background-color: #fff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
         <TextField fx:id="txtUserName" layoutX="15.0" layoutY="126.0" prefHeight="26.0" prefWidth="368.0" promptText="User Name" style="-fx-background-color: #fff; -fx-border-color: #7367F0; -fx-border-width: 0 0 1px 0;" />
-        <Button fx:id="btnSave" layoutX="295.0" layoutY="444.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSaveAcc" prefWidth="80.0" style="-fx-background-color: #2ecc71;" text="Next" textFill="WHITE">
+        <Button fx:id="btnSave" layoutX="295.0" layoutY="444.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnSaveAcc" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: #2ecc71;" styleClass="nextButt" stylesheets="@../styles/Userbutt.css" text="Next" textFill="WHITE">
             <cursor>
                 <Cursor fx:constant="CLOSED_HAND" />
             </cursor>

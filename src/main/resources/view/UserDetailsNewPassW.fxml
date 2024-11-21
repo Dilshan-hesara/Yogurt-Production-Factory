@@ -17,14 +17,14 @@
                 <Image url="@../images/16-user.png" />
             </image>
         </ImageView>
-        <Button fx:id="btnChangePass" layoutX="329.0" layoutY="222.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnChangePass" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #2ecc71;" text="Next" textFill="WHITE">
+        <Button fx:id="btnChangePass" layoutX="329.0" layoutY="222.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#btnChangePass" prefHeight="26.0" prefWidth="116.0" style="-fx-background-color: #2ecc71;" styleClass="nextButt" stylesheets="@../styles/Userbutt.css" text="Next" textFill="WHITE">
             <cursor>
                 <Cursor fx:constant="CLOSED_HAND" />
             </cursor>
         </Button>
       <PasswordField fx:id="txtPassWord" layoutX="43.0" layoutY="137.0" prefHeight="26.0" prefWidth="368.0" promptText="PassWord" style="-fx-background-color: #fff; -fx-border-width: 0 0 1px 0; -fx-border-color: #7367F0;" />
       <PasswordField fx:id="txtREEnterPassWord" layoutX="43.0" layoutY="176.0" prefHeight="26.0" prefWidth="368.0" promptText="Re Enter Password" style="-fx-background-color: #fff; -fx-border-width: 0 0 1px 0; -fx-border-color: #7367F0;" />
-      <Button layoutX="275.0" layoutY="222.0" mnemonicParsing="false" onAction="#Back" prefHeight="26.0" prefWidth="42.0" style="-fx-background-color: #95a5a6;" text="Back" textFill="WHITE" />
+      <Button layoutX="267.0" layoutY="222.0" mnemonicParsing="false" onAction="#Back" prefHeight="26.0" prefWidth="50.0" style="-fx-background-color: #95a5a6;" styleClass="backButt" stylesheets="@../styles/Userbutt.css" text="Back" textFill="WHITE" />
       <Label layoutX="14.0" layoutY="14.0" prefHeight="30.0" prefWidth="156.0" text="Reset Password">
          <font>
             <Font name="System Bold" size="20.0" />

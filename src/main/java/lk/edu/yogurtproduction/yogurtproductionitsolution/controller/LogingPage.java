@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -147,6 +148,10 @@ public class LogingPage{
             stage.setScene(new Scene(load));
             stage.setTitle("Create Account");
 
+
+            Image image = new Image(getClass().getResourceAsStream("/images/43.png"));
+            stage.getIcons().add(image);
+
             stage.initModality(Modality.APPLICATION_MODAL);
 
             stage.initOwner(btncreateAcc.getScene().getWindow());
@@ -169,6 +174,9 @@ public class LogingPage{
             Stage stage = new Stage();
             stage.setScene(new Scene(load));
             stage.setTitle("Rest Password");
+
+            Image image = new Image(getClass().getResourceAsStream("/images/44.png"));
+            stage.getIcons().add(image);
 
             stage.initModality(Modality.APPLICATION_MODAL);
 
@@ -196,6 +204,8 @@ public class LogingPage{
         Stage stage = new Stage();
         stage.setScene(new Scene(load));
         stage.setTitle("Foget Password");
+        Image image = new Image(getClass().getResourceAsStream("/images/45.png"));
+        stage.getIcons().add(image);
 
         stage.initModality(Modality.APPLICATION_MODAL);
 
