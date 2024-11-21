@@ -54,8 +54,6 @@ public class UserDetailsNewPassSave {
 
     @FXML
     void btnChangePass(ActionEvent event) throws SQLException {
-        System.out.println(Password + " " + UserName);
-        System.out.println(GetEmail);
 
         String username = UserName;
         String password = Password;
@@ -85,7 +83,8 @@ public class UserDetailsNewPassSave {
     }
 
     private void closeCurrentWindow() {
-
+        Stage stage = (Stage) nextPage.getScene().getWindow();
+        stage.close();
     }
 
 

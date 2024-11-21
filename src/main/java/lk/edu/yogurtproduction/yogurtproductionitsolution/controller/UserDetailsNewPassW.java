@@ -3,10 +3,7 @@ package lk.edu.yogurtproduction.yogurtproductionitsolution.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -39,6 +36,28 @@ public class UserDetailsNewPassW {
     String UserName;
     @FXML
     void btnChangePass(ActionEvent event) throws IOException, SQLException {
+
+
+        String password = txtPassWord.getText().trim();
+        String reEnterPassword = txtREEnterPassWord.getText().trim();
+
+
+        if ( password.isEmpty() || reEnterPassword.isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "Validation Error All fields are required!").show();
+            return;
+        }
+
+        if (!password.matches("\\d+")) {
+            new Alert(Alert.AlertType.ERROR, "Validation Error password only digits!").show();
+            return;
+        }
+
+
+        if (!password.equals(reEnterPassword)) {
+            new Alert(Alert.AlertType.ERROR, " Validation Error Passwords do not match! ").show();
+            return;
+        }
+
 
         String Password = txtPassWord.getText();
 
