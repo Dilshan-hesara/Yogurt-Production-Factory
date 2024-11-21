@@ -23,6 +23,8 @@ public class OrderModel {
         return "O001";
     }
 
+    OrderDetailsModel orderDetailsModel = new OrderDetailsModel();
+
     public boolean saveOrder(OrdersDto orderDTO) throws SQLException {
 
         Connection connection = DBConnection.getInstance().getConnection();
@@ -37,9 +39,11 @@ public class OrderModel {
             );
 
             if (isOrderSaved) {
-                connection.commit();
-                return true;
-
+                boolean isOrderDetailListSaved = orderDetailsModel.saveOrderDetailsList(orderDTO.getOrderDetailsDTOS());
+                if (isOrderDetailListSaved) {
+                    connection.commit();
+                    return true;
+                }
             }
 
             connection.rollback();
