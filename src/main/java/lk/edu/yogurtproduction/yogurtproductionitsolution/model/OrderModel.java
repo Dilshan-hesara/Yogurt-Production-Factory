@@ -1,8 +1,10 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
+import lk.edu.yogurtproduction.yogurtproductionitsolution.db.DBConnection;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.OrdersDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -21,7 +23,33 @@ public class OrderModel {
         return "O001";
     }
 
-    public boolean saveOrder(OrdersDto orderDTO) {
-        return false;
+    public boolean saveOrder(OrdersDto orderDTO) throws SQLException {
+
+        Connection connection = DBConnection.getInstance().getConnection();
+        try {
+            connection.setAutoCommit(false);
+
+            boolean isOrderSaved = CrudUtil.execute(
+                    "insert into orders values (?,?,?)",
+                    orderDTO.getOrderId(),
+                    orderDTO.getCustomerId(),
+                    orderDTO.getOrderDate()
+            );
+
+            if (isOrderSaved) {
+                connection.commit();
+                return true;
+
+            }
+
+            connection.rollback();
+            return false;
+        } catch (Exception e) {
+
+            connection.rollback();
+            return false;
+        } finally {
+            connection.setAutoCommit(true);
+        }
     }
 }
