@@ -82,4 +82,38 @@ public class StockModel {
     }
 
 
+    public ArrayList<String> getAllProdIds() throws SQLException {
+        ResultSet rst = CrudUtil.execute("select Stock_ID from Stock");
+
+        ArrayList<String> stockds = new ArrayList<>();
+
+        while (rst.next()) {
+            stockds.add(rst.getString(1));
+        }
+
+        return stockds;
+
+    }
+
+    public StockDto findById(String selectedProdt) throws SQLException {
+        ResultSet rst = CrudUtil.execute("select * from stock where Stock_ID =?", selectedProdt);
+
+        // If the item is found, create an ItemDto object with the retrieved data
+        if (rst.next()) {
+            return new StockDto(
+                    rst.getString(1),
+                    rst.getString(2),
+                    rst.getString(3),
+                    rst.getDouble(4),
+                    rst.getString(5),
+                    rst.getString(6),
+                    rst.getString(7),
+                    rst.getDouble(8)
+            );
+
+        }
+
+        return null;
+
+    }
 }
