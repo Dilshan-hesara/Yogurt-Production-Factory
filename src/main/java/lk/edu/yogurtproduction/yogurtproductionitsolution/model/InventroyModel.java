@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.InventroyDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.PckingDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdMixDto;
-import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.ProdtionDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
 
 import java.sql.ResultSet;
@@ -146,6 +145,18 @@ public class InventroyModel {
     }
 
 
+    public ArrayList<String> getAllProdIds() throws SQLException {
+
+        ResultSet rst = CrudUtil.execute("select In_ID from inventory");
+
+        ArrayList<String> prodIds = new ArrayList<>();
+
+        while (rst.next()) {
+            prodIds.add(rst.getString(1));
+        }
+
+        return prodIds;
+    }
 }
 
 
