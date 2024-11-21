@@ -20,7 +20,7 @@ public class DashBoad implements Initializable {
     private AnchorPane nextPage;
 
 
-    String UserName = "Dilshan Hesara";
+    String UserName;
     public void setUserName(String us) {
         this.UserName = us;
     }

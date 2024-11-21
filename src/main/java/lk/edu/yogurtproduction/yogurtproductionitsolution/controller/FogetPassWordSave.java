@@ -83,7 +83,7 @@ public class FogetPassWordSave {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/FogetPassWord.fxml"));
         AnchorPane load = loader.load();
 
-        Stage stage = (Stage) nextPage.getScene().getWindow();  // Get the current stage
+        Stage stage = (Stage) nextPage.getScene().getWindow();
         stage.setTitle("Foget Password");
 
         nextPage.getChildren().add(load);

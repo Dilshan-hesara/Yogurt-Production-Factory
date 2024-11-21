@@ -11,6 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.UserModel;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.util.UserName;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -23,8 +24,6 @@ public class LogingPage{
     @FXML
     private AnchorPane logpage;
 
-    @FXML
-    private CheckBox showPasswordCheckBox;
 
     @FXML
     private PasswordField txtPass;
@@ -32,36 +31,10 @@ public class LogingPage{
     @FXML
     private TextField txtUser;
 
-    @FXML
-    private TextField txtVisiblePass; // TextField for visible password
-
-    @FXML
-    private Button btnTogglePassword; // Button to toggle password visibility
-
-    private boolean isPasswordVisible = false; // To track the visibility state of the password
 
     private final UserModel userModel = new UserModel();
 
 
-    @FXML
-    void testBtn(ActionEvent event) {
-            if (isPasswordVisible) {
-                // Hide password (move text from TextField to PasswordField)
-                txtPass.setText(txtVisiblePass.getText());
-                txtPass.setVisible(true); // Show PasswordField
-                txtVisiblePass.setVisible(false); // Hide the TextField for plain text password
-                btnTogglePassword.setText("Show Password");
-                isPasswordVisible = false;
-            } else {
-                // Show password (move text from PasswordField to TextField)
-                txtVisiblePass.setText(txtPass.getText());
-                txtVisiblePass.setVisible(true); // Show the TextField for plain text password
-                txtPass.setVisible(false); // Hide PasswordField
-                btnTogglePassword.setText("Hide Password");
-                isPasswordVisible = true;
-            }
-
-    }
 
     @FXML
     private Button createAccBtn;
@@ -94,7 +67,7 @@ public class LogingPage{
             e.printStackTrace();
         }
 
-//
+
     }
 
     @FXML
@@ -106,6 +79,8 @@ public class LogingPage{
 
         if (userModel.isValidUsername(username)) {
             if (userModel.isValidUser(username, password)) {
+                UserName.setUsername(txtUser.getText());
+
                 logpage.getChildren().clear();
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/DashBoad.fxml"));
@@ -113,6 +88,7 @@ public class LogingPage{
 
                 DashBoad dashController = loader.getController();
                 dashController.setUserName(username);
+                laodUserName();
 
                 logpage.getChildren().add(dashboardPane);
 
@@ -123,29 +99,14 @@ public class LogingPage{
             new Alert(Alert.AlertType.ERROR, "Username does not exist").show();
         }
     }
+    private void laodUserName() {
+    }
 
 
 
 
     @FXML
     void showi(MouseEvent event) {}
-//        // Toggle password visibility
-//        if (isPasswordVisible) {
-//            // Hide password
-//            txtPass.setText(txtVisiblePass.getText());
-//            txtPass.setVisible(true);
-//            txtVisiblePass.setVisible(false);
-//            btnTogglePassword.setText("Show Password");
-//            isPasswordVisible = false;
-//        } else {
-//            // Show password
-//            txtVisiblePass.setText(txtPass.getText());
-//            txtVisiblePass.setVisible(true);
-//            txtPass.setVisible(false);
-//            btnTogglePassword.setText("Hide Password");
-//            isPasswordVisible = true;
-//        }
-//    }
 
     @FXML
     void showPass(ActionEvent event) {

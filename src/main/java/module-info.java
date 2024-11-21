@@ -7,6 +7,7 @@ module lk.edu.yogurtproduction.yogurtproductionitsolution {
     requires com.jfoenix;
     requires net.sf.jasperreports.core;
     requires java.mail;
+    requires com.google.protobuf;
 
     opens lk.edu.yogurtproduction.yogurtproductionitsolution.controller to javafx.fxml;
     opens lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM to javafx.base;

@@ -22,6 +22,7 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.model.CashBookModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.MatirialUsageModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.StockModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.util.UserName;
 import lombok.SneakyThrows;
 
 import java.io.IOException;
@@ -58,6 +59,11 @@ public class DashBoadMain implements Initializable {
     @FXML
     private Label lblbAmount;
 
+    void displayUsername() {
+        String username = UserName.getUsername();
+            txtUser.setText(username);
+            userName = UserName.getUsername();
+        }
 
 
     @SneakyThrows
@@ -67,12 +73,27 @@ public class DashBoadMain implements Initializable {
         loadChartData();
         startClock();
         addYogurtStockData();
+        displayUsername();
+
         try {
             LoadLbl();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+
     }
+
+
+    String userName;
+
+    public void setUserName(String userName) {
+
+        this.userName = userName;
+        txtUser.setText(userName);
+
+
+    }
+
 
     private void LoadLbl() throws SQLException {
         laodAount();
@@ -117,9 +138,9 @@ public class DashBoadMain implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UserDetailsFrom.fxml"));
             Parent load = loader.load();
 
-//
-//            MatirialCon updateItemCmb = loader.getController();
-//            updateItemCmb.setUpdatedCmde(this);
+
+            UserDetailsController sendUSERnAME = loader.getController();
+            sendUSERnAME.sendUserName(userName);
 
             Stage stage = new Stage();
             stage.setScene(new Scene(load));
@@ -205,7 +226,6 @@ public class DashBoadMain implements Initializable {
             AreaChart<String, Number> areaChart = new AreaChart<>(xAxis, yAxis);
 
             XYChart.Series<String, Number> yogurtStockSeries = new XYChart.Series<>();
-        //    yogurtStockSeries.setName("Yogurt Stock by Manufacture Date");
 
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             while (rs.next()) {
@@ -227,14 +247,8 @@ public class DashBoadMain implements Initializable {
     }
 
 
-    String userName;
 
-    public void setUserName(String userName) {
 
-        this.userName = userName;
-        txtUser.setText(userName);
-
-    }
 }
 
 

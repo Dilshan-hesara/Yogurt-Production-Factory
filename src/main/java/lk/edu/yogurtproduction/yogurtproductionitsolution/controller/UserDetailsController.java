@@ -23,17 +23,22 @@ public class UserDetailsController {
 
     @FXML
     void btnChangePass(ActionEvent event) throws IOException {
-
-        nextPage.getChildren().clear();
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UserDetailsNewPassW.fxml"));
-        AnchorPane load = loader.load();
-
-
-        Stage stage = (Stage) nextPage.getScene().getWindow();
-        stage.setTitle("Reset Password");
-
-        nextPage.getChildren().add(load);
+        System.out.println(userName);
+//        nextPage.getChildren().clear();
+//
+//        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/UserDetailsNewPassW.fxml"));
+//        AnchorPane load = loader.load();
+//
+//
+//        Stage stage = (Stage) nextPage.getScene().getWindow();
+//        stage.setTitle("Reset Password");
+//
+//        nextPage.getChildren().add(load);
     }
 
+    String userName;
+    public void sendUserName(String userName) {
+    this.userName = userName;
+    lblUserNama.setText(userName);
+    }
 }
