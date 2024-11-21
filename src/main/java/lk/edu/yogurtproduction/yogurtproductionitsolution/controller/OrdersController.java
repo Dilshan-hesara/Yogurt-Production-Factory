@@ -5,12 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CustomerDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.StockDto;
@@ -85,10 +80,67 @@ public class OrdersController implements Initializable {
     @FXML
     void btnAddToCart(ActionEvent event) {
 
+        String selectedItemId = (String) cmbProd.getSelectionModel().getSelectedItem();
+
+        if (selectedItemId == null) {
+            new Alert(Alert.AlertType.ERROR, "Please select prodts..!").show();
+            return;
+        }
+
+        String itemName = lblProdName.getText();
+
+        int cartQty = Integer.parseInt(txtAddToCartQty.getText());
+        double quantity = Double.parseDouble(AVqty);
+
+
+        if (quantity < cartQty) {
+            new Alert(Alert.AlertType.ERROR, "Not enough prodts..!").show();
+            return;
+        }
+
+        txtAddToCartQty.setText("");
+
+        double unitPrice = Double.parseDouble(lblIProdtPrice.getText());
+        double total = unitPrice * cartQty;
+
+        for (CartTM cartTM : cartTMS) {
+            if (cartTM.getItemId().equals(selectedItemId)) {
+                int newQty = cartTM.getCartQuantity() + cartQty;
+                cartTM.setCartQuantity(newQty);
+                cartTM.setTotal(unitPrice * newQty);
+                tblCart.refresh();
+                return;
+            }
+
+        }
+        Button btn = new Button("Remove");
+
+        CartTM newCartTM = new CartTM(
+                selectedItemId,
+                itemName,
+                cartQty,
+                unitPrice,
+                total,
+                btn
+        );
+        btn.setOnAction(actionEvent -> {
+
+            cartTMS.remove(newCartTM);
+
+            tblCart.refresh();
+        });
+
+        cartTMS.add(newCartTM);
+
+
     }
 
     @FXML
     void btnPlaceOrder(ActionEvent event) {
+
+
+
+
 
     }
 
@@ -103,6 +155,7 @@ public class OrdersController implements Initializable {
         }
     }
 
+    String AVqty;
     @FXML
     void cmbItemOnAction(ActionEvent event) throws SQLException {
         String selectedProdt = (String) cmbProd.getSelectionModel().getSelectedItem();
@@ -113,6 +166,7 @@ public class OrdersController implements Initializable {
             lblProdName.setText(stockDto.getProduct_Name());
             lblProdtQty.setText(String.valueOf(stockDto.getQty()));
             lblIProdtPrice.setText(String.valueOf(stockDto.getUnit_Price()));
+            AVqty= String.valueOf(stockDto.getQty());
         }
 
     }
