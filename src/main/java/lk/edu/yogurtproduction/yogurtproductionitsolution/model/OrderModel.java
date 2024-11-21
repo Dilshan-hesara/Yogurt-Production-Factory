@@ -1,5 +1,6 @@
 package lk.edu.yogurtproduction.yogurtproductionitsolution.model;
 
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.OrdersDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.util.CrudUtil;
 
 import java.sql.ResultSet;
@@ -18,5 +19,9 @@ public class OrderModel {
             return String.format("O%03d", newIdIndex);
         }
         return "O001";
+    }
+
+    public boolean saveOrder(OrdersDto orderDTO) {
+        return false;
     }
 }

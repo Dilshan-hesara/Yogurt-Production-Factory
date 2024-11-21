@@ -8,6 +8,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CustomerDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.OrderDetailsDto;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.OrdersDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.StockDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.TM.CartTM;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.CustomerModel;
@@ -15,7 +17,9 @@ import lk.edu.yogurtproduction.yogurtproductionitsolution.model.OrderModel;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.StockModel;
 
 import java.net.URL;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -136,9 +140,51 @@ public class OrdersController implements Initializable {
     }
 
     @FXML
-    void btnPlaceOrder(ActionEvent event) {
+    void btnPlaceOrder(ActionEvent event) throws SQLException {
 
+        if (tblCart.getItems().isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "Please add prodts to cart..!").show();
+            return;
+        }
+        if (cmbCustomerId.getSelectionModel().isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "Please select customer for place order..!").show();
+            return;
+        }
 
+        String orderId = lblOderID.getText();
+        Date dateOfOrder = Date.valueOf(orderDate.getText());
+        String customerId = cmbCustomerId.getValue();
+
+        ArrayList<OrderDetailsDto> orderDetailsDTOS = new ArrayList<>();
+
+        for (CartTM cartTM : cartTMS) {
+
+            OrderDetailsDto orderDetailsDTO = new OrderDetailsDto(
+                    orderId,
+                    cartTM.getItemId(),
+                    cartTM.getCartQuantity(),
+                    cartTM.getUnitPrice()
+            );
+
+            orderDetailsDTOS.add(orderDetailsDTO);
+        }
+
+        OrdersDto orderDTO = new OrdersDto(
+                orderId,
+                customerId,
+                dateOfOrder,
+                orderDetailsDTOS
+        );
+
+        boolean isSaved = orderModel.saveOrder(orderDTO);
+
+        if (isSaved) {
+            new Alert(Alert.AlertType.INFORMATION, "Order saved..!").show();
+
+            refreshPage();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Order fail..!").show();
+        }
 
 
 
@@ -183,8 +229,8 @@ public class OrdersController implements Initializable {
         colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
         colAction.setCellValueFactory(new PropertyValueFactory<>("removeBtn"));
 
-        // Bind the cart items observable list to the TableView
         tblCart.setItems(cartTMS);
+        orderDate.setText(LocalDate.now().toString());
 
 
         try {
@@ -225,5 +271,26 @@ public class OrdersController implements Initializable {
         observableList.addAll(customerIds);
         cmbCustomerId.setItems(observableList);
     }
+    private void refreshPage() throws SQLException {
 
+        lblOderID.setText(orderModel.getNextOrderId());
+
+        loadCustomerIds();
+        loadProdtId();
+
+        orderDate.setText(LocalDate.now().toString());
+
+
+        cmbCustomerId.getSelectionModel().clearSelection();
+        cmbProd.getSelectionModel().clearSelection();
+        lblProdName.setText("");
+        lblProdtQty.setText("");
+        lblIProdtPrice.setText("");
+        txtAddToCartQty.setText("");
+        lblCustomerName.setText("");
+
+        cartTMS.clear();
+
+        tblCart.refresh();
+    }
 }
