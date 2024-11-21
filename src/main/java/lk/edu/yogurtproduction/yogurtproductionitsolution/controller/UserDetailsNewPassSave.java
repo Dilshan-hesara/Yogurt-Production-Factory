@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.edu.yogurtproduction.yogurtproductionitsolution.dto.CreteAccDto;
 import lk.edu.yogurtproduction.yogurtproductionitsolution.model.UserModel;
 
 import javax.mail.*;
@@ -32,7 +33,7 @@ public class UserDetailsNewPassSave {
     private AnchorPane nextPage;
 
     @FXML
-    private TextField txtUserName1;
+    private TextField txtOtp;
 
     @FXML
     private Label txtMailmsg;
@@ -52,13 +53,38 @@ public class UserDetailsNewPassSave {
     private String getUserName = UserName;
 
     @FXML
-    void btnChangePass(ActionEvent event) {
+    void btnChangePass(ActionEvent event) throws SQLException {
         System.out.println(Password + " " + UserName);
         System.out.println(GetEmail);
 
+        String username = UserName;
+        String password = Password;
+        String email = GetEmail;
 
+        CreteAccDto creteAccDto = new CreteAccDto(username, password, email);
 
+        String enteredOtp = txtOtp.getText().trim();
 
+        if (generatedOtp != null && generatedOtp.equals(enteredOtp)) {
+            isVerified = true;
+            showAlert(Alert.AlertType.INFORMATION, "Password Change successfully!");
+
+            boolean isSaved = userModel.creatUser(creteAccDto);
+
+            if (isSaved) {
+                closeCurrentWindow();
+                System.out.println("labbl");
+            } else {
+                showAlert(Alert.AlertType.ERROR, "Failed to Password Change. Please try again.");
+            }
+
+        } else {
+            showAlert(Alert.AlertType.ERROR, "Invalid OTP. Please try again.");
+        }
+
+    }
+
+    private void closeCurrentWindow() {
 
     }
 
