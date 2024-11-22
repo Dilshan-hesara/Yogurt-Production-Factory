@@ -21,9 +21,6 @@ public class AddEmployeeController implements Initializable {
     private Button btnSave;
 
     @FXML
-    private Button btnUpdate;
-
-    @FXML
     private Label lblEmployeeId;
 
     @FXML

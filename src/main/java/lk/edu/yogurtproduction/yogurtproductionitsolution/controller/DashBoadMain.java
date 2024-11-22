@@ -168,10 +168,7 @@ public class DashBoadMain implements Initializable {
     public void loadChartData() {
 
         try {
-            String query = "SELECT Item_Type, SUM(Qty) AS TotalQty " +
-                    "FROM inventory " +
-                    "WHERE Item_Type IN ('Raw', 'UN Packed', 'END Prodt') " +
-                    "GROUP BY Item_Type";
+            String query = "select Item_Type, sum(Qty) as TotalQty from inventory where Item_Type in ('Raw', 'UN Packed', 'END Prodt') group by Item_Type";
 
             ResultSet rs = CrudUtil.execute(query);
 
@@ -213,16 +210,10 @@ public class DashBoadMain implements Initializable {
 
 
 
-
-
-
     private void addYogurtStockData() {
 
         try {
-            String Qury = "SELECT Manfac_date, SUM(Qty) AS total_qty "
-                    + "FROM Stock "
-                    + "GROUP BY Manfac_date "
-                    + "ORDER BY Manfac_date";
+            String Qury = "select Manfac_date, sum(Qty) as total_qty from Stock group by Manfac_date order by Manfac_date";
 
             ResultSet rs = CrudUtil.execute(Qury);
 

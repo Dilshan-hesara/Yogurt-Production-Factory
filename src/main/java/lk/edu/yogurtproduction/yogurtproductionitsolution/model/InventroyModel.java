@@ -112,9 +112,9 @@ public class InventroyModel {
 
     private boolean savedInventoryOnItemRedu(ProdMixDto prodMixDTO) throws SQLException {
 
-        boolean milkUpdated = CrudUtil.execute("UPDATE inventory i JOIN (SELECT In_ID FROM inventory WHERE Item_Description = 'Milk' AND Qty > 0 LIMIT 1) subquery ON i.In_ID = subquery.In_ID SET i.Qty = i.Qty - ?", prodMixDTO.getMilk());
-        boolean gelatinUpdated = CrudUtil.execute("UPDATE inventory i JOIN (SELECT In_ID FROM inventory WHERE Item_Description = 'Gelat' AND Qty > 0 LIMIT 1) subquery ON i.In_ID = subquery.In_ID SET i.Qty = i.Qty - ?", prodMixDTO.getJeliy());
-        boolean sugarUpdated = CrudUtil.execute("UPDATE inventory i JOIN (SELECT In_ID FROM inventory WHERE Item_Description = 'Sugar' AND Qty > 0 LIMIT 1) subquery ON i.In_ID = subquery.In_ID SET i.Qty = i.Qty - ?", prodMixDTO.getSuguer());
+        boolean milkUpdated = CrudUtil.execute("update inventory i join (select In_ID from inventory where Item_Description = 'Milk' and Qty > 0 limit 1) subquery on i.In_ID = subquery.In_ID set i.Qty = i.Qty - ?", prodMixDTO.getMilk());
+        boolean gelatinUpdated = CrudUtil.execute("update inventory i join (select In_ID from inventory where Item_Description = 'Gelat' and Qty > 0 limit 1) subquery on i.In_ID = subquery.In_ID set i.Qty = i.Qty - ?", prodMixDTO.getJeliy());
+        boolean sugarUpdated = CrudUtil.execute("update inventory i join (select In_ID from inventory where Item_Description = 'Sugar' and Qty > 0 limit 1) subquery on i.In_ID = subquery.In_ID set i.Qty = i.Qty - ?", prodMixDTO.getSuguer());
 
         if (milkUpdated && gelatinUpdated && sugarUpdated) {
             return true;
@@ -127,17 +127,17 @@ public class InventroyModel {
     public ArrayList<String> getAllAVItems() throws SQLException {
         ArrayList<String> availableItems = new ArrayList<>();
 
-        ResultSet rst1 = CrudUtil.execute("SELECT SUM(Qty) AS Total FROM inventory WHERE Item_Description = 'Gelat' AND Qty > 0;");
+        ResultSet rst1 = CrudUtil.execute("select sum(Qty) as Total from inventory where Item_Description = 'Gelat' and Qty > 0;");
         if (rst1.next()) {
             availableItems.add(rst1.getString("Total") != null ? rst1.getString("Total") : "0");
         }
 
-        ResultSet rst2 = CrudUtil.execute("SELECT SUM(Qty) AS Total FROM inventory WHERE Item_Description = 'Milk' AND Qty > 0;");
+        ResultSet rst2 = CrudUtil.execute("select sum(Qty) as Total from inventory where Item_Description = 'Milk' and Qty > 0;");
         if (rst2.next()) {
             availableItems.add(rst2.getString("Total") != null ? rst2.getString("Total") : "0");
         }
 
-        ResultSet rst3 = CrudUtil.execute("SELECT SUM(Qty) AS Total FROM inventory WHERE Item_Description = 'Sugar' AND Qty > 0;");
+        ResultSet rst3 = CrudUtil.execute("select sum(Qty) as Total from inventory where Item_Description = 'Sugar' and Qty > 0;");
         if (rst3.next()) {
             availableItems.add(rst3.getString("Total") != null ? rst3.getString("Total") : "0");
         }
