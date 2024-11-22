@@ -129,7 +129,6 @@ public class VerfyMailController {
 
 
     private void closeWindow() {
-        // Get the stage of the current window and close it
         Stage stage = (Stage) txtOtp.getScene().getWindow();
         stage.close();
     }

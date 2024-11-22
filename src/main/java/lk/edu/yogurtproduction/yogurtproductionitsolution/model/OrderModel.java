@@ -48,7 +48,7 @@ public class OrderModel {
 
             connection.rollback();
             return false;
-        } catch (Exception e) {
+        } catch (SQLException e) {
 
             connection.rollback();
             return false;
