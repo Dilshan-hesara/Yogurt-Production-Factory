@@ -13,10 +13,10 @@ import java.sql.SQLException;
         private final Connection connection;
 
         private DBConnection() throws SQLException {
-            String URL = "jdbc:mysql://localhost:3306/yougurtprodution";
-            String USER = "root";
-            String PASSWORD = "18091479";
-            connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            String url = "jdbc:mysql://localhost:3306/yougurtprodution";
+            String user = "root";
+            String password = "18091479";
+            connection = DriverManager.getConnection(url, user, password);
         }
 
         public static DBConnection getInstance() throws SQLException {
