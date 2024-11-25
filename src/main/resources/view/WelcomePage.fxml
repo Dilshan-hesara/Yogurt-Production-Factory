@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="welcomePage" prefHeight="724.0" prefWidth="1282.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.edu.yogurtproduction.yogurtproductionitsolution.controller.WelcomePage">
+<AnchorPane fx:id="welcomePage" prefHeight="724.0" prefWidth="1278.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.edu.yogurtproduction.yogurtproductionitsolution.controller.WelcomePage">
    <children>
-      <ImageView fitHeight="734.0" fitWidth="1296.0" layoutX="-14.0">
+      <ImageView fitHeight="724.0" fitWidth="1294.0" layoutX="-14.0">
          <image>
             <Image url="@../images/1.jpg" />
          </image>

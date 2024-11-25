@@ -213,7 +213,10 @@ public class DashBoadMain implements Initializable {
     private void addYogurtStockData() {
 
         try {
-            String Qury = "select Manfac_date, sum(Qty) as total_qty from Stock group by Manfac_date order by Manfac_date";
+            String Qury = "SELECT Manfac_date, SUM(Qty) AS total_qty " +
+                    "FROM Stock " +
+                    "GROUP BY Manfac_date " +
+                    "ORDER BY Manfac_date";
 
             ResultSet rs = CrudUtil.execute(Qury);
 

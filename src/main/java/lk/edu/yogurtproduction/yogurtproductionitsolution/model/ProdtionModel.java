@@ -73,7 +73,7 @@ public class ProdtionModel {
     }
 
     public ArrayList<String> getAllProdtIds() throws SQLException {
-        ResultSet rst = CrudUtil.execute("select Prod_ID from production");
+        ResultSet rst = CrudUtil.execute("SELECT * FROM production LIMIT 1000;");
 
         ArrayList<String> ProdtIds = new ArrayList<>();
 
