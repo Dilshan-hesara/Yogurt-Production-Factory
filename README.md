@@ -2,6 +2,10 @@ Yogurt-Production-Factory
 
 [Yogurt-Production-Factory-MVC](https://github.com/Dilshan-hesara/Yogurt-Production-Factory/tree/master)
 
+
+[Yogurt-Production-Factory-LARC](https://github.com/Dilshan-hesara/Yogurt-Production-Factory-LARC)
+
+
 MKD Yogurt Factory Production Management System 📌 Project Overview The MKD Yogurt Factory Production Management System is designed to streamline operations at MKD Yogurt Factory, a rural, family-owned business specializing in artisan yogurt production. This system manages various aspects, including employee management, production tracking, inventory control, financial records (cash book), packing control, emails ,reports ,and distribution.
 
 🔗 Technologies Used ✅ JavaFX ✅ MySQL ✅ JDBC ✅ MVC Architecture ✅ Transaction Handling
